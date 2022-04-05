@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &830518997656603358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2078781814530027142}
+  - component: {fileID: 6622095945594787701}
+  m_Layer: 0
+  m_Name: MapInfoAssets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2078781814530027142
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830518997656603358}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6622095945594787701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830518997656603358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5403ca9f69c6574c88a585afdf107af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapInfos:
+  - {fileID: 11400000, guid: ade4a06c2356b7d4b8f875c31d60622e, type: 2}
+  - {fileID: 11400000, guid: 2f30997146414944a869f7e4a47dbc2e, type: 2}
+  - {fileID: 11400000, guid: f39a4546f6cc5414a8cfe3d8e651f4a9, type: 2}
+  - {fileID: 11400000, guid: 839a598044b35e546b4cffaa465011f5, type: 2}
+  - {fileID: 11400000, guid: e3660995f49890743b47186b0d3ff3c3, type: 2}
+  - {fileID: 11400000, guid: b15b666e027be374998cba7666562c9b, type: 2}
+  - {fileID: 11400000, guid: b1af37492ea10f14b97660a9ff09ebe7, type: 2}
+  - {fileID: 11400000, guid: 019f1ea40ef074a4da6b6ae52425858f, type: 2}
+  - {fileID: 11400000, guid: 7b3ed01da2895444bb057d163b342d19, type: 2}
+  - {fileID: 11400000, guid: ced65561e4a9c5748a6b21e4d2bb74ad, type: 2}

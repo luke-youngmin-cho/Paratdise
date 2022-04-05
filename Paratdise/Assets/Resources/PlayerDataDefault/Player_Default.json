@@ -1,0 +1,26 @@
+{
+  "nickName": "",
+  "charactersData": [
+    {
+      "type": 1,
+      "isAvailable": true
+    },
+    {
+      "type": 0,
+      "isAvailable": false
+    },
+    {
+      "type": 0,
+      "isAvailable": false
+    },
+    {
+      "type": 0,
+      "isAvailable": false
+    }
+  ],
+  "stageSaved": 0,
+  "inventoryData": {
+    "gameMoney": 0,
+    "itmes": []
+  }
+}

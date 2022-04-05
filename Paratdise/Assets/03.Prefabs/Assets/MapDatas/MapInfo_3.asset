@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4570dcd7871ff664d973333123205505, type: 3}
+  m_Name: MapInfo_3
+  m_EditorClassIdentifier: 
+  size: {x: 15, y: 30}
+  algoNum: 15
+  fluidPercents: 10
+  obstaclePercents: 20
+  MapElements_Boundary:
+  - {fileID: 4883344005395017866, guid: e51c68caa7ae0a1429af2ef6ab5306c1, type: 3}
+  MapElements_Basic:
+  - {fileID: 8095170532550832005, guid: 577f1e6df14a54c47843cdba82a71dcf, type: 3}
+  MapElements_FluidBundle:
+  - {fileID: 9111984183550421366, guid: 94a2c3e8f1805b6428d6e961ebffb78f, type: 3}
+  MapElements_Obstacle: []
+  MapElement_Start: {fileID: 6485304845783642979, guid: 3e44e324a19303a4ca32a34c9044c3d3, type: 3}
+  MapElement_End: {fileID: 4826205792507212175, guid: 113caace07bcca743ae7960d88d0e3bc, type: 3}
