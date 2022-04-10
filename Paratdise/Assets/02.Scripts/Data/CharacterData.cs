@@ -10,22 +10,21 @@ using UnityEngine;
 /// 
 /// 캐릭터의 타입과 해금 여부 데이터 
 /// </summary>
-namespace YM
-{
-    [System.Serializable]
-    public struct CharacterData
-    {
-        public CharacterType type;
-        public bool isAvailable;
-    }
 
-    [System.Serializable]
-    public enum CharacterType
-    {
-        None,
-        Mise,
-        Laila,
-        ggabirilldjo,
-        Eily
-    }
+
+[System.Serializable]
+public struct CharacterData
+{
+    public CharacterType type;
+    public bool isAvailable;
+}
+
+[System.Serializable]
+public enum CharacterType
+{
+    None,
+    Mise,
+    Laila,
+    ggabirilldjo,
+    Eily
 }

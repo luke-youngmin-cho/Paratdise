@@ -8,24 +8,31 @@ using UnityEngine;
 /// 
 /// 아이템 정보 클래스. 
 /// </summary>
-namespace YM
+[CreateAssetMenu(fileName = "New Item", menuName = "Item/Create New Item")]
+public class Item : ScriptableObject
 {
-    [CreateAssetMenu(fileName = "New Item", menuName = "Item/Create New Item")]
-    public class Item : ScriptableObject
-    {
-        public ItemType type;
-        public string itemName;
-        public int price;
-        public int numMax = 99;
-        public Sprite icon;
-    }
+    public ItemTag tag;
+    public ItemType type;
+    public string itemName;
+    public string discription;
+    public int num;
+    public Sprite icon;
+}
 
-    [System.Serializable]
-    public enum ItemType
-    {
-        Equip,
-        Spend,
-        ETC,
-        Cash
-    }
+[System.Serializable]
+public enum ItemType
+{
+    None,
+    Special,
+    Resources,
+    ETC
+}
+[System.Serializable]
+public enum ItemTag
+{
+    None,
+    Chapter1,
+    Chapter2,
+    Chapter3,
+    Chapter4,
 }

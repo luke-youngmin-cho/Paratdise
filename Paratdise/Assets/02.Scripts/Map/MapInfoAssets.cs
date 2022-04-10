@@ -10,24 +10,22 @@ using UnityEngine;
 /// 
 /// 스테이지별 맵 정보를 가져다 쓰기위한 클래스.
 /// </summary>
-namespace YM
+
+public class MapInfoAssets : MonoBehaviour
 {
-    public class MapInfoAssets : MonoBehaviour
+    public static MapInfoAssets _instance;
+    public static MapInfoAssets instance
     {
-        public static MapInfoAssets _instance;
-        public static MapInfoAssets instance
+        get
         {
-            get
-            {
-                if (_instance == null)
-                    _instance = Instantiate(Resources.Load<MapInfoAssets>("Assets/MapInfoAssets"));
-                return _instance;
-            }
+            if (_instance == null)
+                _instance = Instantiate(Resources.Load<MapInfoAssets>("Assets/MapInfoAssets"));
+            return _instance;
         }
-
-        public List<MapInfo> mapInfos = new List<MapInfo>();
-
-        public MapInfo GetMapInfo(int stage) =>
-            mapInfos.Find(x => x.name == $"MapInfo_{stage}");
     }
+
+    public List<MapInfo> mapInfos = new List<MapInfo>();
+
+    public MapInfo GetMapInfo(int stage) =>
+        mapInfos.Find(x => x.name == $"MapInfo_{stage}");
 }

@@ -12,22 +12,18 @@ using UnityEngine;
 /// 아직 기획 미정으로 추후 수정될 것임
 /// </summary>
 
-namespace YM
+public class Story
 {
-    public class Story
-    {
-        public Sprite sprite;
-        public Vector2 position;
-        public string contents;
-        public StoryEffectType effect;
-    }
+    public Sprite sprite;
+    public Vector2 position;
+    public string contents;
+    public StoryEffectType effect;
+}
 
-    public enum StoryEffectType
-    {
-        Idle,
-        FadeIn,
-        FadeOut,
-        Shake,
-    }
-
+public enum StoryEffectType
+{
+    Idle,
+    FadeIn,
+    FadeOut,
+    Shake,
 }

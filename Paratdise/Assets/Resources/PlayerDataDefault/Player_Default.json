@@ -1,5 +1,8 @@
 {
-  "nickName": "",
+  "nickName": "Default",
+  "stageSaved": 0,
+  "stageLastPlayed": 1,
+  "timeCapsulesData": [],
   "charactersData": [
     {
       "type": 1,
@@ -17,10 +20,5 @@
       "type": 0,
       "isAvailable": false
     }
-  ],
-  "stageSaved": 0,
-  "inventoryData": {
-    "gameMoney": 0,
-    "itmes": []
-  }
+  ]
 }

@@ -11,41 +11,39 @@ using UnityEngine.SceneManagement;
 /// 
 /// 씬의 정보, 이전씬과 현재씬을 비교할수 있는 클래스
 /// </summary>
-namespace YM
+
+public class SceneInformation : MonoBehaviour
 {
-    public class SceneInformation : MonoBehaviour
+    static public SceneInformation instance;
+    static public bool sceneLoaded;
+    static public string oldSceneName;
+    static public string newSceneName;
+
+    //===============================================================================================
+    //********************************** Private Methods ********************************************
+    //===============================================================================================
+
+    private void Awake()
     {
-        static public SceneInformation instance;
-        static public bool sceneLoaded;
-        static public string oldSceneName;
-        static public string newSceneName;
-
-        //===============================================================================================
-        //********************************** Private Methods ********************************************
-        //===============================================================================================
-
-        private void Awake()
+        if (instance == null)
         {
-            if (instance == null)
-            {
-                instance = this;
-                DontDestroyOnLoad(instance);
-            }
+            instance = this;
+            DontDestroyOnLoad(instance);
         }
+    }
 
-        private void Start()
+    private void Start()
+    {
+        SceneManager.sceneUnloaded += delegate
         {
-            SceneManager.sceneUnloaded += delegate
-            {
-                sceneLoaded = false;
-            };
-            SceneManager.sceneLoaded += delegate
-            {
-                oldSceneName = newSceneName;
-                Scene scene = SceneManager.GetActiveScene();
-                newSceneName = scene.name;
-                sceneLoaded = true;
-            };
-        }
+            sceneLoaded = false;
+        };
+        SceneManager.sceneLoaded += delegate
+        {
+            oldSceneName = newSceneName;
+            Scene scene = SceneManager.GetActiveScene();
+            newSceneName = scene.name;
+            sceneLoaded = true;
+        };
     }
 }

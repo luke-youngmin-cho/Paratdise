@@ -10,20 +10,18 @@ using UnityEngine;
 /// 
 /// 플레이어 데이터를 생성하기위한 개발자용 클래스
 /// </summary>
-namespace YM
+
+public class PlayerDataEditor : MonoBehaviour
 {
-    public class PlayerDataEditor : MonoBehaviour
+    public PlayerData data;
+
+    public void CreateMapData()
     {
-        public PlayerData data;
 
-        public void CreateMapData()
-        {
+    }
 
-        }
-
-        public void CreateDefaultPlayerData()
-        {
-            PlayerDataManager.CreateDefaultData(data);
-        }
+    public void CreateDefaultPlayerData()
+    {
+        PlayerDataManager.CreateDefaultData(data);
     }
 }

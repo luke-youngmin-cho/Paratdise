@@ -10,41 +10,57 @@ using UnityEngine;
 /// 
 /// 인벤토리의 아이템 데이터 목록 클래스
 /// </summary>
-namespace YM
+
+[System.Serializable]
+public class InventoryData
 {
-    [System.Serializable]
-    public class InventoryData
+    public List<ItemData> itemsData = new List<ItemData>();
+
+    /// <summary>
+    /// 아이템 추가
+    /// 기존에 해당 아이템 데이터 있을경우 개수만 늘림.
+    /// 없을경우 새로 만들어서 추가
+    /// </summary>
+    public void AddData(Item item)
     {
-        public List<InventoryItemData> items;
-
-        /// <summary>
-        /// 아이템 추가
-        /// </summary>
-        /// <param name="type"> 아이템 종류 (equip, spend, etc, cash ) </param>
-        /// <param name="itemName"> Scriptableobject item 의 이름 </param>
-        /// <param name="num"> 수량 </param>
-        /// <param name="slotID"> 인벤토리 슬롯 ID </param>
-        public void AddData(ItemType type, string itemName, int num, int slotNum)
+        ItemData tmpData;
+        if (itemsData.Exists(x => (x.itemName == item.name)))
         {
-            InventoryItemData matchedData =
-                items.Find(x => x.type == type && x.slotID == slotNum);
-            items.Remove(matchedData);
-            items.Add(new InventoryItemData { type = type, itemName = itemName, num = num, slotID = slotNum });
-            InventoryDataManager.SaveData();
+            tmpData = itemsData.Find(x => (x.itemName == item.name));
+            itemsData.Remove(tmpData);
+            tmpData.num += item.num;
+            itemsData.Add(tmpData);
         }
-
-        /// <summary>
-        /// try to find item with type & name , remove data
-        /// </summary>
-        public void RemoveData(ItemType type, string itemName, int slotNum)
+        else
         {
-            InventoryItemData matchedData =
-                items.Find(x => x.type == type && x.itemName == itemName && x.slotID == slotNum);
-            items.Remove(matchedData);
-            InventoryDataManager.SaveData();
+            tmpData = new ItemData()
+            {
+                itemName = item.name,
+                num = item.num,
+            };
+            itemsData.Add(tmpData);
         }
+        InventoryDataManager.SaveData(this);
     }
 
-
+    /// <summary>
+    /// 아이템 삭제.
+    /// 삭제할 아이템이 데이터에 있으면 
+    /// 수량을 비교해서 원래 데이터 수량이 더 많을경우 아이템 개수만 수정
+    /// 아니면 아예 삭제
+    /// </summary>
+    public void RemoveData(Item item)
+    {
+        if (itemsData.Exists(x => (x.itemName == item.name)))
+        {
+            ItemData tmpData = itemsData.Find(x => (x.itemName == item.name));
+            itemsData.Remove(tmpData);
+            if(tmpData.num > item.num)
+            {
+                tmpData.num -= item.num;
+                itemsData.Add(tmpData);
+            }   
+            InventoryDataManager.SaveData(this);
+        }
+    }
 }
-

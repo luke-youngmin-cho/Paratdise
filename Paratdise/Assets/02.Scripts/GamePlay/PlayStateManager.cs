@@ -25,46 +25,43 @@ using UnityEngine;
 /// }
 ///
 /// </summary>
-namespace YM
+
+public class PlayStateManager : MonoBehaviour
 {
-    public class PlayStateManager : MonoBehaviour
+    private static PlayStateManager _instance;
+    public static PlayStateManager instance
     {
-        private static PlayStateManager _instance;
-        public static PlayStateManager instance
+        get
         {
-            get
-            {
-                if (_instance == null)
-                    _instance = new PlayStateManager();
-                return _instance;
-            }
-        }
-        public PlayState CurrentPlayState { get; private set; }
-        public delegate void GameStateChangeHandler(PlayState newPlayState);
-        public event GameStateChangeHandler OnGameStateChanged;
-
-
-        //===============================================================================================
-        //********************************** Public Methods *********************************************
-        //===============================================================================================
-
-        public void SetState(PlayState newPlayState)
-        {
-            if (newPlayState == CurrentPlayState) return;
-
-            CurrentPlayState = newPlayState;
-            OnGameStateChanged?.Invoke(newPlayState);
+            if (_instance == null)
+                _instance = new PlayStateManager();
+            return _instance;
         }
     }
+    public PlayState CurrentPlayState { get; private set; }
+    public delegate void GameStateChangeHandler(PlayState newPlayState);
+    public event GameStateChangeHandler OnGameStateChanged;
+
 
     //===============================================================================================
-    //************************************** types **************************************************
+    //********************************** Public Methods *********************************************
     //===============================================================================================
 
-    public enum PlayState
+    public void SetState(PlayState newPlayState)
     {
-        Idle,
-        Play,
-        Paused,
+        if (newPlayState == CurrentPlayState) return;
+
+        CurrentPlayState = newPlayState;
+        OnGameStateChanged?.Invoke(newPlayState);
     }
+}
+//===============================================================================================
+//************************************** types **************************************************
+//===============================================================================================
+
+public enum PlayState
+{
+    Idle,
+    Play,
+    Paused,
 }

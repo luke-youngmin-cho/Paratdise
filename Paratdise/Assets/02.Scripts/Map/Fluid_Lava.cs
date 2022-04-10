@@ -11,27 +11,24 @@ using UnityEngine;
 /// 용암을 위한 Fluid 확장. 믈과 닿으면 돌로 변함
 /// </summary>
 
-namespace YM
+public class Fluid_Lava : Fluid
 {
-    public class Fluid_Lava : Fluid
+    LayerMask waterLayer;
+    private void Start()
     {
-        LayerMask waterLayer;
-        private void Start()
-        {
-            waterLayer = LayerMask.NameToLayer("Fluids_Water");
-        }
+        waterLayer = LayerMask.NameToLayer("Fluids_Water");
+    }
 
-        /// <summary>
-        /// 물과 만나면 돌로 변하는 이벤트.
-        /// </summary>
-        private void OnCollisionEnter2D(Collision2D collision)
+    /// <summary>
+    /// 물과 만나면 돌로 변하는 이벤트.
+    /// </summary>
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == waterLayer)
         {
-            if (collision.gameObject.layer == waterLayer)
-            {
-                ObjectPool.SpawnFromPool("Obstacle_LavaRock", transform.position);
-                ReturnToMother();
-                collision.gameObject.GetComponent<Fluid>().ReturnToMother();
-            }
+            ObjectPool.SpawnFromPool("Obstacle_LavaRock", transform.position);
+            ReturnToMother();
+            collision.gameObject.GetComponent<Fluid>().ReturnToMother();
         }
     }
 }

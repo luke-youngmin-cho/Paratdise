@@ -11,18 +11,16 @@ using UnityEngine.SceneManagement;
 /// 
 /// 씬을 이동시키는 클래스
 /// </summary>
-namespace YM
+
+public class SceneMover
 {
-    public class SceneMover
-    {
-        //===============================================================================================
-        //********************************** Public Methods *********************************************
-        //===============================================================================================
+    //===============================================================================================
+    //********************************** Public Methods *********************************************
+    //===============================================================================================
 
-        public static void MoveTo(string sceneName) =>
-            SceneManager.LoadScene(sceneName);
+    public static void MoveTo(string sceneName) =>
+        SceneManager.LoadScene(sceneName);
 
-        public static void MoveTo(int sceneIndex) =>
-            SceneManager.LoadScene(sceneIndex);
-    }
+    public static void MoveTo(int sceneIndex) =>
+        SceneManager.LoadScene(sceneIndex);
 }

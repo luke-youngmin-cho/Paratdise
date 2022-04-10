@@ -10,31 +10,29 @@ using UnityEngine;
 /// 
 /// 추격스테이지의 추격자
 /// </summary>
-namespace YM
+
+public class Tracer : MonoBehaviour
 {
-    public class Tracer : MonoBehaviour
+    [SerializeField] private float speed = 0.5f;
+    [SerializeField] private float delayTime = 2f;
+    Transform tr;
+    private void Awake()
     {
-        [SerializeField] private float speed = 0.5f;
-        [SerializeField] private float delayTime = 2f;
-        Transform tr;
-        private void Awake()
-        {
-            tr = transform;
-        }
+        tr = transform;
+    }
 
-        public void StartMove()
-        {
-            StartCoroutine(E_Move());
-        }
+    public void StartMove()
+    {
+        StartCoroutine(E_Move());
+    }
 
-        IEnumerator E_Move()
-        {   
-            yield return new WaitForSeconds(delayTime);
-            while (true)
-            {
-                tr.Translate(Vector3.up * speed * Time.deltaTime);
-                yield return null;
-            }
+    IEnumerator E_Move()
+    {
+        yield return new WaitForSeconds(delayTime);
+        while (true)
+        {
+            tr.Translate(Vector3.up * speed * Time.deltaTime);
+            yield return null;
         }
     }
 }

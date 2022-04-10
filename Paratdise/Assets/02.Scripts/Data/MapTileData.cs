@@ -10,13 +10,10 @@ using UnityEngine;
 /// 
 /// ¸Ê ¿ä¼Ò ( ¸Ê ÇÁ¸®ÆÕ ÀÌ¸§°ú ÁÂÇ¥ )
 /// </summary>
-namespace YM
-{
-    [System.Serializable]
-    public struct MapElement
-    {
-        public string tag;
-        public Vector2 coord;
-    }
-}
 
+[System.Serializable]
+public struct MapElement
+{
+    public string tag;
+    public Vector2 coord;
+}

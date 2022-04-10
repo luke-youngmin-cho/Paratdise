@@ -13,164 +13,160 @@ using UnityEngine;
 /// Start() 에서 생성하니 풀에 등록할 요소들은 Awake 에서 등록 해주어야 함.
 /// </summary>
 
-namespace YM
+public class ObjectPool : MonoBehaviour
 {
-    public class ObjectPool : MonoBehaviour
+    private static ObjectPool _instance;
+    public static ObjectPool instance
     {
-        private static ObjectPool _instance;
-        public static ObjectPool instance
+        get
         {
-            get
+            if (_instance == null)
             {
-                if (_instance == null)
-                {
-                    _instance = Instantiate(Resources.Load<ObjectPool>("ObjectPool"));
-                }
-                return _instance;
+                _instance = Instantiate(Resources.Load<ObjectPool>("ObjectPool"));
             }
+            return _instance;
         }
+    }
 
-        public static bool isReady = false;
-        List<PoolElement> poolElements = new List<PoolElement>();
-        List<GameObject> spawnedObjects = new List<GameObject>();
-        Dictionary<string, Queue<GameObject>> spawnedQueueDictionrary = new Dictionary<string, Queue<GameObject>>();
+    public static bool isReady = false;
+    List<PoolElement> poolElements = new List<PoolElement>();
+    List<GameObject> spawnedObjects = new List<GameObject>();
+    Dictionary<string, Queue<GameObject>> spawnedQueueDictionrary = new Dictionary<string, Queue<GameObject>>();
 
 
-        //===============================================================================================
-        //********************************** Public Methods *********************************************
-        //===============================================================================================
+    //===============================================================================================
+    //********************************** Public Methods *********************************************
+    //===============================================================================================
 
-        public void AddPoolElement(PoolElement poolElement)
+    public void AddPoolElement(PoolElement poolElement)
+    {
+        poolElements.Add(poolElement);
+        //Debug.Log($"{poolElement.tag} is added on ObjectPool");
+    }
+
+    public void CreatePoolElements()
+    {
+        foreach (PoolElement poolElement in poolElements)
         {
-            poolElements.Add(poolElement);
-            //Debug.Log($"{poolElement.tag} is added on ObjectPool");
-        }
-
-        public void CreatePoolElements()
-        {
-            foreach (PoolElement poolElement in poolElements)
+            //Debug.Log($"pool element registered : {poolElement.tag}");
+            spawnedQueueDictionrary.Add(poolElement.tag, new Queue<GameObject>());
+            for (int i = 0; i < poolElement.size; i++)
             {
-                //Debug.Log($"pool element registered : {poolElement.tag}");
-                spawnedQueueDictionrary.Add(poolElement.tag, new Queue<GameObject>());
-                for (int i = 0; i < poolElement.size; i++)
-                {
-                    GameObject obj = CreateNewObject(poolElement.tag, poolElement.prefab);
-                    ArrangePool(obj);
-                }
-            }
-            isReady = true;
-        }
-
-        public static void ReturnToPool(GameObject obj)
-        {
-            if (!instance.spawnedQueueDictionrary.ContainsKey(obj.name))
-                throw new Exception($"Pool doesn't include {obj.name}");
-
-            obj.transform.position = instance.transform.position;
-            instance.spawnedQueueDictionrary[obj.name].Enqueue(obj);
-        }
-
-        public static void ReturnAllToPool()
-        {
-            isReady = false;
-            foreach (var item in instance.spawnedObjects)
-            {
-                item.SetActive(false);
-                ReturnToPool(item);
-            }
-            isReady = true;
-        }
-
-        public static int GetSpawnedObjectNumber(string tag)
-        {
-            int count = 0;
-            foreach (var go in instance.spawnedObjects)
-            {
-                if (go.name == tag &&
-                   go.activeSelf)
-                    count++;
-            }
-            return count;
-        }
-
-        public static List<GameObject> GetSpawnedObjects(string tag)
-        {
-            List<GameObject> list = new List<GameObject>();
-            foreach (var go in instance.spawnedObjects)
-            {
-                if (go.name == tag)
-                    list.Add(go);
-            }
-            return list;
-        }
-
-        public static GameObject SpawnFromPool(string tag, Vector2 position) =>
-            instance.Spawn(tag, position);
-
-
-        //===============================================================================================
-        //********************************** Private Methods ********************************************
-        //===============================================================================================
-
-        private GameObject Spawn(string tag, Vector2 position)
-        {
-            if (!spawnedQueueDictionrary.ContainsKey(tag))
-                throw new Exception($"Pool doesn't contains {tag}");
-
-            Queue<GameObject> queue = spawnedQueueDictionrary[tag];
-            if (queue.Count == 0)
-            {
-                PoolElement poolElement = poolElements.Find(x => x.tag == tag);
-                var obj = CreateNewObject(poolElement.tag, poolElement.prefab);
+                GameObject obj = CreateNewObject(poolElement.tag, poolElement.prefab);
                 ArrangePool(obj);
             }
+        }
+        isReady = true;
+    }
 
-            GameObject objectToSpawn = queue.Dequeue();
-            objectToSpawn.transform.position = position;
-            objectToSpawn.transform.rotation = Quaternion.identity;
-            objectToSpawn.SetActive(true);
+    public static void ReturnToPool(GameObject obj)
+    {
+        if (!instance.spawnedQueueDictionrary.ContainsKey(obj.name))
+            throw new Exception($"Pool doesn't include {obj.name}");
 
-            return objectToSpawn;
+        obj.transform.position = instance.transform.position;
+        instance.spawnedQueueDictionrary[obj.name].Enqueue(obj);
+    }
+
+    public static void ReturnAllToPool()
+    {
+        isReady = false;
+        foreach (var item in instance.spawnedObjects)
+        {
+            item.SetActive(false);
+            ReturnToPool(item);
+        }
+        isReady = true;
+    }
+
+    public static int GetSpawnedObjectNumber(string tag)
+    {
+        int count = 0;
+        foreach (var go in instance.spawnedObjects)
+        {
+            if (go.name == tag &&
+               go.activeSelf)
+                count++;
+        }
+        return count;
+    }
+
+    public static List<GameObject> GetSpawnedObjects(string tag)
+    {
+        List<GameObject> list = new List<GameObject>();
+        foreach (var go in instance.spawnedObjects)
+        {
+            if (go.name == tag)
+                list.Add(go);
+        }
+        return list;
+    }
+
+    public static GameObject SpawnFromPool(string tag, Vector2 position) =>
+        instance.Spawn(tag, position);
+
+
+    //===============================================================================================
+    //********************************** Private Methods ********************************************
+    //===============================================================================================
+
+    private GameObject Spawn(string tag, Vector2 position)
+    {
+        if (!spawnedQueueDictionrary.ContainsKey(tag))
+            throw new Exception($"Pool doesn't contains {tag}");
+
+        Queue<GameObject> queue = spawnedQueueDictionrary[tag];
+        if (queue.Count == 0)
+        {
+            PoolElement poolElement = poolElements.Find(x => x.tag == tag);
+            var obj = CreateNewObject(poolElement.tag, poolElement.prefab);
+            ArrangePool(obj);
         }
 
-        private GameObject CreateNewObject(string tag, GameObject prefab)
-        {
-            //Debug.Log($"Object pool : create new {tag}, {prefab.name}");
-            GameObject obj = Instantiate(prefab, transform);
-            obj.name = tag;
-            obj.SetActive(false);
-            ReturnToPool(obj);
-            return obj;
-        }
+        GameObject objectToSpawn = queue.Dequeue();
+        objectToSpawn.transform.position = position;
+        objectToSpawn.transform.rotation = Quaternion.identity;
+        objectToSpawn.SetActive(true);
 
-        private void ArrangePool(GameObject obj)
+        return objectToSpawn;
+    }
+
+    private GameObject CreateNewObject(string tag, GameObject prefab)
+    {
+        //Debug.Log($"Object pool : create new {tag}, {prefab.name}");
+        GameObject obj = Instantiate(prefab, transform);
+        obj.name = tag;
+        obj.SetActive(false);
+        ReturnToPool(obj);
+        return obj;
+    }
+
+    private void ArrangePool(GameObject obj)
+    {
+        bool isSameNameExist = false;
+        for (int i = 0; i < transform.childCount; i++)
         {
-            bool isSameNameExist = false;
-            for (int i = 0; i < transform.childCount; i++)
+            if (i == transform.childCount - 1)
             {
-                if (i == transform.childCount - 1)
-                {
-                    obj.transform.SetSiblingIndex(i);
-                    spawnedObjects.Insert(i, obj);
-                    break;
-                }
-                else if (transform.GetChild(i).name == obj.name)
-                    isSameNameExist = true;
-                else if (isSameNameExist)
-                {
-                    obj.transform.SetSiblingIndex(i);
-                    spawnedObjects.Insert(i, obj);
-                    break;
-                }
+                obj.transform.SetSiblingIndex(i);
+                spawnedObjects.Insert(i, obj);
+                break;
+            }
+            else if (transform.GetChild(i).name == obj.name)
+                isSameNameExist = true;
+            else if (isSameNameExist)
+            {
+                obj.transform.SetSiblingIndex(i);
+                spawnedObjects.Insert(i, obj);
+                break;
             }
         }
     }
-
-    [System.Serializable]
-    public class PoolElement
-    {
-        public string tag;
-        public GameObject prefab;
-        public int size;
-    }
+}
+[System.Serializable]
+public class PoolElement
+{
+    public string tag;
+    public GameObject prefab;
+    public int size;
 }

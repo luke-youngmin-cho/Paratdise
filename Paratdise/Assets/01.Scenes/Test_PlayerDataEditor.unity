@@ -614,7 +614,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data:
-    nickName: 
+    nickName: Default
+    stageSaved: 0
+    stageLastPlayed: 0
+    timeCapsulesData: []
     charactersData:
     - type: 1
       isAvailable: 1
@@ -624,10 +627,6 @@ MonoBehaviour:
       isAvailable: 0
     - type: 0
       isAvailable: 0
-    stageSaved: 0
-    inventoryData:
-      gameMoney: 0
-      itmes: []
 --- !u!4 &1879985603
 Transform:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 using Newtonsoft.Json;
+using System;
 
 /// <summary>
 /// 작성자 : 조영민
@@ -10,124 +11,126 @@ using Newtonsoft.Json;
 /// 
 /// 인벤토리 데이터 생성, 저장, 불러오기 담당클래스.
 /// </summary>
-namespace YM
+public class InventoryDataManager
 {
-    public class InventoryDataManager
+    private static InventoryDataManager _instance;
+    public static InventoryDataManager instance
     {
-        private static InventoryDataManager _instance;
-        public static InventoryDataManager instance
+        get
         {
-            get
+            if (_instance == null)
             {
-                if (_instance == null)
-                {
-                    _instance = new InventoryDataManager();
-                }
-                    
-                return _instance;
+                _instance = new InventoryDataManager();
             }
-        }
 
-        public static InventoryData data;
-        public static bool isLoaded
+            return _instance;
+        }
+    }
+
+    public static InventoryData data
+    {
+        get
         {
-            get
+            InventoryData tmpData;
+            if (!instance.dataDictionary.TryGetValue(GameManager.characterSelected, out tmpData))
             {
-                return data != null;
+                tmpData = LoadData(GameManager.characterSelected);
+                instance.dataDictionary.Add(GameManager.characterSelected, tmpData);
             }
-        }
-        public static bool isApplied = false;
-
-
-        //============================================================================
-        //*************************** Public Methods *********************************
-        //============================================================================
-
-        public static void CreateData(string nickName)
-        {
-            if (!System.IO.Directory.Exists($"{Application.persistentDataPath}/InventoryDatas"))
-                System.IO.Directory.CreateDirectory($"{Application.persistentDataPath}/InventoryDatas");
-
-            string jsonPath = $"{Application.persistentDataPath}/InventoryDatas/Inventory_{nickName}.json";
-            data = LoadDefaultData();
-            string jsonData = JsonConvert.SerializeObject(data, Formatting.Indented);
-            Debug.Log($"Inventory data of {nickName} Created");
-            System.IO.File.WriteAllText(jsonPath, jsonData);
-        }
-
-        public static InventoryData LoadDefaultData()
-        {
-            InventoryData tmpData = null;
-            TextAsset textData = Resources.Load<TextAsset>("InventoryDataDefault/Inventory_Default");
-            if (textData != null)
-                tmpData = JsonConvert.DeserializeObject<InventoryData>(textData.ToString());
-            else
-                Debug.Log($"Failed to load InventoryData_Default");
-
             return tmpData;
         }
 
-        public static void SaveData()
+        set
         {
-            if (data == null) return;
-
-            string jsonPath = $"{Application.persistentDataPath}/InventoryDatas/Inventory_{PlayerDataManager.data.nickName}.json";
-            //Debug.Log($"save items : {data.items.Count} , {jsonPath}");
-            string jsonData = JsonConvert.SerializeObject(data, Formatting.Indented);
-            //Debug.Log($"Inventory data Saved");
-            System.IO.File.WriteAllText(jsonPath, jsonData);
+            SaveData(value);
         }
+    }
+    public Dictionary<CharacterType, InventoryData> dataDictionary = new Dictionary<CharacterType, InventoryData>();
 
-        public static void LoadData(string nickName)
+
+    //============================================================================
+    //*************************** Public Methods *********************************
+    //============================================================================
+
+    public static void CreateData(CharacterType characterType)
+    {
+        if (!System.IO.Directory.Exists($"{Application.persistentDataPath}/InventoryDatas"))
+            System.IO.Directory.CreateDirectory($"{Application.persistentDataPath}/InventoryDatas");
+
+        string jsonPath = $"{Application.persistentDataPath}/InventoryDatas/Inventory_{characterType}_{LoginManager.nickName}.json";
+        InventoryData tmpData = LoadDefaultData();
+        string jsonData = JsonConvert.SerializeObject(tmpData, Formatting.Indented);
+        Debug.Log($"Inventory data of {characterType} {LoginManager.nickName} Created");
+        instance.dataDictionary.Add(characterType, tmpData);
+        System.IO.File.WriteAllText(jsonPath, jsonData);
+    }
+
+    public static InventoryData LoadDefaultData()
+    {
+        InventoryData tmpData = null;
+        TextAsset textData = Resources.Load<TextAsset>("InventoryDataDefault/Inventory_Default");
+        if (textData != null)
+            tmpData = JsonConvert.DeserializeObject<InventoryData>(textData.ToString());
+        else
+            Debug.Log($"Failed to load InventoryData_Default");
+
+        return tmpData;
+    }
+
+    public static void SaveData(InventoryData data)
+    {
+        string jsonPath = $"{Application.persistentDataPath}/InventoryDatas/Inventory_{GameManager.characterSelected}_{LoginManager.nickName}.json";
+        //Debug.Log($"save items : {data.items.Count} , {jsonPath}");
+        string jsonData = JsonConvert.SerializeObject(data, Formatting.Indented);
+        //Debug.Log($"Inventory data Saved");
+        System.IO.File.WriteAllText(jsonPath, jsonData);
+    }
+
+    public static InventoryData LoadData(CharacterType characterType)
+    {
+        InventoryData tmpData = null;
+        string jsonPath = $"{Application.persistentDataPath}/InventoryDatas/Inventory_{characterType}_{LoginManager.nickName}.json";
+        if (System.IO.File.Exists(jsonPath))
         {
-            string jsonPath = $"{Application.persistentDataPath}/InventoryDatas/Inventory_{nickName}.json";
+            string jsonData = System.IO.File.ReadAllText(jsonPath);
+            tmpData = JsonConvert.DeserializeObject<InventoryData>(jsonData);
+            if (instance.dataDictionary.ContainsKey(characterType))
+                instance.dataDictionary[characterType] = tmpData;
+            else
+                instance.dataDictionary.Add(characterType, tmpData);
+            //Debug.Log($"Inventory data of {nickName} Loaded");
+        }
+        else
+            Debug.LogError($"Failed to load : InventoryData ,{jsonPath}");
+        return tmpData;
+    }
+
+    public static void LoadAll()
+    {
+        foreach (var sub in PlayerDataManager.data.charactersData)
+        {
+            string jsonPath = $"{Application.persistentDataPath}/InventoryDatas/Inventory_{sub.type}_{LoginManager.nickName}.json";
             if (System.IO.File.Exists(jsonPath))
             {
                 string jsonData = System.IO.File.ReadAllText(jsonPath);
-                data = JsonConvert.DeserializeObject<InventoryData>(jsonData);
+                if (instance.dataDictionary.ContainsKey(sub.type))
+                    instance.dataDictionary[sub.type] = JsonConvert.DeserializeObject<InventoryData>(jsonData);
+                else
+                    instance.dataDictionary.Add(sub.type, JsonConvert.DeserializeObject<InventoryData>(jsonData));
                 //Debug.Log($"Inventory data of {nickName} Loaded");
             }
             else
-                Debug.LogError($"Failed to load : InventoryData ,{nickName} -> {jsonPath}");
-        }
-
-        public static bool TryLoadData(string nickName, out InventoryData inventoryData)
-        {
-            inventoryData = null;
-            string jsonPath = $"{Application.persistentDataPath}/InventoryDatas/Inventory_{nickName}.json";
-            if (System.IO.File.Exists(jsonPath))
             {
-                string jsonData = System.IO.File.ReadAllText(jsonPath);
-                data = inventoryData = JsonConvert.DeserializeObject<InventoryData>(jsonData);
-                //Debug.Log($"Inventory data of {nickName} Loaded");
+                CreateData(sub.type);
             }
-            return inventoryData != null;
         }
-
-        public static void ApplyData()
-        {
-            for (int i = 0; i < data.items.Count; i++)
-            {
-                Item item = ItemAssets.instance.GetItemByName(data.items[i].itemName);
-                //Debug.Log($"Applying Inventory Data , item : {item != null}, {data.items[i].itemName} {data.items[i].num}, {data.items[i].slotID}");
-                InventoryView.instance.GetItemsViewByItemType(item.type).SetItem(item,
-                                                                                 data.items[i].num,
-                                                                                 data.items[i].slotID);
-                //Debug.Log($"Inventory data set {data.items[i].num},{data.items[i].slotNum}");
-            }
-            //Debug.Log($"Inventory data Applied");
-            isApplied = true;
-        }
-
-        public static void RemoveData(string nickName)
-        {
-            string jsonPath = $"{Application.persistentDataPath}/InventoryDatas/Inventory_{nickName}.json";
-            if (System.IO.File.Exists(jsonPath))
-                System.IO.File.Delete(jsonPath);
-        }
-
     }
 
-
+    public static void RemoveData(string nickName)
+    {
+        string jsonPath = $"{Application.persistentDataPath}/InventoryDatas/Inventory_{nickName}.json";
+        if (System.IO.File.Exists(jsonPath))
+            System.IO.File.Delete(jsonPath);
+    }
 
 }

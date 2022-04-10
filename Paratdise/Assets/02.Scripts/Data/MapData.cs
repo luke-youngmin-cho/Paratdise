@@ -10,17 +10,15 @@ using UnityEngine;
 /// 
 /// 맵 데이터
 /// </summary>
-namespace YM
+
+[System.Serializable]
+public class MapData : ScriptableObject
 {
-    [System.Serializable]
-    public class MapData : ScriptableObject
-    {
-        public List<MapElement> MapElements_Boundary; // 경계 맵타일 리스트
-        public List<MapElement> MapElements_Basic; // 기본 맵타일 리스트
-        public List<MapElement> MapElements_FluidBundle; // 유체 맵 요소 리스트
-        public List<MapElement> MapElements_Event; // 이벤트 요소 리스트
-        public MapElement MapElement_Start; // 시작 맵타일 
-        public MapElement MapElement_End; // 끝 맵타일 
-    }
+    public List<MapElement> MapElements_Boundary; // 경계 맵타일 리스트
+    public List<MapElement> MapElements_Basic; // 기본 맵타일 리스트
+    public List<MapElement> MapElements_FluidBundle; // 유체 맵 요소 리스트
+    public List<MapElement> MapElements_Event; // 이벤트 요소 리스트
+    public MapElement MapElement_Start; // 시작 맵타일 
+    public MapElement MapElement_End; // 끝 맵타일 
 }
 

@@ -11,26 +11,23 @@ using UnityEngine;
 /// 캐릭터 선택창
 /// 기획미정, 추후 수정될것임
 /// </summary>
-namespace YM
+
+public class CharacterSelectionView : MonoBehaviour
 {
-    public class CharacterSelectionView : MonoBehaviour
+    public CharacterType characterSelected;
+
+    //===============================================================================================
+    //********************************** Public Methods *********************************************
+    //===============================================================================================
+
+    public void SelectCharacter(CharacterType type) =>
+        characterSelected = type;
+
+
+    // test
+    private void Awake()
     {
-        public CharacterType characterSelected;
-
-        //===============================================================================================
-        //********************************** Public Methods *********************************************
-        //===============================================================================================
-
-        public void SelectCharacter(CharacterType type) =>
-            characterSelected = type;
-
-
-        // test
-        private void Awake()
-        {
-            GameManager.SelectCharacter(characterSelected);
-        }
-
+        GameManager.SelectCharacter(characterSelected);
     }
 
 }

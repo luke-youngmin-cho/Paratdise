@@ -10,25 +10,23 @@ using UnityEngine;
 /// 
 /// 맵의 요소에 대한 프리팹들을 참조할 수 있는 클래스
 /// </summary>
-namespace YM
+
+public class MapElementAssets : MonoBehaviour
 {
-    public class MapElementAssets : MonoBehaviour
+    public static MapElementAssets _instance;
+    public static MapElementAssets instance
     {
-        public static MapElementAssets _instance;
-        public static MapElementAssets instance
+        get
         {
-            get
-            {
-                if (_instance == null)
-                    _instance = Instantiate(Resources.Load<MapElementAssets>("Assets/MapElementAssets"));
-                return _instance;
-            }
+            if (_instance == null)
+                _instance = Instantiate(Resources.Load<MapElementAssets>("Assets/MapElementAssets"));
+            return _instance;
         }
-
-        [SerializeField] List<GameObject> mapElementPrefabs = new List<GameObject>();
-
-        public GameObject GetMapElementByName(string tag) =>
-            mapElementPrefabs.Find(x => x.name == tag);
-
     }
+
+    [SerializeField] List<GameObject> mapElementPrefabs = new List<GameObject>();
+
+    public GameObject GetMapElementByName(string tag) =>
+        mapElementPrefabs.Find(x => x.name == tag);
+
 }

@@ -12,13 +12,11 @@ using UnityEngine;
 /// 장애물을 위한 클래스
 /// </summary>
 
-namespace YM
+
+public class Obstacle : MonoBehaviour
 {
-    public class Obstacle : MonoBehaviour
+    public void ReturnToPool()
     {
-        public void ReturnToPool()
-        {
-            ObjectPool.ReturnToPool(gameObject);
-        }        
+        ObjectPool.ReturnToPool(gameObject);
     }
 }

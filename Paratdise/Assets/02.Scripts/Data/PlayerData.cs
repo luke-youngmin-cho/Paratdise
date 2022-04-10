@@ -10,17 +10,18 @@ using UnityEngine;
 /// 
 /// 플레이어 데이터
 /// 닉네임 ( ID 로 향후 대체될 수 있음 )
+/// 해금된 최고 스테이지
 /// 진행중인 스테이지
+/// 타입캡슐 리스트
 /// 캐릭터 데이터 리스트
-/// 인벤토리 데이터
 /// </summary>
-namespace YM
+
+[System.Serializable]
+public class PlayerData
 {
-    [System.Serializable]
-    public class PlayerData
-    {
-        public string nickName;
-        public int stageSaved;
-        public List<CharacterData> charactersData;
-    }
+    public string nickName;
+    public int stageSaved;
+    public int stageLastPlayed;
+    public List<TimeCapsuleData> timeCapsulesData = new List<TimeCapsuleData>();
+    public List<CharacterData> charactersData = new List<CharacterData>();
 }

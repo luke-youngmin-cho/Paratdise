@@ -8,11 +8,9 @@
 /// 
 /// 추후 로그인 시스템 개발을 위한 사전테스트 클래스
 /// </summary>
-namespace YM
+
+public class LoginManager
 {
-    public class LoginManager
-    {
-        public static bool loggedIn;
-        public static string nickName;
-    }
+    public static bool loggedIn;
+    public static string nickName;
 }

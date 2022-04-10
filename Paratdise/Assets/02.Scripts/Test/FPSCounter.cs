@@ -11,27 +11,25 @@ using UnityEngine.UI;
 /// FPS 측정용 테스트 클래스
 /// </summary>
 
-namespace YM
+
+public class FPSCounter : MonoBehaviour
 {
-    public class FPSCounter : MonoBehaviour
+    private float deltaTime = 0.0f;
+
+    public Text FPStext;
+
+    void Update()
     {
-        private float deltaTime = 0.0f;
+        // 10 프레임 평균 시간
+        deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
 
-        public Text FPStext;
+        // FPS
+        float fps = 1.0f / deltaTime;
 
-        void Update()
-        {
-            // 10 프레임 평균 시간
-            deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
+        // 반올림
+        string text = Mathf.Ceil(fps).ToString();
 
-            // FPS
-            float fps = 1.0f / deltaTime;
-
-            // 반올림
-            string text = Mathf.Ceil(fps).ToString();
-
-            // 텍스트 갱신
-            FPStext.text = text;
-        }
+        // 텍스트 갱신
+        FPStext.text = text;
     }
 }

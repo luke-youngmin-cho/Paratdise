@@ -10,35 +10,33 @@ using UnityEngine;
 /// 
 /// 플레이 상태 (플레이  및 일시정지 ) 를 위한 유저입력 반응 클래스
 /// </summary>
-namespace YM
+
+public class PauseController : MonoBehaviour
 {
-    public class PauseController : MonoBehaviour
+    //===============================================================================================
+    //********************************** Public Methods *********************************************
+    //===============================================================================================
+
+    public void SetState(PlayState playState)
     {
-        //===============================================================================================
-        //********************************** Public Methods *********************************************
-        //===============================================================================================
+        PlayStateManager.instance.SetState(playState);
+    }
 
-        public void SetState(PlayState playState)
+
+    //===============================================================================================
+    //********************************** Private Methods ********************************************
+    //===============================================================================================
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            PlayStateManager.instance.SetState(playState);
-        }
+            PlayState currentGameState = PlayStateManager.instance.CurrentPlayState;
+            PlayState newGameState = currentGameState == PlayState.Play
+                ? PlayState.Paused
+                : PlayState.Play;
 
-
-        //===============================================================================================
-        //********************************** Private Methods ********************************************
-        //===============================================================================================
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                PlayState currentGameState = PlayStateManager.instance.CurrentPlayState;
-                PlayState newGameState = currentGameState == PlayState.Play
-                    ? PlayState.Paused
-                    : PlayState.Play;
-
-                PlayStateManager.instance.SetState(newGameState);
-            }
+            PlayStateManager.instance.SetState(newGameState);
         }
     }
 }

@@ -10,25 +10,23 @@ using UnityEngine;
 /// 
 /// 캐릭터 타입에따라 캐릭터 에셋을 가져다 쓰기위한 클래스
 /// </summary>
-namespace YM
+
+public class CharacterAssets : MonoBehaviour
 {
-    public class CharacterAssets : MonoBehaviour
+    public static CharacterAssets _instance;
+    public static CharacterAssets instance
     {
-        public static CharacterAssets _instance;
-        public static CharacterAssets instance
+        get
         {
-            get
-            {
-                if (_instance == null)
-                    _instance = Instantiate(Resources.Load<CharacterAssets>("Assets/CharacterAssets"));
-                return _instance;
-            }
+            if (_instance == null)
+                _instance = Instantiate(Resources.Load<CharacterAssets>("Assets/CharacterAssets"));
+            return _instance;
         }
-
-        [SerializeField] private List<GameObject> characterPrefabs = new List<GameObject>();
-
-        public GameObject GetCharacter(CharacterType type) =>
-            characterPrefabs.Find(x => x.name == type.ToString());
-
     }
+
+    [SerializeField] private List<GameObject> characterPrefabs = new List<GameObject>();
+
+    public GameObject GetCharacter(CharacterType type) =>
+        characterPrefabs.Find(x => x.name == type.ToString());
+
 }

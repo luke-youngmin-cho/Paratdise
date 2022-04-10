@@ -10,23 +10,21 @@ using UnityEngine;
 /// 
 /// 맵데이터를 만들기위한 개발자용 클래스
 /// </summary>
-namespace YM
+
+public class MapDataEditor : MonoBehaviour
 {
-    public class MapDataEditor : MonoBehaviour
+    public int stage;
+    public MapData mapData;
+
+    public void CreateMapData()
     {
-        public int stage;
-        public MapData mapData;
 
-        public void CreateMapData()
-        {
+    }
 
-        }
-
-        public void CreateDefaultMapData()
-        {
-            MapData tmpMapData = new MapData();
-            tmpMapData = mapData;
-            MapDataManager.CreateDefaultData(stage, tmpMapData);
-        }
+    public void CreateDefaultMapData()
+    {
+        MapData tmpMapData = new MapData();
+        tmpMapData = mapData;
+        MapDataManager.CreateDefaultData(stage, tmpMapData);
     }
 }

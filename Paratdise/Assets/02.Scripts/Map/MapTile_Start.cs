@@ -11,25 +11,22 @@ using UnityEngine;
 /// 플레이어 시작시 플레이어를 위치시킬 맵 타일. 플레이어가 아래로 가면 이전 스테이지로 돌아감.
 /// </summary>
 
-namespace YM
+
+public class MapTile_Start : MapTile
 {
-    public class MapTile_Start : MapTile
+    [SerializeField] LayerMask playerLayer;
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        [SerializeField] LayerMask playerLayer;
-
-        private void OnTriggerStay2D(Collider2D collision)
+        /*Debug.Log("Reached to start");
+        if (1 << collision.gameObject.layer == playerLayer)
         {
-            Debug.Log("Reached to start");
-            if (1 << collision.gameObject.layer == playerLayer)
+            if (collision.transform.position.y + 0.2f < transform.position.y)
             {
-                if (collision.transform.position.y + 0.2f < transform.position.y)
-                {
-                    Debug.Log("Go back to previous stage!");
-                    StageManager.MoveToPreviousStage();
-                }
-
+                Debug.Log("Go back to previous stage!");
+                StageManager.MoveToPreviousStage();
             }
-        }
-    }
 
+        }*/
+    }
 }

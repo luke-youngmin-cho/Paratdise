@@ -11,11 +11,9 @@ using UnityEngine;
 /// 연출 데이터.
 /// 아직 기획 미정으로 추후 수정될 예정
 /// </summary>
-namespace YM
+
+public class StoryPlayData
 {
-    public class StoryPlayData
-    {
-        public int stage;
-        public List<Story> stories;
-    }
+    public int stage;
+    public List<Story> stories;
 }
