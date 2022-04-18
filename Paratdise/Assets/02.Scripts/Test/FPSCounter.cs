@@ -11,7 +11,6 @@ using UnityEngine.UI;
 /// FPS 측정용 테스트 클래스
 /// </summary>
 
-
 public class FPSCounter : MonoBehaviour
 {
     private float deltaTime = 0.0f;

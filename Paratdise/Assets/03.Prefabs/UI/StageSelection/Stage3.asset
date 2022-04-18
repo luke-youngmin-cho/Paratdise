@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eccc01700c35924459ee2e6d808cc518, type: 3}
+  m_Name: Stage3
+  m_EditorClassIdentifier: 
+  chapter: 2
+  stage: 3
+  icon: {fileID: 21300000, guid: 3b1fad76cddcec04f8561a30cba04ae8, type: 3}
+  dropItemList:
+  - {fileID: 11400000, guid: 3ef7509ecfe147740aa298c2d2537a50, type: 2}
+  - {fileID: 11400000, guid: b4f755324fba8cb4cb02df7f1b84cae8, type: 2}

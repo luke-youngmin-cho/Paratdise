@@ -21,12 +21,12 @@ public class InventoryData
     /// 기존에 해당 아이템 데이터 있을경우 개수만 늘림.
     /// 없을경우 새로 만들어서 추가
     /// </summary>
-    public void AddData(Item item)
+    public void AddData(ItemData item)
     {
         ItemData tmpData;
-        if (itemsData.Exists(x => (x.itemName == item.name)))
+        if (itemsData.Exists(x => (x.itemName == item.itemName)))
         {
-            tmpData = itemsData.Find(x => (x.itemName == item.name));
+            tmpData = itemsData.Find(x => (x.itemName == item.itemName));
             itemsData.Remove(tmpData);
             tmpData.num += item.num;
             itemsData.Add(tmpData);
@@ -35,7 +35,7 @@ public class InventoryData
         {
             tmpData = new ItemData()
             {
-                itemName = item.name,
+                itemName = item.itemName,
                 num = item.num,
             };
             itemsData.Add(tmpData);
@@ -49,11 +49,11 @@ public class InventoryData
     /// 수량을 비교해서 원래 데이터 수량이 더 많을경우 아이템 개수만 수정
     /// 아니면 아예 삭제
     /// </summary>
-    public void RemoveData(Item item)
+    public void RemoveData(ItemData item)
     {
-        if (itemsData.Exists(x => (x.itemName == item.name)))
+        if (itemsData.Exists(x => (x.itemName == item.itemName)))
         {
-            ItemData tmpData = itemsData.Find(x => (x.itemName == item.name));
+            ItemData tmpData = itemsData.Find(x => (x.itemName == item.itemName));
             itemsData.Remove(tmpData);
             if(tmpData.num > item.num)
             {

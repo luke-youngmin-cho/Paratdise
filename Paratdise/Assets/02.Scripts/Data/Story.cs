@@ -14,10 +14,19 @@ using UnityEngine;
 
 public class Story
 {
-    public Sprite sprite;
-    public Vector2 position;
-    public string contents;
+    public StoryExecuteType executeType;
     public StoryEffectType effect;
+    public int stage;
+    public string contents;
+    public Sprite sprite;
+
+}
+
+public enum StoryExecuteType
+{
+    None,
+    StartOfStage,
+    EndOfStage,
 }
 
 public enum StoryEffectType

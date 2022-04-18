@@ -20,8 +20,48 @@ using UnityEngine;
 public class PlayerData
 {
     public string nickName;
-    public int stageSaved;
-    public int stageLastPlayed;
     public List<TimeCapsuleData> timeCapsulesData = new List<TimeCapsuleData>();
     public List<CharacterData> charactersData = new List<CharacterData>();
+
+    public void SetStageLastPlayed(CharacterType type, int newStage)
+    {
+        foreach (var sub in charactersData)
+        {
+            if(sub.type == type)
+            {
+                sub.stageLastPlayed = newStage;
+            }
+        }
+    }
+
+    public int GetStageLastPlayed(CharacterType type)
+    {
+        foreach (var sub in charactersData)
+        {
+            if(sub.type == type)
+                return sub.stageLastPlayed;
+        }
+        return 0;
+    }
+
+    public void SetStageSaved(CharacterType type, int newStage)
+    {
+        foreach (var sub in charactersData)
+        {
+            if (sub.type == type)
+            {
+                sub.stageSaved = newStage;
+            }
+        }
+    }
+
+    public int GetStageSaved(CharacterType type)
+    {
+        foreach (var sub in charactersData)
+        {
+            if (sub.type == type)
+                return sub.stageSaved;
+        }
+        return 0;
+    }
 }

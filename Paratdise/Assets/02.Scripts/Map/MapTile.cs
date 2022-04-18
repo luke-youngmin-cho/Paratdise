@@ -15,7 +15,9 @@ using UnityEngine;
 
 public class MapTile : MonoBehaviour
 {
+    [Header("맵타일의 종류를 선택하세요")]
     public MapTileType type;
+    [Header("맵타일 식별용입니다. 수정하지 말 것")]
     public LayerMask layer;
     public MapTile up;
     public MapTile down;
@@ -23,7 +25,6 @@ public class MapTile : MonoBehaviour
     public MapTile right;
 
     [HideInInspector] public BoxCollider2D col;
-    [HideInInspector] public Transform tr;
 
     //===============================================================================================
     //********************************** Public Methods *********************************************
@@ -34,16 +35,16 @@ public class MapTile : MonoBehaviour
     /// </summary>
     public virtual void RefreshNear()
     {
-        Collider2D upCol = Physics2D.OverlapCircle(new Vector2(tr.position.x, tr.position.y) + Vector2.up * col.size.y, 0.01f, layer);
+        Collider2D upCol = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y) + Vector2.up * col.size.y, 0.01f, layer);
         up = upCol != null ? upCol.GetComponent<MapTile>() : null;
 
-        Collider2D downCol = Physics2D.OverlapCircle(new Vector2(tr.position.x, tr.position.y) + Vector2.down * col.size.y, 0.01f, layer);
+        Collider2D downCol = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y) + Vector2.down * col.size.y, 0.01f, layer);
         down = downCol != null ? downCol.GetComponent<MapTile>() : null;
 
-        Collider2D leftCol = Physics2D.OverlapCircle(new Vector2(tr.position.x, tr.position.y) + Vector2.left * col.size.x, 0.01f, layer);
+        Collider2D leftCol = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y) + Vector2.left * col.size.x, 0.01f, layer);
         left = leftCol != null ? leftCol.GetComponent<MapTile>() : null;
 
-        Collider2D rightCol = Physics2D.OverlapCircle(new Vector2(tr.position.x, tr.position.y) + Vector2.right * col.size.x, 0.01f, layer);
+        Collider2D rightCol = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y) + Vector2.right * col.size.x, 0.01f, layer);
         right = rightCol != null ? rightCol.GetComponent<MapTile>() : null;
     }
 
@@ -79,15 +80,14 @@ public class MapTile : MonoBehaviour
     //********************************** Private Methods ********************************************
     //===============================================================================================
 
-    private void Awake()
+    public virtual void Awake()
     {
         col = GetComponent<BoxCollider2D>();
-        tr = GetComponent<Transform>();
     }
 
     public virtual void OnEnable()
     {
-        Collider2D[] centers = Physics2D.OverlapCircleAll(new Vector2(tr.position.x, tr.position.y), 0.01f, layer);
+        Collider2D[] centers = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), 0.01f, layer);
         foreach (var center in centers)
         {
             //Debug.Log($"{gameObject.name} detected {center.name}");

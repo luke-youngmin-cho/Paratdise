@@ -45,7 +45,7 @@ public class MapCreater : MonoBehaviour
         {
             MapInfo mapInfo = MapInfoAssets.instance.GetMapInfo(stage);
 
-                // 경계 맵타일 오브젝트 풀 등록
+            // 경계 맵타일 오브젝트 풀 등록
             foreach (var item in mapInfo.MapElements_Boundary)
             {
                 ObjectPool.instance.AddPoolElement(new PoolElement()
@@ -56,7 +56,7 @@ public class MapCreater : MonoBehaviour
                 });
             }
 
-                // 기본 맵타일 오브젝트 풀 등록
+            // 기본 맵타일 오브젝트 풀 등록
             foreach (var item in mapInfo.MapElements_Basic)
             {
                 ObjectPool.instance.AddPoolElement(new PoolElement()
@@ -67,7 +67,7 @@ public class MapCreater : MonoBehaviour
                 });
             }
 
-                // 시작 맵타일 오브젝트 풀 등록
+            // 시작 맵타일 오브젝트 풀 등록
             ObjectPool.instance.AddPoolElement(new PoolElement()
             {
                 tag = mapInfo.MapElement_Start.name,
@@ -75,7 +75,7 @@ public class MapCreater : MonoBehaviour
                 size = 1
             });
 
-                // 끝 맵타일 오브젝트 풀 등록
+            // 끝 맵타일 오브젝트 풀 등록
             ObjectPool.instance.AddPoolElement(new PoolElement()
             {
                 tag = mapInfo.MapElement_End.name,
@@ -83,7 +83,7 @@ public class MapCreater : MonoBehaviour
                 size = 1
             });
 
-                // 방해물 오브젝트 풀 등록
+            // 방해물 오브젝트 풀 등록
             foreach (var item in mapInfo.MapElements_Obstacle)
             {
                 ObjectPool.instance.AddPoolElement(new PoolElement()
@@ -94,7 +94,7 @@ public class MapCreater : MonoBehaviour
                 });
             }
 
-                // 유체 번들 오브젝트 풀 등록
+            // 유체 번들 오브젝트 풀 등록
             foreach (var item in mapInfo.MapElements_FluidBundle)
             {
                 ObjectPool.instance.AddPoolElement(new PoolElement()
@@ -129,10 +129,10 @@ public class MapCreater : MonoBehaviour
                 }
             }
 
-                // 맵 생성 알고리즘
+            // 맵 생성 알고리즘
             map = CellularAutomata.Calc(map, mapInfo.algoNum);
 
-                // 경계 맵 타일 생성
+            // 경계 맵 타일 생성
             for (int i = 0; i < hNum; i++)
             {
                 for (int j = 0; j < vNum; j++)
@@ -157,7 +157,7 @@ public class MapCreater : MonoBehaviour
             }
 
 
-                // 끝 타일 경계 윗쪽 랜덤 배치
+            // 끝 타일 경계 윗쪽 랜덤 배치
             for (int j = 0; j < vNum - 1; j++)
             {
                 for (int i = 1; i < hNum - 1; i++)
@@ -181,7 +181,7 @@ public class MapCreater : MonoBehaviour
             };
             mapTile_End = ObjectPool.SpawnFromPool(mapInfo.MapElement_End.name, tmpTilePos).transform;
 
-                // 시작 타일 경계 아랫쪽 랜덤 배치 
+            // 시작 타일 경계 아랫쪽 랜덤 배치 
             for (int j = vNum - 1; j > 1; j--)
             {
                 for (int i = 1; i < hNum - 1; i++)
@@ -222,7 +222,7 @@ public class MapCreater : MonoBehaviour
                 basicTiles.Add(coord, ObjectPool.SpawnFromPool(mapInfo.MapElements_Basic[tmpIndex].name, tmpTilePos));
             }
 
-                // 기본 맵 타일 위치를 랜덤하게 섞고 큐에 등록
+            // 기본 맵 타일 위치를 랜덤하게 섞고 큐에 등록
             basicCoordList = GetShuffleList(basicCoordList);
             foreach (var item in basicCoordList)
             coordQueue.Enqueue(item);
@@ -269,7 +269,7 @@ public class MapCreater : MonoBehaviour
             // 드롭 아이템 배치 
             for (int i = 0; i < mapInfo.itemsOnMapInfo.Count; i++)
             {
-                Debug.Log("Spawned item");
+                Debug.Log("맵에 아이템을 배치합니다.. ");
 
                 for (int j = 0; j < mapInfo.itemsOnMapInfo[i].itemNum; j++)
                 {
@@ -284,6 +284,7 @@ public class MapCreater : MonoBehaviour
                         Instantiate(ItemAssets.instance.GetItemPrefabByName(mapInfo.itemsOnMapInfo[i].itemName),
                                                                             tmpTilePos,
                                                                             Quaternion.identity);
+                        Debug.Log($"아이템 [{mapInfo.itemsOnMapInfo[i].itemName}] 배치완료");
                     }
                 }
             }

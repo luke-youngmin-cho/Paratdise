@@ -16,5 +16,5 @@ MonoBehaviour:
   type: 2
   itemName: PieceOfGranite
   discription: 
-  num: 0
+  num: 1
   icon: {fileID: -3895920827324937491, guid: 11096010235552e49ae21246780a98c2, type: 3}

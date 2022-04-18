@@ -53,11 +53,16 @@ public class StageSelectionView : MonoBehaviour
         stagePreviewPanel.Find("StageTitle").GetComponent<Text>().text = $"Chapter {info.chapter} \n Stage {info.stage}";
         stagePreviewPanel.Find("StagePreview").GetComponent<Image>().sprite = info.icon;
         Transform content = stagePreviewPanel.Find("ItemDropList").GetChild(0).GetChild(0);
-        for (int i = 0; i < content.childCount; i++)
-            Destroy(content.GetChild(0).gameObject);
+
+        foreach (Transform child in content)
+            Destroy(child.gameObject);
 
         foreach (var item in info.dropItemList)
+        {
             Instantiate(dropItemSlotPrefab, content).GetComponent<Image>().sprite = item.icon;
+            Debug.Log($"스테이지 {info.stage} 의 드롭아이템 {item.name} ");
+        }
+            
     }
 
     
@@ -100,14 +105,18 @@ public class StageSelectionView : MonoBehaviour
         }
         ActiveStageViewsOpened();
 
-        stageSelected = PlayerDataManager.data.stageLastPlayed;
+        int stageIdx = PlayerDataManager.data.GetStageLastPlayed(GameManager.characterSelected);
+        if (stageIdx == 0)
+            stageIdx = 1;
+        stageSelected = stageIdx;
+        
     }
 
     private void ActiveStageViewsOpened()
     {
         for (int i = 0; i < stageViews.Count; i++)
         {
-            if (i > PlayerDataManager.data.stageSaved - 1)
+            if (i > PlayerDataManager.data.GetStageSaved(GameManager.characterSelected))
                 stageViews[i].isActivated = false;
             else
                 stageViews[i].isActivated = true;

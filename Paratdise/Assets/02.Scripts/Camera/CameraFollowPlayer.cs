@@ -50,9 +50,9 @@ namespace YM
 
         private void Follow()
         {
-            if (Player.instance == null) return;
+            if (Test_Player.instance == null) return;
 
-            Transform target = Player.instance.transform;
+            Transform target = Test_Player.instance.transform;
 
             Vector3 targetPos = new Vector3(target.position.x, target.position.y, tr.position.z) + offset;
             Vector3 smoothPos = Vector3.Lerp(tr.position, targetPos, smoothness * Time.fixedDeltaTime);

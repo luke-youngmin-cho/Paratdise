@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
                     stateDiscription = "Creating Data...";
                     PlayerDataManager.CreateData(LoginManager.nickName);
                     stateDiscription = "Saving Data...";
-                    PlayerDataManager.data.stageSaved = 1;
+                    PlayerDataManager.data.SetStageSaved(characterSelected, 1);
                     PlayerDataManager.SaveData(LoginManager.nickName);
                 }
 

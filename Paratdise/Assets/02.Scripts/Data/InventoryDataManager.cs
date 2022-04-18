@@ -35,7 +35,6 @@ public class InventoryDataManager
             if (!instance.dataDictionary.TryGetValue(GameManager.characterSelected, out tmpData))
             {
                 tmpData = LoadData(GameManager.characterSelected);
-                instance.dataDictionary.Add(GameManager.characterSelected, tmpData);
             }
             return tmpData;
         }
@@ -101,7 +100,10 @@ public class InventoryDataManager
             //Debug.Log($"Inventory data of {nickName} Loaded");
         }
         else
-            Debug.LogError($"Failed to load : InventoryData ,{jsonPath}");
+        {
+            CreateData(characterType);
+        }
+            
         return tmpData;
     }
 

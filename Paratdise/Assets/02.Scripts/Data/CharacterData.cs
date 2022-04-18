@@ -13,10 +13,12 @@ using UnityEngine;
 
 
 [System.Serializable]
-public struct CharacterData
+public class CharacterData
 {
     public CharacterType type;
     public bool isAvailable;
+    public int stageSaved;
+    public int stageLastPlayed;
 }
 
 [System.Serializable]
@@ -25,6 +27,6 @@ public enum CharacterType
     None,
     Mise,
     Laila,
-    ggabirilldjo,
+    DrillGgabijo,
     Eily
 }

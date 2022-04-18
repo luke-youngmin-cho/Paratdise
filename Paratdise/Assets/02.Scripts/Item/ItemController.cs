@@ -25,7 +25,7 @@ public class ItemController : MonoBehaviour
     /// <summary>
     /// 스테이지 내에서 해당 아이템 획득하기위해 호출해야하는 함수
     /// </summary>    
-    public void PickUp(Player player)
+    public void PickUp(Test_Player player)
     {
         if (pickUpEnable == false || isPickedUp) return;
         isPickedUp = true;

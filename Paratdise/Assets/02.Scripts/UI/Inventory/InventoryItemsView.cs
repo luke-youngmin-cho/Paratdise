@@ -33,6 +33,7 @@ public class InventoryItemsView : MonoBehaviour
     /// </summary>
     public void RefreshItemList()
     {
+        Debug.Log($"인벤토리 {tag}, {type} 을 열었습니다");
         if (InventoryDataManager.data == null) return;
 
         for (int i = slots.Count - 1; i > -1; i--)

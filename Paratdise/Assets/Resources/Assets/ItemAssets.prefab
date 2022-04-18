@@ -46,6 +46,18 @@ MonoBehaviour:
   items:
   - {fileID: 11400000, guid: 5202baca9401a1248b3b5179ccbacdde, type: 2}
   - {fileID: 11400000, guid: 7b8f61ce321536c44aba01535a565a6d, type: 2}
+  - {fileID: 11400000, guid: 8fb20230490f9d84c929c89f530f13a3, type: 2}
+  - {fileID: 11400000, guid: 23ce6f317bfe6344e8f3e13183bef893, type: 2}
+  - {fileID: 11400000, guid: 3ef7509ecfe147740aa298c2d2537a50, type: 2}
+  - {fileID: 11400000, guid: b4f755324fba8cb4cb02df7f1b84cae8, type: 2}
+  - {fileID: 11400000, guid: d354244461bab4845852be6b0f0f59c4, type: 2}
+  - {fileID: 11400000, guid: 5d0283e04c5c99f47a02613d8b3ecea8, type: 2}
   itemPrefabs:
   - {fileID: 1510565593170886249, guid: 02a7649456cd589408c0487f72a16342, type: 3}
   - {fileID: 1510565593170886249, guid: 6ce193804128c47409ea2b14ee98b455, type: 3}
+  - {fileID: 1510565593170886249, guid: 54f8c2152b6ebc04090b9e2c45a0b5b0, type: 3}
+  - {fileID: 1510565593170886249, guid: c5681bbe0b79c3943b11bc9acd3fe60a, type: 3}
+  - {fileID: 1510565593170886249, guid: 5d70bf435db044244ace5968118b3271, type: 3}
+  - {fileID: 1510565593170886249, guid: c3710253152bc194099c051faab6cb42, type: 3}
+  - {fileID: 1510565593170886249, guid: 3b9960a0e2b97764896b9133bfcd0672, type: 3}
+  - {fileID: 1510565593170886249, guid: c95b958ba71446e4eb373a9eae9cc5bc, type: 3}

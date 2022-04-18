@@ -16,5 +16,5 @@ MonoBehaviour:
   type: 1
   itemName: TestItem
   discription: 
-  num: 0
+  num: 1
   icon: {fileID: 21300000, guid: 938947344870b9540b47fd7f2e73db52, type: 3}

@@ -16,5 +16,5 @@ MonoBehaviour:
   type: 2
   itemName: PieceOfBasalt
   discription: 
-  num: 0
+  num: 1
   icon: {fileID: -1686774761112569428, guid: 11096010235552e49ae21246780a98c2, type: 3}

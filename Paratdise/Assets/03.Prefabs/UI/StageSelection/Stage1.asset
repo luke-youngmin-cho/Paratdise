@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chapter: 1
   stage: 1
-  icon: {fileID: 2499086220425235883, guid: 11096010235552e49ae21246780a98c2, type: 3}
+  icon: {fileID: 21300000, guid: fdc8ac13f1671964f8f18e28d53da50b, type: 3}
   dropItemList:
-  - {fileID: 11400000, guid: 5202baca9401a1248b3b5179ccbacdde, type: 2}
+  - {fileID: 11400000, guid: 8fb20230490f9d84c929c89f530f13a3, type: 2}
+  - {fileID: 11400000, guid: 23ce6f317bfe6344e8f3e13183bef893, type: 2}

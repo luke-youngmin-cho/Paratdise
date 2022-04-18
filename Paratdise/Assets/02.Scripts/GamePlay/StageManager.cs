@@ -22,10 +22,10 @@ public class StageManager : MonoBehaviour
     }
     public static StageState state;
 
-    private static Player player;
+    private static Test_Player player;
     private static Tracer tracer;
     [SerializeField] GameObject clearPopUp;
-    private List<Item> earnedItems = new List<Item>();
+    private List<ItemData> earnedItems = new List<ItemData>();
     
 
     //===============================================================================================
@@ -41,7 +41,12 @@ public class StageManager : MonoBehaviour
     public static void MoveToNextStage()
     {
         state = StageState.Idle;
-        PlayerDataManager.data.stageSaved = GameManager.currentStage + 1;
+
+        PlayerDataManager.data.SetStageLastPlayed(GameManager.characterSelected, GameManager.currentStage + 1);
+        if (PlayerDataManager.data.GetStageSaved(GameManager.characterSelected) < PlayerDataManager.data.GetStageLastPlayed(GameManager.characterSelected))
+            PlayerDataManager.data.SetStageSaved(GameManager.characterSelected, GameManager.currentStage + 1);  
+        
+
         PlayerDataManager.SaveData(LoginManager.nickName);
         GameManager.StartStage(GameManager.currentStage + 1);
     }
@@ -58,7 +63,23 @@ public class StageManager : MonoBehaviour
 
     public static void EarnItem(Item item)
     {
-        instance.earnedItems.Add(item);
+        ItemData tmpData;
+        if (instance.earnedItems.Exists(x => (x.itemName == item.name)))
+        {
+            tmpData = instance.earnedItems.Find(x => (x.itemName == item.name));
+            instance.earnedItems.Remove(tmpData);
+            tmpData.num += item.num;
+            instance.earnedItems.Add(tmpData);
+        }
+        else
+        {
+            tmpData = new ItemData()
+            {
+                itemName = item.name,
+                num = item.num,
+            };
+            instance.earnedItems.Add(tmpData);
+        }
     }
 
     public static void FinishStage()
@@ -66,6 +87,8 @@ public class StageManager : MonoBehaviour
         if (state < StageState.Finish)
             state = StageState.Finish;
     }
+
+
     //===============================================================================================
     //********************************** Private Methods ********************************************
     //===============================================================================================
@@ -92,6 +115,7 @@ public class StageManager : MonoBehaviour
                 SpawnMap();
                 Next();
                 break;
+
             case StageState.WaitForMapSpanwed:
                 if (MapCreater.instance.isCreated)
                     Next();
@@ -110,7 +134,7 @@ public class StageManager : MonoBehaviour
                 player = Instantiate(characterOrigin,
                                      MapCreater.instance.mapTile_Start.position,
                                      Quaternion.identity)
-                                    .GetComponent<Player>();
+                                    .GetComponent<Test_Player>();
 
                 GameObject tracerPrefab = MapInfoAssets.instance.GetMapInfo(GameManager.currentStage).tracer;
 
@@ -121,7 +145,7 @@ public class StageManager : MonoBehaviour
                     tracer.StartMove();
                 }
 
-                PlayerDataManager.data.stageLastPlayed = GameManager.currentStage;
+                PlayerDataManager.data.SetStageLastPlayed(GameManager.characterSelected, GameManager.currentStage);
                 PlayerDataManager.SaveData();
                 Next();
                 break;
@@ -133,9 +157,9 @@ public class StageManager : MonoBehaviour
                 Debug.Log("Stage Finished!");
                 clearPopUp.SetActive(true);
                 SaveEarnedItems();
-                if(PlayerDataManager.data.stageSaved < GameManager.currentStage)
+                if(PlayerDataManager.data.GetStageSaved(GameManager.characterSelected) < GameManager.currentStage)
                 {
-                    PlayerDataManager.data.stageSaved = GameManager.currentStage;
+                    PlayerDataManager.data.SetStageSaved(GameManager.characterSelected, GameManager.currentStage);
                     PlayerDataManager.SaveData();
                 }
                 Next();
