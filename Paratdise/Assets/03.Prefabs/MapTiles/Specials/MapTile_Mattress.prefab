@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -228765610029194462}
   m_Layer: 20
   m_Name: MapTile_Mattress
-  m_TagString: Untagged
+  m_TagString: Destroyable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,10 +131,8 @@ MonoBehaviour:
   left: {fileID: 0}
   right: {fileID: 0}
   col: {fileID: 0}
-  tr: {fileID: 0}
-  hpMax: 100
+  hpMax: 5
   sprites:
   - {fileID: 21300000, guid: ca81c7607786eef4faab175279d14187, type: 3}
   hurtEffect: {fileID: 0}
   destroyEffect: {fileID: 0}
-  dropItems: []

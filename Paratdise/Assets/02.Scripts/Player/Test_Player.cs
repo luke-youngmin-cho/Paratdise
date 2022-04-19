@@ -48,32 +48,11 @@ public class Test_Player : MonoBehaviour
     public LayerMask targetLayer;
     public Animator animator;
     SpriteRenderer spriteRenderer;
-    private void Awake()
-    {
-        instance = this;
-        tr = transform;
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        
-    }
-    private void Update()
-    {
-#if UNITY_EDITOR
-        if (Input.GetKey(KeyCode.LeftArrow))
-            direction = Vector2.left;
-        else if (Input.GetKey(KeyCode.RightArrow))
-            direction = Vector2.right;
-        else if (Input.GetKey(KeyCode.UpArrow))
-            direction = Vector2.up;
-        else if (Input.GetKey(KeyCode.DownArrow))
-            direction = Vector2.down;
 
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            Dig();
-        }
-#endif
-    }
 
+    //============================================================================
+    //************************* Public Methods ***********************************
+    //============================================================================
     public void Dig()
     {
         RaycastHit2D hit = Physics2D.CircleCast((Vector2)tr.position + _direction, 0.1f, _direction, 0, targetLayer);
@@ -96,9 +75,41 @@ public class Test_Player : MonoBehaviour
 
     }
 
+
+    //============================================================================
+    //************************* Private Methods **********************************
+    //============================================================================
+
+    private void Awake()
+    {
+        instance = this;
+        tr = transform;
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        
+    }
+
+    private void Update()
+    {
+#if UNITY_EDITOR
+        if (Input.GetKey(KeyCode.LeftArrow))
+            direction = Vector2.left;
+        else if (Input.GetKey(KeyCode.RightArrow))
+            direction = Vector2.right;
+        else if (Input.GetKey(KeyCode.UpArrow))
+            direction = Vector2.up;
+        else if (Input.GetKey(KeyCode.DownArrow))
+            direction = Vector2.down;
+
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            Dig();
+        }
+#endif
+    }
+
     private void FixedUpdate()
     {
-        tr.Translate(move * moveSpeed* Time.fixedDeltaTime);
+        tr.Translate(move * moveSpeed * Time.fixedDeltaTime);
     }
 
     private void OnDrawGizmos()
@@ -112,10 +123,11 @@ public class Test_Player : MonoBehaviour
         if (collision.gameObject == null) return;
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Item"))
-        {   
+        {
             /*if (Input.GetKey(KeyCode.Z))
                 collision.gameObject.GetComponent<ItemController>().PickUp(this);*/
-            collision.gameObject.GetComponent<ItemController>().PickUp(this);
+            //collision.gameObject.GetComponent<ItemController>().PickUp(this);
         }
     }
+    
 }

@@ -41,7 +41,7 @@ public class ChooseCharacterUI : MonoBehaviour
     {
         switch(characData)
         {
-            case CharacterType.Mise:
+            case CharacterType.Mice:
             charImg.sprite= Mise;
             break;
 

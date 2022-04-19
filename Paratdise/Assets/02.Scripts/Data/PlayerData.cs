@@ -23,6 +23,16 @@ public class PlayerData
     public List<TimeCapsuleData> timeCapsulesData = new List<TimeCapsuleData>();
     public List<CharacterData> charactersData = new List<CharacterData>();
 
+    public CharacterData GetCharacterData(CharacterType type)
+    {
+        foreach (var sub in charactersData)
+        {
+            if(sub.type == type)
+                return sub;
+        }
+        return null;
+    }
+
     public void SetStageLastPlayed(CharacterType type, int newStage)
     {
         foreach (var sub in charactersData)
@@ -63,5 +73,19 @@ public class PlayerData
                 return sub.stageSaved;
         }
         return 0;
+    }
+
+    /// <summary>
+    /// 해당 타입의 캐릭터 데이터를 초기화함
+    /// </summary>
+    public void ResetCharacter(CharacterType type)
+    {
+        foreach (var sub in charactersData)
+        {
+            if (sub.type == type)
+            {
+                // 해당 캐릭터 디폴트
+            }
+        }
     }
 }

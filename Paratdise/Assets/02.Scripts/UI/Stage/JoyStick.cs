@@ -17,15 +17,21 @@ public class JoyStick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private Vector2 inputDirection;
     private bool isInput;
 
-    [SerializeField]
-    //private PlayerController2 controller;
-
-
+    PointerEventData dragEventData;
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
     }
 
+
+    private void Update()
+    {
+        if (isInput &&
+            dragEventData != null)
+        {
+            UpdateLeverPosition(dragEventData.position);
+        }
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -33,21 +39,25 @@ public class JoyStick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     }
     // Start is called before the first frame update
 
+    // 2022.04.20 조영민 : 드래그가 되고있지 않아도 조이스틱을 당기고있다면 동작하도록 수정
     public void OnDrag(PointerEventData eventData)
     {
-        lever.position = eventData.position;
-        lever.localPosition = Vector2.ClampMagnitude(lever.localPosition, leverRange);
-        Test_Player.instance.direction = GetJoyStickDirection(lever.localPosition.normalized);
-        Debug.Log($"{inputDirection}, {Test_Player.instance.direction}");
+        dragEventData = eventData;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         lever.localPosition = Vector2.zero;
-        Test_Player.instance.direction = Vector2.zero;
+        PlayerStateMachineManager.instance.direction = Vector2.zero;
         isInput = false;
     }
 
+    private void UpdateLeverPosition(Vector3 position)
+    {
+        lever.position = position;
+        lever.localPosition = Vector2.ClampMagnitude(lever.localPosition, leverRange);
+        PlayerStateMachineManager.instance.direction = GetJoyStickDirection(lever.localPosition.normalized);
+    }
 
     private Vector2 GetJoyStickDirection(Vector2 dir)
     {

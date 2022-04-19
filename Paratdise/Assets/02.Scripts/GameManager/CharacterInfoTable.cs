@@ -14,7 +14,7 @@ public static class CharacterInfoTable
 {
     public static List<CharacterInfo> characterInfos = new List<CharacterInfo>()
     {
-        new CharacterInfo(1, "마이스", 1.5f, 0.5f,10, 0, 1.5f, 5, 1, "", ToolType.Spoon, CharacterType.Mise),
+        new CharacterInfo(1, "마이스", 1.5f, 0.5f,10, 0, 1.5f, 5, 1, "", ToolType.Spoon, CharacterType.Mice),
         new CharacterInfo(2, "라일라", 1.2f, 0.4f,10, 0, 1.6f, 8, 2, "", ToolType.Shovel,CharacterType.Laila),
          new CharacterInfo(3, "깨비드릴조", 1.8f, 0.8f,11, 2, 1.3f, 6, 3, "", ToolType.Drill,CharacterType.DrillGgabijo),
           new CharacterInfo(4, "에일리", 1.5f, 0.4f,10, 1, 1.7f, 4, 4, "", ToolType.PickAxe,CharacterType.Eily)

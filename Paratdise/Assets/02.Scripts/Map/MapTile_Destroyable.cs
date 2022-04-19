@@ -21,6 +21,8 @@ public class MapTile_Destroyable : MapTile
         set
         {
             _hp = value;
+
+            Debug.Log($"{this.name}: hp {value}");
             for (int i = 0; i < sprites.Length; i++)
             {
                 if ((float)_hp / hpMax > (float) i / (sprites.Length))
@@ -64,7 +66,7 @@ public class MapTile_Destroyable : MapTile
         public GameObject itemPrefab;
         public float dropRatio; // 0~100;
     }
-    [SerializeField] private List<DropItemInfo> dropItems;
+    [SerializeField] private List<DropItemInfo> dropItems = new List<DropItemInfo>();
 
 
     private SpriteRenderer spriteRenderer;

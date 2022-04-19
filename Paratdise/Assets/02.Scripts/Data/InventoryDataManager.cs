@@ -44,7 +44,7 @@ public class InventoryDataManager
             SaveData(value);
         }
     }
-    public Dictionary<CharacterType, InventoryData> dataDictionary = new Dictionary<CharacterType, InventoryData>();
+    private Dictionary<CharacterType, InventoryData> dataDictionary = new Dictionary<CharacterType, InventoryData>();
 
 
     //============================================================================

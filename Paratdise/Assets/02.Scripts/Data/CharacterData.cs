@@ -19,14 +19,24 @@ public class CharacterData
     public bool isAvailable;
     public int stageSaved;
     public int stageLastPlayed;
+    public ToolsLevel toolsLevel;
 }
 
 [System.Serializable]
 public enum CharacterType
 {
     None,
-    Mise,
+    Mice,
     Laila,
     DrillGgabijo,
     Eily
+}
+
+[System.Serializable]
+public struct ToolsLevel
+{
+    public int widthLevel;
+    public int heightLevel;
+    public int strengthLevel;
+    public int luckLevel;
 }
