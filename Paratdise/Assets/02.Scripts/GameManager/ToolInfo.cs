@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToolInfo
+public class ToolInfo : MonoBehaviour
 {
     public int toolIndex;
     public string toolName;

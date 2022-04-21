@@ -13,7 +13,7 @@ using UnityEngine.UI;
 /// </summary>
 public class ChooseCharacterUI : MonoBehaviour
 {
-    public int currentCharacterIndex = 0;
+    public static int currentCharacterIndex = 0;
     public int currentToolIndex = 0;
     public Text characterNameText;
     public Text toolNameText;
@@ -23,7 +23,17 @@ public class ChooseCharacterUI : MonoBehaviour
     public Text toolPowerText;
     public Text talkText;
     public Image charImg;
-    public Sprite Mise,Laila, ggabirilldjo, Eily;
+
+    [Header("Available")]
+    public Sprite Mise;
+    public Sprite Laila;
+    public Sprite ggabirilldjo;
+    public Sprite Eily;
+
+    [Header("Not Available")]
+    public Sprite unLaila;
+    public Sprite unGgabirilldjo;
+    public Sprite unEily;
 
     [Header("LIFE")]
     public Transform heartStorage;
@@ -39,22 +49,32 @@ public class ChooseCharacterUI : MonoBehaviour
     }
     public void CharImgChange(CharacterType characData)
     {
+        //CharacterData data = PlayerDataManager.data.charactersData.Find(x => x.type == characData);
+        CharacterData data = new CharacterData();
+        data.isAvailable = false;
         switch(characData)
         {
             case CharacterType.Mise:
-            charImg.sprite= Mise;
-            break;
-
-            case CharacterType.Laila:
-                charImg.sprite = Laila;
+                charImg.sprite = Mise;
                 break;
-
+            case CharacterType.Laila:
+                if (data.isAvailable)
+                    charImg.sprite = Laila;
+                else
+                    charImg.sprite = unLaila;
+                break;
             case CharacterType.DrillGgabijo:
-                charImg.sprite = ggabirilldjo;
+                if (data.isAvailable)
+                    charImg.sprite = ggabirilldjo;
+                else
+                    charImg.sprite = unGgabirilldjo;
                 break;
 
             case CharacterType.Eily:
-                charImg.sprite = Eily;
+                if (data.isAvailable)
+                    charImg.sprite = Eily;
+                else
+                    charImg.sprite = unEily;
                 break;
         }
     }

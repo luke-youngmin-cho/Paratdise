@@ -2,6 +2,8 @@ using System.Collections.Generic;
 
 public static class GameInfoController
 {
+    public static UpgradeInfo upgradeInfo = new UpgradeInfo();
+
     public static List<CharacterInfo> characterInfos = new List<CharacterInfo>()
     {
         new CharacterInfo(1, "∏∂¿ÃΩ∫", 1.5f, 0.5f,10, 0, 1.5f, 5, 1, "", ToolType.Spoon, CharacterType.Mise),
