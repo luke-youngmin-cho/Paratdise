@@ -20,6 +20,7 @@ public class CharacterData
     public int stageSaved;
     public int stageLastPlayed;
     public ToolsLevel toolsLevel;
+    public Selection selection;
 }
 
 [System.Serializable]
@@ -39,4 +40,18 @@ public struct ToolsLevel
     public int heightLevel;
     public int strengthLevel;
     public int luckLevel;
+}
+
+[System.Serializable]
+[System.Flags]
+public enum Selection
+{
+    Selection1,
+    Selection2,
+    Selection3,
+    Selection4,
+    Selection5,
+    Selection6,
+    Selection7,
+    Selection8,
 }

@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca87b0ba2144bd4887f6b063b2dd86c, type: 3}
+  m_Name: Mice_Chapter1_Selected_2
+  m_EditorClassIdentifier: 
+  characterType: 1
+  showEffect: 1
+  hideEffect: 2
+  index: 5
+  pages:
+  - sprite: {fileID: 21300000, guid: 85bdf8744d7f3c849afbf50834f05c04, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: 765519f01a4539b4da6148ac0b25207a, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: 372b5b2d89b048743b15f2873f01c565, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: 62b3809685f857b4d8787cd458c42867, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: 6c1cf583bb65b54419d47f8db7cbc3e6, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: ecf3f9ec33b263e4abbe5728ca1d6fe6, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: d6fd9903693cbd04da4c15cbf140ae32, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: 2b6402166247623458b38e9e38b576ff, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: f99ec7d824a50fe4786a47b805a6410e, type: 3}
+    effectType: 0
+  popUp: {fileID: 0}

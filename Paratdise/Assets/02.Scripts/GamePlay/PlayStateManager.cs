@@ -26,7 +26,7 @@ using UnityEngine;
 ///
 /// </summary>
 
-public class PlayStateManager : MonoBehaviour
+public class PlayStateManager
 {
     private static PlayStateManager _instance;
     public static PlayStateManager instance
@@ -39,8 +39,8 @@ public class PlayStateManager : MonoBehaviour
         }
     }
     public PlayState CurrentPlayState { get; private set; }
-    public delegate void GameStateChangeHandler(PlayState newPlayState);
-    public event GameStateChangeHandler OnGameStateChanged;
+    public delegate void PlayStateChangeHandler(PlayState newPlayState);
+    public event PlayStateChangeHandler OnPlayStateChanged;
 
 
     //===============================================================================================
@@ -52,7 +52,12 @@ public class PlayStateManager : MonoBehaviour
         if (newPlayState == CurrentPlayState) return;
 
         CurrentPlayState = newPlayState;
-        OnGameStateChanged?.Invoke(newPlayState);
+        OnPlayStateChanged?.Invoke(newPlayState);
+
+        if (CurrentPlayState == PlayState.Paused)
+            Time.timeScale = 0.0f;
+        else
+            Time.timeScale = 1.0f;
     }
 }
 //===============================================================================================

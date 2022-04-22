@@ -20,6 +20,7 @@ using UnityEngine;
 public class PlayerData
 {
     public string nickName;
+    public List<int> endingCardsData = new List<int>();
     public List<TimeCapsuleData> timeCapsulesData = new List<TimeCapsuleData>();
     public List<CharacterData> charactersData = new List<CharacterData>();
 

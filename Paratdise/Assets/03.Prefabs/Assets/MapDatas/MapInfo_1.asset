@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: MapInfo_1
   m_EditorClassIdentifier: 
   size: {x: 15, y: 30}
-  algoNum: 15
-  fluidPercents: 10
+  algoNum: 30
+  fluidPercents: 5
   obstaclePercents: 20
   MapElements_Boundary:
   - {fileID: 4883344005395017866, guid: e51c68caa7ae0a1429af2ef6ab5306c1, type: 3}

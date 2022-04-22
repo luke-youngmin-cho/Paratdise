@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 4f27409cedba9f349a0b3c9d1caaea02, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -132,7 +132,5 @@ MonoBehaviour:
   right: {fileID: 0}
   col: {fileID: 0}
   hpMax: 5
-  sprites:
-  - {fileID: 21300000, guid: 4f27409cedba9f349a0b3c9d1caaea02, type: 3}
   hurtEffect: {fileID: 0}
   destroyEffect: {fileID: 0}

@@ -71,8 +71,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 772e97f3e5676cf43b8ffae932671798, type: 3}
-  m_Color: {r: 0.840673, g: 0.9056604, b: 0.2007832, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 94e8dfc98e08b5c42a57442f18872703, type: 3}
+  m_Color: {r: 0.9026992, g: 0.9245283, b: 0.6933962, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -155,7 +155,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: db27284c0edbba5419be465e89ab7bee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -215,7 +215,5 @@ MonoBehaviour:
   right: {fileID: 0}
   col: {fileID: 0}
   hpMax: 5
-  sprites:
-  - {fileID: 21300000, guid: db27284c0edbba5419be465e89ab7bee, type: 3}
   hurtEffect: {fileID: 0}
   destroyEffect: {fileID: 0}

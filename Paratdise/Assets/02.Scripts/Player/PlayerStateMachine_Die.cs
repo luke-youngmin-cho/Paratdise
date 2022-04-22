@@ -33,7 +33,7 @@ public class PlayerStateMachine_Die : PlayerStateMachine
                     animationTimer -= Time.deltaTime * modelManager.animationSpeedGain;
                 break;
             case State.Finish:
-                nextState = PlayerState.Movement;
+
                 break;
             default:
                 break;

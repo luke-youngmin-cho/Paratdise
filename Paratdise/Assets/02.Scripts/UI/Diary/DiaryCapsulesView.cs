@@ -16,7 +16,7 @@ using UnityEngine.EventSystems;
 public class DiaryCapsulesView : MonoBehaviour
 {
     public static DiaryCapsulesView instance;
-    public TimeCapsuleType type;
+    public TimeCapsuleRarity type;
     public Transform itemContent;
     public GameObject slotPrefab;
     public List<GameObject> slots = new List<GameObject>();
@@ -36,7 +36,7 @@ public class DiaryCapsulesView : MonoBehaviour
 
         foreach (var item in PlayerDataManager.data.timeCapsulesData)
         {
-            TimeCapsule timeCapsule = TimeCapsuleAssets.GetTimeCapsule(item.title);
+            TimeCapsule timeCapsule = TimeCapsuleAssets.GetTimeCapsule(item.index);
             if ((timeCapsule.type == type) &&
                 (item.num > 0))
             {

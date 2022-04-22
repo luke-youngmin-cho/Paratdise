@@ -15,6 +15,6 @@ using UnityEngine;
 [System.Serializable]
 public struct TimeCapsuleData
 {
-    public string title;
+    public int index;
     public int num;
 }

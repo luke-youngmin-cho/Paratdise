@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         Workflow();
+        Debug.Log($"Current game state : {PlayStateManager.instance.CurrentPlayState}, {currentStage}");
     }
 
     private void Next()
@@ -137,14 +138,21 @@ public class GameManager : MonoBehaviour
             case GameState.OnLobby:
                 break;
             case GameState.StartStage:
+                PlayStateManager.instance.SetState(PlayState.Play);
                 SceneMover.MoveTo("Stage");
+                Debug.LogWarning("GameManager : Start Stage");
                 Next();
                 break;
             case GameState.LoadStage:
-                StageManager.Execute();
-                Next();
+                Debug.LogWarning("GameManager : Execute StageManager");
+                if (StageManager.isReady)
+                {
+                    StageManager.Execute();
+                    Next();
+                }
                 break;
             case GameState.WaitForStageLoaded:
+                Debug.LogWarning("GameManager : Wait for stage manager");
                 if (StageManager.isLoaded)
                     Next();
                 break;

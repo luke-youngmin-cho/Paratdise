@@ -17,5 +17,7 @@ public class StageInfo : ScriptableObject
     public int stage;
     public Sprite icon;
     public List<Item> dropItemList;
+    public Story storyBeforeStage;
+    public Story storyAfterStage;
 
 }

@@ -17,7 +17,7 @@ TagManager:
   - 
   - 
   - Player
-  - 
+  - PlayerCollision
   - 
   - 
   - Item
@@ -34,7 +34,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Tracer
   - 
   - 
   - 

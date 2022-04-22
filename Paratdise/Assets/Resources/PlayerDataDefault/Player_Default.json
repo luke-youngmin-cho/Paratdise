@@ -1,24 +1,59 @@
 {
   "nickName": "Default",
-  "stageSaved": 0,
-  "stageLastPlayed": 1,
+  "endingCardsData": [],
   "timeCapsulesData": [],
   "charactersData": [
     {
       "type": 1,
-      "isAvailable": true
+      "isAvailable": true,
+      "stageSaved": 0,
+      "stageLastPlayed": 0,
+      "toolsLevel": {
+        "widthLevel": 1,
+        "heightLevel": 1,
+        "strengthLevel": 1,
+        "luckLevel": 1
+      },
+      "history": 0
     },
     {
       "type": 0,
-      "isAvailable": false
+      "isAvailable": false,
+      "stageSaved": 0,
+      "stageLastPlayed": 0,
+      "toolsLevel": {
+        "widthLevel": 1,
+        "heightLevel": 1,
+        "strengthLevel": 1,
+        "luckLevel": 1
+      },
+      "history": 0
     },
     {
       "type": 0,
-      "isAvailable": false
+      "isAvailable": false,
+      "stageSaved": 0,
+      "stageLastPlayed": 0,
+      "toolsLevel": {
+        "widthLevel": 1,
+        "heightLevel": 1,
+        "strengthLevel": 3,
+        "luckLevel": 1
+      },
+      "history": 0
     },
     {
       "type": 0,
-      "isAvailable": false
+      "isAvailable": false,
+      "stageSaved": 0,
+      "stageLastPlayed": 0,
+      "toolsLevel": {
+        "widthLevel": 2,
+        "heightLevel": 2,
+        "strengthLevel": 2,
+        "luckLevel": 1
+      },
+      "history": 0
     }
   ]
 }
