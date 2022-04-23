@@ -34,6 +34,20 @@ public class PlayerData
         return null;
     }
 
+    public void SetCharacterData(CharacterData characterData)
+    {
+        for (int i = charactersData.Count - 1; i > -1; i--)
+        {
+            if (charactersData[i].type == characterData.type)
+            {
+                charactersData.RemoveAt(i);
+                break;
+            }
+        }
+        charactersData.Add(characterData);
+
+    }
+
     public void SetStageLastPlayed(CharacterType type, int newStage)
     {
         foreach (var sub in charactersData)
