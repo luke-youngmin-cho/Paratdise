@@ -16,3 +16,5 @@ MonoBehaviour:
   stage: 0
   icon: {fileID: -1686774761112569428, guid: 11096010235552e49ae21246780a98c2, type: 3}
   dropItemList: []
+  storyBeforeStage: {fileID: 11400000, guid: 77bde5b48e526ed428897fcb392929a8, type: 2}
+  storyAfterStage: {fileID: 0}

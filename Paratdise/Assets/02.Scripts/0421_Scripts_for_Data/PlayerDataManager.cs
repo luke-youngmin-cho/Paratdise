@@ -37,6 +37,7 @@ public class PlayerDataManager
         set
         {
             _data = value;
+            SaveData();
         }
     }
 

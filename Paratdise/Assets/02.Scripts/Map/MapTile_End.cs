@@ -18,7 +18,7 @@ public class MapTile_End : MapTile
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("Reached to end");
+        //Debug.Log("Reached to end");
         if (1 << collision.gameObject.layer == playerLayer)
         {
             if (collision.transform.position.y + 0.2f > transform.position.y)

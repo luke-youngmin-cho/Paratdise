@@ -13,6 +13,13 @@ using UnityEngine;
 public class StageManager : MonoBehaviour
 {
     public static StageManager instance;
+    public static bool isReady
+    {
+        get
+        {
+            return state == StageState.Idle;
+        }
+    }
     public static bool isLoaded
     {
         get
@@ -24,7 +31,13 @@ public class StageManager : MonoBehaviour
 
     private static Test_Player player;
     private static Tracer tracer;
+    [SerializeField] GameObject pausePopUp;
     [SerializeField] GameObject clearPopUp;
+    [SerializeField] GameObject gameOverPopUp;
+    [SerializeField] GameObject controllUI;
+    [SerializeField] GameObject loadingUI;
+
+    private StageInfo stageInfo;
     private List<ItemData> earnedItems = new List<ItemData>();
     
 
@@ -34,8 +47,7 @@ public class StageManager : MonoBehaviour
 
     public static void Execute()
     {
-        if (state == StageState.Idle)
-            instance.Next();
+        state = StageState.StartLoading;
     }
 
     public static void MoveToNextStage()
@@ -88,6 +100,11 @@ public class StageManager : MonoBehaviour
             state = StageState.Finish;
     }
 
+    public static void GameOver()
+    {
+        if (state < StageState.Finish)
+            state = StageState.GameOver;
+    }
 
     //===============================================================================================
     //********************************** Private Methods ********************************************
@@ -95,8 +112,24 @@ public class StageManager : MonoBehaviour
 
     private void Awake()
     {
+        if (instance !=null)
+            Destroy(instance);
         instance = this;
         state = StageState.Idle;
+    }
+
+    private void Start()
+    {
+        stageInfo = StageInfoAssets.GetStageInfo(GameManager.currentStage);
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        if (state >= StageState.OnStage)
+        {
+            pausePopUp.SetActive(true);
+            PlayStateManager.instance.SetState(PlayState.Paused);
+        }
     }
 
     private void Update()
@@ -106,27 +139,46 @@ public class StageManager : MonoBehaviour
 
     private void Workflow()
     {
+        Debug.Log($"StageManager : {state}");
         switch (state)
         {
             case StageState.Idle:
                 break;
-
+            case StageState.StartLoading:
+                PlayStateManager.instance.SetState(PlayState.Idle);
+                loadingUI.SetActive(true);
+                Next();
+                break;
             case StageState.SpawnMap:
                 SpawnMap();
                 Next();
                 break;
-
             case StageState.WaitForMapSpanwed:
                 if (MapCreater.instance.isCreated)
                     Next();
                 break;
-
-            case StageState.StoryPlay:
+            case StageState.FinishLoading:
+                StartCoroutine(E_DeactivateLoadingUI());
                 Next();
                 break;
+            case StageState.WaitForLoadingFinished:
+                if (loadingUI.activeSelf == false)
+                    Next();
+                break;
+            case StageState.StoryPlayBeforeStage:
+                if (stageInfo.storyBeforeStage != null)
+                {
+                    StoryPlayer.instance.StartStory(stageInfo.storyBeforeStage);
+                    state = StageState.WaitForStoryPlayBeforeStageFinished;
+                }
+                else
+                    state = StageState.StartStage;
+                    
+                break;
 
-            case StageState.WaitForStoryPlayFinished:
-                Next();
+            case StageState.WaitForStoryPlayBeforeStageFinished:
+                if (StoryPlayer.instance.isStoryFinished)
+                    state = StageState.StartStage;
                 break;
 
             case StageState.StartStage:
@@ -147,6 +199,7 @@ public class StageManager : MonoBehaviour
 
                 PlayerDataManager.data.SetStageLastPlayed(GameManager.characterSelected, GameManager.currentStage);
                 PlayerDataManager.SaveData();
+                PlayStateManager.instance.SetState(PlayState.Play);
                 Next();
                 break;
 
@@ -163,6 +216,26 @@ public class StageManager : MonoBehaviour
                     PlayerDataManager.SaveData();
                 }
                 Next();
+                break;
+            case StageState.StoryPlayAfterStage:
+                if (stageInfo.storyAfterStage != null)
+                {
+                    StoryPlayer.instance.StartStory(stageInfo.storyAfterStage);
+                    state = StageState.WaitForStoryPlayAfterStageFinished;
+                }
+                else
+                    state = StageState.WaitForUserSelection;
+                break;
+            case StageState.WaitForStoryPlayAfterStageFinished:
+                if (StoryPlayer.instance.isStoryFinished)
+                    state = StageState.WaitForUserSelection;
+                break;
+            case StageState.GameOver:
+                Debug.Log("Game Over!");
+                gameOverPopUp.SetActive(true);
+                controllUI.SetActive(false);
+                PlayStateManager.instance.SetState(PlayState.Paused);
+                state = StageState.WaitForUserSelection;
                 break;
             case StageState.WaitForUserSelection:
             // nothing to do
@@ -186,6 +259,17 @@ public class StageManager : MonoBehaviour
     {
         foreach (var item in earnedItems)
             InventoryDataManager.data.AddData(item);
+    }
+
+    private IEnumerator E_DeactivateLoadingUI()
+    {
+        float elapsedTime = 0;
+        while (elapsedTime < 3f)
+        {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        loadingUI.SetActive(false);
     }
 
     /// <summary>
@@ -212,12 +296,18 @@ public class StageManager : MonoBehaviour
 public enum StageState
 {
     Idle,
+    StartLoading,
     SpawnMap,
     WaitForMapSpanwed,
-    StoryPlay,
-    WaitForStoryPlayFinished,
+    FinishLoading,
+    WaitForLoadingFinished,
+    StoryPlayBeforeStage,
+    WaitForStoryPlayBeforeStageFinished,
     StartStage,
     OnStage,
     Finish,
+    StoryPlayAfterStage,
+    WaitForStoryPlayAfterStageFinished,
+    GameOver,
     WaitForUserSelection,
 }

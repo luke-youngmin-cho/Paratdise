@@ -106,10 +106,15 @@ public class StageSelectionView : MonoBehaviour
         ActiveStageViewsOpened();
 
         int stageIdx = PlayerDataManager.data.GetStageLastPlayed(GameManager.characterSelected);
+
+        // 해당 캐릭터로 스테이지 진행한적 없으면 프롤로그 진행
         if (stageIdx == 0)
+        {
+            StoryPlayer.instance.StartStory(StoryAssets.instance.GetStory(GameManager.characterSelected, 0));
             stageIdx = 1;
+        }   
+
         stageSelected = stageIdx;
-        
     }
 
     private void ActiveStageViewsOpened()

@@ -22,6 +22,15 @@ public class PauseController : MonoBehaviour
         PlayStateManager.instance.SetState(playState);
     }
 
+    public void Pause()
+    {
+        SetState(PlayState.Paused);
+    }
+
+    public void Play()
+    {
+        SetState(PlayState.Play);
+    }
 
     //===============================================================================================
     //********************************** Private Methods ********************************************
@@ -38,5 +47,5 @@ public class PauseController : MonoBehaviour
 
             PlayStateManager.instance.SetState(newGameState);
         }
-    }
+    }    
 }

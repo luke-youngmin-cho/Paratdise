@@ -18,9 +18,20 @@ public class SceneMover
     //********************************** Public Methods *********************************************
     //===============================================================================================
 
-    public static void MoveTo(string sceneName) =>
-        SceneManager.LoadScene(sceneName);
+    public static void MoveTo(string sceneName)
+    {
+        if(SceneManager.GetActiveScene().name == sceneName)
+            SceneManager.LoadScene("Temp");
+        else
+            SceneManager.LoadScene(sceneName);
 
-    public static void MoveTo(int sceneIndex) =>
-        SceneManager.LoadScene(sceneIndex);
+    }
+
+    public static void MoveTo(int sceneIndex)
+    {
+        if (SceneManager.GetActiveScene().buildIndex == sceneIndex)
+            SceneManager.LoadScene("Temp");
+        else
+            SceneManager.LoadScene(sceneIndex);
+    }
 }

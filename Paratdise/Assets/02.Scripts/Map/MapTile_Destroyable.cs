@@ -15,20 +15,43 @@ using UnityEngine;
 
 public class MapTile_Destroyable : MapTile
 {
-    private int _hp;
-    public int hp
+    private float _hp;
+    public float hp
     {
         set
         {
             _hp = value;
-            for (int i = 0; i < sprites.Length; i++)
+
+            //Debug.Log($"{this.name}: hp {value}");
+
+            if (_hp < hpMax)
             {
-                if ((float)_hp / hpMax > (float) i / (sprites.Length))
-                {
-                    spriteRenderer.sprite = sprites[i];
-                    break;
-                }
+                if (shakeCoroutine != null)
+                    StopCoroutine(shakeCoroutine);
+                shakeCoroutine = StartCoroutine(E_Shake());
             }
+
+            float ratio = _hp / hpMax;
+
+            if (ratio < 0.25)
+            {
+                if(crackEffect != null)
+                    Destroy(crackEffect);
+                crackEffect = Instantiate(MapTileEffectAssets.instance.GetEffectPrefab("crack_03"), transform);
+            }   
+            else if (ratio < 0.5)
+            {
+                if (crackEffect != null)
+                    Destroy(crackEffect);
+                crackEffect = Instantiate(MapTileEffectAssets.instance.GetEffectPrefab("crack_02"), transform);
+            }   
+            else if (ratio < 0.75)
+            {
+                if (crackEffect != null)
+                    Destroy(crackEffect);
+                crackEffect = Instantiate(MapTileEffectAssets.instance.GetEffectPrefab("crack_01"), transform);
+            }
+                
 
             if(_hp > 0)
             {
@@ -50,9 +73,9 @@ public class MapTile_Destroyable : MapTile
         }
     }
 
-    [SerializeField] int hpMax;
-    [Header("데미지 감소에 따른 순서대로 Sprite를 추가하세요.")]
-    [SerializeField] private Sprite[] sprites;
+    [SerializeField] float hpMax;
+    GameObject crackEffect;
+
 
     [Header("피격/파괴시 이펙트가 필요한 경우 개발자에게 문의바랍니다")]
     [SerializeField] private GameObject hurtEffect;
@@ -64,10 +87,11 @@ public class MapTile_Destroyable : MapTile
         public GameObject itemPrefab;
         public float dropRatio; // 0~100;
     }
-    [SerializeField] private List<DropItemInfo> dropItems;
+    [SerializeField] private List<DropItemInfo> dropItems = new List<DropItemInfo>();
 
 
     private SpriteRenderer spriteRenderer;
+    private Coroutine shakeCoroutine = null;
 
     public override void Awake()
     {
@@ -79,8 +103,6 @@ public class MapTile_Destroyable : MapTile
     {
         base.OnEnable();
         hp = hpMax;
-        if(sprites.Length > 0)
-            spriteRenderer.sprite = sprites[0];
     }
 
     private void DropRandomItem()
@@ -94,5 +116,19 @@ public class MapTile_Destroyable : MapTile
                 break;
             }
         }
+    }
+
+    private IEnumerator E_Shake()
+    {
+        Vector3 startPos = transform.position;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < 0.3f)
+        {
+            elapsedTime += 0.0167f;
+            transform.position = startPos + Random.insideUnitSphere / 20;
+            yield return null;
+        }
+        transform.position = startPos;
     }
 }

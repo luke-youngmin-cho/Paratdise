@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterPrefabs:
-  - {fileID: 960743041618388570, guid: 79ec06f4df60cdf47a46fdd71335682f, type: 3}
+  - {fileID: 1263266950264161137, guid: 38293c4a553fbc0408afe604496863e1, type: 3}
   - {fileID: 960743041618388570, guid: 78ef7f03b2daa254ab8e2d391365e336, type: 3}
   - {fileID: 960743041618388570, guid: 3e49ba9fb5c44fe48a605f4c952ae46b, type: 3}
   - {fileID: 960743041618388570, guid: c1d98f8830ad22341a6f8824340e43d0, type: 3}

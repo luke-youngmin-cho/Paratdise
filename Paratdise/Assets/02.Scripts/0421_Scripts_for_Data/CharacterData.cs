@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 /// <summary>
 /// 작성자 : 조영민
 /// 최초작성일 : 2022/03/28
-/// 최종수정일 : 
+/// 최종수정일 : 2022/04/23
 /// 설명 : 
 /// 
 /// 캐릭터의 타입과 해금 여부 데이터 
+/// 선택지이력, 스토리조각 데이터 추가
 /// </summary>
 
 
-[System.Serializable]
+[Serializable]
 public class CharacterData
 {
     public CharacterType type;
@@ -20,10 +22,11 @@ public class CharacterData
     public int stageSaved;
     public int stageLastPlayed;
     public ToolsLevel toolsLevel;
-    public History history;
+    public long selectionHistory; // 비트열 데이터
+    public long piecesOfStory; // 비트열 데이터
 }
 
-[System.Serializable]
+[Serializable]
 public enum CharacterType
 {
     None,
@@ -33,28 +36,11 @@ public enum CharacterType
     Eily
 }
 
-[System.Serializable]
+[Serializable]
 public struct ToolsLevel
 {
     public int widthLevel;
     public int heightLevel;
     public int strengthLevel;
     public int luckLevel;
-}
-
-[System.Serializable]
-[System.Flags]
-public enum History
-{
-    Prologue,
-    Chapter1,
-    Chapter2,
-    Chapter3,
-    Chapter4,        
-    Chapter5,   
-    Chapter6,
-    Chapter7,
-    Chapter8,
-    Chapter9,
-    Chapter10,
 }

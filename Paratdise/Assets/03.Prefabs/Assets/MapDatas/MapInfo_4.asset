@@ -13,21 +13,20 @@ MonoBehaviour:
   m_Name: MapInfo_4
   m_EditorClassIdentifier: 
   size: {x: 15, y: 30}
-  algoNum: 15
-  fluidPercents: 10
-  obstaclePercents: 20
+  algoNum: 20
+  fluidPercents: 5
+  obstaclePercents: 30
   MapElements_Boundary:
   - {fileID: 4883344005395017866, guid: e51c68caa7ae0a1429af2ef6ab5306c1, type: 3}
   MapElements_Basic:
-  - {fileID: 8095170532550832005, guid: 162fc097d340952469d5b5780896066c, type: 3}
-  - {fileID: 8095170532550832005, guid: b5462549130aff44ba305afa400e8e08, type: 3}
+  - {fileID: 8095170532550832005, guid: 577f1e6df14a54c47843cdba82a71dcf, type: 3}
+  - {fileID: 8095170532550832005, guid: a21a9bfa1cf897c418bc37252b235baa, type: 3}
   MapElements_FluidBundle:
-  - {fileID: 9111984183550421366, guid: 9adf449679653dc439bbd47d53e22184, type: 3}
+  - {fileID: 9111984183550421366, guid: 94a2c3e8f1805b6428d6e961ebffb78f, type: 3}
   MapElements_Obstacle:
-  - {fileID: 8095170532550832005, guid: 168572e8ece0478409ab5d1dc28e1b14, type: 3}
-  - {fileID: 8095170532550832005, guid: d6a244b427a0c8d4a8ac0c83d55de1c5, type: 3}
-  - {fileID: 8095170532550832005, guid: 606631ac2626ebe42a47a50765b2f01d, type: 3}
+  - {fileID: 8095170532550832005, guid: 2749740280ec4384bac00dd5d7ec0847, type: 3}
+  - {fileID: 8095170532550832005, guid: 52f25bb2c5cc51f45b3f9ef5485dee9d, type: 3}
   MapElement_Start: {fileID: 6485304845783642979, guid: 3e44e324a19303a4ca32a34c9044c3d3, type: 3}
   MapElement_End: {fileID: 4826205792507212175, guid: 113caace07bcca743ae7960d88d0e3bc, type: 3}
-  tracer: {fileID: 5529474825575749382, guid: ec688d77fba4089448a2f72bf3c71114, type: 3}
+  tracer: {fileID: 5529474825575749382, guid: 2fffee8ff9ddd9141836e65997275220, type: 3}
   itemsOnMapInfo: []

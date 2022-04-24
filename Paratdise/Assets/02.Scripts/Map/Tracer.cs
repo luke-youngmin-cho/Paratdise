@@ -13,7 +13,7 @@ using UnityEngine;
 
 public class Tracer : MonoBehaviour
 {
-    [SerializeField] private float speed = 0.5f;
+    [SerializeField] private float speed = 0.1f;
     [SerializeField] private float delayTime = 2f;
     Transform tr;
     private void Awake()
@@ -33,6 +33,16 @@ public class Tracer : MonoBehaviour
         {
             tr.Translate(Vector3.up * speed * Time.deltaTime);
             yield return null;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision == null) return;
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            Player.instance.Hurt(10);
         }
     }
 }

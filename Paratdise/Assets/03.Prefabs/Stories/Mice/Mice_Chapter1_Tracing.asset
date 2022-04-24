@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca87b0ba2144bd4887f6b063b2dd86c, type: 3}
+  m_Name: Mice_Chapter1_Tracing
+  m_EditorClassIdentifier: 
+  characterType: 1
+  showEffect: 1
+  hideEffect: 2
+  index: 2
+  pages:
+  - sprite: {fileID: 21300000, guid: 0f6981a0ff16eca4497767b2f89f3f56, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: c38c0bda617e8b44abbfe5e614b2438b, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: eaf4a71d520a1424a8bfb07fc2b023f6, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: 7d1a12348cf4c734c9aee93b23f778c7, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: ad7622cbdd21ee34899c9b3e34ec55b0, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: f4361f0356896ec4e91fcb0a6bb4fe0f, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: a93853268914db7469ae318bd873d859, type: 3}
+    effectType: 0
+  popUp: {fileID: 0}

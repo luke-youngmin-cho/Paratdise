@@ -14,7 +14,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New TimeCapsule", menuName = "TimeCapsule/Create New TimeCapsule")]
 public class TimeCapsule : ScriptableObject
 {
-    public TimeCapsuleType type;
+    public TimeCapsuleRarity type;
+    public int index;
     public string title;
     public string discription;
     public Sprite icon;
@@ -22,8 +23,9 @@ public class TimeCapsule : ScriptableObject
 }
 
 [System.Serializable]
-public enum TimeCapsuleType
+public enum TimeCapsuleRarity
 {
-    Story,
-    Ending,
+    Normal,
+    Uncommon,
+    Rare,
 }

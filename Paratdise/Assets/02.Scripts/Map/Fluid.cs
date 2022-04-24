@@ -51,6 +51,16 @@ public class Fluid : MonoBehaviour
         evaporationTimer = evaporationTime;
         layer = 1 << gameObject.layer;
         overlapSize = new Vector2(col.radius * 2, 0.01f);
+        PlayStateManager.instance.OnPlayStateChanged += OnPlayStateChanged;
+    }
+    private void OnDestroy()
+    {
+        PlayStateManager.instance.OnPlayStateChanged -= OnPlayStateChanged;
+    }
+
+    private void OnPlayStateChanged(PlayState newPlayState)
+    {
+        enabled = newPlayState == PlayState.Play;
     }
 
     private void Update()
@@ -111,4 +121,13 @@ public class Fluid : MonoBehaviour
         Gizmos.DrawWireCube(new Vector2(tr.position.x, tr.position.y) + Vector2.down * col.radius * 2, overlapSize);
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision == null) return;
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            Player.instance.Hurt(10);
+        }
+    }
 }

@@ -26,6 +26,6 @@ public class TimeCapsuleAssets : MonoBehaviour
 
     public List<TimeCapsule> timeCapsules = new List<TimeCapsule>();
 
-    public static TimeCapsule GetTimeCapsule(string title) =>
-        instance.timeCapsules.Find(x => x.title == title);
+    public static TimeCapsule GetTimeCapsule(int index) =>
+        instance.timeCapsules.Find(x => x.index == index);
 }

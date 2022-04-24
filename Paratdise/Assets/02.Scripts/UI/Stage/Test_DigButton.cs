@@ -6,6 +6,6 @@ public class Test_DigButton : MonoBehaviour
 {
     public void OnButtonClick()
     {
-        Test_Player.instance.Dig();
+        PlayerStateMachineManager.instance.ChangeState(PlayerState.Dig);
     }
 }
