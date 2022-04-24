@@ -20,8 +20,19 @@ using UnityEngine;
 public class PlayerData
 {
     public string nickName;
+    public List<int> endingCardsData = new List<int>();
     public List<TimeCapsuleData> timeCapsulesData = new List<TimeCapsuleData>();
     public List<CharacterData> charactersData = new List<CharacterData>();
+
+    public CharacterData GetCharacterData(CharacterType type)
+    {
+        foreach (var sub in charactersData)
+        {
+            if(sub.type == type)
+                return sub;
+        }
+        return null;
+    }
 
     public void SetStageLastPlayed(CharacterType type, int newStage)
     {
@@ -65,30 +76,17 @@ public class PlayerData
         return 0;
     }
 
+    /// <summary>
+    /// 해당 타입의 캐릭터 데이터를 초기화함
+    /// </summary>
     public void ResetCharacter(CharacterType type)
     {
-
         foreach (var sub in charactersData)
         {
-
             if (sub.type == type)
             {
-                ToolInfo realData = GameInfoController.toolInfos[1];//save와 load 할 실제 무기 데이터
-                sub.stageSaved = 0;
-                sub.stageLastPlayed = 0;
-                ToolInfo targetTool = GameInfoController.GetToolByCharacter(type);
-                realData = new ToolInfo(
-                    targetTool.toolIndex, 
-                    targetTool.toolName,
-                    targetTool.toolHeight,
-                    targetTool.toolWidth,
-                    targetTool.luck,
-                    targetTool.power,
-                    targetTool.reinforceCount,
-                    targetTool.toolType
-                    );
+                // 해당 캐릭터 디폴트
             }
         }
-
     }
 }

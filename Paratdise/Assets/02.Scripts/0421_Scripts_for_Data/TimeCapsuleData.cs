@@ -16,5 +16,6 @@ using UnityEngine;
 public struct TimeCapsuleData
 {
     public string title;
+    public int index;
     public int num;
 }

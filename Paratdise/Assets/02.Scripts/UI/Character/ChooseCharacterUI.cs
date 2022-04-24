@@ -16,6 +16,8 @@ public class ChooseCharacterUI : MonoBehaviour
     public static int currentCharacterIndex = 0;
     public int currentToolIndex = 0;
     public Text characterNameText;
+    public Text coldResistanceText;
+    public Text sanityText;
     public Text toolNameText;
     public Text toolWidth;
     public Text toolHeight;
@@ -54,7 +56,7 @@ public class ChooseCharacterUI : MonoBehaviour
         data.isAvailable = false;
         switch(characData)
         {
-            case CharacterType.Mise:
+            case CharacterType.Mice:
                 charImg.sprite = Mise;
                 break;
             case CharacterType.Laila:
@@ -101,6 +103,8 @@ public class ChooseCharacterUI : MonoBehaviour
         CharImgChange(characterInfo.characterType);
         //charImg.sprite = Resources.Load<Sprite>("CharacterImage/character" + _characterIndex);
         characterNameText.text = characterInfo.characterName;
+        coldResistanceText.text = characterInfo.coldResistance+" ";
+        sanityText.text = characterInfo.sanity + "";
         talkText.text = CharacterInfoTable.characterScripts[_characterIndex, Random.Range(0, 3)];
     }
 

@@ -22,12 +22,14 @@ public class CharacterInfo
     public float slightRange;
     public int tools;
     public string gettinCondition;
+    public int coldResistance;
+    public int sanity;
     public ToolType toolType;
     public CharacterType characterType;
 
     public CharacterInfo(int _characterIndex, string _characterName, float _characterHeight, 
         float _characterWidth, float _heart, float _bonusHeart, float _movementSpeed, float _slightRange, int _tools, string _gettinCondition,
-        ToolType _toolType, CharacterType _characterType)
+        int _coldResistance, int _sanity, ToolType _toolType, CharacterType _characterType)
     {
         characterIndex = _characterIndex;
         characterName=_characterName;
@@ -39,6 +41,8 @@ public class CharacterInfo
         slightRange = _slightRange;
         tools = _tools;
         gettinCondition = _gettinCondition;
+        coldResistance = _coldResistance;
+        sanity = _sanity;
         toolType = _toolType;
         characterType = _characterType;
     }
