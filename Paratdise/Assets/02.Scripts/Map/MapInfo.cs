@@ -37,12 +37,6 @@ public class MapInfo : ScriptableObject
     public GameObject MapElement_End; // 끝 맵타일 
     [Header("추격자")]
     public GameObject tracer;
-    [Header("맵에 뿌려놓을 아이템 목록")]
-    public List<ItemOnMapInfo> itemsOnMapInfo;
-}
-[System.Serializable]
-public struct ItemOnMapInfo
-{
-    public string itemName;
-    public int itemNum;
+    [Header("맵에 뿌려놓을 타임캡슐 개수")]
+    public int timeCapsuleNum;
 }

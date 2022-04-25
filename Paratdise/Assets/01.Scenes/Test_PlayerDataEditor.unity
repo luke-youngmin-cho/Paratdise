@@ -615,8 +615,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
     nickName: Default
-    endingCardsData: 
-    timeCapsulesData: []
+    endingCards: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    piecesOfStory: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
     charactersData:
     - type: 1
       isAvailable: 1
@@ -627,8 +627,7 @@ MonoBehaviour:
         heightLevel: 1
         strengthLevel: 1
         luckLevel: 1
-      selectionHistory: 0
-      piecesOfStory: 0
+      selectionHistory: 
     - type: 2
       isAvailable: 0
       stageSaved: 0
@@ -638,8 +637,7 @@ MonoBehaviour:
         heightLevel: 1
         strengthLevel: 1
         luckLevel: 1
-      selectionHistory: 0
-      piecesOfStory: 0
+      selectionHistory: 
     - type: 3
       isAvailable: 0
       stageSaved: 0
@@ -649,8 +647,7 @@ MonoBehaviour:
         heightLevel: 2
         strengthLevel: 2
         luckLevel: 1
-      selectionHistory: 0
-      piecesOfStory: 0
+      selectionHistory: 
     - type: 4
       isAvailable: 0
       stageSaved: 0
@@ -660,8 +657,7 @@ MonoBehaviour:
         heightLevel: 2
         strengthLevel: 1
         luckLevel: 2
-      selectionHistory: 0
-      piecesOfStory: 0
+      selectionHistory: 
 --- !u!4 &1879985603
 Transform:
   m_ObjectHideFlags: 0

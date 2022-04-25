@@ -898,6 +898,7 @@ MonoBehaviour:
   isCreated: 0
   mapTile_Start: {fileID: 0}
   mapTile_End: {fileID: 0}
+  timeCapsulePrefab: {fileID: 4883344005395017866, guid: a0b65e12fb130d1408adf7ee99a1fc68, type: 3}
 --- !u!4 &748448709
 Transform:
   m_ObjectHideFlags: 0
@@ -1019,7 +1020,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1835063
+    m_Bits: 1884215
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

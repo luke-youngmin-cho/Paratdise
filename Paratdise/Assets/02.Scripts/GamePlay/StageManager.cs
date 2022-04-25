@@ -39,7 +39,7 @@ public class StageManager : MonoBehaviour
 
     private StageInfo stageInfo;
     private List<ItemData> earnedItems = new List<ItemData>();
-    
+    private List<int> earnedPiecesOfStory = new List<int>();
 
     //===============================================================================================
     //********************************** Public Methods *********************************************
@@ -92,6 +92,11 @@ public class StageManager : MonoBehaviour
             };
             instance.earnedItems.Add(tmpData);
         }
+    }
+
+    public static void EarnPieceOfStory(int index)
+    {
+        instance.earnedPiecesOfStory.Add(index);
     }
 
     public static void FinishStage()
@@ -210,7 +215,8 @@ public class StageManager : MonoBehaviour
                 Debug.Log("Stage Finished!");
                 clearPopUp.SetActive(true);
                 SaveEarnedItems();
-                if(PlayerDataManager.data.GetStageSaved(GameManager.characterSelected) < GameManager.currentStage)
+                SaveEarnedPiecesOfStory();
+                if (PlayerDataManager.data.GetStageSaved(GameManager.characterSelected) < GameManager.currentStage)
                 {
                     PlayerDataManager.data.SetStageSaved(GameManager.characterSelected, GameManager.currentStage);
                     PlayerDataManager.SaveData();
@@ -259,6 +265,14 @@ public class StageManager : MonoBehaviour
     {
         foreach (var item in earnedItems)
             InventoryDataManager.data.AddData(item);
+    }
+
+    private void SaveEarnedPiecesOfStory()
+    {
+        PlayerData data = PlayerDataManager.data;
+        foreach (var item in earnedPiecesOfStory)
+            data.piecesOfStory[item] = true;
+        PlayerDataManager.data = data;
     }
 
     private IEnumerator E_DeactivateLoadingUI()

@@ -1,8 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
-
 /// <summary>
 /// 작성자 : 조영민
 /// 최초작성일 : 2022/03/28
@@ -14,7 +9,7 @@ using System;
 /// </summary>
 
 
-[Serializable]
+[System.Serializable]
 public class CharacterData
 {
     public CharacterType type;
@@ -22,10 +17,10 @@ public class CharacterData
     public int stageSaved;
     public int stageLastPlayed;
     public ToolsLevel toolsLevel;
-    public int[] selectionHistory = new int[20];
+    public int[] selectionHistory;
 }
 
-[Serializable]
+[System.Serializable]
 public enum CharacterType
 {
     None,
@@ -35,7 +30,7 @@ public enum CharacterType
     Eily
 }
 
-[Serializable]
+[System.Serializable]
 public struct ToolsLevel
 {
     public int widthLevel;

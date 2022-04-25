@@ -29,6 +29,7 @@ public class MapCreater : MonoBehaviour
     public bool isCreated;
     [HideInInspector] public Transform mapTile_Start;
     [HideInInspector] public Transform mapTile_End;
+    [SerializeField] private GameObject timeCapsulePrefab;
 
     private void Awake()
     {
@@ -266,8 +267,23 @@ public class MapCreater : MonoBehaviour
                 }
             }
 
-            // 드롭 아이템 배치 
-            for (int i = 0; i < mapInfo.itemsOnMapInfo.Count; i++)
+            // 타임캡슐 배치
+            for (int i = 0; i < mapInfo.timeCapsuleNum; i++)
+            {
+                if (coordQueue.Count > 0)
+                {
+                    coordIndex randomCoord = coordQueue.Dequeue();
+                    tmpTilePos = new Vector2()
+                    {
+                        x = (hNum / 2 - randomCoord.x) * sizeUnit.x,
+                        y = (vNum / 2 - randomCoord.y) * sizeUnit.y
+                    };
+                    Instantiate(timeCapsulePrefab, tmpTilePos, Quaternion.identity);
+                }
+            }
+
+            // 드롭 아이템 배치 - 삭제
+            /*for (int i = 0; i < mapInfo.itemsOnMapInfo.Count; i++)
             {
                 Debug.Log("맵에 아이템을 배치합니다.. ");
 
@@ -287,7 +303,7 @@ public class MapCreater : MonoBehaviour
                         Debug.Log($"아이템 [{mapInfo.itemsOnMapInfo[i].itemName}] 배치완료");
                     }
                 }
-            }
+            }*/
 
             // 기본 맵타일 노드 업데이트
             foreach (var basicTile in basicTiles.Values)

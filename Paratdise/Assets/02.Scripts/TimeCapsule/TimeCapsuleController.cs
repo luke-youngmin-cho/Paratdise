@@ -28,20 +28,29 @@ public class TimeCapsuleController : MonoBehaviour
         isPickedUp = true;
 
         PlayerData data = PlayerDataManager.data;
-        data.AddPieceOfStory(GetRandomPieceOfStory());
-        PlayerDataManager.data = data;
+        PieceOfStory pieceOfStory = PieceOfStoryAssets.GetRandomPieceOfStory();
+        StageManager.EarnPieceOfStory(pieceOfStory.index);
 
-        PieceOfStoryPopUp.instance.PopUp();
+        switch (pieceOfStory.rarity)
+        {
+            case PieceOfStoryRarity.Common:
+                Player.instance.hp += Player.instance.hpMax / 10;
+                break;
+            case PieceOfStoryRarity.Uncommon:
+                Player.instance.hp += Player.instance.hpMax / 8;
+                break;
+            case PieceOfStoryRarity.Rare:
+                Player.instance.hp += Player.instance.hpMax / 6;
+                break;
+            case PieceOfStoryRarity.Heroic:
+                Player.instance.hp += Player.instance.hpMax / 4;
+                break;
+            default:
+                break;
+        }
+
+        PieceOfStoryPopUp.instance.PopUp(pieceOfStory.icon, pieceOfStory.title, pieceOfStory.description, pieceOfStory.index, pieceOfStory.rarity);
+        Destroy(this.gameObject);
     }
 
-    //============================================================================
-    //*************************** Private Methods ********************************
-    //============================================================================
-
-    private int GetRandomPieceOfStory()
-    {
-        // todo-> 확률에 따라 나누어야함.
-        int index = Random.Range(0, PieceOfStoryAssets.instance.piecesOfStory.Count);
-        return index;
-    }
 }

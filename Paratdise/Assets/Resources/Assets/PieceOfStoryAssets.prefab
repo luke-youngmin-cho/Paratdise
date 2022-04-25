@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   piecesOfStory:
   - {fileID: 11400000, guid: 2c0c15254a85d124f9fe75f66e30474e, type: 2}
+  - {fileID: 11400000, guid: 760e31a3183e1944e80e91e5f57e3e5f, type: 2}

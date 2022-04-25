@@ -89,6 +89,7 @@ public class PlayerDataManager
             DisplayGameState.SetDiscription($"Trinyg to load player data from {jsonPath}...");
             string jsonData = System.IO.File.ReadAllText(jsonPath);
             DisplayGameState.SetDiscription($"Read to load player data from {jsonPath}...");
+            Debug.Log(jsonData);
             playerData = JsonConvert.DeserializeObject<PlayerData>(jsonData);
             data = playerData;
             Debug.Log($"Successfully loaded Player data of {nickName}");

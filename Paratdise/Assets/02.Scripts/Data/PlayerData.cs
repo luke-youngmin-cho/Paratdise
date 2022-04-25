@@ -18,13 +18,13 @@ using UnityEngine;
 public class PlayerData
 {
     public string nickName;
-    public bool[] endingCardsData = new bool[100];
-    public bool[] piecesOfStory = new bool[100];
+    public bool[] endingCards;
+    public bool[] piecesOfStory;
     public List<CharacterData> charactersData = new List<CharacterData>();
 
     public void AddPieceOfStory(int storyIndex)
     {
-        // 동적배열
+        /*// 동적배열
         if (storyIndex >= piecesOfStory.Length) 
         { 
             bool[] tmpArr = new bool[piecesOfStory.Length * 2];
@@ -33,10 +33,20 @@ public class PlayerData
             piecesOfStory = new bool[tmpArr.Length];
             for (int i = 0; i < tmpArr.Length; i++)
                 piecesOfStory[i] = tmpArr[i];
-        }
-        
-        piecesOfStory[storyIndex] = true;
+        }*/
+
+        /* if (storyIndex < piecesOfStory.Count)
+             piecesOfStory[storyIndex] = true;*/
+
     }
+
+    /*public int[] GetPiecesOfStory()
+    {
+        int[] result = new int[sizeof(ulong)];
+        for (int i = 0; i < result.Length; i++)
+            result[i] = (int)(piecesOfStory >> i);
+        return result;
+    }*/
 
     public CharacterData GetCharacterData(CharacterType type)
     {

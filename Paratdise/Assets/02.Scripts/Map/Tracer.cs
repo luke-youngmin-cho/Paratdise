@@ -14,7 +14,7 @@ using UnityEngine;
 public class Tracer : MonoBehaviour
 {
     [SerializeField] private float speed = 0.1f;
-    [SerializeField] private float delayTime = 2f;
+    [SerializeField] private float delayTime = 4f;
     Transform tr;
     private void Awake()
     {

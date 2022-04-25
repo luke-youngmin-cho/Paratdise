@@ -96,6 +96,12 @@ public class Player : MonoBehaviour
                 collision.gameObject.GetComponent<ItemController>().PickUp(this);*/
             collision.gameObject.GetComponent<ItemController>().PickUp(this);
         }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("TimeCapsule"))
+        {
+            collision.gameObject.GetComponent<TimeCapsuleController>().PickUp();
+        }
+
+
     }
 
     IEnumerator E_Invincible()
