@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
-/// 작성자 : 조영민
-/// 최초작성일 : 2022/03/28
-/// 최종수정일 : 
-/// 설명 : 
-/// 
-/// 플레이어 데이터
-/// 닉네임 ( ID 로 향후 대체될 수 있음 )
-/// 해금된 최고 스테이지
-/// 캐릭터 데이터 리스트
+/// �ۼ��� : ������
+/// �����ۼ��� : 2022/03/28
+/// ���������� : 2022/04/25
+/// ���� : 
+/// 
+/// �÷��̾� ������
+/// �г��� ( ID �� ���� ��ü�� �� ���� )
+/// ����ī��, ���丮���� ������
+/// ĳ���� ������ ����Ʈ
 /// </summary>
 [System.Serializable]
 public class PlayerData
@@ -34,6 +34,22 @@ public class PlayerData
 
     public void AddPieceOfStory(int storyIndex)
     {
+        if (storyIndex >= piecesOfStory.Length) 
+        { 
+            bool[] tmpArr = new bool[piecesOfStory.Length * 2];
+            for (int i = 0; i < piecesOfStory.Length; i++)
+                tmpArr[i] = piecesOfStory[i];
+            piecesOfStory = new bool[tmpArr.Length];
+            for (int i = 0; i < tmpArr.Length; i++)
+                piecesOfStory[i] = tmpArr[i];
+        }
+        
+        piecesOfStory[storyIndex] = true;
+    }
+
+    public void AddPieceOfStory(int storyIndex)
+    {
+        // �����迭
         if (storyIndex >= piecesOfStory.Length) 
         { 
             bool[] tmpArr = new bool[piecesOfStory.Length * 2];

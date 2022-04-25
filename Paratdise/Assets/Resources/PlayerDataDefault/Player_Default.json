@@ -14,10 +14,11 @@
         "strengthLevel": 1,
         "luckLevel": 1
       },
-      "history": 0
+      "selectionHistory": 0,
+      "piecesOfStory": 0
     },
     {
-      "type": 0,
+      "type": 2,
       "isAvailable": false,
       "stageSaved": 0,
       "stageLastPlayed": 0,
@@ -27,23 +28,11 @@
         "strengthLevel": 1,
         "luckLevel": 1
       },
-      "history": 0
+      "selectionHistory": 0,
+      "piecesOfStory": 0
     },
     {
-      "type": 0,
-      "isAvailable": false,
-      "stageSaved": 0,
-      "stageLastPlayed": 0,
-      "toolsLevel": {
-        "widthLevel": 1,
-        "heightLevel": 1,
-        "strengthLevel": 3,
-        "luckLevel": 1
-      },
-      "history": 0
-    },
-    {
-      "type": 0,
+      "type": 3,
       "isAvailable": false,
       "stageSaved": 0,
       "stageLastPlayed": 0,
@@ -53,7 +42,22 @@
         "strengthLevel": 2,
         "luckLevel": 1
       },
-      "history": 0
+      "selectionHistory": 0,
+      "piecesOfStory": 0
+    },
+    {
+      "type": 4,
+      "isAvailable": false,
+      "stageSaved": 0,
+      "stageLastPlayed": 0,
+      "toolsLevel": {
+        "widthLevel": 1,
+        "heightLevel": 2,
+        "strengthLevel": 1,
+        "luckLevel": 2
+      },
+      "selectionHistory": 0,
+      "piecesOfStory": 0
     }
   ]
 }
