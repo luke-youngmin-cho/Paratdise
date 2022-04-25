@@ -1,19 +1,16 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
 /// <summary>
-/// ÀÛ¼ºÀÚ : Á¶¿µ¹Î
-/// ÃÖÃÊÀÛ¼ºÀÏ : 2022/03/28
-/// ÃÖÁ¾¼öÁ¤ÀÏ : 2022/04/23
-/// ¼³¸í : 
-/// 
-/// Ä³¸¯ÅÍÀÇ Å¸ÀÔ°ú ÇØ±İ ¿©ºÎ µ¥ÀÌÅÍ 
-/// ¼±ÅÃÁöÀÌ·Â, ½ºÅä¸®Á¶°¢ µ¥ÀÌÅÍ Ãß°¡
+/// ì‘ì„±ì : ì¡°ì˜ë¯¼
+/// ìµœì´ˆì‘ì„±ì¼ : 2022/03/28
+/// ìµœì¢…ìˆ˜ì •ì¼ : 2022/04/23
+/// ì„¤ëª… :Â 
+///Â 
+/// ìºë¦­í„°ì˜ íƒ€ì…ê³¼ í•´ê¸ˆ ì—¬ë¶€ ë°ì´í„°Â 
+/// ì„ íƒì§€ì´ë ¥, ìŠ¤í† ë¦¬ì¡°ê° ë°ì´í„° ì¶”ê°€
 /// </summary>
-
-
 [Serializable]
 public class CharacterData
 {
@@ -22,10 +19,8 @@ public class CharacterData
     public int stageSaved;
     public int stageLastPlayed;
     public ToolsLevel toolsLevel;
-    public long selectionHistory; // ºñÆ®¿­ µ¥ÀÌÅÍ
-    public long piecesOfStory; // ºñÆ®¿­ µ¥ÀÌÅÍ
+    public int[] selectionHistory = new int[20];
 }
-
 [Serializable]
 public enum CharacterType
 {
@@ -35,7 +30,6 @@ public enum CharacterType
     DrillGgabijo,
     Eily
 }
-
 [Serializable]
 public struct ToolsLevel
 {

@@ -74,7 +74,7 @@ public class PlayerDataManager
             return JsonConvert.DeserializeObject<PlayerData>(jsonData);
         }
         else
-            throw new Exception("faied to load player data");
+            throw new Exception("failed to load player data");
             
     }
 

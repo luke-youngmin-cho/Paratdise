@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// ÀÛ¼ºÀÚ : ±Ç¼¼ÀÎ
-/// ÃÖÃÊÀÛ¼ºÀÏ : 2022/04/13
-/// ÃÖÁ¾¼öÁ¤ÀÏ : 
-/// ¼³¸í : 
+/// ï¿½Û¼ï¿½ï¿½ï¿½ : ï¿½Ç¼ï¿½ï¿½ï¿½
+/// ï¿½ï¿½ï¿½ï¿½ï¿½Û¼ï¿½ï¿½ï¿½ : 2022/04/13
+/// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : 
+/// ï¿½ï¿½ï¿½ï¿½ : 
 /// 
-/// Ä³¸¯ÅÍ ¼±ÅÃ UI
+/// Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ UI
 /// </summary>
 public class ChooseCharacterUI : MonoBehaviour
 {
@@ -24,6 +24,7 @@ public class ChooseCharacterUI : MonoBehaviour
     public Text toolLuckText;
     public Text toolPowerText;
     public Text talkText;
+    public Text hpText;
     public Image charImg;
 
     [Header("Available")]
@@ -49,6 +50,7 @@ public class ChooseCharacterUI : MonoBehaviour
     {
         ViewCharacter(currentCharacterIndex);
     }
+
     public void CharImgChange(CharacterType characData)
     {
         //CharacterData data = PlayerDataManager.data.charactersData.Find(x => x.type == characData);
@@ -93,8 +95,8 @@ public class ChooseCharacterUI : MonoBehaviour
 
     public void CharacterReset()
     {
-        currentCharacterIndex = 0;
-        ViewCharacter(0);
+        CharacterType selectedType = CharacterInfoTable.characterInfos[currentCharacterIndex].characterType;
+        PlayerDataManager.data.ResetCharacter(selectedType);
     }
 
     public void CharInfoChange(int _characterIndex)
@@ -153,9 +155,10 @@ public class ChooseCharacterUI : MonoBehaviour
 
         CharacterInfo nowSelectedCharacter = CharacterInfoTable.characterInfos[idx];
         ToolInfoChange(nowSelectedCharacter.toolType);
-        CreateHeartImage((int)nowSelectedCharacter.heart);
-
-        // Á¶¿µ¹Î - 04.12 Ãß°¡ :
+        //CreateHeartImage((int)nowSelectedCharacter.heart);
+        float additionalHp = GameInfoController.GetAdditionalHpByCharacterType(nowSelectedCharacter.characterType);
+        hpText.text = nowSelectedCharacter.heart + " (+" + additionalHp+ ")";
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - 04.12 ï¿½ß°ï¿½ :
         GameManager.characterSelected = (CharacterType)(idx + 1);
     }
 
@@ -164,9 +167,9 @@ public class ChooseCharacterUI : MonoBehaviour
         currentCharacterIndex = 0;
     }
 
-    public void ShowBefore()
+    public void LoadpgradeScene()
     {
-
+        UnityEngine.SceneManagement.SceneManager.LoadScene("RealReinforceTools");
     }
 
     // Update is called once per frame

@@ -34,7 +34,7 @@ public class DiaryCapsulesView : MonoBehaviour
             Destroy(slots[i]);
         slots.Clear();
 
-        foreach (var item in PlayerDataManager.data.timeCapsulesData)
+     /*   foreach (var item in PlayerDataManager.data.timeCapsulesData)
         {
             TimeCapsule timeCapsule = TimeCapsuleAssets.GetTimeCapsule(item.index);
             if ((timeCapsule.type == type) &&
@@ -45,7 +45,7 @@ public class DiaryCapsulesView : MonoBehaviour
                 
                 slot.GetComponent<DiarySlot>().SetInfo(timeCapsule.icon, timeCapsule.title, timeCapsule.num, timeCapsule.discription);
             }
-        }
+        }*/
     }
 
     public void ActiveInfoPanel(Sprite icon, string title, string discription)

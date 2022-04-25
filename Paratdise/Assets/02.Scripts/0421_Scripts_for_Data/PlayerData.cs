@@ -1,39 +1,50 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 /// <summary>
-/// ÀÛ¼ºÀÚ : Á¶¿µ¹Î
-/// ÃÖÃÊÀÛ¼ºÀÏ : 2022/03/28
-/// ÃÖÁ¾¼öÁ¤ÀÏ : 
-/// ¼³¸í : 
-/// 
-/// ÇÃ·¹ÀÌ¾î µ¥ÀÌÅÍ
-/// ´Ğ³×ÀÓ ( ID ·Î ÇâÈÄ ´ëÃ¼µÉ ¼ö ÀÖÀ½ )
-/// ÇØ±İµÈ ÃÖ°í ½ºÅ×ÀÌÁö
-/// ÁøÇàÁßÀÎ ½ºÅ×ÀÌÁö
-/// Å¸ÀÔÄ¸½¶ ¸®½ºÆ®
-/// Ä³¸¯ÅÍ µ¥ÀÌÅÍ ¸®½ºÆ®
+/// ì‘ì„±ì : ì¡°ì˜ë¯¼
+/// ìµœì´ˆì‘ì„±ì¼ : 2022/03/28
+/// ìµœì¢…ìˆ˜ì •ì¼ :Â 
+/// ì„¤ëª… :Â 
+///Â 
+/// í”Œë ˆì´ì–´ ë°ì´í„°
+/// ë‹‰ë„¤ì„ ( ID ë¡œ í–¥í›„ ëŒ€ì²´ë  ìˆ˜ ìˆìŒ )
+/// í•´ê¸ˆëœ ìµœê³  ìŠ¤í…Œì´ì§€
+/// ì§„í–‰ì¤‘ì¸ ìŠ¤í…Œì´ì§€
+/// íƒ€ì…ìº¡ìŠ ë¦¬ìŠ¤íŠ¸
+/// ìºë¦­í„° ë°ì´í„° ë¦¬ìŠ¤íŠ¸
 /// </summary>
-
 [System.Serializable]
 public class PlayerData
 {
     public string nickName;
-    public List<int> endingCardsData = new List<int>();
-    public List<TimeCapsuleData> timeCapsulesData = new List<TimeCapsuleData>();
+    public bool[] endingCardsData = new bool[100];
+    public bool[] piecesOfStory = new bool[100];
     public List<CharacterData> charactersData = new List<CharacterData>();
+    public void AddPieceOfStory(int storyIndex)
+    {
+Â  Â  Â  Â  // ë™ì ë°°ì—´
+Â  Â  Â  Â  if (storyIndex >= piecesOfStory.Length)
+        {
+            bool[] tmpArr = new bool[piecesOfStory.Length * 2];
+            for (int i = 0; i < piecesOfStory.Length; i++)
+                tmpArr[i] = piecesOfStory[i];
+            piecesOfStory = new bool[tmpArr.Length];
+            for (int i = 0; i < tmpArr.Length; i++)
+                piecesOfStory[i] = tmpArr[i];
+        }
 
+        piecesOfStory[storyIndex] = true;
+    }
     public CharacterData GetCharacterData(CharacterType type)
     {
         foreach (var sub in charactersData)
         {
-            if(sub.type == type)
+            if (sub.type == type)
                 return sub;
         }
         return null;
     }
-
     public void SetCharacterData(CharacterData characterData)
     {
         for (int i = charactersData.Count - 1; i > -1; i--)
@@ -45,30 +56,26 @@ public class PlayerData
             }
         }
         charactersData.Add(characterData);
-
     }
-
     public void SetStageLastPlayed(CharacterType type, int newStage)
     {
         foreach (var sub in charactersData)
         {
-            if(sub.type == type)
+            if (sub.type == type)
             {
                 sub.stageLastPlayed = newStage;
             }
         }
     }
-
     public int GetStageLastPlayed(CharacterType type)
     {
         foreach (var sub in charactersData)
         {
-            if(sub.type == type)
+            if (sub.type == type)
                 return sub.stageLastPlayed;
         }
         return 0;
     }
-
     public void SetStageSaved(CharacterType type, int newStage)
     {
         foreach (var sub in charactersData)
@@ -79,7 +86,6 @@ public class PlayerData
             }
         }
     }
-
     public int GetStageSaved(CharacterType type)
     {
         foreach (var sub in charactersData)
@@ -89,18 +95,23 @@ public class PlayerData
         }
         return 0;
     }
-
-    /// <summary>
-    /// ÇØ´ç Å¸ÀÔÀÇ Ä³¸¯ÅÍ µ¥ÀÌÅÍ¸¦ ÃÊ±âÈ­ÇÔ
-    /// </summary>
-    public void ResetCharacter(CharacterType type)
+Â  Â  /// <summary>
+Â  Â  /// í•´ë‹¹ íƒ€ì…ì˜ ìºë¦­í„° ë°ì´í„°ë¥¼ ì´ˆê¸°í™”í•¨
+Â  Â  /// </summary>
+Â  Â  public void ResetCharacter(CharacterType type)
     {
         foreach (var sub in charactersData)
         {
             if (sub.type == type)
             {
-                // ÇØ´ç Ä³¸¯ÅÍ µğÆúÆ®
+                // í•´ë‹¹ ìºë¦­í„° ë””í´íŠ¸
+                sub.toolsLevel = new ToolsLevel();
+                sub.selectionHistory = new int[20];
+                sub.stageSaved = 0;
+                sub.stageLastPlayed = 0;
+
             }
         }
     }
 }
+

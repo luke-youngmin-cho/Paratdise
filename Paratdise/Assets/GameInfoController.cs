@@ -44,4 +44,21 @@ public static class GameInfoController
         else
             return toolList.Find(x => x.toolType == _toolType);
     }
+
+    public static float GetAdditionalHpByCharacterType(CharacterType _type)
+    {
+        float hpValue = 0;
+        for (int i = 0; i < PlayerDataManager.data.piecesOfStory.Length; i++)
+        {
+            if (PlayerDataManager.data.piecesOfStory[i])
+            {
+                if (PieceOfStoryAssets.instance.GetRariry(i) == PieceOfStoryRarity.Heroic)
+                    hpValue += 0.25f;
+                else
+                    hpValue += 0.125f;
+            }
+        }
+
+        return hpValue;
+    }
 }
