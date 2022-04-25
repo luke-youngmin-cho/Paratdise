@@ -31,36 +31,6 @@ public class PlayerData
             for (int i = 0; i < tmpArr.Length; i++)
                 piecesOfStory[i] = tmpArr[i];
         }
-
-    public void AddPieceOfStory(int storyIndex)
-    {
-        if (storyIndex >= piecesOfStory.Length) 
-        { 
-            bool[] tmpArr = new bool[piecesOfStory.Length * 2];
-            for (int i = 0; i < piecesOfStory.Length; i++)
-                tmpArr[i] = piecesOfStory[i];
-            piecesOfStory = new bool[tmpArr.Length];
-            for (int i = 0; i < tmpArr.Length; i++)
-                piecesOfStory[i] = tmpArr[i];
-        }
-        
-        piecesOfStory[storyIndex] = true;
-    }
-
-    public void AddPieceOfStory(int storyIndex)
-    {
-        // �����迭
-        if (storyIndex >= piecesOfStory.Length) 
-        { 
-            bool[] tmpArr = new bool[piecesOfStory.Length * 2];
-            for (int i = 0; i < piecesOfStory.Length; i++)
-                tmpArr[i] = piecesOfStory[i];
-            piecesOfStory = new bool[tmpArr.Length];
-            for (int i = 0; i < tmpArr.Length; i++)
-                piecesOfStory[i] = tmpArr[i];
-        }
-        
-        piecesOfStory[storyIndex] = true;
     }
 
     public CharacterData GetCharacterData(CharacterType type)
