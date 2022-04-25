@@ -22,8 +22,7 @@ public class CharacterData
     public int stageSaved;
     public int stageLastPlayed;
     public ToolsLevel toolsLevel;
-    public long selectionHistory; // 비트열 데이터
-    public long piecesOfStory; // 비트열 데이터
+    public int[] selectionHistory = new int[20];
 }
 
 [Serializable]

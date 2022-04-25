@@ -16,18 +16,16 @@ public class DiarySlot : MonoBehaviour
 {
     [SerializeField] private Image _icon;
     [SerializeField] private Text _title;
-    [SerializeField] private Text _num;
     private string _discription;
 
     //============================================================================
     //************************* Public Methods ***********************************
     //============================================================================
 
-    public void SetInfo(Sprite icon, string title, int num, string discription)
+    public void SetInfo(Sprite icon, string title, string discription)
     {
         _icon.sprite = icon;
         _title.text = title;
-        _num.text = num.ToString();
         _discription = discription;
     }
 

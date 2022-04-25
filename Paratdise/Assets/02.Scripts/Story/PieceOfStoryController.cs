@@ -19,9 +19,7 @@ public class PieceOfStoryController : MonoBehaviour
         isPickedUp = true;
 
         PlayerData data = PlayerDataManager.data;
-        CharacterData characterData = data.GetCharacterData(GameManager.characterSelected);
-        characterData.piecesOfStory |= (long)pieceOfStory.index;
-        data.SetCharacterData(characterData);
+        data.AddPieceOfStory(pieceOfStory.index);
         PlayerDataManager.data = data;
     }
 }
