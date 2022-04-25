@@ -10,8 +10,6 @@ using UnityEngine;
 /// 플레이어 데이터
 /// 닉네임 ( ID 로 향후 대체될 수 있음 )
 /// 해금된 최고 스테이지
-/// 진행중인 스테이지
-/// 타입캡슐 리스트
 /// 캐릭터 데이터 리스트
 /// </summary>
 [System.Serializable]
@@ -34,8 +32,21 @@ public class PlayerData
                 piecesOfStory[i] = tmpArr[i];
         }
 
+    public void AddPieceOfStory(int storyIndex)
+    {
+        if (storyIndex >= piecesOfStory.Length) 
+        { 
+            bool[] tmpArr = new bool[piecesOfStory.Length * 2];
+            for (int i = 0; i < piecesOfStory.Length; i++)
+                tmpArr[i] = piecesOfStory[i];
+            piecesOfStory = new bool[tmpArr.Length];
+            for (int i = 0; i < tmpArr.Length; i++)
+                piecesOfStory[i] = tmpArr[i];
+        }
+        
         piecesOfStory[storyIndex] = true;
     }
+
     public CharacterData GetCharacterData(CharacterType type)
     {
         foreach (var sub in charactersData)

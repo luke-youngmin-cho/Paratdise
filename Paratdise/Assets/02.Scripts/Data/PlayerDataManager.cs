@@ -41,6 +41,7 @@ public class PlayerDataManager
         }
     }
 
+    private int tryCount = 0;
 
     //===============================================================================================
     //********************************** Public Methods *********************************************
@@ -94,7 +95,16 @@ public class PlayerDataManager
             DisplayGameState.SetDiscription($"Suceeded to load player data from {jsonPath}");
         }
         else
+        {
             DisplayGameState.SetDiscription($"Failed to load player data from {jsonPath}");
+            if (instance.tryCount < 2)
+            {
+                CreateData(nickName);
+                return TryLoadData(nickName, out playerData);
+            }
+        }
+
+        instance.tryCount++;
         return playerData == null ? false : true;
     }
 
@@ -133,6 +143,12 @@ public class PlayerDataManager
     public static void SaveData()
     {
         if (data == null) return;
+        
+        if (!System.IO.Directory.Exists($"{Application.persistentDataPath}/PlayerDatas"))
+        {
+            System.IO.Directory.CreateDirectory($"{Application.persistentDataPath}/PlayerDatas");
+        }
+
         string jsonPath = $"{Application.persistentDataPath}/PlayerDatas/Player_{LoginManager.nickName}.json";
         string jsonData = JsonConvert.SerializeObject(data, Formatting.Indented);
         System.IO.File.WriteAllText(jsonPath, jsonData);
