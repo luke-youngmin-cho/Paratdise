@@ -15,6 +15,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New MapInfo", menuName = "MapInfo/Create New MapInfo")]
 public class MapInfo : ScriptableObject
 {
+    [Header("맵 배경")]
+    public Sprite bg;
     [Header("맵의 가로x세로 사이즈")]
     public Vector2 size;
     [Header("경계생성 알고리즘횟수. 클수록 경계 밀도 낮아짐")]
@@ -39,4 +41,14 @@ public class MapInfo : ScriptableObject
     public GameObject tracer;
     [Header("맵에 뿌려놓을 타임캡슐 개수")]
     public int timeCapsuleNum;
+
+    [System.Serializable]
+    public class TrapInfo
+    {
+        public GameObject trap;
+        public int num;
+    }
+    [Header("맵에 뿌려놓을 트랩과 개수")]
+    public TrapInfo trapInfo;
 }
+

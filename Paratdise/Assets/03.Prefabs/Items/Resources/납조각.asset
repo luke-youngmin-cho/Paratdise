@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 383a8bc6d46615446a5b399762ad82f5, type: 3}
   m_Name: "\uB0A9\uC870\uAC01"
   m_EditorClassIdentifier: 
-  tag: 1
+  tag: 3
   type: 2
   itemName: "\uB0A9\uC870\uAC01"
   discription: "\uB0A9\uC778\uB370 \uC870\uAC01\uB098\uC788\uB124"
   num: 1
-  icon: {fileID: 21300000, guid: b383a65057361d74a9e47953d04caf0d, type: 3}
+  icon: {fileID: 21300000, guid: 5e15afda97fe0a946946fb878462cd49, type: 3}

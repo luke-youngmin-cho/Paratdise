@@ -1,0 +1,153 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Stories
+  m_EditorClassIdentifier: 
+  m_GroupName: Stories
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 392d19384e7b63c4fb96e5f1ef3cd3d5
+  m_SerializeEntries:
+  - m_GUID: 03563c96e026e3444a3efe57c1a6fc32
+    m_Address: "Assets/03.Prefabs/Stories/Mice/ItemEarnedPopUpOnStoryPlay_\uC57C\uAC04\uD22C\uC2DC\uACBD.prefab"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1708cab951c62b4499f969e019b4c095
+    m_Address: "Assets/03.Prefabs/Stories/Mice/ItemEarnedPopUpOnStoryPlay_\uBC29\uB3C5\uBA74.prefab"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7aca30701a62deb41a92d583564cf186
+    m_Address: "Assets/03.Prefabs/Stories/Mice/ItemEarnedPopUpOnStoryPlay_\uC2A4\uD30C\uC774\uD06C\uC2E0\uBC1C.prefab"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8d283c1000b122242b753feb6d2161d2
+    m_Address: "Assets/03.Prefabs/Stories/Mice/ItemEarnedPopUpOnStoryPlay_\uAF43.prefab"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6e95ff8cc68864e45aa48505ccd7a37c
+    m_Address: "Assets/03.Prefabs/Stories/Mice/ItemEarnedPopUpOnStoryPlay_\uC804\uD30C\uBC29\uD574\uD314\uCC0C.prefab"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: df1b6fa3376e32c4188c8183c5b880a2
+    m_Address: "Assets/03.Prefabs/Stories/Mice/ItemEarnedPopUpOnStoryPlay_\uBC29\uD55C\uBCF5.prefab"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b4662f5e0f4e9774f8b33c6f5dfefd85
+    m_Address: Assets/03.Prefabs/Stories/Mice/MiceChapter1SelectionPanel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ffbadd94c005830449157ac04f5c23c7
+    m_Address: Assets/03.Prefabs/Stories/Mice/MiceChapter2SelectionPanel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 16c63160871cca94d803d5e208884581
+    m_Address: Assets/03.Prefabs/Stories/Mice/MiceChapter3SelectionPanel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ea579ebc265ce0948b15ed0e6d1de7d1
+    m_Address: Assets/03.Prefabs/Stories/Mice/MiceChapter4SelectionPanel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 71ef221a30c0583409a9088c478a89ac
+    m_Address: Assets/03.Prefabs/Stories/Mice/MicePrologueFinishPanel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dd73dbbba2f83d345a49f2d10db1bdd0
+    m_Address: Assets/03.Prefabs/Stories/Mice/Mice_Chapter1_Selected_1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ac59b155d43a9654bb6d9655291c6e3b
+    m_Address: Assets/03.Prefabs/Stories/Mice/Mice_Chapter1_Selected_2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 74dc0a084deac4a40a981a248d022dbd
+    m_Address: Assets/03.Prefabs/Stories/Mice/Mice_Chapter1_Selecting.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e6a61d0615e9bcc4aa73ef9751066e59
+    m_Address: Assets/03.Prefabs/Stories/Mice/Mice_Chapter1_Start.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 64264e2b6ad62404e9ad5ea66290c190
+    m_Address: Assets/03.Prefabs/Stories/Mice/Mice_Chapter1_Tracing.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dea55f7cb45376347ae639361ad41f75
+    m_Address: Assets/03.Prefabs/Stories/Mice/Mice_Chapter2_Selected_1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 83f7afbec5d15764c9dca08dfa1901f9
+    m_Address: Assets/03.Prefabs/Stories/Mice/Mice_Chapter2_Selected_2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 858d4250b967d194182f4c281fbb0bd6
+    m_Address: Assets/03.Prefabs/Stories/Mice/Mice_Chapter2_Selecting.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a010aa7a4e9dd114db39fe4052d0c39b
+    m_Address: Assets/03.Prefabs/Stories/Mice/Mice_Chapter2_Start.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 161a69ed085eb4247a12bf93ac019b8b
+    m_Address: Assets/03.Prefabs/Stories/Mice/Mice_Chapter2_Tracing.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e53d9598402c63546970ef3e068b5d7f
+    m_Address: Assets/03.Prefabs/Stories/Mice/Mice_Chapter3_Selected_1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 312e3a3a74e0f8946b2b31be6071b895
+    m_Address: Assets/03.Prefabs/Stories/Mice/Mice_Chapter3_Selected_2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 68da0be9112c45e49b59225804583df4
+    m_Address: Assets/03.Prefabs/Stories/Mice/Mice_Chapter3_Selecting.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 34a7ef3ced64bca47a1026ce4fffbf5d
+    m_Address: Assets/03.Prefabs/Stories/Mice/Mice_Chapter3_Start.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7b4d9c788b0c87e4f81ed7ba0229b689
+    m_Address: Assets/03.Prefabs/Stories/Mice/Mice_Chapter3_Tracing.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0fa829cf2804726438ddf25f112a0b1e
+    m_Address: Assets/03.Prefabs/Stories/Mice/Mice_Chapter4_Selected_1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 109b0b1641a364645b8e56a72d9aa649
+    m_Address: Assets/03.Prefabs/Stories/Mice/Mice_Chapter4_Selected_2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 737e4e1c87226784e95da550fe99550d
+    m_Address: Assets/03.Prefabs/Stories/Mice/Mice_Chapter4_Selecting.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 377c293a4f99d534d9e738f7cb4d97f5
+    m_Address: Assets/03.Prefabs/Stories/Mice/Mice_Chapter4_Start.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 83c5466154f6a4e45a0656c97a44d950
+    m_Address: Assets/03.Prefabs/Stories/Mice/Mice_Chapter4_Tracing.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 77bde5b48e526ed428897fcb392929a8
+    m_Address: Assets/03.Prefabs/Stories/Mice/Mice_Prologue.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: d7c617cc2d6f594439be6e616b62a9fc, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 128e2b20a77294e46843d0a09317f2a5, type: 2}
+    - {fileID: 11400000, guid: a1041e742e57dec4887c90138be08f9e, type: 2}

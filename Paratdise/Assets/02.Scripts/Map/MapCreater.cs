@@ -18,8 +18,6 @@ using Cysharp.Threading.Tasks;
 /// 2. 나머지 빈공간은 기본 타일 도배
 /// 3. 기본타일 위치중 랜덤으로 특수타일/ 맵 관련 객체 배치 
 /// </summary>
-
-
 public class MapCreater : MonoBehaviour
 {
     public static MapCreater instance;
@@ -30,7 +28,7 @@ public class MapCreater : MonoBehaviour
     [HideInInspector] public Transform mapTile_Start;
     [HideInInspector] public Transform mapTile_End;
     [SerializeField] private GameObject timeCapsulePrefab;
-
+    [SerializeField] private SpriteRenderer bg;
     private void Awake()
     {
         instance = this;
@@ -45,6 +43,10 @@ public class MapCreater : MonoBehaviour
         UniTask.Create(async () =>
         {
             MapInfo mapInfo = MapInfoAssets.instance.GetMapInfo(stage);
+
+            // 배경설정
+            bg.sprite = mapInfo.bg;
+            bg.transform.localScale = new Vector3(mapInfo.size.x / 5, mapInfo.size.x / 5, 1);
 
             // 경계 맵타일 오브젝트 풀 등록
             foreach (var item in mapInfo.MapElements_Boundary)
@@ -279,6 +281,21 @@ public class MapCreater : MonoBehaviour
                         y = (vNum / 2 - randomCoord.y) * sizeUnit.y
                     };
                     Instantiate(timeCapsulePrefab, tmpTilePos, Quaternion.identity);
+                }
+            }
+
+            // 트랩 배치
+            for (int i = 0; i < mapInfo.trapInfo.num; i++)
+            {
+                if (coordQueue.Count > 0)
+                {
+                    coordIndex randomCoord = coordQueue.Dequeue();
+                    tmpTilePos = new Vector2()
+                    {
+                        x = (hNum / 2 - randomCoord.x) * sizeUnit.x,
+                        y = (vNum / 2 - randomCoord.y) * sizeUnit.y
+                    };
+                    Instantiate(mapInfo.trapInfo.trap, tmpTilePos, Quaternion.identity);
                 }
             }
 

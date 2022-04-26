@@ -9,12 +9,13 @@ using UnityEngine;
 /// 아이템 정보 클래스. 
 /// </summary>
 [CreateAssetMenu(fileName = "New Item", menuName = "Item/Create New Item")]
+[System.Serializable]
 public class Item : ScriptableObject
 {
     public ItemTag tag;
     public ItemType type;
     public string itemName;
-    public string discription;
+    public string description;
     public int num;
     public Sprite icon;
 }

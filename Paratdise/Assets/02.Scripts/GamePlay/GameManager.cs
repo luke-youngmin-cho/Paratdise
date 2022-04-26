@@ -48,8 +48,16 @@ public class GameManager : MonoBehaviour
 
     public static void StartStage(int stage)
     {
-        currentStage = stage;
-        gameState = GameState.StartStage;
+        if (StageInfoAssets.GetStageInfo(stage) != null)
+        {
+            currentStage = stage;
+            gameState = GameState.StartStage;
+        }
+        else
+        {
+            GoBackToLobby();
+        }
+        
     }
 
     public static void GoBackToLobby()
@@ -81,14 +89,15 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => PlayerDataManager.instance != null);
         yield return new WaitUntil(() => MapDataManager.instance != null);
         yield return new WaitUntil(() => StoryPlayDataManager.instance != null);
-        SceneMover.MoveTo("Login");
-        Next();
+        yield return new WaitForSeconds(5f);
+
+        gameState = GameState.WaitForAssetsLoaded;
     }
 
     private void Update()
     {
         Workflow();
-        Debug.Log($"Current game state : {PlayStateManager.instance.CurrentPlayState}, {currentStage}");
+        //Debug.Log($"Current game state : {PlayStateManager.instance.CurrentPlayState}, {currentStage}");
     }
 
     private void Next()
@@ -103,6 +112,13 @@ public class GameManager : MonoBehaviour
         switch (_gameState)
         {
             case GameState.Idle:
+                break;
+            case GameState.WaitForAssetsLoaded:
+                if (AssetsLoader.isLoaded)
+                {
+                    SceneMover.MoveTo("Login");
+                    Next();
+                }
                 break;
             case GameState.WaitForLogin:
                 if (LoginManager.loggedIn)
@@ -129,6 +145,7 @@ public class GameManager : MonoBehaviour
                     DisplayGameState.SetDiscription("Inventory data manager instance is null");
 
                 InventoryDataManager.LoadAll();
+
                 Next();
                 break;
             case GameState.GoLobby:
@@ -170,6 +187,7 @@ public class GameManager : MonoBehaviour
 public enum GameState
 {
     Idle,
+    WaitForAssetsLoaded,
     WaitForLogin,
     LoadPlayerData,
     GoLobby,

@@ -4,6 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// 작성자 : 조영민
+/// 최초작성일 : 2022/03/24
+/// 최종수정일 : 
+/// 설명 : 
+/// 
+/// 텍스트 타이핑을 이펙트를 위한 클래스
+/// </summary>
+/// 
 public class TextTypingEffect : MonoBehaviour, IPointerClickHandler
 {
     public Text UI_Text; // 유니티 게임 에디터에 있는 Text UI

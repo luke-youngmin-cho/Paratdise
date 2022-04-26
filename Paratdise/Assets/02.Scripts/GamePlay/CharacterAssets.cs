@@ -24,6 +24,15 @@ public class CharacterAssets : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
     [SerializeField] private List<GameObject> characterPrefabs = new List<GameObject>();
 
     public GameObject GetCharacter(CharacterType type) =>

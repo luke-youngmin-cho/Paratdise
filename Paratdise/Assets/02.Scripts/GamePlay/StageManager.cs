@@ -144,7 +144,7 @@ public class StageManager : MonoBehaviour
 
     private void Workflow()
     {
-        Debug.Log($"StageManager : {state}");
+        //Debug.Log($"StageManager : {state}");
         switch (state)
         {
             case StageState.Idle:
@@ -198,7 +198,7 @@ public class StageManager : MonoBehaviour
                 if (tracerPrefab != null)
                 {
                     // 추격자 시작위치 바로아래 생성
-                    tracer = Instantiate(tracerPrefab, MapCreater.instance.mapTile_Start.position + Vector3.down * tracerPrefab.transform.lossyScale.y / 2, Quaternion.identity).GetComponent<Tracer>();
+                    tracer = Instantiate(tracerPrefab, MapCreater.instance.mapTile_Start.position + Vector3.down * (tracerPrefab.transform.lossyScale.y / 2 + 2), Quaternion.identity).GetComponent<Tracer>();
                     tracer.StartMove();
                 }
 

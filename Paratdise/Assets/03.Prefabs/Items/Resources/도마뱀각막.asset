@@ -17,4 +17,4 @@ MonoBehaviour:
   itemName: "\uB3C4\uB9C8\uBC40\uAC01\uB9C9"
   discription: "\uAC01\uB9C9\uC778\uB370 \uB3C4\uB9C8\uBC40\uAEBC\uB124"
   num: 1
-  icon: {fileID: 21300000, guid: 8451cb4ea26ae9849bbf28d9b74c7d2f, type: 3}
+  icon: {fileID: 21300000, guid: 0cb1ce3184a65ab4795e4c8d1ac6a3b8, type: 3}

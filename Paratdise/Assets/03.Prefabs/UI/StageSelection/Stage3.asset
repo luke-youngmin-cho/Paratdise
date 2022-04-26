@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eccc01700c35924459ee2e6d808cc518, type: 3}
   m_Name: Stage3
   m_EditorClassIdentifier: 
-  chapter: 2
+  chapter: 1
   stage: 3
-  icon: {fileID: 21300000, guid: 3b1fad76cddcec04f8561a30cba04ae8, type: 3}
-  dropItemList:
-  - {fileID: 11400000, guid: 3ef7509ecfe147740aa298c2d2537a50, type: 2}
-  - {fileID: 11400000, guid: b4f755324fba8cb4cb02df7f1b84cae8, type: 2}
+  icon: {fileID: 21300000, guid: 04fec1be7e2a5984f9e10d03c3b6ec2f, type: 3}
+  dropItemList: []
+  storyBeforeStage: {fileID: 11400000, guid: 64264e2b6ad62404e9ad5ea66290c190, type: 2}
+  storyAfterStage: {fileID: 0}

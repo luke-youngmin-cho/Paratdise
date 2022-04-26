@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6108204505293315095
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4707481104877803932}
+  - component: {fileID: 5922858027458747339}
+  m_Layer: 0
+  m_Name: StoryAssets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4707481104877803932
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6108204505293315095}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5922858027458747339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6108204505293315095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88f4119e7a5d37f44ad0d8a6c4269914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stories_Mice:
+  - {fileID: 11400000, guid: 77bde5b48e526ed428897fcb392929a8, type: 2}
+  - {fileID: 11400000, guid: e6a61d0615e9bcc4aa73ef9751066e59, type: 2}
+  - {fileID: 11400000, guid: 64264e2b6ad62404e9ad5ea66290c190, type: 2}
+  - {fileID: 11400000, guid: 74dc0a084deac4a40a981a248d022dbd, type: 2}
+  - {fileID: 11400000, guid: dd73dbbba2f83d345a49f2d10db1bdd0, type: 2}
+  - {fileID: 11400000, guid: ac59b155d43a9654bb6d9655291c6e3b, type: 2}
+  - {fileID: 11400000, guid: a010aa7a4e9dd114db39fe4052d0c39b, type: 2}
+  - {fileID: 11400000, guid: 161a69ed085eb4247a12bf93ac019b8b, type: 2}
+  - {fileID: 11400000, guid: 858d4250b967d194182f4c281fbb0bd6, type: 2}
+  - {fileID: 11400000, guid: dea55f7cb45376347ae639361ad41f75, type: 2}
+  - {fileID: 11400000, guid: 83f7afbec5d15764c9dca08dfa1901f9, type: 2}
+  - {fileID: 11400000, guid: 34a7ef3ced64bca47a1026ce4fffbf5d, type: 2}
+  - {fileID: 11400000, guid: 7b4d9c788b0c87e4f81ed7ba0229b689, type: 2}
+  - {fileID: 11400000, guid: 68da0be9112c45e49b59225804583df4, type: 2}
+  - {fileID: 11400000, guid: e53d9598402c63546970ef3e068b5d7f, type: 2}
+  - {fileID: 11400000, guid: 312e3a3a74e0f8946b2b31be6071b895, type: 2}
+  - {fileID: 11400000, guid: 377c293a4f99d534d9e738f7cb4d97f5, type: 2}
+  - {fileID: 11400000, guid: 83c5466154f6a4e45a0656c97a44d950, type: 2}
+  - {fileID: 11400000, guid: 737e4e1c87226784e95da550fe99550d, type: 2}
+  - {fileID: 11400000, guid: 0fa829cf2804726438ddf25f112a0b1e, type: 2}
+  - {fileID: 11400000, guid: 109b0b1641a364645b8e56a72d9aa649, type: 2}
+  stories_Laila: []
+  stories_DrillGgabijo: []
+  stories_Eily: []

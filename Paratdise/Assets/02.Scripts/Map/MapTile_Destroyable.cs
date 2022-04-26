@@ -81,8 +81,8 @@ public class MapTile_Destroyable : MapTile
     [SerializeField] private GameObject hurtEffect;
     [SerializeField] private GameObject destroyEffect;
 
-    [SerializeField]
-    class DropItemInfo
+    [System.Serializable]
+    public class DropItemInfo
     {
         public GameObject itemPrefab;
         public float dropRatio; // 0~100;

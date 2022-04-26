@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca87b0ba2144bd4887f6b063b2dd86c, type: 3}
+  m_Name: Mice_Chapter3_Selected_2
+  m_EditorClassIdentifier: 
+  characterType: 1
+  showEffect: 1
+  hideEffect: 2
+  index: 15
+  pages:
+  - sprite: {fileID: 21300000, guid: 7f9ec3caab26f0c4d95e5676ea4c99de, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: 8d539b1b2a65e6346a0842686fbc072f, type: 3}
+    effectType: 0
+  popUp: {fileID: 6172847232691775097, guid: 8d283c1000b122242b753feb6d2161d2, type: 3}

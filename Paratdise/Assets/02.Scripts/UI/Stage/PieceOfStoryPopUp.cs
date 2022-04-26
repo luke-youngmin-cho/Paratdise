@@ -22,4 +22,14 @@ public class PieceOfStoryPopUp : MonoBehaviour
         _instance.transform.GetChild(0).Find("Rarity").GetComponent<Text>().text = rarity.ToString();
         _instance.gameObject.SetActive(true);
     }
+
+    private void OnEnable()
+    {
+        PlayStateManager.instance.SetState(PlayState.Paused);
+    }
+
+    private void OnDisable()
+    {
+        PlayStateManager.instance.SetState(PlayState.Play);
+    }
 }

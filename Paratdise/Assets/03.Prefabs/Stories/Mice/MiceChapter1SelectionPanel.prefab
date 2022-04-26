@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -450, y: 0}
-  m_SizeDelta: {x: 900, y: 1800}
+  m_AnchoredPosition: {x: -264.34097, y: 0}
+  m_SizeDelta: {x: 528.682, y: 1800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8441800824322298177
 CanvasRenderer:
@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storyWantsToPlay: {fileID: 11400000, guid: ac59b155d43a9654bb6d9655291c6e3b, type: 2}
+  itemToEarn: {fileID: 11400000, guid: 8fb20230490f9d84c929c89f530f13a3, type: 2}
 --- !u!1 &8441800824942738124
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,8 +183,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 450, y: 0}
-  m_SizeDelta: {x: 900, y: 1800}
+  m_AnchoredPosition: {x: 268.56, y: 0}
+  m_SizeDelta: {x: 537.121, y: 1800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8441800824942738163
 CanvasRenderer:
@@ -292,6 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storyWantsToPlay: {fileID: 11400000, guid: dd73dbbba2f83d345a49f2d10db1bdd0, type: 2}
+  itemToEarn: {fileID: 11400000, guid: 23ce6f317bfe6344e8f3e13183bef893, type: 2}
 --- !u!1 &8441800825649818430
 GameObject:
   m_ObjectHideFlags: 0
