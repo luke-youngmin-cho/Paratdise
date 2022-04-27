@@ -61,4 +61,14 @@ public static class GameInfoController
 
         return hpValue;
     }
+
+    //
+    public static CharacterType GetCharacterTypeByIndex(int _index)
+    {
+        // 0--->Mice,
+        // 1--->Laila,
+        // 2--->DrillGgabijo,
+        // 3--->Eily
+        return (CharacterType)(_index + 1);
+    }
 }
