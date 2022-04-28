@@ -54,6 +54,26 @@ public class PlayerDataManager
         if (!System.IO.Directory.Exists($"{Application.persistentDataPath}/PlayerDatas"))
             System.IO.Directory.CreateDirectory($"{Application.persistentDataPath}/PlayerDatas");
         SaveData(nickName);
+
+        // 테스트용 계정
+        if (nickName == "master")
+        {
+            PlayerData tmpData = data;
+            CharacterData tmpCharacterData = data.GetCharacterData(CharacterType.Mice);
+            tmpCharacterData.stageSaved = 16;
+            tmpCharacterData.stageLastPlayed = 16;
+            tmpCharacterData.toolsLevel = new ToolsLevel()
+            {
+                strengthLevel = 99,
+                heightLevel = 1,
+                luckLevel = 1,
+                widthLevel = 1,
+            };
+            tmpData.SetCharacterData(tmpCharacterData);
+            data = tmpData;
+            SaveData();
+            Debug.Log("마스터 계정이 생성되었습니다.");
+        }
     }
 
     public static void CreateDefaultData(PlayerData playerData)

@@ -209,6 +209,7 @@ public class MapCreater : MonoBehaviour
             };
             mapTile_Start = ObjectPool.SpawnFromPool(mapInfo.MapElement_Start.name, tmpTilePos).transform;
 
+            // todo -> 시작타일 위로 몇칸정도는 경계타일이 있는지 검색하고, 삭제해야함.
 
             // 기본 맵 타일 생성
             Dictionary<coordIndex, GameObject> basicTiles = new Dictionary<coordIndex, GameObject>();
@@ -299,6 +300,37 @@ public class MapCreater : MonoBehaviour
                 }
             }
 
+            // 적 배치
+            for (int i = 0; i < mapInfo.enemyInfo.Count; i++)
+            {
+                for (int j = 0; j < mapInfo.enemyInfo[i].num; j++)
+                {
+                    // 맵 시작위치에서 적당히 떨어진 위치를 구함
+                    bool isOK = false;
+                    coordIndex randomCoord = coordQueue.Peek();
+                    while (isOK == false)
+                    {
+                        randomCoord = new coordIndex()
+                        {
+                            x = Random.Range(1, hNum),
+                            y = Random.Range(1, vNum)
+                        };
+
+                        int vec = (startCoord.x - randomCoord.x) * (startCoord.x - randomCoord.x) +
+                                  (startCoord.y - randomCoord.y) * (startCoord.y - randomCoord.y);
+
+                        if (Mathf.Sqrt(vec) > 5)
+                            isOK = true;
+                    }
+                    tmpTilePos = new Vector2()
+                    {
+                        x = (hNum / 2 - randomCoord.x) * sizeUnit.x,
+                        y = (vNum / 2 - randomCoord.y) * sizeUnit.y
+                    };
+                    Instantiate(mapInfo.enemyInfo[i].enemy, tmpTilePos, Quaternion.identity);
+                }
+            }
+
             // 드롭 아이템 배치 - 삭제
             /*for (int i = 0; i < mapInfo.itemsOnMapInfo.Count; i++)
             {
@@ -330,7 +362,6 @@ public class MapCreater : MonoBehaviour
             }
 
             isCreated = true;
-
         });
     }
 

@@ -134,6 +134,4 @@ MonoBehaviour:
   hpMax: 5
   hurtEffect: {fileID: 0}
   destroyEffect: {fileID: 0}
-  dropItems:
-  - itemPrefab: {fileID: 1510565593170886249, guid: e3e7dd3abb6ff1348bc343c515e0621b, type: 3}
-    dropRatio: 10
+  dropItems: []

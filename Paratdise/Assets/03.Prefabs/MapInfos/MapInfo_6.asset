@@ -22,6 +22,7 @@ MonoBehaviour:
   MapElements_Basic:
   - {fileID: 8095170532550832005, guid: 606631ac2626ebe42a47a50765b2f01d, type: 3}
   - {fileID: 8095170532550832005, guid: b5462549130aff44ba305afa400e8e08, type: 3}
+  - {fileID: 8095170532550832005, guid: eed5172c8613b2c4782cb08c90885c94, type: 3}
   MapElements_FluidBundle:
   - {fileID: 9111984183550421366, guid: 9adf449679653dc439bbd47d53e22184, type: 3}
   MapElements_Obstacle:
@@ -34,3 +35,10 @@ MonoBehaviour:
   trapInfo:
     trap: {fileID: 4800609255294159114, guid: 2b255b277ea6356449356d532fe47daa, type: 3}
     num: 20
+  enemyInfo:
+  - enemy: {fileID: 9001409966523601161, guid: 02691e3db4c692841acf9f932a03d210, type: 3}
+    num: 10
+  - enemy: {fileID: 9001409966523601161, guid: 0e052e8a072d8ab45b31e496e8f2c19d, type: 3}
+    num: 2
+  - enemy: {fileID: 9001409966523601161, guid: 0fcdac8b7be4d074eb89b20eea074a85, type: 3}
+    num: 2

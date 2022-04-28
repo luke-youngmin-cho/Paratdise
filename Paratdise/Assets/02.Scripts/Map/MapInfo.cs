@@ -26,13 +26,13 @@ public class MapInfo : ScriptableObject
     [Header("맵에서 그외 장애물이 차지하는 비율")]
     public int obstaclePercents;
     [Header("경계 맵 타일 목록")]
-    public List<GameObject> MapElements_Boundary; // 경계 맵타일 리스트
+    public List<GameObject> MapElements_Boundary = new List<GameObject>(); // 경계 맵타일 리스트
     [Header("기본 맵 타일 목록")]
-    public List<GameObject> MapElements_Basic; // 기본 맵타일 리스트
+    public List<GameObject> MapElements_Basic = new List<GameObject>(); // 기본 맵타일 리스트
     [Header("유체 맵 타일 목록")]
-    public List<GameObject> MapElements_FluidBundle; // 유체 맵 요소 리스트
+    public List<GameObject> MapElements_FluidBundle = new List<GameObject>(); // 유체 맵 요소 리스트
     [Header("방해물 맵 타일 목록")]
-    public List<GameObject> MapElements_Obstacle; // 이벤트 요소 리스트
+    public List<GameObject> MapElements_Obstacle = new List<GameObject>(); // 이벤트 요소 리스트
     [Header("시작 맵 타일")]
     public GameObject MapElement_Start; // 시작 맵타일 
     [Header("끝 맵 타일")]
@@ -50,5 +50,14 @@ public class MapInfo : ScriptableObject
     }
     [Header("맵에 뿌려놓을 트랩과 개수")]
     public TrapInfo trapInfo;
+
+    [System.Serializable]
+    public class EnemyInfo
+    {
+        public GameObject enemy;
+        public int num;
+    }
+    [Header("맵에 등장시킬 적 목록")]
+    public List<EnemyInfo> enemyInfo = new List<EnemyInfo>();
 }
 

@@ -24,16 +24,17 @@ public class Player : MonoBehaviour
         {
             if (value > 0)
             {
-                _hp = value;
-                machineManager.ChangeState(PlayerState.Hurt);
+                if (value < _hp)
+                    machineManager.ChangeState(PlayerState.Hurt);
             }   
             else
             {
-                _hp = 0;
+                value = 0;
                 machineManager.ChangeState(PlayerState.Die);
                 Invoke("GameOver", 3f);
             }
 
+            _hp = value;
             PlayerUI.SetHPBar(_hp/hpMax);
         }
 
@@ -45,6 +46,7 @@ public class Player : MonoBehaviour
     public float hpMax;
 
     private PlayerStateMachineManager machineManager;
+    private CapsuleCollider2D col;
 
     //============================================================================
     //************************* Public Methods ***********************************
@@ -57,6 +59,7 @@ public class Player : MonoBehaviour
         {
             hp -= damage;
             invincibleCoroutin = StartCoroutine(E_Invincible());
+            DamagePopUp.Create(transform.position + new Vector3(0f, col.size.y / 2, 0f), damage, gameObject.layer);
         }   
     }
 
@@ -67,6 +70,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        col = GetComponent<CapsuleCollider2D>();
         machineManager = GetComponent<PlayerStateMachineManager>();
         PlayStateManager.instance.OnPlayStateChanged += OnPlayStateChanged;
     }

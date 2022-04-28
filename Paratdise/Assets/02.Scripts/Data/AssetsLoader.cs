@@ -34,6 +34,11 @@ public class AssetsLoader : MonoBehaviour
     private GameObject instantiatedObject;
     [SerializeField] private List<GameObject> instantiatedAccessoryObjects = new List<GameObject>();
 
+
+    //============================================================================
+    //************************* Private Methods **********************************
+    //============================================================================
+
     private void Awake()
     {
         instance = this;
@@ -44,7 +49,7 @@ public class AssetsLoader : MonoBehaviour
         LoadAllAssets();
     }
 
-    public void LoadAllAssets()
+    private void LoadAllAssets()
     {
         UniTask.Create(async () =>
         {

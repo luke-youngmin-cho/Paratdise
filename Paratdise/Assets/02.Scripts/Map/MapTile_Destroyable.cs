@@ -22,13 +22,13 @@ public class MapTile_Destroyable : MapTile
         {
             _hp = value;
 
-            //Debug.Log($"{this.name}: hp {value}");
-
             if (_hp < hpMax)
             {
                 if (shakeCoroutine != null)
                     StopCoroutine(shakeCoroutine);
-                shakeCoroutine = StartCoroutine(E_Shake());
+
+                if (gameObject.activeSelf)
+                    shakeCoroutine = StartCoroutine(E_Shake());
             }
 
             float ratio = _hp / hpMax;
