@@ -211,7 +211,7 @@ public class GameManager : MonoBehaviour
         if (StoryPlayer.instance.isStoryFinished)
         {   
             PlayerDataManager.data.SetStageSaved(CharacterType.Mice, 1);
-            PlayerDataManager.data.SetStageLastPlayed(CharacterType.Mice, 1);
+            PlayerDataManager.data.SetStageLastPlayed(CharacterType.Mice, 0);
             PlayerDataManager.SaveData();
             isFinished = true;
         }

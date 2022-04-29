@@ -54,10 +54,18 @@ public class StoryPlayer : MonoBehaviour
     public void OnNextButton()
     {
         if (fadeCoroutine != null)
+        {
+            Debug.Log("Fade coroutine is not null");
             return;
+        }
+            
 
         if (nextButtonCoroutine != null)
+        {
+            Debug.Log("Next Button coroutine is not null");
             return;
+        }
+            
                    
         // 마지막페이지면
         if (_page >= _story.pages.Length - 1)
@@ -74,8 +82,13 @@ public class StoryPlayer : MonoBehaviour
 
             if (_story.pages[_page].effectType == PageEffectType.AutoNext)
             {
+                if (nextButtonCoroutine != null)
+                {
+                    StopCoroutine(nextButtonCoroutine);
+                    nextButtonCoroutine = null;
+                }   
                 nextButton.SetActive(false);
-                Invoke("OnNextButton", 1f);
+                StartCoroutine(E_OnNextButton(3f));
             }
             else
             {
@@ -90,6 +103,17 @@ public class StoryPlayer : MonoBehaviour
             image.sprite = _story.pages[_page].sprite;
             skipButton.SetActive(true);
         }
+    }
+
+    private IEnumerator E_OnNextButton(float delay)
+    {
+        float timer = delay;
+        while (timer > 0)
+        {
+            timer -= 0.0167f;
+            yield return null;
+        }
+        OnNextButton();
     }
 
     /// <summary>
@@ -203,9 +227,9 @@ public class StoryPlayer : MonoBehaviour
         float elapsedTime = 0;
 
         // wait for 1 sec
-        while (elapsedTime < 1f)
+        while (elapsedTime < 0.5f)
         {
-            elapsedTime += 0.167f;
+            elapsedTime += 0.0167f;
             yield return null;
         }
 
@@ -217,7 +241,7 @@ public class StoryPlayer : MonoBehaviour
         while (elapsedTime < 1f)
         {
             Debug.Log($"Showing next button... {c.a}");
-            elapsedTime += 0.167f;
+            elapsedTime += 0.0167f * 2;
             c.a += elapsedTime;
             buttonImage.color = c;
             yield return null;

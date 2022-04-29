@@ -142,7 +142,8 @@ public class StageSelectionView : MonoBehaviour
         int stageIdx = PlayerDataManager.data.GetStageLastPlayed(GameManager.characterSelected);
 
         // 해당 캐릭터로 스테이지 진행한적 없으면 프롤로그 진행
-        if (stageIdx == 0)
+        if ((stageIdx == 0) && 
+            (GameManager.characterSelected != CharacterType.Mice))
         {
             PlayPrologue();
             stageIdx = 1;
@@ -164,12 +165,12 @@ public class StageSelectionView : MonoBehaviour
     }
     private void ActiveStageViewsOpened()
     {
-        for (int i = 0; i < stageViews.Length; i++)
+        for (int i = 1; i < stageViews.Length; i++)
         {
             if (i > PlayerDataManager.data.GetStageSaved(GameManager.characterSelected))
-                stageViews[i].isActivated = false;
+                stageViews[i - 1].isActivated = false;
             else
-                stageViews[i].isActivated = true;
+                stageViews[i - 1].isActivated = true;
         }
     }    
 }
