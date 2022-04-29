@@ -36,21 +36,25 @@ public class PlayerStateMachine_Attack : PlayerStateMachine
                 state++;
                 break;
             case State.Casting:
-                // cast enemies
-                Collider2D[] enemies = Physics2D.OverlapBoxAll(rb.position + manager.direction * (col.size.y / 2), castingSize, 0, targetLayer);
-                foreach (var enemy in enemies)
+                if (animationTimer < animationTime * 0.3)
                 {
-                    Vector2 forceVec = Vector2.zero;
-                    if (Mathf.Abs(manager.direction.x) > Mathf.Abs(manager.direction.y))
-                        forceVec = new Vector2(manager.direction.x, 0).normalized;
-                    else
-                        forceVec = new Vector2(0, manager.direction.y).normalized;
+                    // cast enemies
+                    Collider2D[] enemies = Physics2D.OverlapBoxAll(rb.position + manager.direction * (col.size.y / 2), castingSize, 0, targetLayer);
+                    foreach (var enemy in enemies)
+                    {
+                        Vector2 forceVec = Vector2.zero;
+                        if (Mathf.Abs(manager.direction.x) > Mathf.Abs(manager.direction.y))
+                            forceVec = new Vector2(manager.direction.x, 0).normalized;
+                        else
+                            forceVec = new Vector2(0, manager.direction.y).normalized;
 
-                    forceVec *= knockBackForce;
-                    enemy.GetComponent<EnemyController>().KnockBack(forceVec);
-                    enemy.GetComponent<Enemy>().Hurt(damage);                    
+                        forceVec *= knockBackForce;
+                        enemy.GetComponent<EnemyController>().KnockBack(forceVec);
+                        enemy.GetComponent<Enemy>().Hurt(damage);
+                    }
+                    state++;
                 }
-                state++;
+                animationTimer -= Time.deltaTime * modelManager.animationSpeedGain;
                 break;
             case State.OnAction:
                 if (animationTimer < 0)

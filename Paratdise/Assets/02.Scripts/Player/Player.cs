@@ -31,9 +31,11 @@ public class Player : MonoBehaviour
             {
                 value = 0;
                 machineManager.ChangeState(PlayerState.Die);
-                Invoke("GameOver", 3f);
+                Invoke("GameOver", 1f);
             }
 
+            if (value > hpMax)
+                value = hpMax;
             _hp = value;
             PlayerUI.SetHPBar(_hp/hpMax);
         }

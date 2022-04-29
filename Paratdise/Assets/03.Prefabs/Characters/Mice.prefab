@@ -239,7 +239,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   damage: 10
-  knockBackForce: 20
+  knockBackForce: 2
 --- !u!114 &1263266950264161145
 MonoBehaviour:
   m_ObjectHideFlags: 0

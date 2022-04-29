@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 작성자 : 조영민
+/// 최초작성일 : 2022/04/29
+/// 최종수정일 :
+/// 설명 : 
+/// 
+/// 데미지 팝업 에셋을 가져다쓰기위한 클래스
+/// </summary>
 public class DamagePopUpAssets : MonoBehaviour
 {
     private static DamagePopUpAssets _instance;

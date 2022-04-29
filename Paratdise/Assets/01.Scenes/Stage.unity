@@ -421,7 +421,7 @@ Transform:
   m_GameObject: {fileID: 229059148}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 40}
-  m_LocalScale: {x: 9, y: 9, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 767009867}
   m_RootOrder: 0
@@ -896,6 +896,7 @@ MonoBehaviour:
   mapSizeBoundCol: {fileID: 263945477}
   algorithmTimes: 15
   isCreated: 0
+  tracerPoint: {x: 0, y: 0, z: 0}
   mapTile_Start: {fileID: 0}
   mapTile_End: {fileID: 0}
   timeCapsulePrefab: {fileID: 4883344005395017866, guid: a0b65e12fb130d1408adf7ee99a1fc68, type: 3}

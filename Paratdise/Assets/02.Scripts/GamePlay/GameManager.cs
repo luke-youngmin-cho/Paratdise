@@ -150,7 +150,21 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.GoLobby:
                 SceneMover.MoveTo("Lobby");
+                if (WasProloguePlayed())
+                    gameState = GameState.OnLobby;
+                else
+                    Next();
+                break;
+            case GameState.PlayPrologue:
+                instance.PlayPrologue();
                 Next();
+                break;
+            case GameState.WaitForPrologueFinished:
+                if (instance.IsPrologueFinished())
+                {
+                    PrologueToLobbyUI.instance.Play();
+                    Next();
+                }   
                 break;
             case GameState.OnLobby:
                 break;
@@ -179,6 +193,30 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
+
+    private bool WasProloguePlayed()
+    {
+        return PlayerDataManager.data.GetCharacterData(CharacterType.Mice).stageSaved > 0 ? true : false;
+    }
+
+    private void PlayPrologue()
+    {
+        Debug.Log($"Stage Selection View : Starting Prologue...");
+        StoryPlayer.instance.StartStory(StoryAssets.instance.GetStory(CharacterType.Mice, 0));
+    }
+
+    private bool IsPrologueFinished()
+    {
+        bool isFinished = false;
+        if (StoryPlayer.instance.isStoryFinished)
+        {   
+            PlayerDataManager.data.SetStageSaved(CharacterType.Mice, 1);
+            PlayerDataManager.data.SetStageLastPlayed(CharacterType.Mice, 1);
+            PlayerDataManager.SaveData();
+            isFinished = true;
+        }
+        return isFinished;
+    }
 }
 //===============================================================================================
 //*************************************** types *************************************************
@@ -191,6 +229,8 @@ public enum GameState
     WaitForLogin,
     LoadPlayerData,
     GoLobby,
+    PlayPrologue,
+    WaitForPrologueFinished,
     OnLobby,
     StartStage,
     LoadStage,

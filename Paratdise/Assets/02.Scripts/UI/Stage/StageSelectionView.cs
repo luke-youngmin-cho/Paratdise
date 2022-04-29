@@ -34,8 +34,8 @@ public class StageSelectionView : MonoBehaviour
     [SerializeField] private RectTransform contents;
     [SerializeField] private Transform doubleCheckPanel;
     [SerializeField] private Transform stagePreviewPanel;
-    [SerializeField] private Transform dropItemSlotPrefab; 
-    private List<StageSelectButton> stageViews = new List<StageSelectButton>();
+    [SerializeField] private Transform dropItemSlotPrefab;
+    private StageSelectButton[] stageViews;
     
     //===============================================================================================
     //********************************** Private Methods ********************************************
@@ -78,6 +78,7 @@ public class StageSelectionView : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        stageViews = contents.GetComponentsInChildren<StageSelectButton>();
     }
 
     private void Start()
@@ -87,14 +88,14 @@ public class StageSelectionView : MonoBehaviour
 
     private void SetUP()
     {
-        UniTask.Create(async () =>
+        /*UniTask.Create(async () =>
         {
             await UniTask.WaitUntil(() => GameManager.instance != null);
             Debug.Log($"Stage Selection View : Start() called");
             Vector2 buttonSize = stageSelectButtonPrefab.GetComponent<RectTransform>().rect.size;
             contents.GetComponent<RectTransform>().rect.Set(0, 1000, 300, 2500);
             int dir = 1;
-            Vector2 pos = new Vector2(contents.rect.width / 4, buttonSize.y);
+            Vector2 pos = new Vector2(contents.rect.width / 8, buttonSize.y);
             int xIndex = 0;
 
             Debug.Log($"Stage Selection View : Trying to get map infos...");
@@ -133,7 +134,21 @@ public class StageSelectionView : MonoBehaviour
 
             stageSelected = stageIdx;
 
-        });
+        });*/
+
+        ActiveStageViewsOpened();
+        contents.localPosition = new Vector2(0, contents.rect.height);
+
+        int stageIdx = PlayerDataManager.data.GetStageLastPlayed(GameManager.characterSelected);
+
+        // 해당 캐릭터로 스테이지 진행한적 없으면 프롤로그 진행
+        if (stageIdx == 0)
+        {
+            PlayPrologue();
+            stageIdx = 1;
+        }
+
+        stageSelected = stageIdx;
     }
 
     private void PlayPrologue()
@@ -149,7 +164,7 @@ public class StageSelectionView : MonoBehaviour
     }
     private void ActiveStageViewsOpened()
     {
-        for (int i = 0; i < stageViews.Count; i++)
+        for (int i = 0; i < stageViews.Length; i++)
         {
             if (i > PlayerDataManager.data.GetStageSaved(GameManager.characterSelected))
                 stageViews[i].isActivated = false;

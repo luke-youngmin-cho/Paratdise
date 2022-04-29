@@ -25,6 +25,7 @@ public class MapCreater : MonoBehaviour
     public BoxCollider2D mapSizeBoundCol;
     public int algorithmTimes;
     public bool isCreated;
+    [HideInInspector] public Vector3 tracerPoint;
     [HideInInspector] public Transform mapTile_Start;
     [HideInInspector] public Transform mapTile_End;
     [SerializeField] private GameObject timeCapsulePrefab;
@@ -135,6 +136,13 @@ public class MapCreater : MonoBehaviour
             // 맵 생성 알고리즘
             map = CellularAutomata.Calc(map, mapInfo.algoNum);
 
+            // tracer 생성위치
+            tracerPoint = new Vector3()
+            {
+                x = -(hNum / 2) * sizeUnit.x,
+                y = -(vNum / 2) * sizeUnit.y
+            };
+
             // 경계 맵 타일 생성
             for (int i = 0; i < hNum; i++)
             {
@@ -189,8 +197,8 @@ public class MapCreater : MonoBehaviour
             {
                 for (int i = 1; i < hNum - 1; i++)
                 {
-                        //Debug.Log($"{i}{j}, {map[i,j]}");
-                        if (map[i, j] == 1 &&
+                    //Debug.Log($"{i}{j}, {map[i,j]}");
+                    if (map[i, j] == 1 &&
                         map[i, j - 1] == 0)
                     {
                         topEndCoordList.Add(new coordIndex() { x = i, y = j });

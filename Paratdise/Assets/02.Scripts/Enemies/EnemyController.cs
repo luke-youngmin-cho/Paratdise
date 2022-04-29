@@ -4,7 +4,12 @@ using UnityEditor;
 using UnityEngine;
 
 /// <summary>
-/// Enemy actions & AI
+/// 작성자 : 조영민
+/// 최초작성일 : 2022/04/29
+/// 최종수정일 : 
+/// 설명 : 
+/// 
+/// 에너미 동작 제어를 위한 클래스
 /// </summary>
 public class EnemyController : MonoBehaviour
 {
@@ -51,6 +56,9 @@ public class EnemyController : MonoBehaviour
     Vector2 move;
     Vector2 targetVelocity;
     Vector2 _direction; // +1 : right -1 : left
+
+    [Header("Effects")]
+    [SerializeField] private GameObject dieEffect;
 
     public Vector2 direction
     {
@@ -140,6 +148,17 @@ public class EnemyController : MonoBehaviour
         attackTime = GetAnimationTime("Attack");
         hurtTime = GetAnimationTime("Hurt");
         dieTime = GetAnimationTime("Die");
+        PlayStateManager.instance.OnPlayStateChanged += OnPlayStateChanged;
+    }
+
+    private void OnDestroy()
+    {
+        PlayStateManager.instance.OnPlayStateChanged -= OnPlayStateChanged;
+    }
+
+    private void OnPlayStateChanged(PlayState newPlayState)
+    {
+        enabled = newPlayState == PlayState.Play;
     }
 
     private void Start()
@@ -169,9 +188,15 @@ public class EnemyController : MonoBehaviour
             direction = move;
 
             if (Mathf.Abs(_direction.magnitude) > 0.1f)
-                ChangeEnemyState(EnemyState.Move);
+            {
+                if (oldState == EnemyState.Idle)
+                    ChangeEnemyState(EnemyState.Move);
+            }
             else
-                ChangeEnemyState(EnemyState.Idle);
+            {
+                if (oldState == EnemyState.Move)
+                    ChangeEnemyState(EnemyState.Idle);
+            }
         }
 
         UpdateEnemyState();
@@ -415,6 +440,7 @@ public class EnemyController : MonoBehaviour
         {
             case DieState.PrepareToDie:
                 ChangeAnimationState("Die");
+                rb.velocity = Vector3.zero;
                 move = Vector2.zero;
                 dieState = DieState.Dying;
                 break;
@@ -426,7 +452,8 @@ public class EnemyController : MonoBehaviour
                 animationTimer += Time.deltaTime;
                 break;
             case DieState.Dead:
-                // todo -> dead event
+                Instantiate(dieEffect, rb.position, Quaternion.identity);
+                Destroy(gameObject);
                 break;
         }
     }
@@ -479,6 +506,7 @@ public class EnemyController : MonoBehaviour
         if (currentAnimationName == newAnimationName) return;
 
         animator.Play(newAnimationName);
+        Debug.Log($"Play {newAnimationName}");
         currentAnimationName = newAnimationName;
     }
 

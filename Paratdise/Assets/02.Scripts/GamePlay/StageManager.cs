@@ -171,7 +171,7 @@ public class StageManager : MonoBehaviour
                     Next();
                 break;
             case StageState.StoryPlayBeforeStage:
-                if (stageInfo.storyBeforeStage != null)
+                if (stageInfo.storyBeforeStage != null )
                 {
                     StoryPlayer.instance.StartStory(stageInfo.storyBeforeStage);
                     state = StageState.WaitForStoryPlayBeforeStageFinished;
@@ -198,7 +198,7 @@ public class StageManager : MonoBehaviour
                 if (tracerPrefab != null)
                 {
                     // 추격자 시작위치 바로아래 생성
-                    tracer = Instantiate(tracerPrefab, MapCreater.instance.mapTile_Start.position + Vector3.down * (tracerPrefab.transform.lossyScale.y / 2 + 2), Quaternion.identity).GetComponent<Tracer>();
+                    tracer = Instantiate(tracerPrefab, MapCreater.instance.tracerPoint + Vector3.down * (tracerPrefab.GetComponent<BoxCollider2D>().size.y / 2 + 2), Quaternion.identity).GetComponent<Tracer>();
                     tracer.StartMove();
                 }
 
@@ -213,6 +213,7 @@ public class StageManager : MonoBehaviour
 
             case StageState.Finish:
                 Debug.Log("Stage Finished!");
+                PlayStateManager.instance.SetState(PlayState.Paused);
                 clearPopUp.SetActive(true);
                 SaveEarnedItems();
                 SaveEarnedPiecesOfStory();

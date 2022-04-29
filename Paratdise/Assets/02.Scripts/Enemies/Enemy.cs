@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+/// <summary>
+/// 작성자 : 조영민
+/// 최초작성일 : 2022/04/29
+/// 최종수정일 : 
+/// 설명 : 
+/// 
+/// 에너미 스텟 & 충돌 처리 클래스
+/// </summary>
 public class Enemy : MonoBehaviour
 {
     [Header("Stats")]
@@ -45,14 +53,15 @@ public class Enemy : MonoBehaviour
             }
 
             _hp = value;
-            hpBar.value = (_hp / hpMax);
+            ShowHPBarForSeconds();
+            ui.SetHPBar(_hp / hpMax);
         }
         get
         {
             return _hp;
         }
     }
-    [SerializeField] Slider hpBar;
+    [SerializeField] private EnemyUI ui;
 
     [Header("Animation")]
     public float hpBarShowTime;
@@ -77,13 +86,8 @@ public class Enemy : MonoBehaviour
     //*************************** Public Methods *********************************
     //============================================================================
 
-    /// <summary>
-    /// Get single damage.
-    /// Show HP bar for few seconds & Damage pop up
-    /// </summary>
     public void Hurt(float damage)
     {
-        ShowHPBarForSeconds();
         DamagePopUp.Create(tr.position + new Vector3(0f, col.size.y / 2, 0f), damage, gameObject.layer);
 
         FindTarget();
@@ -107,6 +111,17 @@ public class Enemy : MonoBehaviour
         col = GetComponent<CapsuleCollider2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         originColor = spriteRenderer.color;
+        PlayStateManager.instance.OnPlayStateChanged += OnPlayStateChanged;
+    }   
+
+    private void OnDestroy()
+    {
+        PlayStateManager.instance.OnPlayStateChanged -= OnPlayStateChanged;
+    }
+    
+    private void OnPlayStateChanged(PlayState newPlayState)
+    {
+        enabled = newPlayState == PlayState.Play;
     }
 
     private void OnEnable()
@@ -120,9 +135,6 @@ public class Enemy : MonoBehaviour
         //ObjectPool.ReturnToPool(gameObject);
     }
 
-    /// <summary>
-    /// Detect player in range and set target
-    /// </summary>
     private void FindTarget()
     {
         controller.autoFollowPlayer = true;
@@ -131,9 +143,6 @@ public class Enemy : MonoBehaviour
         releaseTargetCoroutine = StartCoroutine(E_ReleaseTarget());
     }
 
-    /// <summary>
-    /// Stop targeting / following player.
-    /// </summary>
     IEnumerator E_ReleaseTarget()
     {
         yield return new WaitForSeconds(releaseTargetTime);
@@ -142,9 +151,6 @@ public class Enemy : MonoBehaviour
             FindTarget();
     }
 
-    /// <summary>
-    /// Fade out for few seconds
-    /// </summary>
     IEnumerator E_FadeOutWhenDead()
     {
         float elapsedTime = 0;
@@ -170,11 +176,11 @@ public class Enemy : MonoBehaviour
         float elapsedTime = 0;
         while (elapsedTime < hpBarShowTime)
         {
-            hpBar.gameObject.SetActive(true);
+            ui.gameObject.SetActive(true);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        hpBar.gameObject.SetActive(false);
+        ui.gameObject.SetActive(false);
         hpBarShowCoroutine = null;
     }
 
@@ -197,9 +203,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Hurt player when touch
-    /// </summary>
     private void OnTriggerStay2D(Collider2D collision)
     {
         GameObject go = collision.gameObject;
