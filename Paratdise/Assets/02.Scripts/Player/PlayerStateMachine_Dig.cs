@@ -50,38 +50,38 @@ public class PlayerStateMachine_Dig : PlayerStateMachine
                 if (dir == Vector2.up)
                 {
                     center = new Vector2(transform.position.x + dir.x / 2,
-                                         transform.position.y + dir.y / 2 + height / 2);
+                                         transform.position.y + dir.y / 2 + height / 4);
                     size = new Vector2(width, height) / 2;
                 }
                 else if (dir == Vector2.down)
                 {
                     center = new Vector2(transform.position.x + dir.x / 2,
-                                         transform.position.y + dir.y / 2 - height / 2);
+                                         transform.position.y + dir.y / 2 - height / 4);
                     size = new Vector2(width, height) / 2;
                 }
                 else if (dir == Vector2.left)
                 {
-                    center = new Vector2(transform.position.x + dir.x / 2 - height / 2,
+                    center = new Vector2(transform.position.x + dir.x / 2 - height / 4,
                                          transform.position.y + dir.y / 2);
                     size = new Vector2(height, width) / 2;
                 }
                 else if (dir == Vector2.right)
                 {
-                    center = new Vector2(transform.position.x + dir.x / 2 + height / 2,
+                    center = new Vector2(transform.position.x + dir.x / 2 + height / 4,
                                          transform.position.y + dir.y / 2);
                     size = new Vector2(height, width) / 2;
                 }
                 //Debug.Log($"{center}, {size}");
                 if (animationTimer < animationTime / 2)
                 {
-                    Debug.Log($"Dig spec : {center}, {size}");
+                    //Debug.Log($"Dig spec : {center}, {size}");
                     RaycastHit2D[] hits = Physics2D.BoxCastAll(center , size , 0, Vector2.zero, 0, targetLayer);
                     foreach (var hit in hits)
                     {
                         if (hit.collider.tag == "Destroyable")
                         {
-                            hit.collider.GetComponent<MapTile_Destroyable>().hp -= strength;
-                            Debug.Log($"Dig {hit.collider.name} with {strength}");
+                            hit.collider.GetComponent<MapTile_Destroyable>().Hurt(strength);
+                            //Debug.Log($"Dig {hit.collider.name} with {strength}");
                         }
 
                     }

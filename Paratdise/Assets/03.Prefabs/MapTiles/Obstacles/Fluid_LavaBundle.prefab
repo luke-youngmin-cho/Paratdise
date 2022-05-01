@@ -76,6 +76,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67b60c47f34a5a842afeb6178b76bfdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapTileLayer:
+    serializedVersion: 2
+    m_Bits: 1048576
 --- !u!1001 &146286898597658461
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -134,3 +134,10 @@ MonoBehaviour:
   hpMax: 5
   hurtEffect: {fileID: 0}
   destroyEffect: {fileID: 0}
+  dropItems: []
+  buffInfoWhenHurt:
+    type: 0
+    active: 0
+  buffInfoWhenDestroy:
+    type: 2
+    active: 0

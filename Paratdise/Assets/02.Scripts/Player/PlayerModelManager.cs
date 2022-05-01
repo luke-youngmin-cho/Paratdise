@@ -17,6 +17,14 @@ public class PlayerModelManager : MonoBehaviour
     public GameObject backModel;
     public GameObject sideModel;
 
+    [SerializeField] private SpriteRenderer[] frontSpriteRenderers;
+    [SerializeField] private SpriteRenderer[] backSpriteRenderers;
+    [SerializeField] private SpriteRenderer[] sideSpriteRenderers;
+    [SerializeField] private SpriteOutline[] frontSpriteOutLines;
+    [SerializeField] private SpriteOutline[] backSpriteOutLines;
+    [SerializeField] private SpriteOutline[] sideSpriteOutLines;
+    private Color tmpColor = Color.white;
+
     public Animator frontAnimator;
     public Animator backAnimator;
     public Animator sideAnimator;
@@ -97,6 +105,11 @@ public class PlayerModelManager : MonoBehaviour
         currentAnimator = sideAnimator;
     }
     
+    public void StartBlink(Color blinkColor, float time, float period, bool onlyOutline)
+    {
+        StartCoroutine(E_Blink(blinkColor, time, period, onlyOutline));
+    }
+
 
     //============================================================================
     //************************* Private Methods **********************************
@@ -110,5 +123,114 @@ public class PlayerModelManager : MonoBehaviour
         LookFront();
     }
 
+   
 
+    private IEnumerator E_Blink(Color blinkColor, float time, float period, bool onlyOutline)
+    {
+        tmpColor = blinkColor;
+        float timer = time;
+        float blinkTimer = period;
+        foreach (var spriteRenderer in frontSpriteRenderers)
+            spriteRenderer.color = tmpColor + Color.gray;
+
+        foreach (var spriteRenderer in backSpriteRenderers)
+            spriteRenderer.color = tmpColor + Color.gray;
+
+        foreach (var spriteRenderer in sideSpriteRenderers)
+            spriteRenderer.color = tmpColor + Color.gray;
+
+        foreach (var spriteOutline in frontSpriteOutLines)
+        {
+            spriteOutline.color = tmpColor;
+            spriteOutline.outlineSize = 16;
+        }
+
+        foreach (var spriteOutline in backSpriteOutLines)
+        {
+            spriteOutline.color = tmpColor;
+            spriteOutline.outlineSize = 16;
+        }
+
+        foreach (var spriteOutline in sideSpriteOutLines)
+        {
+            spriteOutline.color = tmpColor;
+            spriteOutline.outlineSize = 16;
+        }
+            
+
+        while (timer > 0)
+        {
+            if (blinkTimer > period / 2f)
+                tmpColor.a -= Time.deltaTime * period * 2f;
+            else if (blinkTimer > 0)
+                tmpColor.a += Time.deltaTime * period * 2f;
+            else
+                blinkTimer = period;
+
+            blinkTimer -= Time.deltaTime;
+
+            Debug.Log(tmpColor);
+            if (!onlyOutline)
+            {
+                foreach (var spriteRenderer in frontSpriteRenderers)
+                    spriteRenderer.color = new Color(tmpColor.r + Color.gray.r,
+                                                     tmpColor.g + Color.gray.g,
+                                                     tmpColor.b + Color.gray.b,
+                                                     tmpColor.a);
+
+                foreach (var spriteRenderer in backSpriteRenderers)
+                    spriteRenderer.color = new Color(tmpColor.r + Color.gray.r,
+                                                     tmpColor.g + Color.gray.g,
+                                                     tmpColor.b + Color.gray.b,
+                                                     tmpColor.a);
+
+                foreach (var spriteRenderer in sideSpriteRenderers)
+                    spriteRenderer.color = new Color(tmpColor.r + Color.gray.r,
+                                                     tmpColor.g + Color.gray.g,
+                                                     tmpColor.b + Color.gray.b,
+                                                     tmpColor.a);
+            }
+
+            foreach (var spriteOutline in frontSpriteOutLines)
+                spriteOutline.color = tmpColor;
+
+            foreach (var spriteOutline in backSpriteOutLines)
+                spriteOutline.color = tmpColor;
+
+            foreach (var spriteOutline in sideSpriteOutLines)
+                spriteOutline.color = tmpColor;
+
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+
+        tmpColor = Color.white;
+
+        foreach (var spriteRenderer in frontSpriteRenderers)
+            spriteRenderer.color = tmpColor;
+
+        foreach (var spriteRenderer in backSpriteRenderers)
+            spriteRenderer.color = tmpColor;
+
+        foreach (var spriteRenderer in sideSpriteRenderers)
+            spriteRenderer.color = tmpColor;
+
+        foreach (var spriteOutline in frontSpriteOutLines)
+        {
+            spriteOutline.color = tmpColor;
+            spriteOutline.outlineSize = 0;
+        }
+
+        foreach (var spriteOutline in backSpriteOutLines)
+        {
+            spriteOutline.color = tmpColor;
+            spriteOutline.outlineSize = 0;
+        }
+
+        foreach (var spriteOutline in sideSpriteOutLines)
+        {
+            spriteOutline.color = tmpColor;
+            spriteOutline.outlineSize = 0;
+        }
+    }
 }

@@ -5,12 +5,13 @@ using UnityEngine;
 /// <summary>
 /// 작성자 : 조영민
 /// 최초작성일 : 2022/04/10
-/// 최종수정일 : 
+/// 최종수정일 : 2022/05/02
 /// 설명 : 
 /// 
 /// 파괴가능한 맵타일 클래스.
 /// 체력이 깎일때마다 이펙트를 생성하며
 /// 체력이 0이되면 목록에서 랜덤한 아이템을 드롭하고 파괴됨.
+/// 버프 적용/제거 가능함
 /// </summary>
 
 public class MapTile_Destroyable : MapTile
@@ -89,6 +90,18 @@ public class MapTile_Destroyable : MapTile
     }
     [SerializeField] private List<DropItemInfo> dropItems = new List<DropItemInfo>();
 
+    [System.Serializable]
+    public class BuffInfo
+    {
+        public BuffType type;
+        public bool active;
+    }
+
+    [Header("플레이어가 가격시 가할 버프")]
+    [SerializeField] private BuffInfo buffInfoWhenHurt;
+    [Header("플레이어가 파괴시 가할 버프")]
+    [SerializeField] private BuffInfo buffInfoWhenDestroy;
+
 
     private SpriteRenderer spriteRenderer;
     private Coroutine shakeCoroutine = null;
@@ -103,6 +116,36 @@ public class MapTile_Destroyable : MapTile
     {
         base.OnEnable();
         hp = hpMax;
+    }
+
+    /// <summary>
+    /// 플레이어가 디깅을 할때 지질 체력을 깎기 위한 함수
+    /// </summary>
+    public void Hurt(float damage)
+    {
+        float tmpHP = hp;
+        if (tmpHP > damage)
+        {
+            if (buffInfoWhenHurt.type != BuffType.None)
+            {
+                if (buffInfoWhenHurt.active)
+                    BuffManager.ActiveBuff(buffInfoWhenHurt.type, null);
+                else
+                    BuffManager.DeactiveBuff(buffInfoWhenHurt.type, null);
+            }
+        }
+        else
+        {
+            if (buffInfoWhenDestroy.type != BuffType.None)
+            {
+                if (buffInfoWhenDestroy.active)
+                    BuffManager.ActiveBuff(buffInfoWhenDestroy.type, null);
+                else
+                    BuffManager.DeactiveBuff(buffInfoWhenDestroy.type, null);
+            }
+        }
+
+        hp -= damage;
     }
 
     private void DropRandomItem()

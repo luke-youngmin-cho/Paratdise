@@ -428,7 +428,7 @@ public class MapCreater : MonoBehaviour
             isCreated = true;
 
             // optimization
-            optimizer.DivideSectors(transform.position, mapInfo.size, new Vector2(3,3));
+            optimizer.DivideSectors(transform.position, mapInfo.size, new Vector2(5,5));
             optimizer.DoOptimization();
         });
     }
