@@ -19,11 +19,23 @@ public class MapElementAssets : MonoBehaviour
         get
         {
             if (_instance == null)
+            {
                 _instance = Instantiate(Resources.Load<MapElementAssets>("Assets/MapElementAssets"));
+                DontDestroyOnLoad(_instance.gameObject);
+            }   
             return _instance;
         }
     }
 
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
+    }
     [SerializeField] List<GameObject> mapElementPrefabs = new List<GameObject>();
 
     public GameObject GetMapElementByName(string tag) =>

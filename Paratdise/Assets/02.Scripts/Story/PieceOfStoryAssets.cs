@@ -18,15 +18,33 @@ public class PieceOfStoryAssets : MonoBehaviour
         get
         {
             if (_instance == null)
-                Instantiate(Resources.Load<PieceOfStoryAssets>("Assets/PieceOfStoryAssets"));
+            {
+                _instance = Instantiate(Resources.Load<PieceOfStoryAssets>("Assets/PieceOfStoryAssets"));
+                DontDestroyOnLoad(_instance.gameObject);
+            }   
             return _instance;
+        }
+    }
+
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
         }
     }
 
     public List<PieceOfStory> piecesOfStory = new List<PieceOfStory>();
 
-    public PieceOfStoryRarity GetRariry(int index)
-    {
-        return piecesOfStory.Find(x => x.index == index).rarity;
-    }
+    public static PieceOfStory GetPieceOfStory(int index) =>
+        instance.piecesOfStory.Find(x => x.index == index);
+
+
+    public static PieceOfStory GetRandomPieceOfStory() =>
+        instance.piecesOfStory[Random.Range(0, instance.piecesOfStory.Count)];
+    
+
+    public static PieceOfStoryRarity GetRariry(int index) =>
+        instance.piecesOfStory.Find(x => x.index == index).rarity;
 }

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5146957594159904448}
   - component: {fileID: 5146957594159904451}
   - component: {fileID: 5146957594159904450}
-  - component: {fileID: 5146957594159904461}
   m_Layer: 5
   m_Name: EndingView
   m_TagString: Untagged
@@ -109,23 +108,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5146957594159904461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5146957594159904463}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e23f93c7697311a4fac44d91e8988915, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 1
-  itemContent: {fileID: 5146957596159987744}
-  slotPrefab: {fileID: 4745214248473641545, guid: 26586ecc7458e1b46929d71deac118be, type: 3}
-  slots: []
-  diaryInfoPanel: {fileID: 0}
 --- !u!1 &5146957594176503136
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,7 +228,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5146957594176503143}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5146957596218340265}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5146957594203078315
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,7 +630,7 @@ MonoBehaviour:
   m_Content: {fileID: 5146957594389860355}
   m_Horizontal: 1
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -663,11 +657,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23f93c7697311a4fac44d91e8988915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   itemContent: {fileID: 5146957594389860355}
   slotPrefab: {fileID: 4745214248473641545, guid: 26586ecc7458e1b46929d71deac118be, type: 3}
   slots: []
-  diaryInfoPanel: {fileID: 0}
+  diaryInfoPanel: {fileID: 5146957596218340265}
 --- !u!1 &5146957594389860354
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,7 +694,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00026473534}
+  m_AnchoredPosition: {x: 0, y: 0.00078456855}
   m_SizeDelta: {x: 0, y: 1534.9}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5146957594389860352
@@ -724,7 +717,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 150, y: 150}
+  m_CellSize: {x: 300, y: 300}
   m_Spacing: {x: 5, y: 5}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -1088,11 +1081,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
-    m_MaxSize: 40
+    m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -2380,7 +2373,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00026473534}
+  m_AnchoredPosition: {x: 0, y: 0.00078456855}
   m_SizeDelta: {x: 0, y: 1534.9}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5146957596159987745
@@ -2403,7 +2396,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 150, y: 150}
+  m_CellSize: {x: 300, y: 300}
   m_Spacing: {x: 5, y: 5}
   m_Constraint: 0
   m_ConstraintCount: 2

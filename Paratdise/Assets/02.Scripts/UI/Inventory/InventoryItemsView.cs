@@ -43,13 +43,19 @@ public class InventoryItemsView : MonoBehaviour
         foreach (var data in InventoryDataManager.data.itemsData)
         {
             Item item = ItemAssets.instance.GetItemByName(data.itemName);
-            if ((item.tag == tag) &&
-               (item.type == type) &&
-               (data.num > 0))
+            if ((item != null) &&
+                (item.tag == tag) &&
+                (item.type == type) &&
+                (data.num > 0))
             {
+                //Debug.LogWarning($"인벤토리창 : {data.itemName} 리소스를 성공적으로 불러왔습니다.");
                 GameObject slot = Instantiate(slotPrefab, itemContent);
                 slots.Add(slot);
-                slot.GetComponent<InventorySlot>().SetInfo(item.icon, item.name, data.num, item.discription);
+                slot.GetComponent<InventorySlot>().SetInfo(item.icon, item.name, data.num, item.description);
+            }
+            else
+            {
+                //Debug.LogWarning($"인벤토리창 : {data.itemName} 리소스를 불러올 수 없습니다. 이름 확인바람");
             }
         }
     }

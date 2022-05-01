@@ -1,12 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
 /// 작성자 : 조영민
 /// 최초작성일 : 2022/03/28
-/// 최종수정일 : 
+/// 최종수정일 : 2022/04/26
 /// 설명 : 
 /// 
 /// 연출 클래스
@@ -14,7 +13,19 @@ using UnityEngine.UI;
 
 public class StoryPlayer : MonoBehaviour
 {
-    public static StoryPlayer instance;
+    public static StoryPlayer _instance;
+    public static StoryPlayer instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = Instantiate(Resources.Load<StoryPlayer>("UI/StoryPlayerUI"));
+                DontDestroyOnLoad(_instance.gameObject);
+            }
+            return _instance;
+        }
+    }
     public Image image;
 
     public bool isStoryFinished
@@ -25,10 +36,11 @@ public class StoryPlayer : MonoBehaviour
         }
     }
     public Story _story;
-    private int _page;
+    [SerializeField] private int _page;
     public GameObject _popUp;
     public GameObject nextButton;
-    private Coroutine coroutine = null;
+    public GameObject skipButton;
+    private Coroutine fadeCoroutine = null;
     private Coroutine nextButtonCoroutine = null;
 
 
@@ -41,46 +53,67 @@ public class StoryPlayer : MonoBehaviour
     /// </summary>
     public void OnNextButton()
     {
-        if (_story == null ||
-            _page == _story.pages.Length - 1) 
+        if (fadeCoroutine != null)
+        {
+            Debug.Log("Fade coroutine is not null");
             return;
+        }
+            
 
+        if (nextButtonCoroutine != null)
+        {
+            Debug.Log("Next Button coroutine is not null");
+            return;
+        }
+            
+                   
+        // 마지막페이지면
+        if (_page >= _story.pages.Length - 1)
+        {
+            skipButton.SetActive(false);
+            Debug.Log("이거 마지막 페이지 였음");
+            EndStory();
+        }
         // 다음페이지 넘기기
-        if (_page < _story.pages.Length - 1)
+        else
         {
             ++_page;
             Debug.Log($"다음 페이지, {_story.pages[_page].sprite.name}");
 
             if (_story.pages[_page].effectType == PageEffectType.AutoNext)
             {
+                if (nextButtonCoroutine != null)
+                {
+                    StopCoroutine(nextButtonCoroutine);
+                    nextButtonCoroutine = null;
+                }   
                 nextButton.SetActive(false);
-                Invoke("OnNextButton", 1f);
+                StartCoroutine(E_OnNextButton(3f));
             }
             else
             {
-                if (nextButtonCoroutine != null)
-                    StopCoroutine(nextButtonCoroutine);
                 nextButtonCoroutine = StartCoroutine(E_ShowNextButtonLater());
             }
             
             if (_story.pages[_page].effectType == PageEffectType.Shake)
             {
-                StartCoroutine(E_Shake());
+                fadeCoroutine = StartCoroutine(E_Shake());
             }
 
             image.sprite = _story.pages[_page].sprite;
+            skipButton.SetActive(true);
         }
-        // 마지막페이지면
-        if (_page == _story.pages.Length - 1)
+    }
+
+    private IEnumerator E_OnNextButton(float delay)
+    {
+        float timer = delay;
+        while (timer > 0)
         {
-            Debug.Log("이거 마지막 페이지 였음");
-            // 선택창 없으면 연출종료
-            if (_story.popUp == null)
-                EndStory();
-            // 선택창 있으면 선택창 띄우기
-            else
-                _popUp = Instantiate(_story.popUp, transform);
+            timer -= 0.0167f;
+            yield return null;
         }
+        OnNextButton();
     }
 
     /// <summary>
@@ -88,37 +121,42 @@ public class StoryPlayer : MonoBehaviour
     /// </summary>
     public void StartStory(Story story)
     {
-        StopAllCoroutines();
-        Debug.Log($"연출 시작 {story.name}");
-
         if (_popUp != null)
             Destroy(_popUp);
 
+        if (story == null) 
+            return;
+
+        Debug.Log($"연출 시작 {story.name}");
+
+        PlayStateManager.instance.SetState(PlayState.Paused);
         transform.GetChild(0).GetComponent<Image>().color = Color.black; // BG
         transform.GetChild(1).GetComponent<Image>().color = Color.white; 
         _story = story;
         _page = 0;
         image.sprite = _story.pages[0].sprite;
-        nextButton.GetComponent<Button>().interactable = true;
-        nextButton.SetActive(true);
 
         gameObject.SetActive(true);
+        if (nextButtonCoroutine != null)
+            StopCoroutine(nextButtonCoroutine);
+        nextButtonCoroutine = StartCoroutine(E_ShowNextButtonLater());
 
         switch (_story.showEffect)
         {
             case StoryEffectType.None:
                 break;
             case StoryEffectType.FadeIn:
-                coroutine = StartCoroutine(E_FadeIn());
+                fadeCoroutine = StartCoroutine(E_FadeIn());
                 break;
             case StoryEffectType.FadeOut:
-                coroutine = StartCoroutine(E_FadeOut());
+                fadeCoroutine = StartCoroutine(E_FadeOut());
                 break;
             case StoryEffectType.Dissolve:
                 break;
             default:
                 break;
-        }        
+        }
+        skipButton.SetActive(true);
     }
 
     /// <summary>
@@ -126,25 +164,47 @@ public class StoryPlayer : MonoBehaviour
     /// </summary>
     public void EndStory()
     {
-        switch (_story.hideEffect)
+        if(_story.popUp != null &&
+            _popUp == null)
         {
-            case StoryEffectType.None:
-                break;
-            case StoryEffectType.FadeIn:
-                coroutine = StartCoroutine(E_FadeIn());
-                break;
-            case StoryEffectType.FadeOut:
-                coroutine = StartCoroutine(E_FadeOut());
-                break;
-            case StoryEffectType.Dissolve:
-                break;
-            default:
-                break;
+            skipButton.SetActive(false);
+            _page = _story.pages.Length - 1;
+            image.sprite = _story.pages[_page].sprite;
+            _popUp = Instantiate(_story.popUp, transform);
         }
-        _story = null;
-        _page = 0;
-        gameObject.SetActive(false);
-        StopAllCoroutines();
+            
+        // 마지막 이벤트가 있으면 이벤트재생
+        /*if ((_page < _story.pages.Length - 1) &&
+            (_story.popUp != null))
+        {
+            _page = _story.pages.Length - 1;
+            OnNextButton();
+        }*/
+        
+        // 없으면 연출 끝냄
+        else
+        {
+            switch (_story.hideEffect)
+            {
+                case StoryEffectType.None:
+                    gameObject.SetActive(false);
+                    break;
+                case StoryEffectType.FadeIn:
+                    fadeCoroutine = StartCoroutine(E_FadeIn());
+                    break;
+                case StoryEffectType.FadeOut:
+                    fadeCoroutine = StartCoroutine(E_FadeOut());
+                    break;
+                case StoryEffectType.Dissolve:
+                    gameObject.SetActive(false);
+                    break;
+                default:
+                    break;
+            }
+            _story = null;
+            _page = 0;
+            PlayStateManager.instance.SetState(PlayState.Play);
+        }
     }
 
 
@@ -152,21 +212,10 @@ public class StoryPlayer : MonoBehaviour
     //********************************** Private Methods ********************************************
     //===============================================================================================
 
-    private void Awake()
-    {
-        if (instance != null)
-            Destroy(instance.gameObject);
-        instance = this;
-    }
 
     private void OnDestroy()
     {
         StopAllCoroutines();
-    }
-
-    private void Start()
-    {
-        gameObject.SetActive(false);
     }
 
     private IEnumerator E_ShowNextButtonLater()
@@ -174,16 +223,26 @@ public class StoryPlayer : MonoBehaviour
         nextButton.SetActive(false);
         nextButton.GetComponent<Button>().interactable = false;
         Image buttonImage = nextButton.GetComponent<Image>();
-        yield return new WaitForSeconds(1f);
+
+        float elapsedTime = 0;
+
+        // wait for 1 sec
+        while (elapsedTime < 0.5f)
+        {
+            elapsedTime += 0.0167f;
+            yield return null;
+        }
 
         nextButton.SetActive(true);
         Color c = buttonImage.color;
         c.a = 0;
         buttonImage.color = c;
-        float elapsedTime = 0;
+        elapsedTime = 0;
         while (elapsedTime < 1f)
         {
-            elapsedTime += 0.167f;
+            Debug.Log($"Showing next button... {c.a}");
+            elapsedTime += 0.0167f * 2;
+            c.a += elapsedTime;
             buttonImage.color = c;
             yield return null;
         }
@@ -202,7 +261,8 @@ public class StoryPlayer : MonoBehaviour
             image.color = c;
             yield return null;
         }
-        coroutine = null;
+        gameObject.SetActive(true);
+        fadeCoroutine = null;
     }
 
     private IEnumerator E_FadeOut()
@@ -216,7 +276,8 @@ public class StoryPlayer : MonoBehaviour
             image.color = c;
             yield return null;
         }
-        coroutine = null;
+        gameObject.SetActive(false);
+        fadeCoroutine = null;
     }
 
     private IEnumerator E_Shake()
@@ -232,5 +293,6 @@ public class StoryPlayer : MonoBehaviour
             yield return null;
         }
         transform.GetChild(1).position = startPos;
+        fadeCoroutine = null;
     }
 }

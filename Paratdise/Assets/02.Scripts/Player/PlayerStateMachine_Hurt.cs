@@ -10,6 +10,15 @@
 /// </summary>
 public class PlayerStateMachine_Hurt : PlayerStateMachine
 {
+    public override bool IsExecuteOK()
+    {
+        bool isOK = false;
+        if (manager.state == PlayerState.Idle ||
+            manager.state == PlayerState.Movement ||
+            manager.state == PlayerState.Dig)
+            isOK = true;
+        return isOK;
+    }
     public override PlayerState Workflow()
     {
         PlayerState nextState = playerState;

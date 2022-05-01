@@ -14,5 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chapter: 1
   stage: 2
-  icon: {fileID: 21300000, guid: 1e6523bc7593fa34abb1d829f70aae63, type: 3}
-  dropItemList: []
+  icon: {fileID: 21300000, guid: 04fec1be7e2a5984f9e10d03c3b6ec2f, type: 3}
+  dropItemList:
+  - {fileID: 11400000, guid: 3929c9c6297404b408c4dbfab9e05502, type: 2}
+  - {fileID: 11400000, guid: d5f75a811cebbc548a0f40e136feebdb, type: 2}
+  - {fileID: 11400000, guid: 13673df914ed08b47891bc62be004657, type: 2}
+  - {fileID: 11400000, guid: 660bed621c9a73040aae7160bc4938e8, type: 2}
+  - {fileID: 11400000, guid: 89146ee593748a442a4b7c825ec53dc0, type: 2}
+  storyBeforeStage: {fileID: 0}
+  storyAfterStage: {fileID: 0}

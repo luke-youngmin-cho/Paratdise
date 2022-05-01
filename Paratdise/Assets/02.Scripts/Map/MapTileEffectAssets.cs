@@ -18,8 +18,19 @@ public class MapTileEffectAssets : MonoBehaviour
         get
         {
             if (_instance == null)
-               _instance = Instantiate(Resources.Load<MapTileEffectAssets>("Assets/MapTileEffectAssets"));
+            {
+                _instance = Instantiate(Resources.Load<MapTileEffectAssets>("Assets/MapTileEffectAssets"));
+                DontDestroyOnLoad(_instance.gameObject);
+            }               
             return _instance;
+        }
+    }
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
         }
     }
 

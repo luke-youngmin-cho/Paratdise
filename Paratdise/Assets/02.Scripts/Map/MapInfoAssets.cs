@@ -24,8 +24,17 @@ public class MapInfoAssets : MonoBehaviour
         }
     }
 
-    public List<MapInfo> mapInfos = new List<MapInfo>();
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
+    [SerializeField] public List<MapInfo> mapInfos = new List<MapInfo>();
 
     public MapInfo GetMapInfo(int stage) =>
-        mapInfos.Find(x => x.name == $"MapInfo_{stage}");
+        mapInfos.Find(x => x.name == $"MapInfo_{stage}");     
 }

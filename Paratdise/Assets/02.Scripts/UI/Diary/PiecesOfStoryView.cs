@@ -32,13 +32,14 @@ public class PiecesOfStoryView : MonoBehaviour
         for (int i = slots.Count - 1; i > -1; i--)
             Destroy(slots[i]);
         slots.Clear();
-        GameObject slot = Instantiate(slotPrefab, itemContent);
-        slots.Add(slot);
-
+        
         for (int i = 0; i < PlayerDataManager.data.piecesOfStory.Length; i++)
         {
             if (PlayerDataManager.data.piecesOfStory[i])
             {
+                GameObject slot = Instantiate(slotPrefab, itemContent);
+                slots.Add(slot);
+                Debug.Log($"스토리조각 {i} 있음");
                 PieceOfStory pieceOfStory = PieceOfStoryAssets.instance.piecesOfStory.Find(x => x.index == i);
                 slot.GetComponent<DiarySlot>().SetInfo(pieceOfStory.icon, pieceOfStory.title, pieceOfStory.description);
             }

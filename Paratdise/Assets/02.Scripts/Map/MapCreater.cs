@@ -18,8 +18,6 @@ using Cysharp.Threading.Tasks;
 /// 2. 나머지 빈공간은 기본 타일 도배
 /// 3. 기본타일 위치중 랜덤으로 특수타일/ 맵 관련 객체 배치 
 /// </summary>
-
-
 public class MapCreater : MonoBehaviour
 {
     public static MapCreater instance;
@@ -27,9 +25,11 @@ public class MapCreater : MonoBehaviour
     public BoxCollider2D mapSizeBoundCol;
     public int algorithmTimes;
     public bool isCreated;
+    [HideInInspector] public Vector3 tracerPoint;
     [HideInInspector] public Transform mapTile_Start;
     [HideInInspector] public Transform mapTile_End;
-
+    [SerializeField] private GameObject timeCapsulePrefab;
+    [SerializeField] private SpriteRenderer bg;
     private void Awake()
     {
         instance = this;
@@ -44,6 +44,10 @@ public class MapCreater : MonoBehaviour
         UniTask.Create(async () =>
         {
             MapInfo mapInfo = MapInfoAssets.instance.GetMapInfo(stage);
+
+            // 배경설정
+            bg.sprite = mapInfo.bg;
+            bg.transform.localScale = new Vector3(mapInfo.size.x / 5, mapInfo.size.x / 5, 1);
 
             // 경계 맵타일 오브젝트 풀 등록
             foreach (var item in mapInfo.MapElements_Boundary)
@@ -132,6 +136,13 @@ public class MapCreater : MonoBehaviour
             // 맵 생성 알고리즘
             map = CellularAutomata.Calc(map, mapInfo.algoNum);
 
+            // tracer 생성위치
+            tracerPoint = new Vector3()
+            {
+                x = -(hNum / 2) * sizeUnit.x,
+                y = -(vNum / 2) * sizeUnit.y
+            };
+
             // 경계 맵 타일 생성
             for (int i = 0; i < hNum; i++)
             {
@@ -186,8 +197,8 @@ public class MapCreater : MonoBehaviour
             {
                 for (int i = 1; i < hNum - 1; i++)
                 {
-                        //Debug.Log($"{i}{j}, {map[i,j]}");
-                        if (map[i, j] == 1 &&
+                    //Debug.Log($"{i}{j}, {map[i,j]}");
+                    if (map[i, j] == 1 &&
                         map[i, j - 1] == 0)
                     {
                         topEndCoordList.Add(new coordIndex() { x = i, y = j });
@@ -206,6 +217,7 @@ public class MapCreater : MonoBehaviour
             };
             mapTile_Start = ObjectPool.SpawnFromPool(mapInfo.MapElement_Start.name, tmpTilePos).transform;
 
+            // todo -> 시작타일 위로 몇칸정도는 경계타일이 있는지 검색하고, 삭제해야함.
 
             // 기본 맵 타일 생성
             Dictionary<coordIndex, GameObject> basicTiles = new Dictionary<coordIndex, GameObject>();
@@ -266,8 +278,69 @@ public class MapCreater : MonoBehaviour
                 }
             }
 
-            // 드롭 아이템 배치 
-            for (int i = 0; i < mapInfo.itemsOnMapInfo.Count; i++)
+            // 타임캡슐 배치
+            for (int i = 0; i < mapInfo.timeCapsuleNum; i++)
+            {
+                if (coordQueue.Count > 0)
+                {
+                    coordIndex randomCoord = coordQueue.Dequeue();
+                    tmpTilePos = new Vector2()
+                    {
+                        x = (hNum / 2 - randomCoord.x) * sizeUnit.x,
+                        y = (vNum / 2 - randomCoord.y) * sizeUnit.y
+                    };
+                    Instantiate(timeCapsulePrefab, tmpTilePos, Quaternion.identity);
+                }
+            }
+
+            // 트랩 배치
+            for (int i = 0; i < mapInfo.trapInfo.num; i++)
+            {
+                if (coordQueue.Count > 0)
+                {
+                    coordIndex randomCoord = coordQueue.Dequeue();
+                    tmpTilePos = new Vector2()
+                    {
+                        x = (hNum / 2 - randomCoord.x) * sizeUnit.x,
+                        y = (vNum / 2 - randomCoord.y) * sizeUnit.y
+                    };
+                    Instantiate(mapInfo.trapInfo.trap, tmpTilePos, Quaternion.identity);
+                }
+            }
+
+            // 적 배치
+            for (int i = 0; i < mapInfo.enemyInfo.Count; i++)
+            {
+                for (int j = 0; j < mapInfo.enemyInfo[i].num; j++)
+                {
+                    // 맵 시작위치에서 적당히 떨어진 위치를 구함
+                    bool isOK = false;
+                    coordIndex randomCoord = coordQueue.Peek();
+                    while (isOK == false)
+                    {
+                        randomCoord = new coordIndex()
+                        {
+                            x = Random.Range(1, hNum),
+                            y = Random.Range(1, vNum)
+                        };
+
+                        int vec = (startCoord.x - randomCoord.x) * (startCoord.x - randomCoord.x) +
+                                  (startCoord.y - randomCoord.y) * (startCoord.y - randomCoord.y);
+
+                        if (Mathf.Sqrt(vec) > 5)
+                            isOK = true;
+                    }
+                    tmpTilePos = new Vector2()
+                    {
+                        x = (hNum / 2 - randomCoord.x) * sizeUnit.x,
+                        y = (vNum / 2 - randomCoord.y) * sizeUnit.y
+                    };
+                    Instantiate(mapInfo.enemyInfo[i].enemy, tmpTilePos, Quaternion.identity);
+                }
+            }
+
+            // 드롭 아이템 배치 - 삭제
+            /*for (int i = 0; i < mapInfo.itemsOnMapInfo.Count; i++)
             {
                 Debug.Log("맵에 아이템을 배치합니다.. ");
 
@@ -287,7 +360,7 @@ public class MapCreater : MonoBehaviour
                         Debug.Log($"아이템 [{mapInfo.itemsOnMapInfo[i].itemName}] 배치완료");
                     }
                 }
-            }
+            }*/
 
             // 기본 맵타일 노드 업데이트
             foreach (var basicTile in basicTiles.Values)
@@ -297,7 +370,6 @@ public class MapCreater : MonoBehaviour
             }
 
             isCreated = true;
-
         });
     }
 

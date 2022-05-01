@@ -48,8 +48,16 @@ public class GameManager : MonoBehaviour
 
     public static void StartStage(int stage)
     {
-        currentStage = stage;
-        gameState = GameState.StartStage;
+        if (StageInfoAssets.GetStageInfo(stage) != null)
+        {
+            currentStage = stage;
+            gameState = GameState.StartStage;
+        }
+        else
+        {
+            GoBackToLobby();
+        }
+        
     }
 
     public static void GoBackToLobby()
@@ -81,14 +89,15 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => PlayerDataManager.instance != null);
         yield return new WaitUntil(() => MapDataManager.instance != null);
         yield return new WaitUntil(() => StoryPlayDataManager.instance != null);
-        SceneMover.MoveTo("Login");
-        Next();
+        yield return new WaitForSeconds(5f);
+
+        gameState = GameState.WaitForAssetsLoaded;
     }
 
     private void Update()
     {
         Workflow();
-        Debug.Log($"Current game state : {PlayStateManager.instance.CurrentPlayState}, {currentStage}");
+        //Debug.Log($"Current game state : {PlayStateManager.instance.CurrentPlayState}, {currentStage}");
     }
 
     private void Next()
@@ -103,6 +112,13 @@ public class GameManager : MonoBehaviour
         switch (_gameState)
         {
             case GameState.Idle:
+                break;
+            case GameState.WaitForAssetsLoaded:
+                if (AssetsLoader.isLoaded)
+                {
+                    SceneMover.MoveTo("Login");
+                    Next();
+                }
                 break;
             case GameState.WaitForLogin:
                 if (LoginManager.loggedIn)
@@ -129,11 +145,26 @@ public class GameManager : MonoBehaviour
                     DisplayGameState.SetDiscription("Inventory data manager instance is null");
 
                 InventoryDataManager.LoadAll();
+
                 Next();
                 break;
             case GameState.GoLobby:
                 SceneMover.MoveTo("Lobby");
+                if (WasProloguePlayed())
+                    gameState = GameState.OnLobby;
+                else
+                    Next();
+                break;
+            case GameState.PlayPrologue:
+                instance.PlayPrologue();
                 Next();
+                break;
+            case GameState.WaitForPrologueFinished:
+                if (instance.IsPrologueFinished())
+                {
+                    PrologueToLobbyUI.instance.Play();
+                    Next();
+                }   
                 break;
             case GameState.OnLobby:
                 break;
@@ -162,6 +193,30 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
+
+    private bool WasProloguePlayed()
+    {
+        return PlayerDataManager.data.GetCharacterData(CharacterType.Mice).stageSaved > 0 ? true : false;
+    }
+
+    private void PlayPrologue()
+    {
+        Debug.Log($"Stage Selection View : Starting Prologue...");
+        StoryPlayer.instance.StartStory(StoryAssets.instance.GetStory(CharacterType.Mice, 0));
+    }
+
+    private bool IsPrologueFinished()
+    {
+        bool isFinished = false;
+        if (StoryPlayer.instance.isStoryFinished)
+        {   
+            PlayerDataManager.data.SetStageSaved(CharacterType.Mice, 1);
+            PlayerDataManager.data.SetStageLastPlayed(CharacterType.Mice, 0);
+            PlayerDataManager.SaveData();
+            isFinished = true;
+        }
+        return isFinished;
+    }
 }
 //===============================================================================================
 //*************************************** types *************************************************
@@ -170,9 +225,12 @@ public class GameManager : MonoBehaviour
 public enum GameState
 {
     Idle,
+    WaitForAssetsLoaded,
     WaitForLogin,
     LoadPlayerData,
     GoLobby,
+    PlayPrologue,
+    WaitForPrologueFinished,
     OnLobby,
     StartStage,
     LoadStage,

@@ -23,10 +23,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scenes/Temp.unity
     guid: 2f8ed46589a0d844caa7b656a332c3d1
-  - enabled: 1
-    path: Assets/01.Scenes/ChoosingCharacter.unity
-    guid: e12e4aaf036d5cf4f8e8cd8179447ee8
-  - enabled: 1
-    path: Assets/01.Scenes/RealReinforceTools.unity
-    guid: 556743185ab929647ba411ad3ced076a
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 2bc287b0b81152a4ba491c4478e9eda5, type: 2}

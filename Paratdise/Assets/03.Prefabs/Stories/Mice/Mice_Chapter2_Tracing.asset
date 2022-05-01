@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca87b0ba2144bd4887f6b063b2dd86c, type: 3}
+  m_Name: Mice_Chapter2_Tracing
+  m_EditorClassIdentifier: 
+  characterType: 1
+  showEffect: 1
+  hideEffect: 2
+  index: 7
+  pages:
+  - sprite: {fileID: 21300000, guid: 5ed0a50e3adf10348bffd9111a2d5728, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: a94f0a2d364b6644da6d5dcc85f607e0, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: 50457f0f383b2054eb0a3e65917339bb, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: a306dfffc8df49349895053cc518b246, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: d8c623a795c2c9b4abe1d68340ad6b9b, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: ae673208830ad1c4e81c261ef48455b6, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: 5d7dc400c665d2a43aed111a92a85520, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: c9494dc83f3809c42a34b39e87419a92, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: 7712b02bff0ee244498696de2254f0ae, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: 0b8b83ba30a87fa4fafe031eb7259062, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: ff4964dec66472248aa49d9088332d79, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: 48075bf2dbcd8dc4d94ef3795541d691, type: 3}
+    effectType: 0
+  popUp: {fileID: 0}

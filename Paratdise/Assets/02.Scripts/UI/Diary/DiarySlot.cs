@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.EventSystems;
 /// <summary>
 /// 작성자 : 조영민
 /// 최초작성일 : 2022/04/09
@@ -12,11 +12,12 @@ using UnityEngine.UI;
 /// 다이어리 UI 슬롯
 /// </summary>
 
-public class DiarySlot : MonoBehaviour
+public class DiarySlot : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private Image _icon;
     [SerializeField] private Text _title;
     private string _discription;
+
 
     //============================================================================
     //************************* Public Methods ***********************************
@@ -29,13 +30,17 @@ public class DiarySlot : MonoBehaviour
         _discription = discription;
     }
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        DiaryView.instance.ActiveInfoPanel(_icon.sprite, _title.text, _discription);
+    }
 
     //============================================================================
     //************************* Private Methods **********************************
     //============================================================================
 
-    private void OnMouseDown()
+    /*private void OnMouseDown()
     {
         DiaryView.instance.ActiveInfoPanel(_icon.sprite, _title.text, _discription);
-    }
+    }*/
 }

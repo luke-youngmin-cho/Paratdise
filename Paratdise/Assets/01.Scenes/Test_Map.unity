@@ -1031,7 +1031,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 156.48
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2017,7 +2017,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1186154743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2035,6 +2035,8 @@ MonoBehaviour:
   isCreated: 0
   mapTile_Start: {fileID: 0}
   mapTile_End: {fileID: 0}
+  timeCapsulePrefab: {fileID: 0}
+  bg: {fileID: 0}
 --- !u!4 &1186154744
 Transform:
   m_ObjectHideFlags: 0

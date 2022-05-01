@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: "\uD575\uD3ED\uBC1C\uAE30\uC0AC"
   m_EditorClassIdentifier: 
   index: 1
-  date: 
-  title: 
-  content: "\uD575\uD3ED\uBC1C\uAE30\uC0AC"
-  icon: {fileID: 0}
-  rarity: 0
+  date: 2349-4-23
+  title: "\uD575\uD3ED\uBC1C\uAE30\uC0AC"
+  description: "\uD575\uC774 \uD130\uC84C\uB2E4\uB4F1\uAC00"
+  icon: {fileID: 21300000, guid: ffa14ec2c6ce62b46b72d321b3fbdc68, type: 3}
+  rarity: 3

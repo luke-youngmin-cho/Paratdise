@@ -38,7 +38,7 @@ public class PlayerStateMachine_Dig : PlayerStateMachine
             case State.Prepare:
                 dir = manager.direction;
                 Debug.Log(dir);
-                manager.move = Vector2.zero;
+                //manager.move = Vector2.zero;
                 modelManager.Play("Dig");
                 state++;
                 break;

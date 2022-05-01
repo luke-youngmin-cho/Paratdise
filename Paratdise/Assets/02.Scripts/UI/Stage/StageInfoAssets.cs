@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -10,10 +9,12 @@ using UnityEngine;
 /// 
 /// 스테이지 정보를 가져다 쓰기위한 클래스
 /// </summary>
+
 public class StageInfoAssets : MonoBehaviour
 {
     private static StageInfoAssets _instance;
-    public static StageInfoAssets instance {
+    public static StageInfoAssets instance
+    {
         get
         {
             if (_instance == null)
@@ -22,10 +23,19 @@ public class StageInfoAssets : MonoBehaviour
         }
     }
 
-    public List<StageInfo> stageInfos;
-
-    public static StageInfo GetStageInfo(int stage)
+    private void Awake()
     {
-        return instance.stageInfos.Find(x => x.stage == stage);
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
+
+
+    public List<StageInfo> stageInfos = new List<StageInfo>();
+
+    public static StageInfo GetStageInfo(int stage) =>
+        instance.stageInfos.Find(x => x.stage == stage);
+     
 }

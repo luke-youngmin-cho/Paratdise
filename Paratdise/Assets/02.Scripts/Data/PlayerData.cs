@@ -1,47 +1,63 @@
-ï»¿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 /// <summary>
-/// ï¿½Û¼ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-/// ï¿½ï¿½ï¿½ï¿½ï¿½Û¼ï¿½ï¿½ï¿½ : 2022/03/28
-/// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : 2022/04/25
-/// ï¿½ï¿½ï¿½ï¿½ : 
+/// ÀÛ¼ºÀÚ : Á¶¿µ¹Î
+/// ÃÖÃÊÀÛ¼ºÀÏ : 2022/03/28
+/// ÃÖÁ¾¼öÁ¤ÀÏ : 2022/04/25
+/// ¼³¸í : 
 /// 
-/// ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-/// ï¿½Ğ³ï¿½ï¿½ï¿½ ( ID ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ )
-/// ï¿½ï¿½ï¿½ï¿½Ä«ï¿½ï¿½, ï¿½ï¿½ï¿½ä¸®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-/// Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
+/// ÇÃ·¹ÀÌ¾î µ¥ÀÌÅÍ
+/// ´Ğ³×ÀÓ ( ID ·Î ÇâÈÄ ´ëÃ¼µÉ ¼ö ÀÖÀ½ )
+/// ¿£µùÄ«µå, ½ºÅä¸®Á¶°¢ µ¥ÀÌÅÍ
+/// Ä³¸¯ÅÍ µ¥ÀÌÅÍ ¸®½ºÆ®
 /// </summary>
+
 [System.Serializable]
 public class PlayerData
 {
     public string nickName;
-    public bool[] endingCardsData = new bool[100];
-    public bool[] piecesOfStory = new bool[100];
+    public bool[] endingCards;
+    public bool[] piecesOfStory;
     public List<CharacterData> charactersData = new List<CharacterData>();
+
     public void AddPieceOfStory(int storyIndex)
     {
-Â  Â  Â  Â  // ë™ì ë°°ì—´
-Â  Â  Â  Â  if (storyIndex >= piecesOfStory.Length)
-        {
+        /*// µ¿Àû¹è¿­
+        if (storyIndex >= piecesOfStory.Length) 
+        { 
             bool[] tmpArr = new bool[piecesOfStory.Length * 2];
             for (int i = 0; i < piecesOfStory.Length; i++)
                 tmpArr[i] = piecesOfStory[i];
             piecesOfStory = new bool[tmpArr.Length];
             for (int i = 0; i < tmpArr.Length; i++)
                 piecesOfStory[i] = tmpArr[i];
-        }
+        }*/
+
+        /* if (storyIndex < piecesOfStory.Count)
+             piecesOfStory[storyIndex] = true;*/
+
     }
+
+    /*public int[] GetPiecesOfStory()
+    {
+        int[] result = new int[sizeof(ulong)];
+        for (int i = 0; i < result.Length; i++)
+            result[i] = (int)(piecesOfStory >> i);
+        return result;
+    }*/
 
     public CharacterData GetCharacterData(CharacterType type)
     {
         foreach (var sub in charactersData)
         {
-            if (sub.type == type)
+            if(sub.type == type)
                 return sub;
         }
         return null;
     }
+
     public void SetCharacterData(CharacterData characterData)
     {
         for (int i = charactersData.Count - 1; i > -1; i--)
@@ -53,26 +69,30 @@ public class PlayerData
             }
         }
         charactersData.Add(characterData);
+
     }
+
     public void SetStageLastPlayed(CharacterType type, int newStage)
     {
         foreach (var sub in charactersData)
         {
-            if (sub.type == type)
+            if(sub.type == type)
             {
                 sub.stageLastPlayed = newStage;
             }
         }
     }
+
     public int GetStageLastPlayed(CharacterType type)
     {
         foreach (var sub in charactersData)
         {
-            if (sub.type == type)
+            if(sub.type == type)
                 return sub.stageLastPlayed;
         }
         return 0;
     }
+
     public void SetStageSaved(CharacterType type, int newStage)
     {
         foreach (var sub in charactersData)
@@ -83,6 +103,7 @@ public class PlayerData
             }
         }
     }
+
     public int GetStageSaved(CharacterType type)
     {
         foreach (var sub in charactersData)
@@ -92,23 +113,18 @@ public class PlayerData
         }
         return 0;
     }
-Â  Â  /// <summary>
-Â  Â  /// í•´ë‹¹ íƒ€ì…ì˜ ìºë¦­í„° ë°ì´í„°ë¥¼ ì´ˆê¸°í™”í•¨
-Â  Â  /// </summary>
-Â  Â  public void ResetCharacter(CharacterType type)
+
+    /// <summary>
+    /// ÇØ´ç Å¸ÀÔÀÇ Ä³¸¯ÅÍ µ¥ÀÌÅÍ¸¦ ÃÊ±âÈ­ÇÔ
+    /// </summary>
+    public void ResetCharacter(CharacterType type)
     {
         foreach (var sub in charactersData)
         {
             if (sub.type == type)
             {
-                // í•´ë‹¹ ìºë¦­í„° ë””í´íŠ¸
-                sub.toolsLevel = new ToolsLevel();
-                sub.selectionHistory = new int[20];
-                sub.stageSaved = 0;
-                sub.stageLastPlayed = 0;
-
+                // ÇØ´ç Ä³¸¯ÅÍ µğÆúÆ®
             }
         }
     }
 }
-

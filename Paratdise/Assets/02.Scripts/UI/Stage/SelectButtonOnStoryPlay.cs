@@ -11,7 +11,7 @@
 public class SelectButtonOnStoryPlay : MonoBehaviour
 {
     [SerializeField] private Story storyWantsToPlay;
-
+    
     public virtual void OnClick()
     {
         if (storyWantsToPlay != null)

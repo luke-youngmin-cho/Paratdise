@@ -24,51 +24,63 @@ public class PlayerStateMachineManager : MonoBehaviour
         {
             if (state != PlayerState.Movement) return;
 
-            Vector2 overlapSize = Vector2.zero;
-            if (value != _direction)
+            if (value == Vector2.zero)
             {
-                if (value == Vector2.up)
-                {
-                    modelManager.LookBack();
-                    overlapSize = new Vector2(col.size.x, 0.01f);
-                }   
-                else if (value == Vector2.down)
-                {
-                    modelManager.LookFront();
-                    overlapSize = new Vector2(col.size.x, 0.01f);
-                }   
-                else if (value == Vector2.left)
-                {
-                    modelManager.LookLeft();
-                    overlapSize = new Vector2(0.01f, col.size.x);
-                }   
-                else if (value == Vector2.right)
-                {
-                    modelManager.LookRight();
-                    overlapSize = new Vector2(0.01f, col.size.x);
-                }   
-
-                _direction = value;
-            }
-
-            Collider2D mapTile = Physics2D.OverlapBox(rb.position + _direction * (col.size.y / 2), overlapSize, 0, digTargetLayer);
-
-            if (mapTile != null)
-                Debug.Log(mapTile);
-
-            if (mapTile != null &&
-                mapTile.tag == "Destroyable")
-            {
-                ChangeState(PlayerState.Dig);
                 move = Vector2.zero;
+                modelManager.SetFloat("h", 0);
+                modelManager.SetFloat("v", 0);
             }
             else
-            {   
-                move = value;
-            }
+            {
+                Vector2 normalizedValue = value.normalized;
+                Vector2 overlapSize = Vector2.zero;
 
-            modelManager.SetFloat("h", move.x);
-            modelManager.SetFloat("v", move.y);
+                if (normalizedValue != _direction)
+                {
+                    if (normalizedValue == Vector2.up)
+                    {
+                        modelManager.LookBack();
+                        overlapSize = new Vector2(col.size.x, 0.01f);
+                    }
+                    else if (normalizedValue == Vector2.down)
+                    {
+                        modelManager.LookFront();
+                        overlapSize = new Vector2(col.size.x, 0.01f);
+                    }
+                    else if (normalizedValue == Vector2.left)
+                    {
+                        modelManager.LookLeft();
+                        overlapSize = new Vector2(0.01f, col.size.x);
+                    }
+                    else if (normalizedValue == Vector2.right)
+                    {
+                        modelManager.LookRight();
+                        overlapSize = new Vector2(0.01f, col.size.x);
+                    }
+
+                    _direction = normalizedValue;
+                }
+
+                Collider2D mapTile = Physics2D.OverlapBox(rb.position + _direction * (col.size.y / 2), overlapSize, 0, digTargetLayer);
+
+                if (mapTile != null)
+                    Debug.Log(mapTile);
+
+                if (mapTile != null &&
+                    mapTile.tag == "Destroyable")
+                {
+                    ChangeState(PlayerState.Dig);
+                    move = Vector2.zero;
+                }
+                else
+                {
+                    move = value;
+                }
+
+                modelManager.SetFloat("h", move.x);
+                modelManager.SetFloat("v", move.y);
+            }
+            
         }
         get { return _direction; }
     }
@@ -107,6 +119,13 @@ public class PlayerStateMachineManager : MonoBehaviour
         }
     }
 
+    public void KnockBack(Vector2 forceVec)
+    {
+        move = Vector2.zero;
+        rb.velocity = Vector2.zero;
+        rb.AddForce(new Vector2(forceVec.x , forceVec.y), ForceMode2D.Impulse);
+        direction = forceVec.normalized;
+    }
 
     //============================================================================
     //************************* Private Methods **********************************
@@ -141,14 +160,15 @@ public class PlayerStateMachineManager : MonoBehaviour
 
     private void Update()
     {
-        
-
         UpdateState();
     }
 
     private void FixedUpdate()
-    {        
-        tr.Translate(move * moveSpeed * Time.fixedDeltaTime);
+    {
+        if (move == Vector2.zero)
+            rb.velocity = Vector2.zero;
+        else
+            rb.position += move * moveSpeed * Time.fixedDeltaTime;
     }
 
     private void UpdateState()
@@ -181,8 +201,6 @@ public class PlayerStateMachineManager : MonoBehaviour
             overlapSize = new Vector2(0.01f, col.size.x);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(rb.position + _direction * (col.size.y / 2), overlapSize);
-
-
     }
 }
 

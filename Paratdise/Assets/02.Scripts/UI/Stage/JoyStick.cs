@@ -26,10 +26,19 @@ public class JoyStick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     private void Update()
     {
+        if (GameManager.gameState != GameState.StageLoaded ||
+            PlayerStateMachineManager.instance == null) 
+            return;
+
         if (isInput &&
             dragEventData != null)
         {
             UpdateLeverPosition(dragEventData.position);
+        }
+        else
+        {
+            lever.localPosition = Vector2.zero;
+            PlayerStateMachineManager.instance.direction = Vector2.zero;
         }
     }
 

@@ -18,7 +18,7 @@ public class StageSelectButton : MonoBehaviour
     [SerializeField] private Image image;
     [SerializeField] private Sprite spriteActivated;
     [SerializeField] private Sprite spriteDeactivated;
-    [HideInInspector] public Transform playDoubleCheckPanel;
+    public Transform playDoubleCheckPanel;
     private bool _isActivated;
 
     //===============================================================================================
