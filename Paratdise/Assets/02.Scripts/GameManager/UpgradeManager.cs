@@ -9,7 +9,7 @@ public class UpgradeManager : MonoBehaviour
     public Button[] buttons;
     public Image targetToolImage;
     public Sprite[] toolImages;
-    public UpgradeToolRegion targetToolRegion;//enum ê¸¸ì´ ?ŒŒ?›Œ ?“±
+    public UpgradeToolRegion targetToolRegion;
 
     private CharacterType characterType;
 
@@ -21,10 +21,10 @@ public class UpgradeManager : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
-    //¾À ½ÇÇà½Ã¿¡ ´ë»ó µµ±¸ ÀÌ¹ÌÁö º¸¿©ÁÜ
+
     private void OnEnable()
     {
         ViewTargetToolImage();
@@ -32,10 +32,10 @@ public class UpgradeManager : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
-    //? „?—­ë³??ˆ˜ë¡? ?—…ê·¸ë ˆ?´?“œ ?‹œ
+
     public void ToolUpgradeNow(int _targetRegion)
     {
         // 0-->Length,
@@ -73,33 +73,44 @@ public class UpgradeManager : MonoBehaviour
 
     private void UpgradeCheck(CharacterType _character, UpgradeToolRegion _region)
     {
-        CharacterData characterData = PlayerDataManager.data.GetCharacterData(_character);
+        List<Ingredients>[] targetRegion = GetUpgradeToolType(_region);
+        List<ItemData> tempItemDatas = new List<ItemData>();
 
-        List<Ingredients>[] targetRegion = GetUpgradeToolType(_region);//region?œ¼ë¡? ?ˆ´ ????… ?•Œ? ¤ì¤?.
-        List<ItemData> tempItemDatas = new List<ItemData>();//?•„?š”?•œ ?•„?´?…œ?“¤?„ ë¦¬ìŠ¤?Š¸ë¡? ?„?‹œ ????¥.
+
+        InventoryData data = InventoryDataManager.data;
+
+
         for (int ingredientType = 0; ingredientType < targetRegion.Length; ingredientType++)
         {
-            int toolLevel = GetUpgradeLevel(characterData, _region);//ëª‡ë‹¨ê³? ê°•í™”?¸ì§? ?ŒŒ?•….
-            ItemData targetItem = InventoryDataManager.data.itemsData.Find(x => x.itemName == targetRegion[toolLevel][ingredientType].name);
-            //itemData ê°? ?•„?´?…œ?“¤?˜ ? •ë³´ë?? ê°–ê³  ?ˆ?‹¤ë©?, ?•´?‹¹ ?•„?´?…œ?˜ ? •ë³´ë?? InventoryDataManager.data.itemsData?—?„œ ì°¾ëŠ”?‹¤.
-            
-            if (!InventoryDataManager.data.itemsData.Contains(targetItem))
+            int toolLevel = GetUpgradeLevel(_region);
+            ItemData targetItem = data.itemsData.Find(x => x.itemName == targetRegion[toolLevel][ingredientType].name);
+
+            if (!data.itemsData.Contains(targetItem))
             {
-                if (InventoryDataManager.data.itemsData.Find(x => x.itemName == targetItem.itemName).num < targetRegion[toolLevel][ingredientType].count)
-                    return; //ë§Œì•½ ???ê²Ÿì•„?´?…œ?´ ?¸ë²¤í† ë¦¬ì— ?—†?‹¤ë©? ?•¨?ˆ˜ ì¢…ë£Œ.
-            }//ìºë¦­?„°?˜ enum?„ ?„£?œ¼ë©? ?•´?‹¹ ?¸ë²¤í† ë¦? ë°˜í™˜ -> ?•„?´?…œ ì²´í¬
+                if (data.itemsData.Find(x => x.itemName == targetItem.itemName).num < targetRegion[toolLevel][ingredientType].count)
+                    return;
+            }
 
-            tempItemDatas.Add(targetItem);//ë§Œì•½ ?ˆ?‹¤ë©? ?•„?š”?•œ ?•„?´?…œ ?„?‹œ ë¦¬ìŠ¤?Š¸?— ????¥.
+            tempItemDatas.Add(targetItem);
         }
 
-        foreach (var item in tempItemDatas)//ê°•í™”?— ?•„?š”?•œ ?•„?´?…œ?“¤?„ ?•˜?‚˜?”© ?†Œëª?.
+        foreach (var item in tempItemDatas)
         {
-            InventoryDataManager.data.RemoveData(item);//removeDataë¡? ?•„?´?…œ ?†Œëª?.
+            data.RemoveData(item);
         }
 
-        ToolLevelUp(_region, characterData);
+
+        InventoryDataManager.data = data;
+
+        // ToolLevelUp 
+        ToolLevelUp(_region);
+
+        CharacterType type = GameInfoController.GetCharacterTypeByIndex(ChooseCharacterUI.currentCharacterIndex);
+        PlayerData tmpPlayerData = PlayerDataManager.data;
+        CharacterData characterData = tmpPlayerData.GetCharacterData(type);
+
         SetCharacterIdentitiy(_character, characterData);
-        //GameInfoController.toolInfos[ChooseCharacterUI.currentCharacterIndex].reinforceCount += 1; // ?•„?´?…œ ê°•í™” ?šŸ?ˆ˜ë¥? 1 ì¦ê??.
+        //GameInfoController.toolInfos[ChooseCharacterUI.currentCharacterIndex].reinforceCount += 1;
     }
 
     private void SetCharacterIdentitiy(CharacterType type, CharacterData data)
@@ -111,8 +122,12 @@ public class UpgradeManager : MonoBehaviour
         target.power = (float)(GameInfoController.GetToolByCharacter(type).power + 0.25 * data.toolsLevel.strengthLevel);
     }
 
-    private int GetUpgradeLevel(CharacterData data, UpgradeToolRegion targetRegion)
+    private int GetUpgradeLevel(UpgradeToolRegion targetRegion)
     {
+        CharacterType type = GameInfoController.GetCharacterTypeByIndex(ChooseCharacterUI.currentCharacterIndex);
+        PlayerData tmpPlayerData = PlayerDataManager.data;
+        CharacterData data = tmpPlayerData.GetCharacterData(type);
+
         int _upgradeLevel = -1;
         int targetLevel = 0;
 
@@ -137,9 +152,13 @@ public class UpgradeManager : MonoBehaviour
         return _upgradeLevel;
     }
 
-    private void ToolLevelUp(UpgradeToolRegion targetRegion, CharacterData data)
+    private void ToolLevelUp(UpgradeToolRegion targetRegion)
     {
-        ToolsLevel temp = data.toolsLevel;
+        CharacterType type = GameInfoController.GetCharacterTypeByIndex(ChooseCharacterUI.currentCharacterIndex);
+        PlayerData tmpPlayerData = PlayerDataManager.data;
+        CharacterData characterData = tmpPlayerData.GetCharacterData(type);
+
+        ToolsLevel temp = characterData.toolsLevel;
         if (targetRegion == UpgradeToolRegion.Length)
             temp.heightLevel += 1;
         else if (targetRegion == UpgradeToolRegion.Width)
@@ -148,12 +167,14 @@ public class UpgradeManager : MonoBehaviour
             temp.luckLevel += 1;
         else if (targetRegion == UpgradeToolRegion.Strength)
             temp.strengthLevel += 1;
-        data.toolsLevel = temp;
+        characterData.toolsLevel = temp;
+
+        PlayerDataManager.data = tmpPlayerData;
     }
 
     private List<Ingredients>[] GetUpgradeToolType(UpgradeToolRegion targetRegion)
     {
-        //enum type?˜ upgradetoolregion ë°›ìœ¼ë©? ?•´?‹¹ ë¶??œ„?˜ upgradeinfo ?´?˜?Š¤?˜ ingredients ë¦¬ìŠ¤?Š¸ ë°˜í™˜. 
+
         List<Ingredients>[] _region = null;
         if (targetRegion == UpgradeToolRegion.Length)
             _region = GameInfoController.upgradeInfo.length;
@@ -194,16 +215,16 @@ public class UpgradeManager : MonoBehaviour
         CharacterType _type = CharacterType.None;
         switch (byName)
         {
-            case "ë§ˆì´?Š¤":
+            case "¸¶ÀÌ½º":
                 _type = CharacterType.Mice;
                 break;
-            case "?¼?¼?¼":
+            case "¶óÀÏ¶ó":
                 _type = CharacterType.Laila;
                 break;
-            case "ê¹¨ë¹„?“œë¦´ì¡°":
+            case "±úºñµå¸±Á¶":
                 _type = CharacterType.DrillGgabijo;
                 break;
-            case "?—?¼ë¦?":
+            case "¾ÖÀÏ¸®":
                 _type = CharacterType.Eily;
                 break;
         }
