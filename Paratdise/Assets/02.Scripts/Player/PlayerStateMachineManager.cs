@@ -124,7 +124,7 @@ public class PlayerStateMachineManager : MonoBehaviour
         move = Vector2.zero;
         rb.velocity = Vector2.zero;
         rb.AddForce(new Vector2(forceVec.x , forceVec.y), ForceMode2D.Impulse);
-        direction = forceVec.normalized;
+        direction = -forceVec.normalized;
     }
 
     //============================================================================
@@ -168,7 +168,7 @@ public class PlayerStateMachineManager : MonoBehaviour
         if (move == Vector2.zero)
             rb.velocity = Vector2.zero;
         else
-            rb.position += move * moveSpeed * Time.fixedDeltaTime;
+            rb.velocity = move * moveSpeed;
     }
 
     private void UpdateState()

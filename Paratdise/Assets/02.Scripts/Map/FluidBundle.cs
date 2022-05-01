@@ -23,11 +23,13 @@ public class FluidBundle : MonoBehaviour
     /// <summary>
     /// fluid bundle 생성후 fluid 들을 보여주기위해서 한번 호출해야함.
     /// </summary>
-    public void ReleaseAllChildren()
+    public Fluid[] ReleaseAllChildren()
     {
         foreach (var fluid in fluids)
             fluid.gameObject.SetActive(true);
+            
         transform.DetachChildren();
+        return fluids;
     }
 
     public void BringChild(Fluid fluid)

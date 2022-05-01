@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4826205792507212168}
   - component: {fileID: 4826205792507212169}
   - component: {fileID: 4826205792507212174}
-  m_Layer: 20
+  m_Layer: 19
   m_Name: MapTile_End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,9 @@ MonoBehaviour:
   left: {fileID: 0}
   right: {fileID: 0}
   col: {fileID: 0}
-  tr: {fileID: 0}
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
+  destroyTargetLayer:
+    serializedVersion: 2
+    m_Bits: 1089540096

@@ -16,13 +16,13 @@ public class EnemyDieEffect : MonoBehaviour
     [SerializeField] private float scaleUpSpeed = 1f;
     [SerializeField] private float rotateSpeed = 1f;
     [SerializeField] private float fadeOutSpeed = 1f;
-    [SerializeField] private float lifeTime = 1f;
+    [SerializeField] private float lifeTime = 2f;
     private float elapsedTime = 0f;
 
     private void Update()
     {
-        if (elapsedTime < 0f)
-            Destroy(gameObject);
+        if (elapsedTime > lifeTime)
+            gameObject.SetActive(false);
         else
         {
             Color c = sr.color;

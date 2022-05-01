@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "R5CT32GH35P",
         "name": "com.gameton_team6.paratdice",
-        "processId": 32408,
+        "processId": 28765,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -372,6 +372,84 @@
             "deviceId": "R5CT32GH35P",
             "name": "com.gameton_team6.paratdice",
             "processId": 32408,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.gameton_team6.paratdice",
+            "processId": 22429,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.gameton_team6.paratdice",
+            "processId": 6421,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.gameton_team6.paratdice",
+            "processId": 32251,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.gameton_team6.paratdice",
+            "processId": 5846,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.gameton_team6.paratdice",
+            "processId": 25818,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.gameton_team6.paratdice",
+            "processId": 30211,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.gameton_team6.paratdice",
+            "processId": 2239,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.gameton_team6.paratdice",
+            "processId": 4818,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.gameton_team6.paratdice",
+            "processId": 5470,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.gameton_team6.paratdice",
+            "processId": 15256,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.gameton_team6.paratdice",
+            "processId": 20774,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.gameton_team6.paratdice",
+            "processId": 24613,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.gameton_team6.paratdice",
+            "processId": 28765,
             "exited": false
         }
     ],

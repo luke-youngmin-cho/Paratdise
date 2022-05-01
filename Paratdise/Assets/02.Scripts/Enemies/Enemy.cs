@@ -235,13 +235,13 @@ public class Enemy : MonoBehaviour
         if (go == null ||
             isDigger == false)
         {
-            Debug.Log($"Enemy : detected {go}");
+            //Debug.Log($"Enemy : detected {go}");
             return;
         }
             
         if (digCoroutine != null)
         {
-            Debug.Log($"Enemy : is digging...");
+            //Debug.Log($"Enemy : is digging...");
             return;
         }
 
@@ -249,7 +249,7 @@ public class Enemy : MonoBehaviour
         if (go.layer == LayerMask.NameToLayer("MapTile") &&
             go.tag == "Destroyable")
         {
-            Debug.Log($"Enemy : detected destroyable maptile");
+            //Debug.Log($"Enemy : detected destroyable maptile");
             if (go.TryGetComponent(out MapTile_Destroyable maptile))
             {
                 maptile.hp -= diggingDamage;
