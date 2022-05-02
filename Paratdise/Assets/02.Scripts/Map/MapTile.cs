@@ -75,7 +75,48 @@ public class MapTile : MonoBehaviour
         RefreshNear();
     }
 
+    /// <summary>
+    /// 바로위에있는 타일을 오브젝트 풀로 되돌리는 함수
+    /// </summary>
+    public bool TryRemoveUp()
+    {
+        if (up != null)
+        {
+            up.ReturnToPool();
+            return true;
+        }
+        return false;
+    }
 
+    public bool TryRemoveDown()
+    {
+        if (down != null)
+        {
+            down.ReturnToPool();
+            return true;
+        }
+        return false;
+    }
+
+    public bool TryRemoveLeft()
+    {
+        if (left != null)
+        {
+            left.ReturnToPool();
+            return true;
+        }
+        return false;
+    }
+
+    public bool TryRemoveRight()
+    {
+        if (right != null)
+        {
+            right.ReturnToPool();
+            return true;
+        }
+        return false;
+    }
     //===============================================================================================
     //********************************** Private Methods ********************************************
     //===============================================================================================

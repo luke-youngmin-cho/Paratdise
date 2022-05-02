@@ -8,7 +8,7 @@ using Cysharp.Threading.Tasks;
 /// <summary>
 /// 작성자 : 조영민
 /// 최초작성일 : 2022/03/23
-/// 최종수정일 : 2022/03/29
+/// 최종수정일 : 2022/05/01
 /// 설명 : 
 /// 
 /// 맵 생성용 클래스
@@ -17,6 +17,8 @@ using Cysharp.Threading.Tasks;
 /// 1. CelluarAutomata로 맵 경계 타일 생성
 /// 2. 나머지 빈공간은 기본 타일 도배
 /// 3. 기본타일 위치중 랜덤으로 특수타일/ 맵 관련 객체 배치 
+/// 
+/// 맵 최적화 기능 추가.
 /// </summary>
 public class MapCreater : MonoBehaviour
 {
@@ -29,7 +31,12 @@ public class MapCreater : MonoBehaviour
     [HideInInspector] public Transform mapTile_Start;
     [HideInInspector] public Transform mapTile_End;
     [SerializeField] private GameObject timeCapsulePrefab;
+    [SerializeField] private GameObject mapTile_DummyWithCollider;
+    [SerializeField] private GameObject mapTile_Dummy;
     [SerializeField] private SpriteRenderer bg;
+
+    [SerializeField] private MapOptimizer optimizer;
+    [SerializeField] LayerMask destroyTargetLayer;
     private void Awake()
     {
         instance = this;
@@ -167,57 +174,97 @@ public class MapCreater : MonoBehaviour
                 }
             }
 
-
-            // 끝 타일 경계 윗쪽 랜덤 배치
-            for (int j = 0; j < vNum - 1; j++)
+            // 경계 밖 더미 타일 생성
+            for (int i = hNum; i < hNum + mapInfo.size.x / 4; i++)
             {
-                for (int i = 1; i < hNum - 1; i++)
+                for (int j = 0; j < vNum; j++)
                 {
-                    if (map[i, j] == 1 &&
-                        map[i, j + 1] == 0)
-                    {
-                        bottomStartCoordList.Add(new coordIndex() { x = i, y = j });
-                    }
+                    tmpTilePos.x = (i - hNum / 2) * sizeUnit.x;
+                    tmpTilePos.y = (j - vNum / 2) * sizeUnit.y;
+                    if ( i <= hNum + 2)
+                        Instantiate(mapTile_DummyWithCollider, tmpTilePos, Quaternion.identity);
+                    else
+                        Instantiate(mapTile_Dummy, tmpTilePos, Quaternion.identity);
+
+                    tmpTilePos.x = (-i + hNum / 2) * sizeUnit.x;
+                    tmpTilePos.y = (j - vNum / 2) * sizeUnit.y;
+                    if (i <= hNum + 2)
+                        Instantiate(mapTile_DummyWithCollider, tmpTilePos, Quaternion.identity);
+                    else
+                        Instantiate(mapTile_Dummy, tmpTilePos, Quaternion.identity);
                 }
 
-                if (boundaryCoordList.Count > 0)
-                    break;
-            }
-
-            coordIndex endCoord = GetShuffleList(bottomStartCoordList)[0];
-            tmpTilePos = new Vector2()
-            {
-                x = (hNum / 2 - endCoord.x) * sizeUnit.x,
-                y = (vNum / 2 - endCoord.y) * sizeUnit.y
-            };
-            mapTile_End = ObjectPool.SpawnFromPool(mapInfo.MapElement_End.name, tmpTilePos).transform;
-
-            // 시작 타일 경계 아랫쪽 랜덤 배치 
-            for (int j = vNum - 1; j > 1; j--)
-            {
-                for (int i = 1; i < hNum - 1; i++)
+                for (int j = vNum; j < vNum + mapInfo.size.y / 4; j++)
                 {
-                    //Debug.Log($"{i}{j}, {map[i,j]}");
-                    if (map[i, j] == 1 &&
-                        map[i, j - 1] == 0)
+                    for (int k = 0; k < hNum; k++)
                     {
-                        topEndCoordList.Add(new coordIndex() { x = i, y = j });
-                    }
-                }
+                        tmpTilePos.x = (k - hNum / 2) * sizeUnit.x;
+                        tmpTilePos.y = (j - vNum / 2) * sizeUnit.y;
+                        if (j <= vNum + 2)
+                            Instantiate(mapTile_DummyWithCollider, tmpTilePos, Quaternion.identity);
+                        else
+                            Instantiate(mapTile_Dummy, tmpTilePos, Quaternion.identity);
 
-                if (topEndCoordList.Count > 0)
-                    break;
+                        tmpTilePos.x = (k - hNum / 2) * sizeUnit.x;
+                        tmpTilePos.y = (-j + vNum / 2) * sizeUnit.y;
+                        if (j <= vNum + 2)
+                            Instantiate(mapTile_DummyWithCollider, tmpTilePos, Quaternion.identity);
+                        else
+                            Instantiate(mapTile_Dummy, tmpTilePos, Quaternion.identity);
+                    }
+
+                    tmpTilePos.x = (i - hNum / 2) * sizeUnit.x;
+                    tmpTilePos.y = (j - vNum / 2) * sizeUnit.y;
+                    Instantiate(mapTile_Dummy, tmpTilePos, Quaternion.identity);
+
+                    tmpTilePos.x = (-i + hNum / 2) * sizeUnit.x;
+                    tmpTilePos.y = (-j + vNum / 2) * sizeUnit.y;
+                    Instantiate(mapTile_Dummy, tmpTilePos, Quaternion.identity);
+
+                    tmpTilePos.x = (i - hNum / 2) * sizeUnit.x;
+                    tmpTilePos.y = (-j + vNum / 2) * sizeUnit.y;
+                    Instantiate(mapTile_Dummy, tmpTilePos, Quaternion.identity);
+
+                    tmpTilePos.x = (-i + hNum / 2) * sizeUnit.x;
+                    tmpTilePos.y = (j - vNum / 2) * sizeUnit.y;
+                    Instantiate(mapTile_Dummy, tmpTilePos, Quaternion.identity);
+                }
             }
 
-            coordIndex startCoord = GetShuffleList(topEndCoordList)[0];
+            // 가장 아래 경계에서 시작지점 선정
+            int randomCoordX = Random.Range(1, hNum - 1); 
+            coordIndex startCoord = new coordIndex() { x = randomCoordX, y = 1 };
             tmpTilePos = new Vector2()
             {
-                x = (hNum / 2 - startCoord.x) * sizeUnit.x,
-                y = (vNum / 2 - startCoord.y) * sizeUnit.y
+                x = (startCoord.x - hNum / 2) * sizeUnit.x,
+                y = (startCoord.y - vNum / 2) * sizeUnit.y
             };
             mapTile_Start = ObjectPool.SpawnFromPool(mapInfo.MapElement_Start.name, tmpTilePos).transform;
 
-            // todo -> 시작타일 위로 몇칸정도는 경계타일이 있는지 검색하고, 삭제해야함.
+            // 시작지점으로부터 위쪽으로 5칸내 경계타일이 있을경우 모두 제거
+            RaycastHit2D[] hits = Physics2D.RaycastAll(mapTile_Start.transform.position + Vector3.up, Vector2.up, 5, destroyTargetLayer);
+            for (int i = 0; i < hits.Length; i++)
+            {
+                Destroy(hits[i].collider.gameObject);
+            }
+
+            // 가장 위 경계에서 시작지점 선정
+            randomCoordX = Random.Range(1, hNum - 1);
+            coordIndex endCoord = new coordIndex() { x = randomCoordX, y = vNum};
+            tmpTilePos = new Vector2()
+            {
+                x = (endCoord.x - hNum / 2) * sizeUnit.x,
+                y = (endCoord.y - vNum / 2) * sizeUnit.y
+            };
+            mapTile_End = ObjectPool.SpawnFromPool(mapInfo.MapElement_End.name, tmpTilePos).transform;
+
+            
+            // 끝지점으로부터 아래쪽으로 5칸내 경계타일이 있을경우 모두 제거
+            hits = Physics2D.RaycastAll(mapTile_End.transform.position + Vector3.down, Vector2.down, 5, destroyTargetLayer);
+            for (int i = 0; i < hits.Length; i++)
+            {
+                Destroy(hits[i].collider.gameObject);
+            }
 
             // 기본 맵 타일 생성
             Dictionary<coordIndex, GameObject> basicTiles = new Dictionary<coordIndex, GameObject>();
@@ -231,13 +278,15 @@ public class MapCreater : MonoBehaviour
                     y = (vNum / 2 - coord.y) * sizeUnit.y
                 };
                 int tmpIndex = Random.Range(0, mapInfo.MapElements_Basic.Count);
-                basicTiles.Add(coord, ObjectPool.SpawnFromPool(mapInfo.MapElements_Basic[tmpIndex].name, tmpTilePos));
+                GameObject go = ObjectPool.SpawnFromPool(mapInfo.MapElements_Basic[tmpIndex].name, tmpTilePos);
+                //optimizer.Add(go);
+                basicTiles.Add(coord, go);
             }
 
             // 기본 맵 타일 위치를 랜덤하게 섞고 큐에 등록
             basicCoordList = GetShuffleList(basicCoordList);
             foreach (var item in basicCoordList)
-            coordQueue.Enqueue(item);
+                coordQueue.Enqueue(item);
 
             int obstacleCount = (int)(basicCoordList.Count * mapInfo.obstaclePercents / 100.0);
             int fluidCount = (int)(basicCoordList.Count * mapInfo.fluidPercents / 100.0);
@@ -256,7 +305,8 @@ public class MapCreater : MonoBehaviour
                         y = (vNum / 2 - basicCoordList[i].y) * sizeUnit.y
                     };
                     int tmpIndex = Random.Range(0, mapInfo.MapElements_Obstacle.Count);
-                    ObjectPool.SpawnFromPool(mapInfo.MapElements_Obstacle[tmpIndex].name, tmpTilePos);
+                    GameObject go = ObjectPool.SpawnFromPool(mapInfo.MapElements_Obstacle[tmpIndex].name, tmpTilePos);
+                    //optimizer.Add(go);
                 }
             }
 
@@ -274,7 +324,10 @@ public class MapCreater : MonoBehaviour
                         y = (vNum / 2 - basicCoordList[i].y) * sizeUnit.y
                     };
                     int tmpIndex = Random.Range(0, mapInfo.MapElements_FluidBundle.Count);
-                    ObjectPool.SpawnFromPool(mapInfo.MapElements_FluidBundle[tmpIndex].name, tmpTilePos).GetComponent<FluidBundle>().ReleaseAllChildren();
+                    GameObject go = ObjectPool.SpawnFromPool(mapInfo.MapElements_FluidBundle[tmpIndex].name, tmpTilePos);
+
+                    //foreach (var fluid in go.GetComponent<FluidBundle>().ReleaseAllChildren())
+                    //    optimizer.Add(fluid.gameObject);
                 }
             }
 
@@ -289,7 +342,8 @@ public class MapCreater : MonoBehaviour
                         x = (hNum / 2 - randomCoord.x) * sizeUnit.x,
                         y = (vNum / 2 - randomCoord.y) * sizeUnit.y
                     };
-                    Instantiate(timeCapsulePrefab, tmpTilePos, Quaternion.identity);
+                    GameObject go = Instantiate(timeCapsulePrefab, tmpTilePos, Quaternion.identity);
+                    //optimizer.Add(go);
                 }
             }
 
@@ -304,7 +358,8 @@ public class MapCreater : MonoBehaviour
                         x = (hNum / 2 - randomCoord.x) * sizeUnit.x,
                         y = (vNum / 2 - randomCoord.y) * sizeUnit.y
                     };
-                    Instantiate(mapInfo.trapInfo.trap, tmpTilePos, Quaternion.identity);
+                    GameObject go = Instantiate(mapInfo.trapInfo.trap, tmpTilePos, Quaternion.identity);
+                    //optimizer.Add(go);
                 }
             }
 
@@ -335,7 +390,8 @@ public class MapCreater : MonoBehaviour
                         x = (hNum / 2 - randomCoord.x) * sizeUnit.x,
                         y = (vNum / 2 - randomCoord.y) * sizeUnit.y
                     };
-                    Instantiate(mapInfo.enemyInfo[i].enemy, tmpTilePos, Quaternion.identity);
+                    GameObject go = Instantiate(mapInfo.enemyInfo[i].enemy, tmpTilePos, Quaternion.identity);
+                    //optimizer.Add(go);
                 }
             }
 
@@ -370,6 +426,10 @@ public class MapCreater : MonoBehaviour
             }
 
             isCreated = true;
+
+            // optimization
+            optimizer.DivideSectors(transform.position, mapInfo.size, new Vector2(5,5));
+            optimizer.DoOptimization();
         });
     }
 

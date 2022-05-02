@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            Application.runInBackground = true;
             DontDestroyOnLoad(gameObject);
         }
     }

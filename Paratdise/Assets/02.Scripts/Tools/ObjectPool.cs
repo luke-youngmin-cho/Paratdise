@@ -66,6 +66,11 @@ public class ObjectPool : MonoBehaviour
 
         obj.transform.position = instance.transform.position;
         instance.spawnedQueueDictionrary[obj.name].Enqueue(obj);
+
+        if (obj.TryGetComponent(out MapOptimizableObject mapOptimizableObject))
+        {
+            MapOptimizer.instance.RemoveMapOptimizableObject(mapOptimizableObject.sector, mapOptimizableObject.id);
+        }
     }
 
     public static void ReturnAllToPool()
@@ -109,6 +114,19 @@ public class ObjectPool : MonoBehaviour
     //===============================================================================================
     //********************************** Private Methods ********************************************
     //===============================================================================================
+
+    private void Awake()
+    {
+        if (_instance != null)
+        {
+            for (int i = 0; i < spawnedObjects.Count; i++)
+            {
+                Destroy(spawnedObjects[i]);
+            }
+            Destroy(_instance);
+            _instance = instance;
+        }   
+    }
 
     private GameObject Spawn(string tag, Vector2 position)
     {

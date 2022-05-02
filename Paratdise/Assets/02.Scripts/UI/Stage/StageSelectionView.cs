@@ -165,7 +165,7 @@ public class StageSelectionView : MonoBehaviour
     }
     private void ActiveStageViewsOpened()
     {
-        for (int i = 1; i < stageViews.Length; i++)
+        for (int i = 1; i <= stageViews.Length; i++)
         {
             if (i > PlayerDataManager.data.GetStageSaved(GameManager.characterSelected))
                 stageViews[i - 1].isActivated = false;

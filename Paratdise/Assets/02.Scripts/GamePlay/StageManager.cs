@@ -217,9 +217,9 @@ public class StageManager : MonoBehaviour
                 clearPopUp.SetActive(true);
                 SaveEarnedItems();
                 SaveEarnedPiecesOfStory();
-                if (PlayerDataManager.data.GetStageSaved(GameManager.characterSelected) < GameManager.currentStage)
+                if (PlayerDataManager.data.GetStageSaved(GameManager.characterSelected) <= GameManager.currentStage)
                 {
-                    PlayerDataManager.data.SetStageSaved(GameManager.characterSelected, GameManager.currentStage);
+                    PlayerDataManager.data.SetStageSaved(GameManager.characterSelected, GameManager.currentStage + 1);
                     PlayerDataManager.SaveData();
                 }
                 Next();

@@ -30,5 +30,5 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: eb0fc892e46109e4da64a1b8bd7750bf, type: 3}
     effectType: 0
   - sprite: {fileID: 21300000, guid: ddae5a4f1c07e81488f00a0f4a354249, type: 3}
-    effectType: 0
+    effectType: 2
   popUp: {fileID: 8441800825649818430, guid: ffbadd94c005830449157ac04f5c23c7, type: 3}

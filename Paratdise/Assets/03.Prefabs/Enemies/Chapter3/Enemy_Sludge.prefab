@@ -364,7 +364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpMax: 300
   damage: 50
-  moveSpeed: 0.2
+  moveSpeed: 0.3
   knockBackForce: 1
   targetLayer:
     serializedVersion: 2

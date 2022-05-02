@@ -18,6 +18,7 @@ public class Trap : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             collision.gameObject.GetComponent<Player>().Hurt(damage);
+            Destroy(this.gameObject);
         }
     }
 }

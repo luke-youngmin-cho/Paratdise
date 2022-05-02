@@ -218,3 +218,9 @@ MonoBehaviour:
   hurtEffect: {fileID: 0}
   destroyEffect: {fileID: 0}
   dropItems: []
+  buffInfoWhenHurt:
+    type: 5
+    active: 1
+  buffInfoWhenDestroy:
+    type: 5
+    active: 1

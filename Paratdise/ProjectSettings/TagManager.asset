@@ -23,9 +23,9 @@ TagManager:
   - Item
   - TimeCapsule
   - Trap
-  - 
-  - CamBound
   - MapBound
+  - CamBound
+  - EventTile
   - MapTile
   - Obstacle
   - Fluids_Water
@@ -36,8 +36,8 @@ TagManager:
   - 
   - Tracer
   - 
-  - 
-  - 
+  - DummyTile
+  - Destroyer
   m_SortingLayers:
   - name: Default
     uniqueID: 0

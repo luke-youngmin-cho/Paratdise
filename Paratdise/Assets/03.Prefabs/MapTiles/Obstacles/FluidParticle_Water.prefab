@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6336841336846471825}
   - component: {fileID: 86812380201303003}
   - component: {fileID: 973332287785191593}
+  - component: {fileID: 3742649262266707830}
   m_Layer: 22
   m_Name: FluidParticle_Water
   m_TagString: Untagged
@@ -134,4 +135,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a88612c2a0295429a7588c1a6da3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  evaporationTime: 3
+  evaporationTime: 7
+--- !u!114 &3742649262266707830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6336841336846471829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f391c41f0eea2418bbf6dfd3edb0ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buffType: 2
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 1024

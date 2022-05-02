@@ -506,7 +506,7 @@ public class EnemyController : MonoBehaviour
         if (currentAnimationName == newAnimationName) return;
 
         animator.Play(newAnimationName);
-        Debug.Log($"Play {newAnimationName}");
+        //Debug.Log($"Play {newAnimationName}");
         currentAnimationName = newAnimationName;
     }
 

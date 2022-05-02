@@ -14,6 +14,7 @@ public class PlayerStateMachineManager : MonoBehaviour
 {
     public static PlayerStateMachineManager instance;
 
+    public bool controllable = true;
     public PlayerState state;
     public float moveSpeed;
     public Vector2 move;
@@ -22,7 +23,7 @@ public class PlayerStateMachineManager : MonoBehaviour
     {
         set
         {
-            if (state != PlayerState.Movement) return;
+            if (state != PlayerState.Movement || controllable == false) return;
 
             if (value == Vector2.zero)
             {
@@ -63,14 +64,14 @@ public class PlayerStateMachineManager : MonoBehaviour
 
                 Collider2D mapTile = Physics2D.OverlapBox(rb.position + _direction * (col.size.y / 2), overlapSize, 0, digTargetLayer);
 
-                if (mapTile != null)
-                    Debug.Log(mapTile);
+                //if (mapTile != null)
+                //    Debug.Log(mapTile);
 
                 if (mapTile != null &&
                     mapTile.tag == "Destroyable")
                 {
                     ChangeState(PlayerState.Dig);
-                    move = Vector2.zero;
+                    //move = Vector2.zero;
                 }
                 else
                 {
@@ -108,7 +109,9 @@ public class PlayerStateMachineManager : MonoBehaviour
             if (sub.playerState == newState &&
                 sub.IsExecuteOK())
             {
-                move = Vector2.zero;
+                if (state != PlayerState.Dig &&
+                    newState != PlayerState.Dig)
+                    move = Vector2.zero;
                 modelManager.SetFloat("h", move.x);
                 modelManager.SetFloat("v", move.y);
                 currentMachine.ForceStop();
@@ -124,7 +127,7 @@ public class PlayerStateMachineManager : MonoBehaviour
         move = Vector2.zero;
         rb.velocity = Vector2.zero;
         rb.AddForce(new Vector2(forceVec.x , forceVec.y), ForceMode2D.Impulse);
-        direction = forceVec.normalized;
+        direction = -forceVec.normalized;
     }
 
     //============================================================================
@@ -134,6 +137,7 @@ public class PlayerStateMachineManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        controllable = true;
         machines = GetComponents<PlayerStateMachine>();
         modelManager = GetComponent<PlayerModelManager>();
         rb = GetComponent<Rigidbody2D>();
@@ -160,7 +164,8 @@ public class PlayerStateMachineManager : MonoBehaviour
 
     private void Update()
     {
-        UpdateState();
+        if(controllable)
+            UpdateState();
     }
 
     private void FixedUpdate()
@@ -168,7 +173,7 @@ public class PlayerStateMachineManager : MonoBehaviour
         if (move == Vector2.zero)
             rb.velocity = Vector2.zero;
         else
-            rb.position += move * moveSpeed * Time.fixedDeltaTime;
+            rb.velocity = move * moveSpeed;
     }
 
     private void UpdateState()

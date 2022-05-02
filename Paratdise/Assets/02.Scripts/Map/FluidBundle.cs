@@ -13,6 +13,7 @@ using UnityEngine;
 
 public class FluidBundle : MonoBehaviour
 {
+    [SerializeField] private LayerMask mapTileLayer;
     Fluid[] fluids;
     Vector2[] fluidsPos;
 
@@ -23,11 +24,13 @@ public class FluidBundle : MonoBehaviour
     /// <summary>
     /// fluid bundle 생성후 fluid 들을 보여주기위해서 한번 호출해야함.
     /// </summary>
-    public void ReleaseAllChildren()
+    public Fluid[] ReleaseAllChildren()
     {
         foreach (var fluid in fluids)
             fluid.gameObject.SetActive(true);
+            
         transform.DetachChildren();
+        return fluids;
     }
 
     public void BringChild(Fluid fluid)
@@ -61,6 +64,19 @@ public class FluidBundle : MonoBehaviour
         {
             fluids[i].SetMotherBundle(this);
             fluidsPos[i] = fluids[i].transform.localPosition;
+        }
+    }
+    private void OnEnable()
+    {
+        Collider2D[] centers = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), 0.05f, mapTileLayer);
+        foreach (var center in centers)
+        {
+            //Debug.Log($"{gameObject.name} detected {center.name}");
+            if (center.gameObject != gameObject)
+            {
+                center.gameObject.SetActive(false);
+                center.gameObject.GetComponent<MapTile>().ReturnToPool();
+            }
         }
     }
 
