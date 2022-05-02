@@ -14,38 +14,25 @@ using UnityEngine.UI;
 public class ChooseCharacterUI : MonoBehaviour
 {
     public static int currentCharacterIndex = 0;
-    public int currentToolIndex = 0;
     public Text characterNameText;
     public Text coldResistanceText;
     public Text sanityText;
+
+    [Header("___TOOL INFORMATION___")]
     public Text toolNameText;
     public Text toolWidth;
     public Text toolHeight;
     public Text toolLuckText;
     public Text toolPowerText;
+
+    [Header("___CHARACTERS___")]
+    public CharacterImage[] characterImages;    
+
+    [Header("___OTHERS___")]
     public Text talkText;
     public Text hpText;
     public Image charImg;
 
-    [Header("Available")]
-    public Sprite Mise;
-    public Sprite Laila;
-    public Sprite ggabirilldjo;
-    public Sprite Eily;
-
-    [Header("Not Available")]
-    public Sprite unLaila;
-    public Sprite unGgabirilldjo;
-    public Sprite unEily;
-
-    [Header("LIFE")]
-    public Transform heartStorage;
-    public GameObject heartImage;
-    
-    public CharacterData characData ;
-
-
-    // Start is called before the first frame update
     void Start()
     {
         ViewCharacter(currentCharacterIndex);
@@ -53,34 +40,8 @@ public class ChooseCharacterUI : MonoBehaviour
 
     public void CharImgChange(CharacterType characData)
     {
-        //CharacterData data = PlayerDataManager.data.charactersData.Find(x => x.type == characData);
-        CharacterData data = new CharacterData();
-        data.isAvailable = false;
-        switch(characData)
-        {
-            case CharacterType.Mice:
-                charImg.sprite = Mise;
-                break;
-            case CharacterType.Laila:
-                if (data.isAvailable)
-                    charImg.sprite = Laila;
-                else
-                    charImg.sprite = unLaila;
-                break;
-            case CharacterType.DrillGgabijo:
-                if (data.isAvailable)
-                    charImg.sprite = ggabirilldjo;
-                else
-                    charImg.sprite = unGgabirilldjo;
-                break;
-
-            case CharacterType.Eily:
-                if (data.isAvailable)
-                    charImg.sprite = Eily;
-                else
-                    charImg.sprite = unEily;
-                break;
-        }
+        CharacterData data = PlayerDataManager.data.GetCharacterData(characData);
+        OpenSelectedCharacter(currentCharacterIndex, data.isAvailable);
     }
 
     public void OpenUI(GameObject target)
@@ -136,19 +97,6 @@ public class ChooseCharacterUI : MonoBehaviour
         ViewCharacter(currentCharacterIndex);
     }
 
-    private void CreateHeartImage(int count)
-    {
-        for (int i = 0; i < heartStorage.childCount; i++)
-        {
-            Destroy(heartStorage.GetChild(i).gameObject);
-        }
-        for (int i = 0; i < count; i++)
-        {
-            GameObject go = Instantiate(heartImage, heartStorage);
-            go.SetActive(true);
-        }
-    }
-
     private void ViewCharacter(int idx)
     {
         CharInfoChange(idx);
@@ -162,6 +110,17 @@ public class ChooseCharacterUI : MonoBehaviour
         GameManager.characterSelected = (CharacterType)(idx + 1);
     }
 
+    private void OpenSelectedCharacter(int _index, bool isAvailable)
+    {
+        for (int i = 0; i < characterImages.Length; i++)
+        {
+            characterImages[i].available.SetActive(false);
+            characterImages[i].unavailable.SetActive(false);
+        }
+        characterImages[_index].available.SetActive(isAvailable);
+        characterImages[_index].unavailable.SetActive(!isAvailable);
+    }
+
     public void goStart()
     {
         currentCharacterIndex = 0;
@@ -171,10 +130,11 @@ public class ChooseCharacterUI : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("RealReinforceTools");
     }
+}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+[System.Serializable]
+public class CharacterImage
+{
+    public GameObject available;
+    public GameObject unavailable;
 }
