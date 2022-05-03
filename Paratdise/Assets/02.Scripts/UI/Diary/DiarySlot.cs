@@ -32,7 +32,7 @@ public class DiarySlot : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        DiaryView.instance.ActiveInfoPanel(_icon.sprite, _title.text, _discription);
+        DiaryView.instance.ActivePiecesOfStoryInfoPanel(_icon.sprite, _title.text, _discription);
     }
 
     //============================================================================

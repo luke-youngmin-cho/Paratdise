@@ -38,8 +38,9 @@ public class PlayerStateMachine_Dig : PlayerStateMachine
             case State.Prepare:
                 dir = manager.direction;
                 Debug.Log(dir);
-                //manager.move = Vector2.zero;
+                manager.move = manager.move / 2f;
                 modelManager.Play("Dig");
+                AudioManager.instance.PlaySFX(SFXAssets.GetSFX("Player_Dig"));
                 state++;
                 break;
             case State.Casting:

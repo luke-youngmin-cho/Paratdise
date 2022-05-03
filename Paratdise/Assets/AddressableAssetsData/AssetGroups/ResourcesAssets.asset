@@ -57,6 +57,14 @@ MonoBehaviour:
     m_Address: Assets/Resources_moved/Assets/DamagePopUpAssets.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 28ba09309569aaa41b53230a67794062
+    m_Address: Assets/Resources_moved/Assets/BGMAssets.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 193845d73f5961848aeebe19169e8566
+    m_Address: Assets/Resources_moved/Assets/SFXAssets.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d7c617cc2d6f594439be6e616b62a9fc, type: 2}
   m_SchemaSet:

@@ -18,12 +18,16 @@ public class DiaryView : MonoBehaviour
     //************************* Public Methods ***********************************
     //============================================================================
 
-    public void ActiveInfoPanel(Sprite icon, string title, string discription)
+    public void ActivePiecesOfStoryInfoPanel(Sprite icon, string title, string discription)
     {
         capsuleInfoPanel.GetComponent<DiaryCapsuleInfoPanel>().Setup(icon, title, discription);
         capsuleInfoPanel.SetActive(true);
     }
 
+    public void ActiveEndingCardInfoPanel()
+    {
+
+    }
 
     //============================================================================
     //************************* Private Methods **********************************

@@ -1,6 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 작성자 : 조영민
+/// 최초작성일 : 2022/05/03
+/// 최종수정일 : 
+/// 설명 : 
+/// 
+/// 현재 적용된 버프들에 대한 아이콘을 UI 로 띄워줌
+/// </summary>
 public class BuffsView : MonoBehaviour
 {
     public static BuffsView instance;

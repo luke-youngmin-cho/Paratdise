@@ -171,6 +171,7 @@ public class StoryPlayer : MonoBehaviour
             _page = _story.pages.Length - 1;
             image.sprite = _story.pages[_page].sprite;
             _popUp = Instantiate(_story.popUp, transform);
+            Debug.Log($"Pop up {_popUp.name}");
         }
             
         // 마지막 이벤트가 있으면 이벤트재생

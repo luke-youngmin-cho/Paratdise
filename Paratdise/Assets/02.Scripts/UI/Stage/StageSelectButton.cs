@@ -54,6 +54,7 @@ public class StageSelectButton : MonoBehaviour
             else
             {
                 playDoubleCheckPanel.gameObject.SetActive(true);
+                playDoubleCheckPanel.Find("StageText").GetComponent<Text>().text = "스테이지 " + stage.ToString();
                 playDoubleCheckPanel.Find("OKButton").GetComponent<Button>().onClick.AddListener(() => PlayWithSelectedStage());
                 
             }

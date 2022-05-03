@@ -61,6 +61,7 @@ public class MapTile_Destroyable : MapTile
             }   
             else
             {
+                AudioManager.instance.PlaySFX(SFXAssets.GetSFX("MapTile_Break"));
                 DropRandomItem();
                 if (destroyEffect != null)
                     Instantiate(destroyEffect, transform.position, Quaternion.identity);

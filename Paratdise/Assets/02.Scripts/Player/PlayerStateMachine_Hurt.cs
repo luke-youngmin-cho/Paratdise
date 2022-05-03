@@ -29,6 +29,7 @@ public class PlayerStateMachine_Hurt : PlayerStateMachine
             case State.Prepare:
                 manager.move = Vector2.zero;
                 modelManager.Play("Hurt");
+                AudioManager.instance.PlaySFX(SFXAssets.GetSFX("Player_Hurt"));
                 state++;
                 break;
             case State.Casting:

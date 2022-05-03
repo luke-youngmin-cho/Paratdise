@@ -1,5 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+
+/// <summary>
+/// 작성자 : 조영민
+/// 최초작성일 : 2022/05/03
+/// 최종수정일 : 
+/// 설명 : 
+/// 
+/// 스토리조각 팝업
+/// </summary>
 public class PieceOfStoryPopUp : MonoBehaviour
 {
     public static PieceOfStoryPopUp _instance;

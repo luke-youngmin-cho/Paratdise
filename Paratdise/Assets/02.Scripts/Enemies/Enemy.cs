@@ -45,6 +45,8 @@ public class Enemy : MonoBehaviour
             }
             else
             {
+                
+                AudioManager.instance.PlaySFX(SFXAssets.GetSFX("Creature_Death"));
                 DropRandomItem();
                 isDead = true;
                 col.enabled = false;
@@ -252,6 +254,7 @@ public class Enemy : MonoBehaviour
             //Debug.Log($"Enemy : detected destroyable maptile");
             if (go.TryGetComponent(out MapTile_Destroyable maptile))
             {
+                AudioManager.instance.PlaySFX(SFXAssets.GetSFX("Creature_Dig"));
                 maptile.hp -= diggingDamage;
                 digCoroutine = StartCoroutine(E_WaitForDigDelay());
             }

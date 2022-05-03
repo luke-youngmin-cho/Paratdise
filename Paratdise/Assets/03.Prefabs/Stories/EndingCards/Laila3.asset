@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd12342e92ea6684a90eea515edc52d3, type: 3}
+  m_Name: Laila3
+  m_EditorClassIdentifier: 
+  index: 8
+  title: "\uB530\uB73B\uD55C \uCFE0\uD06C\uB2E4\uC2A4 \uB77C\uC77C\uB77C"
+  icon: {fileID: 21300000, guid: 33fd553749c1ba346845495b297740f3, type: 3}

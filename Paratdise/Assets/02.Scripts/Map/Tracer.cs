@@ -87,9 +87,16 @@ public class Tracer : MonoBehaviour
     IEnumerator E_Move()
     {
         yield return new WaitForSeconds(delayTime);
+        float elapsedTime = 0f;
         while (true)
         {
+            if (elapsedTime / 5 >= 1)
+            {
+                speed = speed * (1.2f);
+                elapsedTime = 0;
+            }
             tr.Translate(Vector3.up * speed * Time.deltaTime);
+            elapsedTime += Time.deltaTime;
             yield return null;
         }
     }

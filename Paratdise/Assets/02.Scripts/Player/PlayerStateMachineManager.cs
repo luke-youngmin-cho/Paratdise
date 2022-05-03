@@ -23,7 +23,10 @@ public class PlayerStateMachineManager : MonoBehaviour
     {
         set
         {
-            if (state != PlayerState.Movement || controllable == false) return;
+            if (state != PlayerState.Movement ||
+                state == PlayerState.Dig ||
+                controllable == false) 
+                return;
 
             if (value == Vector2.zero)
             {
@@ -109,8 +112,7 @@ public class PlayerStateMachineManager : MonoBehaviour
             if (sub.playerState == newState &&
                 sub.IsExecuteOK())
             {
-                if (state != PlayerState.Dig &&
-                    newState != PlayerState.Dig)
+                if (newState != PlayerState.Dig )
                     move = Vector2.zero;
                 modelManager.SetFloat("h", move.x);
                 modelManager.SetFloat("v", move.y);

@@ -111,6 +111,17 @@ public class StageManager : MonoBehaviour
             state = StageState.GameOver;
     }
 
+    public static void Respawn()
+    {
+        if (state == StageState.WaitForUserSelection)
+        {
+            instance.controllUI.SetActive(true);
+            Player.instance.hp = Player.instance.hpMax;
+            PlayerStateMachineManager.instance.ChangeState(PlayerState.Movement);
+            state = StageState.OnStage;
+        }   
+    }
+
     //===============================================================================================
     //********************************** Private Methods ********************************************
     //===============================================================================================

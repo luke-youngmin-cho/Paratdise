@@ -39,4 +39,4 @@ MonoBehaviour:
     effectType: 0
   - sprite: {fileID: 21300000, guid: fbf08e8d4bf7af843bf57e60ee853312, type: 3}
     effectType: 0
-  popUp: {fileID: 0}
+  popUp: {fileID: 3980422242314579175, guid: 6e7423fe80344974ab382a69bdef6532, type: 3}

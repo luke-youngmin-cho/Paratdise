@@ -613,6 +613,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 560626567}
   m_CullTransparentMesh: 1
+--- !u!1 &575444320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 575444322}
+  - component: {fileID: 575444321}
+  m_Layer: 0
+  m_Name: BGMPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &575444321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575444320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264ad099e5645a741b1fa9d62a76b444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playOnStart: 1
+  playConditionState: 0
+--- !u!4 &575444322
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575444320}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &596981668
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,7 +1011,6 @@ GameObject:
   m_Component:
   - component: {fileID: 767009867}
   - component: {fileID: 767009866}
-  - component: {fileID: 767009865}
   - component: {fileID: 767009864}
   - component: {fileID: 767009863}
   m_Layer: 0
@@ -1024,14 +1068,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!81 &767009865
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 767009862}
-  m_Enabled: 1
 --- !u!20 &767009866
 Camera:
   m_ObjectHideFlags: 0
@@ -3135,8 +3171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausePopUp: {fileID: 1946140067246036479}
-  clearPopUp: {fileID: 1946140067246036478}
-  gameOverPopUp: {fileID: 1946140067246036477}
+  clearPopUp: {fileID: 1946140067246036477}
+  gameOverPopUp: {fileID: 1946140067246036478}
   controllUI: {fileID: 856100461}
   loadingUI: {fileID: 2034904680}
 --- !u!4 &2006046327
@@ -3775,12 +3811,12 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: a6fa7880dbe305b4eae32dd7ec6fdbe2, type: 3}
 --- !u!1 &1946140067246036477 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1636509523375078159, guid: a6fa7880dbe305b4eae32dd7ec6fdbe2, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1991973267761368145, guid: a6fa7880dbe305b4eae32dd7ec6fdbe2, type: 3}
   m_PrefabInstance: {fileID: 1946140067246036476}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1946140067246036478 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1172144483930326221, guid: a6fa7880dbe305b4eae32dd7ec6fdbe2, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6065140223586338007, guid: a6fa7880dbe305b4eae32dd7ec6fdbe2, type: 3}
   m_PrefabInstance: {fileID: 1946140067246036476}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1946140067246036479 stripped

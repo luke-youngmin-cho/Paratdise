@@ -1,7 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-
+/// <summary>
+/// 작성자 : 조영민
+/// 최초작성일 : 2022/05/03
+/// 최종수정일 : 
+/// 설명 : 
+/// 
+/// 스토리를 가져다 쓰기위한 클래스
+/// </summary>
 public class StoryAssets : MonoBehaviour
 {
     static public StoryAssets _instance;

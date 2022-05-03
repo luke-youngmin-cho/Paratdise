@@ -1,0 +1,161 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2855600555938797639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5434572934328106620}
+  - component: {fileID: 7392416090684210737}
+  m_Layer: 0
+  m_Name: SFXAssets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5434572934328106620
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2855600555938797639}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7392416090684210737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2855600555938797639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc64c3f430662fa42b3f7613eb73b5a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxs:
+  - name: 1_Tap
+    clip: {fileID: 8300000, guid: 6e3e4332591f9224398178e89527efa5, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: 2_ButtonsAndItems
+    clip: {fileID: 8300000, guid: d746c2643dcd8984b83e8c460f1bc670, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: 3_Diary
+    clip: {fileID: 8300000, guid: dfdc8029d30177b4a85f2d1df2a8b4f0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: 4_Scenario
+    clip: {fileID: 8300000, guid: 3c80b4ad7aa3ec045b400191e0cd5350, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: 5_Stage
+    clip: {fileID: 8300000, guid: 1650522a05dcf744eb892c810314587a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: 6_Reinforce
+    clip: {fileID: 8300000, guid: e43bac483f416c444a3b664cf0f0ef62, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: 7_Inventory
+    clip: {fileID: 8300000, guid: e2cb86f816ddd8a4f903539d3518a458, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Player_Attack
+    clip: {fileID: 8300000, guid: 1430f4133218e014482181f5e5feee7e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Player_Dig
+    clip: {fileID: 8300000, guid: 7defa76daae04cb4ea064538f0d9bd2b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Player_Health
+    clip: {fileID: 8300000, guid: 54974ae0f5b4cad49ae06165d575bb81, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Player_Hurt
+    clip: {fileID: 8300000, guid: 2756bf4ea7900d9408798b13966c91b4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Player_TimeCapsuleOpen
+    clip: {fileID: 8300000, guid: effcf32e3f15ecf4a8f147f8fca7bf9a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Creature_Death
+    clip: {fileID: 8300000, guid: 91871eab6de6b76498696a2d4345ca4c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Creature_Dig
+    clip: {fileID: 8300000, guid: de19ed7cd61ec1a42a6f33c3ed1907e7, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MapTile_Break
+    clip: {fileID: 8300000, guid: aaada34bb73950e45bc4132ffb635aa8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Tracer_BlackCrystal
+    clip: {fileID: 8300000, guid: 6e97f9dc0e9a96742914e172e12b4f5d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Tracer_Gas
+    clip: {fileID: 8300000, guid: fdb76be1819a88541ac77cef1693c3f4, type: 3}
+    volume: 0.5
+    pitch: 0.5
+    loop: 1
+    source: {fileID: 0}
+  - name: Tracer_RedLava
+    clip: {fileID: 8300000, guid: 87f4133bcbb75164d83709c96cfead2b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Tracer_LaserBeam
+    clip: {fileID: 8300000, guid: e85167f960f9bab489b0fd0e27488f02, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  sfxMixerGroup: {fileID: 24300002, guid: 388c304173b9936489b5edc56c3de8ae, type: 2}

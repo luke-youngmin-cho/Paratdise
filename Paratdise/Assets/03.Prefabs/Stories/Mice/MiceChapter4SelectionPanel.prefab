@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8441800824322298206}
   - component: {fileID: 8441800824322298207}
   - component: {fileID: 8441800824322298204}
+  - component: {fileID: 2118333239857621806}
   m_Layer: 5
   m_Name: Select2Button
   m_TagString: Untagged
@@ -133,6 +134,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2118333239857621806}
+        m_TargetAssemblyTypeName: SelectionHistoryWritter, Assembly-CSharp
+        m_MethodName: WriteSelectionHistory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8441800824322298204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,10 +155,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 8441800824322298202}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b235b4e9824ec5d43bae840011f7096a, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d7e7e8d5105e3f49aaded98da626fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   storyWantsToPlay: {fileID: 11400000, guid: 109b0b1641a364645b8e56a72d9aa649, type: 2}
+--- !u!114 &2118333239857621806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441800824322298202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a12a9a5c223e5bf4c8d4ea345be6ea94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chapter: 4
+  _selection1: 0
+  _selection2: 1
 --- !u!1 &8441800824942738124
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,6 +187,7 @@ GameObject:
   - component: {fileID: 8441800824942738160}
   - component: {fileID: 8441800824942738161}
   - component: {fileID: 8441800824942738126}
+  - component: {fileID: 5189281034377170877}
   m_Layer: 5
   m_Name: Select1Button
   m_TagString: Untagged
@@ -279,6 +308,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5189281034377170877}
+        m_TargetAssemblyTypeName: SelectionHistoryWritter, Assembly-CSharp
+        m_MethodName: WriteSelectionHistory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8441800824942738126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,10 +329,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 8441800824942738124}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b235b4e9824ec5d43bae840011f7096a, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d7e7e8d5105e3f49aaded98da626fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   storyWantsToPlay: {fileID: 11400000, guid: 0fa829cf2804726438ddf25f112a0b1e, type: 2}
+--- !u!114 &5189281034377170877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441800824942738124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a12a9a5c223e5bf4c8d4ea345be6ea94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chapter: 4
+  _selection1: 1
+  _selection2: 0
 --- !u!1 &8441800825649818430
 GameObject:
   m_ObjectHideFlags: 0

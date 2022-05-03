@@ -33,6 +33,7 @@ public class PlayerStateMachine_Attack : PlayerStateMachine
             case State.Prepare:
                 manager.move = Vector2.zero;
                 modelManager.Play("Attack");
+                AudioManager.instance.PlaySFX(SFXAssets.GetSFX("Player_Attack"));
                 state++;
                 break;
             case State.Casting:
