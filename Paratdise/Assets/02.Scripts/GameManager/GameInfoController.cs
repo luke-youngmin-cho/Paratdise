@@ -52,7 +52,7 @@ public static class GameInfoController
         {
             if (PlayerDataManager.data.piecesOfStory[i])
             {
-                if (PieceOfStoryAssets.instance.GetRariry(i) == PieceOfStoryRarity.Heroic)
+                if (PieceOfStoryAssets.GetRariry(i) == PieceOfStoryRarity.Heroic)
                     hpValue += 0.25f;
                 else
                     hpValue += 0.125f;
