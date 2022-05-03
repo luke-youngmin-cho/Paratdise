@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class UpgradeManager : MonoBehaviour
 {
     public static UpgradeManager instance;
-    public Button[] buttons;
     public Image targetToolImage;
     public Sprite[] toolImages;
     public UpgradeToolRegion targetToolRegion;
@@ -38,6 +37,8 @@ public class UpgradeManager : MonoBehaviour
 
     public void ToolUpgradeNow(int _targetRegion)
     {
+        Debug.Log($"~~~~~~~~~ 강화시도");
+            
         // 0-->Length,
         // 1-->Width,
         // 2-->Luck,
@@ -79,10 +80,11 @@ public class UpgradeManager : MonoBehaviour
 
         InventoryData data = InventoryDataManager.data;
 
-
-        for (int ingredientType = 0; ingredientType < targetRegion.Length; ingredientType++)
-        {
-            int toolLevel = GetUpgradeLevel(_region);
+        int toolLevel = GetUpgradeLevel(_region);
+        for (int ingredientType = 0; ingredientType < targetRegion[toolLevel].Count; ingredientType++)
+        {   
+            Debug.Log($" 강화재료 목록 조회 : {toolLevel} , {ingredientType}");
+            Debug.Log($" {targetRegion.Length}, {targetRegion[toolLevel].Count}");
             ItemData targetItem = data.itemsData.Find(x => x.itemName == targetRegion[toolLevel][ingredientType].name);
 
             if (!data.itemsData.Contains(targetItem))
@@ -154,6 +156,7 @@ public class UpgradeManager : MonoBehaviour
 
     private void ToolLevelUp(UpgradeToolRegion targetRegion)
     {
+        Debug.Log($"~~~~~~~~~  {targetRegion} 강화");
         CharacterType type = GameInfoController.GetCharacterTypeByIndex(ChooseCharacterUI.currentCharacterIndex);
         PlayerData tmpPlayerData = PlayerDataManager.data;
         CharacterData characterData = tmpPlayerData.GetCharacterData(type);

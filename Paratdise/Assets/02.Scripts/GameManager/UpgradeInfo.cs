@@ -21,10 +21,10 @@ public class UpgradeInfo
     };
     public List<Ingredients>[] luck = new List<Ingredients>[4]
     {
-        new List<Ingredients>() { new Ingredients("coal", 50), new Ingredients("firestone",1),new Ingredients("lizardeye", 10) },
-        new List<Ingredients>() { new Ingredients("coal", 100),  new Ingredients("firestone",2), new Ingredients("batwings", 15 ) },
-        new List<Ingredients>() { new Ingredients("coal", 150),  new Ingredients("firestone",3), new Ingredients("goo", 20) },
-        new List<Ingredients>() {  new Ingredients("coal", 200),  new Ingredients("firestone",4), new Ingredients("cloth", 25)  }
+        new List<Ingredients>() { new Ingredients("±úÁøº®µ¹", 50), new Ingredients("ÃµÂÉ°¡¸®", 1),new Ingredients("¶¥¹úÄ§", 10) },
+        new List<Ingredients>() { new Ingredients("±úÁøº®µ¹", 100),  new Ingredients("ÃµÂÉ°¡¸®", 2), new Ingredients("¶¥¹úÄ§", 15 ) },
+        new List<Ingredients>() { new Ingredients("±úÁøº®µ¹", 150),  new Ingredients("ÃµÂÉ°¡¸®", 3), new Ingredients("¶¥¹úÄ§", 20) },
+        new List<Ingredients>() {  new Ingredients("±úÁøº®µ¹", 200),  new Ingredients("ÃµÂÉ°¡¸®", 4), new Ingredients("¶¥¹úÄ§", 25)  }
     };
     public List<Ingredients>[] strength = new List<Ingredients>[4]
     {
