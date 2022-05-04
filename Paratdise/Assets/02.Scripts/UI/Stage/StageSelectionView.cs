@@ -54,7 +54,7 @@ public class StageSelectionView : MonoBehaviour
             Debug.Log($"Can't get stageinfo of {stageSelected}");
         else
         {
-            stagePreviewPanel.Find("StageTitle").GetComponent<Text>().text = $"Chapter {info.chapter} \n Stage {info.stage}";
+            stagePreviewPanel.Find("StageTitle").GetComponent<Text>().text = $"{info.stage} 층";
             stagePreviewPanel.Find("StagePreview").GetComponent<Image>().sprite = info.icon;
             Transform content = stagePreviewPanel.Find("ItemDropList").GetChild(0).GetChild(0);
 
@@ -66,7 +66,7 @@ public class StageSelectionView : MonoBehaviour
             foreach (var item in info.dropItemList)
             {
                 Instantiate(dropItemSlotPrefab, content).GetComponent<Image>().sprite = item.icon;
-                Debug.Log($"스테이지 {info.stage} 의 드롭아이템 {item.name} ");
+                Debug.Log($"{info.stage} 층 의 드롭아이템 {item.name} ");
             }
         }
     }

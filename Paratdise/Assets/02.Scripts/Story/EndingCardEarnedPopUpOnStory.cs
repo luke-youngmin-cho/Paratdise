@@ -48,7 +48,7 @@ public class EndingCardEarnedPopUpOnStory : MonoBehaviour
         if (select1Count + select2Count == 4)
         {
             endingCardIndex = 1 + select2Count + ((int)GameManager.characterSelected - 1) * 5;
-            endingCardToEarn = EndingCardAssets.GetEndingCard(endingCardIndex);
+            endingCardToEarn = EndingCardAssets.GetEndingCard(endingCardIndex, true);
 
             Debug.Log($"Ending card to earn : {endingCardToEarn}");
             if (PlayerDataManager.data.endingCards[endingCardIndex] == false)

@@ -472,6 +472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b75ce12ed17964aaf00e234cb7e373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playOnStart: 0
   sound:
     name: 5_Stage
     clip: {fileID: 8300000, guid: 1650522a05dcf744eb892c810314587a, type: 3}
@@ -1013,6 +1014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b75ce12ed17964aaf00e234cb7e373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playOnStart: 0
   sound:
     name: 5_Stage
     clip: {fileID: 8300000, guid: 1650522a05dcf744eb892c810314587a, type: 3}
@@ -1615,6 +1617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b75ce12ed17964aaf00e234cb7e373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playOnStart: 0
   sound:
     name: 2_ButtonsAndItems
     clip: {fileID: 8300000, guid: d746c2643dcd8984b83e8c460f1bc670, type: 3}
@@ -1816,6 +1819,7 @@ GameObject:
   - component: {fileID: 2971110950458129707}
   - component: {fileID: 5369829222588413247}
   - component: {fileID: 4694744056999154930}
+  - component: {fileID: 3041525235603158313}
   m_Layer: 5
   m_Name: StageClearPopUp
   m_TagString: Untagged
@@ -1892,6 +1896,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3041525235603158313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991973267761368145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 901ef227e39f5554ba84cf5d55b13ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clearTimeText: {fileID: 2993420499784632389}
+  earnedResourcesContent: {fileID: 6521304576648513674}
+  slotOrigin: {fileID: 89015153658804272}
 --- !u!1 &2108453272371179102
 GameObject:
   m_ObjectHideFlags: 0
@@ -2203,6 +2222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b75ce12ed17964aaf00e234cb7e373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playOnStart: 0
   sound:
     name: 5_Stage
     clip: {fileID: 8300000, guid: 1650522a05dcf744eb892c810314587a, type: 3}
@@ -2580,6 +2600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b75ce12ed17964aaf00e234cb7e373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playOnStart: 0
   sound:
     name: 5_Stage
     clip: {fileID: 8300000, guid: 1650522a05dcf744eb892c810314587a, type: 3}
@@ -3458,6 +3479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b75ce12ed17964aaf00e234cb7e373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playOnStart: 0
   sound:
     name: 5_Stage
     clip: {fileID: 8300000, guid: 1650522a05dcf744eb892c810314587a, type: 3}
@@ -4226,6 +4248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b75ce12ed17964aaf00e234cb7e373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playOnStart: 0
   sound:
     name: 5_Stage
     clip: {fileID: 8300000, guid: 1650522a05dcf744eb892c810314587a, type: 3}
@@ -4660,6 +4683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b75ce12ed17964aaf00e234cb7e373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playOnStart: 0
   sound:
     name: 5_Stage
     clip: {fileID: 8300000, guid: 1650522a05dcf744eb892c810314587a, type: 3}
@@ -4946,6 +4970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b75ce12ed17964aaf00e234cb7e373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playOnStart: 0
   sound:
     name: 5_Stage
     clip: {fileID: 8300000, guid: 1650522a05dcf744eb892c810314587a, type: 3}
@@ -5642,6 +5667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b75ce12ed17964aaf00e234cb7e373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playOnStart: 0
   sound:
     name: 5_Stage
     clip: {fileID: 8300000, guid: 1650522a05dcf744eb892c810314587a, type: 3}
@@ -5916,6 +5942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b75ce12ed17964aaf00e234cb7e373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playOnStart: 0
   sound:
     name: 5_Stage
     clip: {fileID: 8300000, guid: 1650522a05dcf744eb892c810314587a, type: 3}

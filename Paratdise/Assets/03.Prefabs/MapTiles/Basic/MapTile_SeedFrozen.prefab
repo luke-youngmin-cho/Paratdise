@@ -137,3 +137,13 @@ MonoBehaviour:
   dropItems:
   - itemPrefab: {fileID: 1510565593170886249, guid: 54398df47ae59ef4492da3437bc6126e, type: 3}
     dropRatio: 40
+  - itemPrefab: {fileID: 1433915041826705244, guid: 641fac71a2b1b46419c9dc3b8379bda5, type: 3}
+    dropRatio: 5
+  - itemPrefab: {fileID: 2186901858676895355, guid: 8a8a4abd76df2c2489252e5b671eccf5, type: 3}
+    dropRatio: 5
+  buffInfoWhenHurt:
+    type: 0
+    active: 0
+  buffInfoWhenDestroy:
+    type: 0
+    active: 0

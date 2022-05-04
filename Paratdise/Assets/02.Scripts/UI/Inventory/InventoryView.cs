@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using UnityEngine.UI;
 
 /// <summary>
 /// 작성자 : 조영민
@@ -14,7 +14,11 @@ public class InventoryView : MonoBehaviour
 {
     public static InventoryView instance;
     [SerializeField] private GameObject itemInfoPanel;
-
+    [SerializeField] private Image bg;
+    [SerializeField] private Sprite bg_mice;
+    [SerializeField] private Sprite bg_laila;
+    [SerializeField] private Sprite bg_drillggabijo;
+    [SerializeField] private Sprite bg_eily;
     //============================================================================
     //************************* Public Methods ***********************************
     //============================================================================
@@ -33,5 +37,28 @@ public class InventoryView : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+
+    private void OnEnable()
+    {
+        switch (GameManager.characterSelected)
+        {
+            case CharacterType.None:
+                break;
+            case CharacterType.Mice:
+                bg.sprite = bg_mice;
+                break;
+            case CharacterType.Laila:
+                bg.sprite = bg_laila;
+                break;
+            case CharacterType.DrillGgabijo:
+                bg.sprite = bg_drillggabijo;
+                break;
+            case CharacterType.Eily:
+                bg.sprite = bg_eily;
+                break;
+            default:
+                break;
+        }
     }
 }

@@ -19,7 +19,7 @@ public class EndingCardsView : MonoBehaviour
     public Transform itemContent;
     public GameObject slotPrefab;
     public List<GameObject> slots = new List<GameObject>();
-    [SerializeField] private GameObject diaryInfoPanel;
+    [SerializeField] private GameObject endingCardInfoPanel;
 
     //============================================================================
     //************************* Public Methods ***********************************
@@ -33,24 +33,30 @@ public class EndingCardsView : MonoBehaviour
             Destroy(slots[i]);
         slots.Clear();
         
-        for (int i = 0; i < PlayerDataManager.data.piecesOfStory.Length; i++)
+        for (int i = 0; i < EndingCardAssets.instance.endingCardPairs.Length; i++)
         {
-            if (PlayerDataManager.data.piecesOfStory[i])
+            GameObject slot = Instantiate(slotPrefab, itemContent);
+            slots.Add(slot);
+            if (PlayerDataManager.data.endingCards[i])
+            {   
+                Debug.Log($"엔딩카드 {i} 있음");
+                EndingCard endingCard = EndingCardAssets.GetEndingCard(i, true);
+                slot.GetComponent<EndingCardSlot>().SetInfo(endingCard.icon, endingCard.title, endingCard.index);
+            }
+            else
             {
-                GameObject slot = Instantiate(slotPrefab, itemContent);
-                slots.Add(slot);
-                Debug.Log($"스토리조각 {i} 있음");
-                PieceOfStory pieceOfStory = PieceOfStoryAssets.instance.piecesOfStory.Find(x => x.index == i);
-                slot.GetComponent<DiarySlot>().SetInfo(pieceOfStory.icon, pieceOfStory.title, pieceOfStory.description);
+                Debug.Log($"엔딩카드 {i} 없음");
+                EndingCard endingCard = EndingCardAssets.GetEndingCard(i, false);
+                slot.GetComponent<EndingCardSlot>().SetInfo(endingCard.icon, endingCard.title, endingCard.index);
             }
         }
 
     }
 
-    public void ActiveInfoPanel(Sprite icon, string title, string discription)
+    public void ActiveInfoPanel(Sprite icon, string title, string indexText)
     {
-        diaryInfoPanel.GetComponent<DiaryCapsuleInfoPanel>().Setup(icon, title, discription);
-        diaryInfoPanel.SetActive(true);
+        endingCardInfoPanel.GetComponent<EndingCardInfoPanel>().Setup(icon, title, indexText);
+        endingCardInfoPanel.SetActive(true);
     }
 
     //============================================================================

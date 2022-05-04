@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65620a4ac80ea8d41ac3d17862702574, type: 3}
+  m_Name: storymessage 17
+  m_EditorClassIdentifier: 
+  index: 17
+  date: 2049-04-23
+  title: "\uC720\uB839"
+  description: "\uC720\uB839\uC774\uB77C\uB294\uAC8C \uC788\uB2E8\uB9D0\uC774\uC57C?"
+  icon: {fileID: 21300000, guid: 9817af12191136f4db527103096d16f8, type: 3}
+  rarity: 3

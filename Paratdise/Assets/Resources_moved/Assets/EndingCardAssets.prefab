@@ -43,14 +43,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6967eefb9b7e64745b389619ebce224d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endingCards:
-  - {fileID: 11400000, guid: 6d69e36da8c4e684e8c4c44f4277eb5e, type: 2}
-  - {fileID: 11400000, guid: 3366feedde2597643bd586fd2cbbd34c, type: 2}
-  - {fileID: 11400000, guid: 1d7f1ac5bfca0f543ac149bea8dd799b, type: 2}
-  - {fileID: 11400000, guid: aab0c381fa084b84f945269c25f04d8e, type: 2}
-  - {fileID: 11400000, guid: 808667581ccf5444dad1b254ab1fc71e, type: 2}
-  - {fileID: 11400000, guid: eed71f934d9a4e542b97e0896786395d, type: 2}
-  - {fileID: 11400000, guid: c6c6c3283a80e5147972be7d3a2d0851, type: 2}
-  - {fileID: 11400000, guid: a00bf7e3ae466a24b855a7d552a27518, type: 2}
-  - {fileID: 11400000, guid: 972c673fb83d6cb48aa3830ca4adccef, type: 2}
-  - {fileID: 11400000, guid: e5b6f665801d8564295a79998b55c8f3, type: 2}
+  endingCardPairs:
+  - activated: {fileID: 11400000, guid: 6d69e36da8c4e684e8c4c44f4277eb5e, type: 2}
+    deactivated: {fileID: 11400000, guid: f03b8b0b4c715854d863a5284f15c9e5, type: 2}
+  - activated: {fileID: 11400000, guid: 3366feedde2597643bd586fd2cbbd34c, type: 2}
+    deactivated: {fileID: 11400000, guid: f812b82f3f3ad2a408c03e97fcc1222b, type: 2}
+  - activated: {fileID: 11400000, guid: 1d7f1ac5bfca0f543ac149bea8dd799b, type: 2}
+    deactivated: {fileID: 11400000, guid: a80594606f29257419d591531a7ac49d, type: 2}
+  - activated: {fileID: 11400000, guid: aab0c381fa084b84f945269c25f04d8e, type: 2}
+    deactivated: {fileID: 11400000, guid: ec10f0c29d586634586f5bea47b800d0, type: 2}
+  - activated: {fileID: 11400000, guid: 808667581ccf5444dad1b254ab1fc71e, type: 2}
+    deactivated: {fileID: 11400000, guid: 4316e491ddff17f4a994d38709770b76, type: 2}
+  - activated: {fileID: 11400000, guid: eed71f934d9a4e542b97e0896786395d, type: 2}
+    deactivated: {fileID: 11400000, guid: c89ecd47d2e34d746a501940389c645e, type: 2}
+  - activated: {fileID: 11400000, guid: c6c6c3283a80e5147972be7d3a2d0851, type: 2}
+    deactivated: {fileID: 11400000, guid: 66ddd3ed771bc0e4095829242baf7979, type: 2}
+  - activated: {fileID: 11400000, guid: a00bf7e3ae466a24b855a7d552a27518, type: 2}
+    deactivated: {fileID: 11400000, guid: 54636807323b3f04d9728e5b2ee9d680, type: 2}
+  - activated: {fileID: 11400000, guid: 972c673fb83d6cb48aa3830ca4adccef, type: 2}
+    deactivated: {fileID: 11400000, guid: 941d1a3dd607e924398d8f378b75f064, type: 2}
+  - activated: {fileID: 11400000, guid: e5b6f665801d8564295a79998b55c8f3, type: 2}
+    deactivated: {fileID: 11400000, guid: 90d0b836b9b1bd24eb224a793934319a, type: 2}

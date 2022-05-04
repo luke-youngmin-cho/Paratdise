@@ -19,7 +19,7 @@ public class PiecesOfStoryView : MonoBehaviour
     public Transform itemContent;
     public GameObject slotPrefab;
     public List<GameObject> slots = new List<GameObject>();
-    [SerializeField] private GameObject diaryInfoPanel;
+    [SerializeField] private GameObject pieceOfStoryInfoPanel;
 
     //============================================================================
     //************************* Public Methods ***********************************
@@ -41,7 +41,8 @@ public class PiecesOfStoryView : MonoBehaviour
                 slots.Add(slot);
                 Debug.Log($"스토리조각 {i} 있음");
                 PieceOfStory pieceOfStory = PieceOfStoryAssets.instance.piecesOfStory.Find(x => x.index == i);
-                slot.GetComponent<DiarySlot>().SetInfo(pieceOfStory.icon, pieceOfStory.title, pieceOfStory.description);
+                if (pieceOfStory != null)
+                    slot.GetComponent<PieceOfStorySlot>().SetInfo(pieceOfStory.icon, pieceOfStory.title, pieceOfStory.description);
             }
         }
 
@@ -49,8 +50,8 @@ public class PiecesOfStoryView : MonoBehaviour
 
     public void ActiveInfoPanel(Sprite icon, string title, string discription)
     {
-        diaryInfoPanel.GetComponent<DiaryCapsuleInfoPanel>().Setup(icon, title, discription);
-        diaryInfoPanel.SetActive(true);
+        pieceOfStoryInfoPanel.GetComponent<PieceOfStoryInfoPanel>().Setup(icon, title, discription);
+        pieceOfStoryInfoPanel.SetActive(true);
     }
 
     //============================================================================

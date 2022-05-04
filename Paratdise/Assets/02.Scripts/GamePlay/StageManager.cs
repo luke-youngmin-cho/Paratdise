@@ -41,6 +41,9 @@ public class StageManager : MonoBehaviour
     private List<ItemData> earnedItems = new List<ItemData>();
     private List<int> earnedPiecesOfStory = new List<int>();
 
+    private float _timeLimit;
+    private float _startTimeMark;
+
     //===============================================================================================
     //********************************** Public Methods *********************************************
     //===============================================================================================
@@ -120,6 +123,30 @@ public class StageManager : MonoBehaviour
             PlayerStateMachineManager.instance.ChangeState(PlayerState.Movement);
             state = StageState.OnStage;
         }   
+    }
+
+    public void SetTimer(float timeLimit)
+    {
+        _timeLimit = timeLimit;
+        _startTimeMark = Time.time;
+    }
+
+    public float GetTimer()
+    {
+        float remain = _timeLimit - (Time.time - _startTimeMark);
+        if (remain < 0)
+            remain = 0;
+        return remain;
+    }
+
+    public float GetElapsedTime()
+    {
+        return _timeLimit - GetTimer();
+    }
+
+    public List<ItemData> GetEarnedItems()
+    {
+        return earnedItems;
     }
 
     //===============================================================================================
@@ -216,12 +243,14 @@ public class StageManager : MonoBehaviour
                 PlayerDataManager.data.SetStageLastPlayed(GameManager.characterSelected, GameManager.currentStage);
                 PlayerDataManager.SaveData();
                 PlayStateManager.instance.SetState(PlayState.Play);
+                SetTimer(stageInfo.timeLimit);
                 Next();
                 break;
 
             case StageState.OnStage:
+                if (GetTimer() <= 0)
+                    GameOver();
                 break;
-
             case StageState.Finish:
                 Debug.Log("Stage Finished!");
                 PlayStateManager.instance.SetState(PlayState.Paused);

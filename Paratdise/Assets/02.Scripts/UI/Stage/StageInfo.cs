@@ -15,6 +15,7 @@ public class StageInfo : ScriptableObject
 {
     public int chapter;
     public int stage;
+    public float timeLimit;
     public Sprite icon;
     public List<Item> dropItemList;
     public Story storyBeforeStage;

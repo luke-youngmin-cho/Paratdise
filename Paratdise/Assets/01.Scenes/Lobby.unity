@@ -424,6 +424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b75ce12ed17964aaf00e234cb7e373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playOnStart: 0
   sound:
     name: 3_Diary
     clip: {fileID: 8300000, guid: dfdc8029d30177b4a85f2d1df2a8b4f0, type: 3}
@@ -602,6 +603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b75ce12ed17964aaf00e234cb7e373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playOnStart: 0
   sound:
     name: 2_ButtonsAndItems
     clip: {fileID: 8300000, guid: d746c2643dcd8984b83e8c460f1bc670, type: 3}
@@ -1130,6 +1132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b75ce12ed17964aaf00e234cb7e373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playOnStart: 0
   sound:
     name: 3_Diary
     clip: {fileID: 8300000, guid: dfdc8029d30177b4a85f2d1df2a8b4f0, type: 3}
@@ -1913,7 +1916,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 35399ba9e8757ea41938f987d39184e2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f72bbb63b8b18ec4fa57a94e0978a726, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2094,6 +2097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b75ce12ed17964aaf00e234cb7e373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playOnStart: 0
   sound:
     name: 2_ButtonsAndItems
     clip: {fileID: 8300000, guid: d746c2643dcd8984b83e8c460f1bc670, type: 3}

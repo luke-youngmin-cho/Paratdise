@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65620a4ac80ea8d41ac3d17862702574, type: 3}
+  m_Name: storymessage 10
+  m_EditorClassIdentifier: 
+  index: 10
+  date: 2049-04-23
+  title: "\uBC29\uC0AC\uB2A5\uACFC \uC950"
+  description: "\uBC29\uC0AC\uB2A5\uACFC \uC950"
+  icon: {fileID: 21300000, guid: 0ba13d00e72ca284aaa4d73d0d9e1275, type: 3}
+  rarity: 3

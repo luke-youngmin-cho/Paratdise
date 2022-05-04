@@ -35,17 +35,21 @@ public class EndingCardAssets : MonoBehaviour
         }
     }
 
-
-    public List<EndingCard> endingCards = new List<EndingCard>();
-
-    public static EndingCard GetEndingCard(int index)
+    [System.Serializable]
+    public class EndingCardPair
+    {
+        public EndingCard activated;
+        public EndingCard deactivated;
+    }
+    public EndingCardPair[] endingCardPairs;
+    
+    public static EndingCard GetEndingCard(int index, bool activated)
     {
         Debug.Log($"찾을 엔딩카드 인덱스 : {index}");
-        foreach (var item in instance.endingCards)
-        {
-            Debug.Log($"엔딩카드 조회 : {item}, {item.index}");
-        }
 
-        return instance.endingCards.Find(x => x.index == index);
+        if (activated)
+            return instance.endingCardPairs[index].activated;
+        else
+            return instance.endingCardPairs[index].deactivated;
     }
 }

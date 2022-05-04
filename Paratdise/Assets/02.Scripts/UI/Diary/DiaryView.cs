@@ -12,21 +12,22 @@
 public class DiaryView : MonoBehaviour
 {
     public static DiaryView instance;
-    [SerializeField] private GameObject capsuleInfoPanel;
-
+    [SerializeField] private GameObject pieceOfStoryInfoPanel;
+    [SerializeField] private GameObject endingCardInfoPanel;
     //============================================================================
     //************************* Public Methods ***********************************
     //============================================================================
 
     public void ActivePiecesOfStoryInfoPanel(Sprite icon, string title, string discription)
     {
-        capsuleInfoPanel.GetComponent<DiaryCapsuleInfoPanel>().Setup(icon, title, discription);
-        capsuleInfoPanel.SetActive(true);
+        pieceOfStoryInfoPanel.GetComponent<PieceOfStoryInfoPanel>().Setup(icon, title, discription);
+        pieceOfStoryInfoPanel.SetActive(true);
     }
 
-    public void ActiveEndingCardInfoPanel()
+    public void ActiveEndingCardInfoPanel(Sprite icon, string title, string indexText)
     {
-
+        endingCardInfoPanel.GetComponent<EndingCardInfoPanel>().Setup(icon, title, indexText);
+        endingCardInfoPanel.SetActive(true);
     }
 
     //============================================================================

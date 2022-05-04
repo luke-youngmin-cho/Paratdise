@@ -24,6 +24,7 @@ public class MapCreater : MonoBehaviour
 {
     public static MapCreater instance;
     public static Vector2 sizeUnit;
+    public static float mapHeight;
     public BoxCollider2D mapSizeBoundCol;
     public int algorithmTimes;
     public bool isCreated;
@@ -118,6 +119,7 @@ public class MapCreater : MonoBehaviour
 
             // 기본 맵타일 단위 크기
             sizeUnit = mapInfo.MapElements_Boundary[0].GetComponent<BoxCollider2D>().size;
+            mapHeight = mapInfo.size.y;
 
             ObjectPool.instance.CreatePoolElements();
             await UniTask.WaitUntil(() => ObjectPool.isReady);
