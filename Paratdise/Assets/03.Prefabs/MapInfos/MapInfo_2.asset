@@ -40,3 +40,5 @@ MonoBehaviour:
     num: 10
   - enemy: {fileID: 9001409966523601161, guid: 5313aa39c2cb9b645b66ce5ca9446be7, type: 3}
     num: 2
+  - enemy: {fileID: 9001409966523601161, guid: 9dc6e289503bd3741a33ecab584664fb, type: 3}
+    num: 5

@@ -54,7 +54,7 @@ public class InventoryView : MonoBehaviour
             case CharacterType.DrillGgabijo:
                 bg.sprite = bg_drillggabijo;
                 break;
-            case CharacterType.Eily:
+            case CharacterType.Ailey:
                 bg.sprite = bg_eily;
                 break;
             default:

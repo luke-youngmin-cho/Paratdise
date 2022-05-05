@@ -53,7 +53,7 @@ public class ChooseCharacterUI : MonoBehaviour
                 charImg.sprite = ggabirilldjo;
                 break;
 
-            case CharacterType.Eily:
+            case CharacterType.Ailey:
                 charImg.sprite = Eily;
                 break;
         }

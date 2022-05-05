@@ -16,6 +16,7 @@ public class CharacterData
     public bool isAvailable;
     public int stageSaved;
     public int stageLastPlayed;
+    public Stats stats;
     public ToolsLevel toolsLevel;
     public SelectionHistroy[] selectionHistories = new SelectionHistroy[8];
 }
@@ -27,15 +28,23 @@ public enum CharacterType
     Mice,
     Laila,
     DrillGgabijo,
-    Eily
+    Ailey
+}
+
+public struct Stats
+{
+    public float hp;
+    public float moveSpeed;
+    public float coldResistance;
+    public float mentality;
 }
 
 [System.Serializable]
 public struct ToolsLevel
 {
-    public int widthLevel;
-    public int heightLevel;
-    public int strengthLevel;
+    public int diggingForceLevel;
+    public int AttackLevel;
+    public int speedLevel;
     public int luckLevel;
 }
 

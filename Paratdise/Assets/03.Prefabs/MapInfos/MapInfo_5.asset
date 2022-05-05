@@ -38,3 +38,5 @@ MonoBehaviour:
   enemyInfo:
   - enemy: {fileID: 9001409966523601161, guid: 02691e3db4c692841acf9f932a03d210, type: 3}
     num: 10
+  - enemy: {fileID: 9001409966523601161, guid: 0e052e8a072d8ab45b31e496e8f2c19d, type: 3}
+    num: 2

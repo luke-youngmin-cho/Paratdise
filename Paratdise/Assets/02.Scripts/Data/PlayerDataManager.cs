@@ -64,10 +64,10 @@ public class PlayerDataManager
             tmpCharacterData.stageLastPlayed = 16;
             tmpCharacterData.toolsLevel = new ToolsLevel()
             {
-                strengthLevel = 99,
-                heightLevel = 1,
-                luckLevel = 1,
-                widthLevel = 1,
+                diggingForceLevel = 0,
+                speedLevel = 0,
+                luckLevel = 0,
+                AttackLevel = 0,
             };
             tmpData.SetCharacterData(tmpCharacterData);
             data = tmpData;

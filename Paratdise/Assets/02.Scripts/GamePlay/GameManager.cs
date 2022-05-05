@@ -150,6 +150,9 @@ public class GameManager : MonoBehaviour
                 Next();
                 break;
             case GameState.GoLobby:
+                // todo -> 마지막 플레이한 캐릭터 적용하기
+                SelectCharacter(CharacterType.Mice);
+
                 SceneMover.MoveTo("Lobby");
                 if (WasProloguePlayed())
                     gameState = GameState.OnLobby;

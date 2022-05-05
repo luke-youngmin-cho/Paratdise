@@ -35,7 +35,7 @@ MonoBehaviour:
     trap: {fileID: 5989855770724605281, guid: e479a48baa579d94f80a6bcc59a93074, type: 3}
     num: 20
   enemyInfo:
-  - enemy: {fileID: 9001409966523601161, guid: 9dc6e289503bd3741a33ecab584664fb, type: 3}
-    num: 10
   - enemy: {fileID: 9001409966523601161, guid: 4ad817c3fbad24a41bd82274764a5226, type: 3}
+    num: 10
+  - enemy: {fileID: 9001409966523601161, guid: 3b12ab127017ade4eb525f5a7d35e09c, type: 3}
     num: 10

@@ -16,10 +16,6 @@ MonoBehaviour:
   stage: 8
   timeLimit: 300
   icon: {fileID: 21300000, guid: deeb4c0d296acae45948091fc66847d8, type: 3}
-  dropItemList:
-  - {fileID: 11400000, guid: 9b4a06ed78402d64c97426c1b3f2e397, type: 2}
-  - {fileID: 11400000, guid: af60e6e238ec4964b96d86edc915a6e4, type: 2}
-  - {fileID: 11400000, guid: cf99d272f8b07e349ae9dcefed21e093, type: 2}
-  - {fileID: 11400000, guid: 23266de84cc692e428d6ce16b47038c2, type: 2}
+  dropItemList: []
   storyBeforeStage: {fileID: 11400000, guid: 161a69ed085eb4247a12bf93ac019b8b, type: 2}
   storyAfterStage: {fileID: 11400000, guid: 858d4250b967d194182f4c281fbb0bd6, type: 2}

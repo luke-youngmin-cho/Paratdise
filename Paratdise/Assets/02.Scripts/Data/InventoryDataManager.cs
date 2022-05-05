@@ -58,6 +58,20 @@ public class InventoryDataManager
 
         string jsonPath = $"{Application.persistentDataPath}/InventoryDatas/Inventory_{characterType}_{LoginManager.nickName}.json";
         InventoryData tmpData = LoadDefaultData();
+
+        if (LoginManager.nickName == "master")
+        {
+            foreach (var item in ItemAssets.instance.items)
+            {
+                ItemData itemData = new ItemData
+                {
+                    itemName = item.name,
+                    num = 999
+                };
+                tmpData.AddData(itemData);
+            }
+        }
+
         string jsonData = JsonConvert.SerializeObject(tmpData, Formatting.Indented);
         Debug.Log($"Inventory data of {characterType} {LoginManager.nickName} Created");
         instance.dataDictionary.Add(characterType, tmpData);

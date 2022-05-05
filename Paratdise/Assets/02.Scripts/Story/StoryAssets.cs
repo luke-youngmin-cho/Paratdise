@@ -51,7 +51,7 @@ public class StoryAssets : MonoBehaviour
                 return stories_Laila.Find(x => x.characterType == type && x.index == index);
             case CharacterType.DrillGgabijo:
                 return stories_DrillGgabijo.Find(x => x.characterType == type && x.index == index);
-            case CharacterType.Eily:
+            case CharacterType.Ailey:
                 return stories_Eily.Find(x => x.characterType == type && x.index == index);
             default:
                 break;

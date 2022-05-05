@@ -210,11 +210,17 @@
       "isAvailable": true,
       "stageSaved": 0,
       "stageLastPlayed": 0,
+      "stats": {
+        "hp": 100.0,
+        "moveSpeed": 1.0,
+        "coldResistance": 10.0,
+        "mentality": 10.0
+      },
       "toolsLevel": {
-        "widthLevel": 1,
-        "heightLevel": 1,
-        "strengthLevel": 1,
-        "luckLevel": 1
+        "widthLevel": 0,
+        "heightLevel": 0,
+        "strengthLevel": 0,
+        "luckLevel": 0
       },
       "selectionHistory": []
     },
@@ -223,11 +229,17 @@
       "isAvailable": false,
       "stageSaved": 0,
       "stageLastPlayed": 0,
+      "stats": {
+        "hp": 100.0,
+        "moveSpeed": 1.2,
+        "coldResistance": 10.0,
+        "mentality": 15.0
+      },
       "toolsLevel": {
-        "widthLevel": 1,
-        "heightLevel": 1,
-        "strengthLevel": 1,
-        "luckLevel": 1
+        "widthLevel": 0,
+        "heightLevel": 0,
+        "strengthLevel": 0,
+        "luckLevel": 0
       },
       "selectionHistory": []
     },
@@ -236,11 +248,17 @@
       "isAvailable": false,
       "stageSaved": 0,
       "stageLastPlayed": 0,
+      "stats": {
+        "hp": 200.0,
+        "moveSpeed": 0.7,
+        "coldResistance": 20.0,
+        "mentality": 15.0
+      },
       "toolsLevel": {
-        "widthLevel": 2,
-        "heightLevel": 2,
-        "strengthLevel": 2,
-        "luckLevel": 1
+        "widthLevel": 0,
+        "heightLevel": 0,
+        "strengthLevel": 0,
+        "luckLevel": 0
       },
       "selectionHistory": []
     },
@@ -249,11 +267,17 @@
       "isAvailable": false,
       "stageSaved": 0,
       "stageLastPlayed": 0,
+      "stats": {
+        "hp": 150.0,
+        "moveSpeed": 1.1,
+        "coldResistance": 20.0,
+        "mentality": 30.0
+      },
       "toolsLevel": {
-        "widthLevel": 1,
-        "heightLevel": 2,
-        "strengthLevel": 1,
-        "luckLevel": 2
+        "widthLevel": 0,
+        "heightLevel": 0,
+        "strengthLevel": 0,
+        "luckLevel": 0
       },
       "selectionHistory": []
     }

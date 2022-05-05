@@ -21,9 +21,9 @@ public class PlayerStateMachine_Dig : PlayerStateMachine
         base.Awake();
         
         CharacterData data = PlayerDataManager.data.GetCharacterData(GameManager.characterSelected);
-        width = data.toolsLevel.widthLevel; // todo -> 강화 레벨에 따른 실제 값 가져오기
-        height = data.toolsLevel.heightLevel; // todo -> 강화 레벨에 따른 실제 값 가져오기
-        strength = data.toolsLevel.strengthLevel; // todo -> 강화 레벨에 따른 실제 값 가져오기
+        width = 0.5f;
+        height = 0.5f;
+        strength = 1 + data.toolsLevel.diggingForceLevel; // todo -> 강화 레벨에 따른 실제 값 가져오기
         
         targetLayer = LayerMask.NameToLayer("MapTileDestroyable");
     }
