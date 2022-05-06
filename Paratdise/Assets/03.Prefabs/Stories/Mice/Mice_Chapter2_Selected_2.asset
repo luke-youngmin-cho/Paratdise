@@ -22,7 +22,7 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: 7653954d113b2e24c8e37986b1238cf9, type: 3}
     effectType: 0
   - sprite: {fileID: 21300000, guid: e4cc4ac7ec9dc8b4399974f4df92e6e9, type: 3}
-    effectType: 0
+    effectType: 1
   - sprite: {fileID: 21300000, guid: 0937a78f09805954d985e63fb31d2653, type: 3}
     effectType: 0
   - sprite: {fileID: 21300000, guid: a37a89b954af1b6488e502d685b012cd, type: 3}
