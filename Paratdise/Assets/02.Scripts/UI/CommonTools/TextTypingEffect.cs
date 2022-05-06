@@ -44,17 +44,35 @@ public class TextTypingEffect : MonoBehaviour, IPointerClickHandler
 
     private void OnEnable()
     {
+        if (coroutine != null)
+            StopCoroutine(coroutine);
+
+        originText = UI_Text.text;
         coroutine = StartCoroutine(TypingEffectCoroutine());
     }
 
     IEnumerator TypingEffectCoroutine()
     {
         string tmpText = originText; // Text UI 가 가지고있는 string 형 텍스트 멤버
+        //for (int i = 0; i < tmpText.Length; i++)
+        //{
+        //    UI_Text.text = tmpText.Substring(0, i); // substring 은 string 의 0번째~ i 번째까지 값을 반환하는 함수
+        //    yield return new WaitForSeconds(typingDelay); 
+        //}
+
+        float timer = typingDelay;
+
         for (int i = 0; i < tmpText.Length; i++)
         {
-            UI_Text.text = tmpText.Substring(0, i); // substring 은 string 의 0번째~ i 번째까지 값을 반환하는 함수
-            yield return new WaitForSeconds(typingDelay); 
+            UI_Text.text = tmpText.Substring(0, i);
+            while (timer > 0)
+            {
+                timer -= 0.0167f;
+                yield return null;
+            }
+            timer = typingDelay;
         }
+
         ToggleGameObjects(); // 타이핑 이펙트 끝났으니 리스트에 담긴 게임오브젝트들 토글 시키기.
         coroutine = null; // 코루틴이 끝났으니 코루틴을 관리하는 변수에 null (아무것도 없음) 이라고 해줌
     }

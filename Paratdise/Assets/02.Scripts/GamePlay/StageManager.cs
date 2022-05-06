@@ -325,6 +325,7 @@ public class StageManager : MonoBehaviour
                 clearPopUp.SetActive(true);
                 SaveEarnedItems();
                 SaveEarnedPiecesOfStory();
+                
                 if (PlayerDataManager.data.GetStageSaved(GameManager.characterSelected) <= GameManager.currentStage)
                 {
                     isFirstClear = true;
