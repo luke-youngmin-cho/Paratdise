@@ -30,8 +30,8 @@ TagManager:
   - Obstacle
   - Fluids_Water
   - Fluids_Lava
-  - 
-  - 
+  - Fluids_Metal
+  - Fluids_Radioactive
   - 
   - 
   - Tracer

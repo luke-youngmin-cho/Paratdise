@@ -13,29 +13,30 @@ MonoBehaviour:
   m_Name: MapInfo_10
   m_EditorClassIdentifier: 
   bg: {fileID: 21300000, guid: 9a6ae727c83d0034da3780f45307bace, type: 3}
-  size: {x: 15, y: 30}
-  algoNum: 15
+  size: {x: 16, y: 24}
+  algoNum: 27
   fluidPercents: 6
-  obstaclePercents: 20
+  obstaclePercents: 18
   MapElements_Boundary:
   - {fileID: 4883344005395017866, guid: e51c68caa7ae0a1429af2ef6ab5306c1, type: 3}
   MapElements_Basic:
   - {fileID: 8095170532550832005, guid: 3ef224d501007ea408d639e78b7559a0, type: 3}
   - {fileID: 8095170532550832005, guid: ac7b7697f1e52724ca6978fb2f065a76, type: 3}
   - {fileID: 8095170532550832005, guid: eed5172c8613b2c4782cb08c90885c94, type: 3}
-  MapElements_FluidBundle: []
+  MapElements_FluidBundle:
+  - {fileID: 9111984183550421366, guid: 118f5f43acb1dfe4ebc266e91438b188, type: 3}
   MapElements_Obstacle:
   - {fileID: 8095170532550832005, guid: 0b6a37b1b41de9144a7614f3f63acf99, type: 3}
   - {fileID: 8095170532550832005, guid: 59cf4a05b35a17f43b8b8a49203f41d8, type: 3}
   MapElement_Start: {fileID: 6485304845783642979, guid: 3e44e324a19303a4ca32a34c9044c3d3, type: 3}
   MapElement_End: {fileID: 4826205792507212175, guid: 113caace07bcca743ae7960d88d0e3bc, type: 3}
   tracer: {fileID: 0}
-  timeCapsuleNum: 15
+  timeCapsuleNum: 10
   trapInfo:
     trap: {fileID: 2751935121785582831, guid: 98d13e0eec489f8469b1b0224ddd4d8c, type: 3}
-    num: 20
+    num: 15
   enemyInfo:
   - enemy: {fileID: 9001409966523601161, guid: 04e3742799e834f4691a161330aa1aae, type: 3}
-    num: 10
+    num: 4
   - enemy: {fileID: 9001409966523601161, guid: a3856f9f65711f642a0fbcd018a9b2d3, type: 3}
-    num: 2
+    num: 3

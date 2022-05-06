@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: MapInfo_1
   m_EditorClassIdentifier: 
   bg: {fileID: 21300000, guid: 269c764070384e74baaa36044d1e3d37, type: 3}
-  size: {x: 15, y: 30}
+  size: {x: 12, y: 22}
   algoNum: 30
   fluidPercents: 5
-  obstaclePercents: 20
+  obstaclePercents: 15
   MapElements_Boundary:
   - {fileID: 4883344005395017866, guid: e51c68caa7ae0a1429af2ef6ab5306c1, type: 3}
   MapElements_Basic:
@@ -37,6 +37,6 @@ MonoBehaviour:
     num: 10
   enemyInfo:
   - enemy: {fileID: 9001409966523601161, guid: 657d176311581b1429cd39d0cc8bafcb, type: 3}
-    num: 10
+    num: 2
   - enemy: {fileID: 9001409966523601161, guid: 9dc6e289503bd3741a33ecab584664fb, type: 3}
-    num: 10
+    num: 4

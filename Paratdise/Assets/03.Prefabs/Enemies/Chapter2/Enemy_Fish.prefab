@@ -362,10 +362,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db7bd4119636e84aa97e8440f8b1b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpMax: 30
-  damage: 10
+  hpMax: 18
+  damage: 7
   moveSpeed: 1
-  knockBackForce: 1
+  knockBackForce: 2
   targetLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -379,7 +379,7 @@ MonoBehaviour:
   hpBarShowTime: 2
   dropItems:
   - itemPrefab: {fileID: 1510565593170886249, guid: 9117acb60b310bc4d90bc8e069056a39, type: 3}
-    dropRatio: 30
+    dropRatio: 75
 --- !u!114 &9001409966523601172
 MonoBehaviour:
   m_ObjectHideFlags: 0

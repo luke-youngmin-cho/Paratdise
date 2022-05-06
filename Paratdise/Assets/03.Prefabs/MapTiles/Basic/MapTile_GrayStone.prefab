@@ -131,14 +131,14 @@ MonoBehaviour:
   left: {fileID: 0}
   right: {fileID: 0}
   col: {fileID: 0}
-  hpMax: 3
+  hpMax: 2
   hurtEffect: {fileID: 0}
   destroyEffect: {fileID: 0}
   dropItems:
   - itemPrefab: {fileID: 1510565593170886249, guid: f86a4e4337fdd404aa945c539de10a4c, type: 3}
     dropRatio: 20
   - itemPrefab: {fileID: 1510565593170886249, guid: e3e7dd3abb6ff1348bc343c515e0621b, type: 3}
-    dropRatio: 20
+    dropRatio: 60
   - itemPrefab: {fileID: 1433915041826705244, guid: 641fac71a2b1b46419c9dc3b8379bda5, type: 3}
     dropRatio: 5
   - itemPrefab: {fileID: 2186901858676895355, guid: 8a8a4abd76df2c2489252e5b671eccf5, type: 3}

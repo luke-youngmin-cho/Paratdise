@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chapter: 3
   stage: 12
-  timeLimit: 300
+  timeLimit: 120
   icon: {fileID: 21300000, guid: 5ca9f8eeb26125649be31c962c02f930, type: 3}
   dropItemList:
   - {fileID: 11400000, guid: 4b683d3b691206a40a48ed352b3f872a, type: 2}

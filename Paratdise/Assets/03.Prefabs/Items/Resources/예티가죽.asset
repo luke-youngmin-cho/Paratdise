@@ -15,6 +15,6 @@ MonoBehaviour:
   tag: 2
   type: 2
   itemName: "\uC608\uD2F0\uAC00\uC8FD"
-  discription: "\uC608\uD2F0\uB294 \uC8FD\uC5B4\uC11C \uAC00\uC8FD\uC744 \uB0A8\uAE34\uB2E4."
-  num: 1
+  description: 
+  num: 20
   icon: {fileID: 21300000, guid: 3558d95f95694cf4bb613ec70e4fd48c, type: 3}
