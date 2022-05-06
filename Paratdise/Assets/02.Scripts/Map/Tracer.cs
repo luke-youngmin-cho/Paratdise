@@ -14,26 +14,26 @@ using UnityEngine;
 
 public class Tracer : MonoBehaviour
 {
-    [SerializeField] private float speed = 0.1f;
-    [SerializeField] private float delayTime = 4f;
-    [SerializeField] private float animationSpeed = 1f;
-    Transform tr;
-    BoxCollider2D col;
-    Transform renderer1;
-    Transform renderer2;
-    Transform renderer3;
-    Vector2 pos1;
-    Vector2 pos2;
-    Vector2 pos3;
-    float width;
-    float scale;
+    [SerializeField] protected float speed = 0.1f;
+    [SerializeField] protected float delayTime = 4f;
+    [SerializeField] protected float animationSpeed = 1f;
+    protected Transform tr;
+    protected BoxCollider2D col;
+    protected Transform renderer1;
+    protected Transform renderer2;
+    protected Transform renderer3;
+    protected Vector2 pos1;
+    protected Vector2 pos2;
+    protected Vector2 pos3;
+    protected float width;
+    protected float scale;
 
 
     //===============================================================================================
     //********************************** Public Methods *********************************************
     //===============================================================================================
 
-    public void StartMove()
+    public virtual void StartMove()
     {
         StartCoroutine(E_Move());
     }
@@ -43,7 +43,7 @@ public class Tracer : MonoBehaviour
     //********************************** Private Methods ********************************************
     //===============================================================================================
 
-    private void Awake()
+    protected virtual void Awake()
     {
         tr = transform;
         col = GetComponent<BoxCollider2D>();
@@ -63,12 +63,12 @@ public class Tracer : MonoBehaviour
         PlayStateManager.instance.OnPlayStateChanged -= OnPlayStateChanged;
     }
 
-    private void OnPlayStateChanged(PlayState newPlayState)
+    protected void OnPlayStateChanged(PlayState newPlayState)
     {
         enabled = newPlayState == PlayState.Play;
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if (renderer1.position.x - pos1.x >= width)
             renderer1.position = new Vector2(pos3.x, renderer1.position.y);
@@ -84,7 +84,7 @@ public class Tracer : MonoBehaviour
     }
 
 
-    IEnumerator E_Move()
+    protected virtual IEnumerator E_Move()
     {
         yield return new WaitForSeconds(delayTime);
         float elapsedTime = 0f;
@@ -101,7 +101,7 @@ public class Tracer : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    protected virtual void OnTriggerStay2D(Collider2D collision)
     {
         if (collision == null) return;
 

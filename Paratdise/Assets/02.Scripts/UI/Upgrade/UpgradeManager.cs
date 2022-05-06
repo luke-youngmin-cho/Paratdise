@@ -24,7 +24,7 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] private GameObject[] upgradeButtons;
     [SerializeField] private GameObject[] upgradeWithAdButtons;
     [SerializeField] private GameObject waitingUpgradePanel;
-
+    [SerializeField] private GameObject tutorial;
     //====================================================================
     //*********************** Public Methods *****************************
     //====================================================================
@@ -206,6 +206,11 @@ public class UpgradeManager : MonoBehaviour
     private void OnEnable()
     {
         StartCoroutine(E_OnEnable());
+        if (Settings.instance.Tutorial_Upgrade == 0)
+        {
+            tutorial.SetActive(true);
+            Settings.instance.Tutorial_Upgrade = 1;
+        }
     }
 
     IEnumerator E_OnEnable()

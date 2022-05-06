@@ -37,13 +37,19 @@ public class StageManager : MonoBehaviour
     [SerializeField] GameObject controllUI;
     [SerializeField] GameObject loadingUI;
 
+    [SerializeField] GameObject tutorial_FirstPlay;
+    [SerializeField] GameObject tutorial_Stage4Cleared;
+    [SerializeField] GameObject tutorial_Stage6Playing;
+    [SerializeField] GameObject tutorial_Stage8Playing;
+    [SerializeField] GameObject tutorial_Stage13Playing;
+
     private StageInfo stageInfo;
     private List<ItemData> earnedItems = new List<ItemData>();
     private List<int> earnedPiecesOfStory = new List<int>();
 
     private float _timeLimit;
     private float _startTimeMark;
-
+    private bool isFirstClear;
     //===============================================================================================
     //********************************** Public Methods *********************************************
     //===============================================================================================
@@ -221,9 +227,68 @@ public class StageManager : MonoBehaviour
 
             case StageState.WaitForStoryPlayBeforeStageFinished:
                 if (StoryPlayer.instance.isStoryFinished)
-                    state = StageState.StartStage;
+                    state = StageState.CheckTutorialBeforeStart;
                 break;
-
+            case StageState.CheckTutorialBeforeStart:
+                if (GameManager.characterSelected == CharacterType.Mice &&
+                    GameManager.currentStage > PlayerDataManager.data.GetCharacterData(CharacterType.Mice).stageSaved - 1)
+                {
+                    if (GameManager.currentStage == 1 &&
+                        Settings.instance.Tutorial_FirstStage == 0)
+                    {
+                        tutorial_FirstPlay.SetActive(true);
+                        Next();
+                    }
+                    else if (GameManager.currentStage == 6 &&
+                             Settings.instance.Tutorial_Stage6Playing == 0)
+                    {
+                        tutorial_Stage6Playing.SetActive(true);
+                        Next();
+                    }
+                    else if (GameManager.currentStage == 8 &&
+                             Settings.instance.Tutorial_Stage8Playing == 0)
+                    {
+                        tutorial_Stage8Playing.SetActive(true);
+                        Next();
+                    }
+                    else if (GameManager.currentStage == 13 &&
+                             Settings.instance.Tutorial_Stage13Playing == 0)
+                    {
+                        tutorial_Stage13Playing.SetActive(true);
+                        Next();
+                    }
+                    else
+                    {
+                        state = StageState.StartStage;
+                    }
+                }                
+                else
+                {
+                    state = StageState.StartStage;
+                }
+                break;
+            case StageState.WaitForTutorialBeforeStartFinished:
+                if (GameManager.currentStage == 1 &&
+                    tutorial_FirstPlay.activeSelf == false)
+                {
+                    Next();
+                }
+                else if (GameManager.currentStage == 6 &&
+                         tutorial_Stage6Playing == false)
+                {
+                    Next();
+                }
+                else if (GameManager.currentStage == 8 &&
+                         tutorial_Stage8Playing == false)
+                {
+                    Next();
+                }
+                else if (GameManager.currentStage == 13 &&
+                         tutorial_Stage13Playing == false)
+                {
+                    Next();
+                }
+                break;
             case StageState.StartStage:
                 GameObject characterOrigin = CharacterAssets.instance.GetCharacter(GameManager.characterSelected);
                 player = Instantiate(characterOrigin,
@@ -236,7 +301,10 @@ public class StageManager : MonoBehaviour
                 if (tracerPrefab != null)
                 {
                     // 추격자 시작위치 바로아래 생성
-                    tracer = Instantiate(tracerPrefab, MapCreater.instance.tracerPoint + Vector3.down * (tracerPrefab.GetComponent<BoxCollider2D>().size.y / 2 + 2), Quaternion.identity).GetComponent<Tracer>();
+                    if (!tracerPrefab.TryGetComponent(out Tracer_Lasor lasorTracer))
+                        tracer = Instantiate(tracerPrefab, MapCreater.instance.tracerPoint + Vector3.down * (tracerPrefab.GetComponent<BoxCollider2D>().size.y / 2 + 2), Quaternion.identity).GetComponent<Tracer>();
+                    else
+                        tracer = Instantiate(tracerPrefab, MapCreater.instance.tracerPoint , Quaternion.identity).GetComponent<Tracer>();
                     tracer.StartMove();
                 }
 
@@ -259,6 +327,7 @@ public class StageManager : MonoBehaviour
                 SaveEarnedPiecesOfStory();
                 if (PlayerDataManager.data.GetStageSaved(GameManager.characterSelected) <= GameManager.currentStage)
                 {
+                    isFirstClear = true;
                     PlayerDataManager.data.SetStageSaved(GameManager.characterSelected, GameManager.currentStage + 1);
                     PlayerDataManager.SaveData();
                 }
@@ -271,11 +340,11 @@ public class StageManager : MonoBehaviour
                     state = StageState.WaitForStoryPlayAfterStageFinished;
                 }
                 else
-                    state = StageState.WaitForUserSelection;
+                    state = StageState.CheckTutorialAfterClear;
                 break;
             case StageState.WaitForStoryPlayAfterStageFinished:
                 if (StoryPlayer.instance.isStoryFinished)
-                    state = StageState.WaitForUserSelection;
+                    state = StageState.CheckTutorialAfterClear;
                 break;
             case StageState.GameOver:
                 Debug.Log("Game Over!");
@@ -283,6 +352,26 @@ public class StageManager : MonoBehaviour
                 controllUI.SetActive(false);
                 PlayStateManager.instance.SetState(PlayState.Paused);
                 state = StageState.WaitForUserSelection;
+                break;
+
+            case StageState.CheckTutorialAfterClear:
+                if (GameManager.characterSelected == CharacterType.Mice &&
+                    GameManager.currentStage == 4 &&
+                    isFirstClear &&
+                    Settings.instance.Tutorial_Stage4Cleared == 0)
+                {
+                    tutorial_Stage4Cleared.SetActive(true);
+                    Next();
+                }
+                else
+                    state = StageState.WaitForUserSelection;
+                break;
+            case StageState.WaitForTutorialAfterClearFinished:
+                if (GameManager.currentStage == 4 &&
+                    tutorial_Stage4Cleared.activeSelf == false)
+                {
+                    state = StageState.WaitForUserSelection;
+                }
                 break;
             case StageState.WaitForUserSelection:
             // nothing to do
@@ -358,11 +447,15 @@ public enum StageState
     WaitForLoadingFinished,
     StoryPlayBeforeStage,
     WaitForStoryPlayBeforeStageFinished,
+    CheckTutorialBeforeStart,
+    WaitForTutorialBeforeStartFinished,
     StartStage,
     OnStage,
     Finish,
     StoryPlayAfterStage,
     WaitForStoryPlayAfterStageFinished,
     GameOver,
+    CheckTutorialAfterClear,
+    WaitForTutorialAfterClearFinished,
     WaitForUserSelection,
 }

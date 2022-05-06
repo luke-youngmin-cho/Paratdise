@@ -17,6 +17,14 @@ public class Settings : MonoBehaviour
     float sound_BGMVolume;
     float sound_SFXVolume;
     float touch_JoystickSensitivity;
+    int tutorial_FirstStage;
+    int tutorial_Stage4Cleared;
+    int tutorial_Stage6Playing;
+    int tutorial_Stage8Playing;
+    int tutorial_Stage13Playing;
+    int tutorial_Diary;
+    int tutorial_Upgrade;
+
 
     [SerializeField] Slider sound_BGMVolume_Slider;
     [SerializeField] Slider sound_SFXVolume_Slider;
@@ -76,6 +84,91 @@ public class Settings : MonoBehaviour
             PlayerPrefs.SetFloat("Touch_JoysticSensitivity", touch_JoystickSensitivity);
         }
     }
+
+    public int Tutorial_FirstStage
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("Tutorial_FirstStage", tutorial_FirstStage);
+        }
+        set
+        {
+            tutorial_FirstStage = value;
+            PlayerPrefs.SetInt("Tutorial_FirstStage", tutorial_FirstStage);
+        }
+    }
+    public int Tutorial_Stage4Cleared
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("Tutorial_Stage4Cleared", tutorial_Stage4Cleared);
+        }
+        set
+        {
+            tutorial_FirstStage = value;
+            PlayerPrefs.SetInt("Tutorial_Stage4Cleared", tutorial_Stage4Cleared);
+        }
+    }
+    public int Tutorial_Stage6Playing
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("Tutorial_Stage6Playing", tutorial_Stage6Playing);
+        }
+        set
+        {
+            tutorial_FirstStage = value;
+            PlayerPrefs.SetInt("Tutorial_Stage6Playing", tutorial_Stage6Playing);
+        }
+    }
+    public int Tutorial_Stage8Playing
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("Tutorial_Stage8Playing", tutorial_Stage8Playing);
+        }
+        set
+        {
+            tutorial_FirstStage = value;
+            PlayerPrefs.SetInt("Tutorial_Stage8Playing", tutorial_Stage8Playing);
+        }
+    }
+    public int Tutorial_Stage13Playing
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("Tutorial_Stage13Playing", tutorial_Stage13Playing);
+        }
+        set
+        {
+            tutorial_FirstStage = value;
+            PlayerPrefs.SetInt("Tutorial_Stage13Playing", tutorial_Stage13Playing);
+        }
+    }
+    public int Tutorial_Diary
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("Tutorial_Diary", tutorial_Diary);
+        }
+        set
+        {
+            tutorial_Diary = value;
+            PlayerPrefs.SetInt("Tutorial_Diary", tutorial_Diary);
+        }
+    }
+    public int Tutorial_Upgrade
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("Tutorial_Diary", tutorial_Upgrade);
+        }
+        set
+        {
+            tutorial_Upgrade = value;
+            PlayerPrefs.SetInt("Tutorial_Diary", tutorial_Upgrade);
+        }
+    }
     public void LoadSavedData()
     {
         if (PlayerPrefsDataExist == 0) SetupAtVeryFirstTime();
@@ -87,6 +180,9 @@ public class Settings : MonoBehaviour
         sound_BGMVolume = Sound_BGMVolume;
         sound_SFXVolume = Sound_SFXVolume;
         touch_JoystickSensitivity = Touch_JoystickSensitivity;
+
+        tutorial_Diary = Tutorial_Diary;
+        tutorial_Upgrade = Tutorial_Upgrade;
     }
 
     public void OnValueChange_BGMSlider(float value) =>
