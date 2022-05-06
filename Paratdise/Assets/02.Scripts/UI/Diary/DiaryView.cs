@@ -14,6 +14,7 @@ public class DiaryView : MonoBehaviour
     public static DiaryView instance;
     [SerializeField] private GameObject pieceOfStoryInfoPanel;
     [SerializeField] private GameObject endingCardInfoPanel;
+    [SerializeField] private GameObject tutorial;
     //============================================================================
     //************************* Public Methods ***********************************
     //============================================================================
@@ -37,5 +38,14 @@ public class DiaryView : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+
+    private void OnEnable()
+    {
+        if (Settings.instance.Tutorial_Diary == 0)
+        {
+            tutorial.SetActive(true);
+            Settings.instance.Tutorial_Diary = 1;
+        }            
     }
 }

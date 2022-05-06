@@ -62,7 +62,7 @@ public class TextTypingEffect : MonoBehaviour, IPointerClickHandler
     /// <summary>
     /// 타이핑이펙트가 끝났을때 원래 텍스트를 보여줄 함수
     /// </summary>
-    private void ShowOriginText()
+    public void ShowOriginText()
     {
         if (coroutine != null) // 현재 타이핑 이펙트 코루틴이 돌아가고 있으면
             StopCoroutine(coroutine); // 해당 코루틴을 중간에 종료하고
