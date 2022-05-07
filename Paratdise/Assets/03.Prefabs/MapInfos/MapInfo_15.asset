@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4570dcd7871ff664d973333123205505, type: 3}
   m_Name: MapInfo_15
   m_EditorClassIdentifier: 
-  bg: {fileID: 21300000, guid: 2f7531e84b17ebd42b5c277342880f64, type: 3}
+  bg: {fileID: 21300000, guid: 6c81d749ebc20c14eba0b5e8e91e09fd, type: 3}
   size: {x: 15, y: 30}
   algoNum: 15
   fluidPercents: 6

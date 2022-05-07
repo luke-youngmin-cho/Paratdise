@@ -17,54 +17,54 @@ MonoBehaviour:
   hideEffect: 2
   index: 0
   pages:
-  - sprite: {fileID: 21300000, guid: 8bfd70074b9ef4a4aa565e911deb299a, type: 3}
+  - sprite: {fileID: 21300000, guid: 3b2c97e2b8186e040b434e661fea0440, type: 3}
     effectType: 0
-  - sprite: {fileID: 21300000, guid: c628695182bb94c43ac4b8598a7e128b, type: 3}
+  - sprite: {fileID: 21300000, guid: 903862baa01150644b1b0eb5e6fc5f31, type: 3}
     effectType: 1
-  - sprite: {fileID: 21300000, guid: ea152c1f224d1a940b88ab5c055c1ce0, type: 3}
+  - sprite: {fileID: 21300000, guid: 64e2dd38ac86e3641ba09909b558b196, type: 3}
     effectType: 0
-  - sprite: {fileID: 21300000, guid: e2caa890869b3424095f138336963613, type: 3}
+  - sprite: {fileID: 21300000, guid: 8b299352ed3a25d42b57827684484b32, type: 3}
     effectType: 0
-  - sprite: {fileID: 21300000, guid: 4eee6a9d7054b584f80d92be2b66c619, type: 3}
+  - sprite: {fileID: 21300000, guid: 98a1e75cb3d033e4aafe62eeefacc5aa, type: 3}
     effectType: 0
-  - sprite: {fileID: 21300000, guid: c1c147fb9f02861428e8aabb474e1598, type: 3}
+  - sprite: {fileID: 21300000, guid: 35e4caad440afc147a4882c064c9de8c, type: 3}
     effectType: 0
-  - sprite: {fileID: 21300000, guid: b38f5c7d236da1f44a8a5b197ecb974a, type: 3}
+  - sprite: {fileID: 21300000, guid: e42d7557f3e825e498853a3072107266, type: 3}
     effectType: 0
-  - sprite: {fileID: 21300000, guid: 85210d06c16873a459d67a2ed5253f3d, type: 3}
+  - sprite: {fileID: 21300000, guid: c622a91e6cfde304e941ffef8f11b724, type: 3}
     effectType: 0
-  - sprite: {fileID: 21300000, guid: a34ea4f1919b8394fa1860b17e13b17d, type: 3}
+  - sprite: {fileID: 21300000, guid: b2bb3c4922a6d404c93ad7f6248e6b91, type: 3}
     effectType: 1
-  - sprite: {fileID: 21300000, guid: 15611a2589f6cff4eb27b7844a1432e4, type: 3}
+  - sprite: {fileID: 21300000, guid: 136aa993895f3904c94410660ebd01a2, type: 3}
     effectType: 0
-  - sprite: {fileID: 21300000, guid: f3d09db48cbdf2e48bda9ac7d8eaad49, type: 3}
+  - sprite: {fileID: 21300000, guid: 2c4c727348b9b414881b849fdf8644ba, type: 3}
     effectType: 0
-  - sprite: {fileID: 21300000, guid: b3decaba0dea3d14387a8fa9c9efc4e0, type: 3}
+  - sprite: {fileID: 21300000, guid: 13bce5ab3a3193c44a0049fdd57281fb, type: 3}
     effectType: 0
-  - sprite: {fileID: 21300000, guid: 7004fcd9df37cd545a48194825a36ce0, type: 3}
+  - sprite: {fileID: 21300000, guid: 1c9f10a0fa738134f85a13a7d468fe51, type: 3}
     effectType: 0
-  - sprite: {fileID: 21300000, guid: 9b7863806cb10384ba52e767dc2e46b5, type: 3}
+  - sprite: {fileID: 21300000, guid: 8f7f41eda774d3143b2db07cb281dff6, type: 3}
     effectType: 0
-  - sprite: {fileID: 21300000, guid: 092a66c07ae6bb74ea1bca37b6ed2966, type: 3}
+  - sprite: {fileID: 21300000, guid: 06cd1554b57175148a2aab625e173cf2, type: 3}
     effectType: 0
-  - sprite: {fileID: 21300000, guid: a5ebf32a8f86e8e43bbe882d694bbb2c, type: 3}
+  - sprite: {fileID: 21300000, guid: a23c425f40a913843a4ecc34caf868a6, type: 3}
     effectType: 0
-  - sprite: {fileID: 21300000, guid: e19a22a024876604485f6b604be369d0, type: 3}
+  - sprite: {fileID: 21300000, guid: f73863526b1d2d4489f852024e397ae5, type: 3}
     effectType: 0
-  - sprite: {fileID: 21300000, guid: ca25d681cfd7ea24785b1c611b344a76, type: 3}
+  - sprite: {fileID: 21300000, guid: cbab373c20f75b546a19722cfec4cf75, type: 3}
     effectType: 0
-  - sprite: {fileID: 21300000, guid: c774c337b95695a4a88b8ecff17c19ec, type: 3}
+  - sprite: {fileID: 21300000, guid: 42d3f242d2834f24086fb8c6f0434a73, type: 3}
     effectType: 0
-  - sprite: {fileID: 21300000, guid: bfb808cd48a497a43827a263f4ceb6d4, type: 3}
+  - sprite: {fileID: 21300000, guid: c095d27c36b11a04b936af89d186d447, type: 3}
     effectType: 2
-  - sprite: {fileID: 21300000, guid: d643f1589063fbc49a15e50c10149bb3, type: 3}
+  - sprite: {fileID: 21300000, guid: 23114e0b661c6be4085cc58d8549735c, type: 3}
     effectType: 2
-  - sprite: {fileID: 21300000, guid: b340ab1e3c294ec41bae81729cf94c0f, type: 3}
-    effectType: 2
-  - sprite: {fileID: 21300000, guid: 5d714d9efc4e5f843a699ed0b1a5fbd3, type: 3}
+  - sprite: {fileID: 21300000, guid: 8167f72acb2a1e843b7ad06f7f6db340, type: 3}
     effectType: 0
-  - sprite: {fileID: 21300000, guid: c0ccef991d553074189d80cec86da3ba, type: 3}
+  - sprite: {fileID: 21300000, guid: c8a576144dc884d4dbf4ca90777d9181, type: 3}
+    effectType: 0
+  - sprite: {fileID: 21300000, guid: 42b591f49ec4fa146984fc3e12ae562d, type: 3}
     effectType: 2
-  - sprite: {fileID: 21300000, guid: 22d449e080b4e01469a19f7655492ce2, type: 3}
+  - sprite: {fileID: 21300000, guid: ce4e59f33bf58ba4a9f50e154a83b689, type: 3}
     effectType: 0
   popUp: {fileID: 8441800825649818430, guid: 71ef221a30c0583409a9088c478a89ac, type: 3}

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 2
   title: "\uC628\uC2E4 \uC18D \uB09C\uCD08 \uB9C8\uC774\uC2A4"
-  icon: {fileID: 21300000, guid: a8de371922902934eab4124f729899dc, type: 3}
+  icon: {fileID: 21300000, guid: e7f85871663ff2a4e8cd43e5f620d32b, type: 3}
