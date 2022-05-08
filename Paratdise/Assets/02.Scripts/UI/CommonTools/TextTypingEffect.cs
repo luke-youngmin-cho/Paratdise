@@ -67,7 +67,7 @@ public class TextTypingEffect : MonoBehaviour, IPointerClickHandler
             UI_Text.text = tmpText.Substring(0, i);
             while (timer > 0)
             {
-                timer -= 0.0167f;
+                timer -= 0.0333f;
                 yield return null;
             }
             timer = typingDelay;

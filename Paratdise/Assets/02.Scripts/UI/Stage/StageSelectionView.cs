@@ -54,6 +54,7 @@ public class StageSelectionView : MonoBehaviour
             Debug.Log($"Can't get stageinfo of {stageSelected}");
         else
         {
+            stagePreviewPanel.Find("ChapterTitle").GetComponent<Text>().text = $"{((Chapter)info.chapter)}";
             stagePreviewPanel.Find("StageTitle").GetComponent<Text>().text = $"{info.stage} 층";
             stagePreviewPanel.Find("StagePreview").GetComponent<Image>().sprite = info.icon;
             Transform content = stagePreviewPanel.Find("ItemDropList").GetChild(0).GetChild(0);
@@ -173,4 +174,13 @@ public class StageSelectionView : MonoBehaviour
                 stageViews[i - 1].isActivated = true;
         }
     }    
+}
+
+public enum Chapter
+{
+    프롤로그 = 0,
+    화산지대 = 1,
+    수정동굴 = 2,
+    연구소 = 3,
+    잔해더미 = 4,
 }

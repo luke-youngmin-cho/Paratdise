@@ -18,8 +18,11 @@ public class CharacterUIManager : MonoBehaviour
     [SerializeField] private GameObject startStageButton;
     [SerializeField] private GameObject startStageButtonNotAvailable;
     [SerializeField] private GameObject resetButton;
-
     [SerializeField] private Text nameText;
+
+    [SerializeField] private Text stagePreviewText;
+    [SerializeField] private Image stagePreivewIcon;
+
     [SerializeField] private GameObject micePreviewModel;
     [SerializeField] private GameObject lailaPreviewModel;
     [SerializeField] private GameObject joePreviewModel;
@@ -29,7 +32,12 @@ public class CharacterUIManager : MonoBehaviour
     [SerializeField] private GameObject joePreviewModelNotAvailable;
     [SerializeField] private GameObject aileyPreviewModelNotAvailable;
 
-    private void Start()
+    /*private void Start()
+    {
+        Refresh();
+    }*/
+
+    private void OnEnable()
     {
         Refresh();
     }
@@ -62,7 +70,15 @@ public class CharacterUIManager : MonoBehaviour
             characterUpgradeInfoUI.Clear();
             characterTalkBoxUI.Refresh();
         }
-        
+
+
+        StageInfo info = StageInfoAssets.GetStageInfo(PlayerDataManager.data.GetCharacterData(GameManager.characterSelected).stageLastPlayed);
+
+        if (info != null)
+        {
+            stagePreviewText.text = $"{((Chapter)info.chapter)} {info.stage}층";
+            stagePreivewIcon.sprite = info.icon;
+        }
     }
 
     public void Next()

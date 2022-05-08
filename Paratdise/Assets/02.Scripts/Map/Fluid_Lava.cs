@@ -13,22 +13,22 @@ using UnityEngine;
 
 public class Fluid_Lava : Fluid
 {
-    LayerMask waterLayer;
-    private void Start()
-    {
-        waterLayer = LayerMask.NameToLayer("Fluids_Water");
-    }
-
-    /// <summary>
-    /// 물과 만나면 돌로 변하는 이벤트.
-    /// </summary>
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == waterLayer)
-        {
-            ObjectPool.SpawnFromPool("Obstacle_LavaRock", transform.position);
-            ReturnToMother();
-            collision.gameObject.GetComponent<Fluid>().ReturnToMother();
-        }
-    }
+    //LayerMask waterLayer;
+    //private void Start()
+    //{
+    //    waterLayer = LayerMask.NameToLayer("Fluids_Water");
+    //}
+    //
+    ///// <summary>
+    ///// 물과 만나면 돌로 변하는 이벤트.
+    ///// </summary>
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.layer == waterLayer)
+    //    {
+    //        ObjectPool.SpawnFromPool("Obstacle_LavaRock", transform.position);
+    //        ReturnToMother();
+    //        collision.gameObject.GetComponent<Fluid>().ReturnToMother();
+    //    }
+    //}
 }

@@ -162,8 +162,8 @@ public class MapCreater : MonoBehaviour
 
                     if (map[i, j] > 0)
                     {
-                        tmpTilePos.x = (hNum / 2 - i) * sizeUnit.x;
-                        tmpTilePos.y = (vNum / 2 - j) * sizeUnit.y;
+                        tmpTilePos.x = (i - hNum / 2) * sizeUnit.x;
+                        tmpTilePos.y = (j - vNum / 2) * sizeUnit.y;
 
                         int tmpIndex = Random.Range(0, mapInfo.MapElements_Boundary.Count);
                         ObjectPool.SpawnFromPool(mapInfo.MapElements_Boundary[tmpIndex].name, tmpTilePos);
@@ -179,7 +179,7 @@ public class MapCreater : MonoBehaviour
             // 경계 밖 더미 타일 생성
             for (int i = hNum; i < hNum + mapInfo.size.x / 4; i++)
             {
-                for (int j = 0; j < vNum; j++)
+                for (int j = 1; j < vNum; j++)
                 {
                     tmpTilePos.x = (i - hNum / 2) * sizeUnit.x;
                     tmpTilePos.y = (j - vNum / 2) * sizeUnit.y;
@@ -235,7 +235,7 @@ public class MapCreater : MonoBehaviour
 
             // 가장 아래 경계에서 시작지점 선정
             int randomCoordX = Random.Range(1, hNum - 1); 
-            coordIndex startCoord = new coordIndex() { x = randomCoordX, y = 1 };
+            coordIndex startCoord = new coordIndex() { x = randomCoordX, y = 0 };
             tmpTilePos = new Vector2()
             {
                 x = (startCoord.x - hNum / 2) * sizeUnit.x,
@@ -252,7 +252,7 @@ public class MapCreater : MonoBehaviour
 
             // 가장 위 경계에서 시작지점 선정
             randomCoordX = Random.Range(1, hNum - 1);
-            coordIndex endCoord = new coordIndex() { x = randomCoordX, y = vNum};
+            coordIndex endCoord = new coordIndex() { x = randomCoordX, y = vNum - 1};
             tmpTilePos = new Vector2()
             {
                 x = (endCoord.x - hNum / 2) * sizeUnit.x,
@@ -276,14 +276,28 @@ public class MapCreater : MonoBehaviour
             {
                 tmpTilePos = new Vector2()
                 {
-                    x = (hNum / 2 - coord.x) * sizeUnit.x,
-                    y = (vNum / 2 - coord.y) * sizeUnit.y
+                    x = (coord.x - hNum / 2) * sizeUnit.x,
+                    y = (coord.y - vNum / 2) * sizeUnit.y
                 };
                 int tmpIndex = Random.Range(0, mapInfo.MapElements_Basic.Count);
                 GameObject go = ObjectPool.SpawnFromPool(mapInfo.MapElements_Basic[tmpIndex].name, tmpTilePos);
                 //optimizer.Add(go);
                 basicTiles.Add(coord, go);
             }
+
+            // 시작위치 근처 다른 맵 종류 생성 못하도록 제거
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    basicCoordList.Remove(new coordIndex
+                    {
+                        x = startCoord.x + i - 2,
+                        y = startCoord.y + j - 2
+                    });
+                }
+            }
+            
 
             // 기본 맵 타일 위치를 랜덤하게 섞고 큐에 등록
             basicCoordList = GetShuffleList(basicCoordList);
@@ -303,8 +317,8 @@ public class MapCreater : MonoBehaviour
                     basicTiles.Remove(randomCoord);
                     tmpTilePos = new Vector2()
                     {
-                        x = (hNum / 2 - basicCoordList[i].x) * sizeUnit.x,
-                        y = (vNum / 2 - basicCoordList[i].y) * sizeUnit.y
+                        x = (basicCoordList[i].x - hNum / 2) * sizeUnit.x,
+                        y = (basicCoordList[i].y - vNum / 2) * sizeUnit.y
                     };
                     int tmpIndex = Random.Range(0, mapInfo.MapElements_Obstacle.Count);
                     GameObject go = ObjectPool.SpawnFromPool(mapInfo.MapElements_Obstacle[tmpIndex].name, tmpTilePos);
@@ -322,8 +336,8 @@ public class MapCreater : MonoBehaviour
                     basicTiles.Remove(randomCoord);
                     tmpTilePos = new Vector2()
                     {
-                        x = (hNum / 2 - basicCoordList[i].x) * sizeUnit.x,
-                        y = (vNum / 2 - basicCoordList[i].y) * sizeUnit.y
+                        x = (basicCoordList[i].x - hNum / 2) * sizeUnit.x,
+                        y = (basicCoordList[i].y - vNum / 2) * sizeUnit.y
                     };
                     int tmpIndex = Random.Range(0, mapInfo.MapElements_FluidBundle.Count);
                     GameObject go = ObjectPool.SpawnFromPool(mapInfo.MapElements_FluidBundle[tmpIndex].name, tmpTilePos);
@@ -341,8 +355,8 @@ public class MapCreater : MonoBehaviour
                     coordIndex randomCoord = coordQueue.Dequeue();
                     tmpTilePos = new Vector2()
                     {
-                        x = (hNum / 2 - randomCoord.x) * sizeUnit.x,
-                        y = (vNum / 2 - randomCoord.y) * sizeUnit.y
+                        x = (randomCoord.x - hNum / 2) * sizeUnit.x,
+                        y = (randomCoord.y - vNum / 2) * sizeUnit.y
                     };
                     GameObject go = Instantiate(timeCapsulePrefab, tmpTilePos, Quaternion.identity);
                     //optimizer.Add(go);
@@ -357,8 +371,8 @@ public class MapCreater : MonoBehaviour
                     coordIndex randomCoord = coordQueue.Dequeue();
                     tmpTilePos = new Vector2()
                     {
-                        x = (hNum / 2 - randomCoord.x) * sizeUnit.x,
-                        y = (vNum / 2 - randomCoord.y) * sizeUnit.y
+                        x = (randomCoord.x - hNum / 2) * sizeUnit.x,
+                        y = (randomCoord.y - vNum / 2) * sizeUnit.y
                     };
                     GameObject go = Instantiate(mapInfo.trapInfo.trap, tmpTilePos, Quaternion.identity);
                     //optimizer.Add(go);
@@ -384,13 +398,13 @@ public class MapCreater : MonoBehaviour
                         int vec = (startCoord.x - randomCoord.x) * (startCoord.x - randomCoord.x) +
                                   (startCoord.y - randomCoord.y) * (startCoord.y - randomCoord.y);
 
-                        if (Mathf.Sqrt(vec) > 5)
+                        if (Mathf.Sqrt(vec) > 10)
                             isOK = true;
                     }
                     tmpTilePos = new Vector2()
                     {
-                        x = (hNum / 2 - randomCoord.x) * sizeUnit.x,
-                        y = (vNum / 2 - randomCoord.y) * sizeUnit.y
+                        x = (randomCoord.x - hNum / 2) * sizeUnit.x,
+                        y = (randomCoord.y - vNum / 2) * sizeUnit.y
                     };
                     GameObject go = Instantiate(mapInfo.enemyInfo[i].enemy, tmpTilePos, Quaternion.identity);
                     //optimizer.Add(go);

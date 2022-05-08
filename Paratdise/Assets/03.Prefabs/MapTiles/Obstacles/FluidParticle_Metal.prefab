@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 86812380201303003}
   - component: {fileID: 1950037821797858222}
   - component: {fileID: -3362177473001736083}
-  m_Layer: 24
+  m_Layer: 25
   m_Name: FluidParticle_Metal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f391c41f0eea2418bbf6dfd3edb0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffType: 5
+  buffType: 6
   targetLayer:
     serializedVersion: 2
     m_Bits: 1024

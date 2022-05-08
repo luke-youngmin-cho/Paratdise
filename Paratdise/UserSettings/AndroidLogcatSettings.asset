@@ -3,585 +3,69 @@
     "m_SelectedPackage": {
         "deviceId": "R5CT32GH35P",
         "name": "com.sixx.paratdise",
-        "processId": 12781,
+        "processId": 28880,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 26999,
-            "exited": true
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 28276,
-            "exited": true
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.sec.android.app.launcher",
-            "processId": 28445,
-            "exited": true
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 32017,
-            "exited": true
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 4841,
-            "exited": true
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.sec.android.app.launcher",
-            "processId": 5293,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 24975,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 4636,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 9259,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 12516,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 19071,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 21518,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 22706,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 22995,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 23307,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 24782,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 26970,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 28113,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 28505,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 28776,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 29470,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 16167,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 18927,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 27819,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 538,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 14956,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 20168,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 24947,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 30148,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 2631,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 3800,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 7133,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 10690,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.spoondigger_test",
-            "processId": 12280,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 13710,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 15720,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 13892,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 18080,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 19450,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 20374,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 21503,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 22717,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 30867,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 6519,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 10419,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 12490,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 15721,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 20006,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 22934,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 4270,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 22564,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 24699,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 5494,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 12258,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 16248,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 19539,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 18961,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 19976,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 22522,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 31346,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 32408,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 22429,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 6421,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 32251,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 5846,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 25818,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 30211,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 2239,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 4818,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 5470,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 15256,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 20774,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 24613,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 28765,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 24285,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 26983,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 29085,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 16306,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 26960,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 21268,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 27730,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 17179,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 4942,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 3656,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 18194,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 28383,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 28301,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 9973,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 27317,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 32561,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 9864,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
             "name": "com.gameton_team6.paratdice",
             "processId": 23506,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "R5CT32GH35P",
             "name": "com.sixx.paratdise",
             "processId": 8140,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "R5CT32GH35P",
             "name": "com.sixx.paratdise",
             "processId": 8739,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "R5CT32GH35P",
             "name": "com.sixx.paratdise",
             "processId": 11525,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "R5CT32GH35P",
             "name": "com.sixx.paratdise",
             "processId": 12781,
+            "exited": true
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.sec.android.app.launcher",
+            "processId": 7210,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.sixx.paratdise",
+            "processId": 24289,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.sixx.paratdise",
+            "processId": 25966,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.sixx.paratdise",
+            "processId": 27128,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.sixx.paratdise",
+            "processId": 28880,
             "exited": false
         }
     ],

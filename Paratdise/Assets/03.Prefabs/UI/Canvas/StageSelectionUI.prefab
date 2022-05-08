@@ -901,7 +901,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 5197326543942139826}
   m_Direction: 2
   m_Value: -0.00000026723035
-  m_Size: 0.35725126
+  m_Size: 0.71450114
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1864,7 +1864,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000061035156}
+  m_AnchoredPosition: {x: 0, y: 0.00024414062}
   m_SizeDelta: {x: 0, y: 628.92993}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5197326545111749858
@@ -2108,7 +2108,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 5197326546056064871}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.000015041907
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2689,7 +2689,7 @@ GameObject:
   - component: {fileID: 246947591919085516}
   - component: {fileID: 7331605119035766168}
   m_Layer: 5
-  m_Name: Chapter Title
+  m_Name: ChapterTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

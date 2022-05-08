@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 86812380201303003}
   - component: {fileID: 1950037821797858222}
   - component: {fileID: -3362177473001736083}
-  m_Layer: 25
-  m_Name: FluidParticle_ Radioactive
+  m_Layer: 26
+  m_Name: FluidParticle_Radioactive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

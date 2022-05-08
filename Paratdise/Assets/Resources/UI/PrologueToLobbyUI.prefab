@@ -116,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rt: {fileID: 5200839690839196031}
   standard: {fileID: 5308174137188431391}
-  delta: 900
+  delta: 300
 --- !u!1 &514760346323449864
 GameObject:
   m_ObjectHideFlags: 0
