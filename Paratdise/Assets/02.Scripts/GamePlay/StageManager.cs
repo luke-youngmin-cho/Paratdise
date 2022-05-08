@@ -274,17 +274,17 @@ public class StageManager : MonoBehaviour
                     Next();
                 }
                 else if (GameManager.currentStage == 6 &&
-                         tutorial_Stage6Playing == false)
+                         tutorial_Stage6Playing.activeSelf == false)
                 {
                     Next();
                 }
                 else if (GameManager.currentStage == 8 &&
-                         tutorial_Stage8Playing == false)
+                         tutorial_Stage8Playing.activeSelf == false)
                 {
                     Next();
                 }
                 else if (GameManager.currentStage == 13 &&
-                         tutorial_Stage13Playing == false)
+                         tutorial_Stage13Playing.activeSelf == false)
                 {
                     Next();
                 }

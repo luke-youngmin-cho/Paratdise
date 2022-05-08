@@ -15,7 +15,7 @@ MonoBehaviour:
   chapter: 2
   stage: 8
   timeLimit: 120
-  icon: {fileID: 21300000, guid: deeb4c0d296acae45948091fc66847d8, type: 3}
+  icon: {fileID: 21300000, guid: 6ca5f8fdc61b8f545b2cc53fb221b319, type: 3}
   dropItemList: []
   storyBeforeStage: {fileID: 11400000, guid: 161a69ed085eb4247a12bf93ac019b8b, type: 2}
   storyAfterStage: {fileID: 11400000, guid: 858d4250b967d194182f4c281fbb0bd6, type: 2}
