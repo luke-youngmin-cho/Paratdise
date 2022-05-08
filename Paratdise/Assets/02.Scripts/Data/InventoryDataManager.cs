@@ -98,6 +98,15 @@ public class InventoryDataManager
         //Debug.Log($"Inventory data Saved");
         System.IO.File.WriteAllText(jsonPath, jsonData);
     }
+    
+    public static void SaveData()
+    {
+        string jsonPath = $"{Application.persistentDataPath}/InventoryDatas/Inventory_{GameManager.characterSelected}_{LoginManager.nickName}.json";
+        //Debug.Log($"save items : {data.items.Count} , {jsonPath}");
+        string jsonData = JsonConvert.SerializeObject(data, Formatting.Indented);
+        //Debug.Log($"Inventory data Saved");
+        System.IO.File.WriteAllText(jsonPath, jsonData);
+    }
 
     public static InventoryData LoadData(CharacterType characterType)
     {

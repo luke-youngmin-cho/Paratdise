@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Gameton_team6
-  productName: Paratdice
+  companyName: SIXX
+  productName: "\uC950\uC0C1\uB099\uC6D0"
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.12156863, g: 0.13725491, b: 0.12503944, a: 1}
@@ -153,7 +153,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.gameton_team6.paratdice
+    Android: com.sixx.paratdise
     Standalone: com.team-6.paratdice
   buildNumber:
     Standalone: 0

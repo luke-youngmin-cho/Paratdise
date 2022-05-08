@@ -136,9 +136,9 @@ MonoBehaviour:
   destroyEffect: {fileID: 0}
   dropItems:
   - itemPrefab: {fileID: 1433915041826705244, guid: 641fac71a2b1b46419c9dc3b8379bda5, type: 3}
-    dropRatio: 5
+    dropRatio: 10
   - itemPrefab: {fileID: 2186901858676895355, guid: 8a8a4abd76df2c2489252e5b671eccf5, type: 3}
-    dropRatio: 5
+    dropRatio: 10
   buffInfoWhenHurt:
     type: 0
     active: 0

@@ -18,13 +18,13 @@ MonoBehaviour:
   index: 19
   pages:
   - sprite: {fileID: 21300000, guid: 9383d87a05dd1414a88686236d03c8b3, type: 3}
-    effectType: 0
+    effectType: 2
   - sprite: {fileID: 21300000, guid: 360c36c67b236744682c4566ced55408, type: 3}
-    effectType: 0
+    effectType: 2
   - sprite: {fileID: 21300000, guid: 7184cc6bf52d28f4593413802671c26d, type: 3}
-    effectType: 0
+    effectType: 2
   - sprite: {fileID: 21300000, guid: 423078b3367dec346be57ef245bc74e9, type: 3}
-    effectType: 0
+    effectType: 2
   - sprite: {fileID: 21300000, guid: 3ad5e68a8224f374587fd6545905ad52, type: 3}
     effectType: 0
   - sprite: {fileID: 21300000, guid: 20d6cab3b3b450a4fa723aa8feec6008, type: 3}

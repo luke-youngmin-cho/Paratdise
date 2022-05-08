@@ -365,7 +365,7 @@ MonoBehaviour:
   hpMax: 15
   damage: 2
   moveSpeed: 1.5
-  knockBackForce: 1
+  knockBackForce: 4
   targetLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -379,7 +379,7 @@ MonoBehaviour:
   hpBarShowTime: 2
   dropItems:
   - itemPrefab: {fileID: 1510565593170886249, guid: f8d895bfb4d4f8642a4c321127d75dc0, type: 3}
-    dropRatio: 30
+    dropRatio: 80
 --- !u!114 &9001409966523601172
 MonoBehaviour:
   m_ObjectHideFlags: 0

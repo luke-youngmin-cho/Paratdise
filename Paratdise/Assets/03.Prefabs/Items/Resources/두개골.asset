@@ -16,5 +16,5 @@ MonoBehaviour:
   type: 2
   itemName: "\uB450\uAC1C\uACE8"
   description: 
-  num: 1
+  num: 10
   icon: {fileID: 21300000, guid: 339e8f40597241e49aec6de9fde63af7, type: 3}

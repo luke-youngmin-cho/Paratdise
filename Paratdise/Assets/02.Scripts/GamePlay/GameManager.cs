@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
 
     public static void GoBackToLobby()
     {
+        PlayStateManager.instance.SetState(PlayState.Play);
         gameState = GameState.GoLobby;
     }
 
@@ -171,6 +172,8 @@ public class GameManager : MonoBehaviour
                 }   
                 break;
             case GameState.OnLobby:
+                if (PlayStateManager.instance.CurrentPlayState != PlayState.Play)
+                    PlayStateManager.instance.SetState(PlayState.Play);
                 break;
             case GameState.StartStage:
                 PlayStateManager.instance.SetState(PlayState.Play);

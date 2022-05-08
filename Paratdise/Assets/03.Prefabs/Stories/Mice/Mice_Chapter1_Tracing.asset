@@ -22,11 +22,11 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: c38c0bda617e8b44abbfe5e614b2438b, type: 3}
     effectType: 0
   - sprite: {fileID: 21300000, guid: eaf4a71d520a1424a8bfb07fc2b023f6, type: 3}
-    effectType: 0
+    effectType: 1
   - sprite: {fileID: 21300000, guid: 7d1a12348cf4c734c9aee93b23f778c7, type: 3}
     effectType: 0
   - sprite: {fileID: 21300000, guid: ad7622cbdd21ee34899c9b3e34ec55b0, type: 3}
-    effectType: 0
+    effectType: 1
   - sprite: {fileID: 21300000, guid: f4361f0356896ec4e91fcb0a6bb4fe0f, type: 3}
     effectType: 0
   - sprite: {fileID: 21300000, guid: a93853268914db7469ae318bd873d859, type: 3}

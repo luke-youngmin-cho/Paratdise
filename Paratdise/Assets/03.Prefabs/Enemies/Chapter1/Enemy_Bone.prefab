@@ -362,24 +362,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db7bd4119636e84aa97e8440f8b1b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpMax: 30
-  damage: 10
-  moveSpeed: 0.5
-  knockBackForce: 1
+  hpMax: 15
+  damage: 7
+  moveSpeed: 0.7
+  knockBackForce: 2
   targetLayer:
     serializedVersion: 2
     m_Bits: 1024
   sightRange: 0
   releaseTargetTime: 0
   isDigger: 1
-  diggingDamage: 1
+  diggingDamage: 3
   diggingDelay: 1
   isDead: 0
   ui: {fileID: 7712365415668613701}
   hpBarShowTime: 2
   dropItems:
   - itemPrefab: {fileID: 1510565593170886249, guid: 70c7bc38170f6dc4f9315e79d674fcfc, type: 3}
-    dropRatio: 30
+    dropRatio: 80
 --- !u!114 &9001409966523601172
 MonoBehaviour:
   m_ObjectHideFlags: 0

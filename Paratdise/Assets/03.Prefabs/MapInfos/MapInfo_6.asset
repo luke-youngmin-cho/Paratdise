@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4570dcd7871ff664d973333123205505, type: 3}
   m_Name: MapInfo_6
   m_EditorClassIdentifier: 
-  bg: {fileID: 21300000, guid: 1b744cedac914384b9da3b9e6e03e9f6, type: 3}
-  size: {x: 15, y: 30}
-  algoNum: 15
+  bg: {fileID: 21300000, guid: d98579da81b266a45b9f82426a9437a6, type: 3}
+  size: {x: 16, y: 24}
+  algoNum: 27
   fluidPercents: 6
-  obstaclePercents: 20
+  obstaclePercents: 18
   MapElements_Boundary:
   - {fileID: 4883344005395017866, guid: e51c68caa7ae0a1429af2ef6ab5306c1, type: 3}
   MapElements_Basic:
@@ -31,14 +31,12 @@ MonoBehaviour:
   MapElement_Start: {fileID: 6485304845783642979, guid: 3e44e324a19303a4ca32a34c9044c3d3, type: 3}
   MapElement_End: {fileID: 4826205792507212175, guid: 113caace07bcca743ae7960d88d0e3bc, type: 3}
   tracer: {fileID: 0}
-  timeCapsuleNum: 15
+  timeCapsuleNum: 10
   trapInfo:
     trap: {fileID: 4800609255294159114, guid: 2b255b277ea6356449356d532fe47daa, type: 3}
-    num: 20
+    num: 15
   enemyInfo:
   - enemy: {fileID: 9001409966523601161, guid: 02691e3db4c692841acf9f932a03d210, type: 3}
-    num: 10
+    num: 3
   - enemy: {fileID: 9001409966523601161, guid: 0e052e8a072d8ab45b31e496e8f2c19d, type: 3}
-    num: 2
-  - enemy: {fileID: 9001409966523601161, guid: 0fcdac8b7be4d074eb89b20eea074a85, type: 3}
-    num: 2
+    num: 4

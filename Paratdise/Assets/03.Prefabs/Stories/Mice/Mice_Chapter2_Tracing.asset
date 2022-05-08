@@ -32,13 +32,13 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: 5d7dc400c665d2a43aed111a92a85520, type: 3}
     effectType: 0
   - sprite: {fileID: 21300000, guid: c9494dc83f3809c42a34b39e87419a92, type: 3}
-    effectType: 0
+    effectType: 1
   - sprite: {fileID: 21300000, guid: 7712b02bff0ee244498696de2254f0ae, type: 3}
     effectType: 0
   - sprite: {fileID: 21300000, guid: 0b8b83ba30a87fa4fafe031eb7259062, type: 3}
     effectType: 0
   - sprite: {fileID: 21300000, guid: ff4964dec66472248aa49d9088332d79, type: 3}
-    effectType: 0
+    effectType: 1
   - sprite: {fileID: 21300000, guid: 48075bf2dbcd8dc4d94ef3795541d691, type: 3}
     effectType: 0
   popUp: {fileID: 0}

@@ -18,7 +18,7 @@ MonoBehaviour:
   index: 1
   pages:
   - sprite: {fileID: 21300000, guid: 717c1146d71bbe24b9a6d27531cec9d8, type: 3}
-    effectType: 0
+    effectType: 1
   - sprite: {fileID: 21300000, guid: adcff39d91f33ef4b8d7943a95174c0e, type: 3}
     effectType: 0
   - sprite: {fileID: 21300000, guid: 0b3d444289caa0b4480e0ef0433d5a07, type: 3}
