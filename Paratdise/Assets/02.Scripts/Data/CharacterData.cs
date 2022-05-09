@@ -31,6 +31,7 @@ public enum CharacterType
     Ailey
 }
 
+[System.Serializable]
 public struct Stats
 {
     public float hp;

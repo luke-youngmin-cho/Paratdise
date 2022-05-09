@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Newtonsoft.Json;
+//using Newtonsoft.Json;
 
 /// <summary>
 /// 작성자 : 조영민
@@ -35,7 +35,7 @@ public class StoryPlayDataManager
         if (System.IO.File.Exists(jsonPath))
         {
             string jsonData = System.IO.File.ReadAllText(jsonPath);
-            tmpData = JsonConvert.DeserializeObject<StoryPlayData>(jsonData);
+            tmpData = JsonUtility.FromJson<StoryPlayData>(jsonData); //JsonConvert.DeserializeObject<StoryPlayData>(jsonData);
         }
         return tmpData;
     }

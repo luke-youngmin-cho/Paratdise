@@ -391,8 +391,8 @@ public class MapCreater : MonoBehaviour
                     {
                         randomCoord = new coordIndex()
                         {
-                            x = Random.Range(1, hNum),
-                            y = Random.Range(1, vNum)
+                            x = Random.Range(2, hNum - 2),
+                            y = Random.Range(2, vNum - 2)
                         };
 
                         int vec = (startCoord.x - randomCoord.x) * (startCoord.x - randomCoord.x) +

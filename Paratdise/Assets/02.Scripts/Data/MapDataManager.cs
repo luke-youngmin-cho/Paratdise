@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Newtonsoft.Json;
+//using Newtonsoft.Json;
 
 /// <summary>
 /// 작성자 : 조영민
@@ -46,7 +46,7 @@ public class MapDataManager
             System.IO.Directory.CreateDirectory($"{Application.persistentDataPath}/MapDatas");
 
         string jsonPath = $"{Application.persistentDataPath}/MapDatas/Map_{stage}.json";
-        string jsonData = JsonConvert.SerializeObject(mapData, Formatting.Indented);
+        string jsonData = JsonUtility.ToJson(mapData); //JsonConvert.SerializeObject(mapData, Formatting.Indented);
         System.IO.File.WriteAllText(jsonPath, jsonData);
         Debug.Log($"Map data of stage {stage} is saved");
     }
@@ -57,12 +57,12 @@ public class MapDataManager
             System.IO.Directory.CreateDirectory($"{Application.persistentDataPath}/MapDatasDefault");
 
         string jsonPath = $"{Application.persistentDataPath}/MapDatasDefault/Map_{stage}.json";
-        string jsonData = JsonConvert.SerializeObject(mapData,
-                                                      Formatting.None,
-                                                      new JsonSerializerSettings()
-                                                      {
-                                                          ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                                                      });
+        string jsonData = JsonUtility.ToJson(mapData); //JsonConvert.SerializeObject(mapData,
+                          //                            Formatting.None,
+                          //                            new JsonSerializerSettings()
+                          //                            {
+                          //                                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                          //                            });
         System.IO.File.WriteAllText(jsonPath, jsonData);
         Debug.Log($"Map data of stage {stage} is created as default");
     }
@@ -74,7 +74,7 @@ public class MapDataManager
         if (System.IO.File.Exists(jsonPath))
         {
             string jsonData = System.IO.File.ReadAllText(jsonPath);
-            mapData = JsonConvert.DeserializeObject<MapData>(jsonData);
+            mapData = JsonUtility.FromJson<MapData>(jsonData); //JsonConvert.DeserializeObject<MapData>(jsonData);
             data = mapData;
         }
         return mapData == null ? false : true;
@@ -85,7 +85,7 @@ public class MapDataManager
         MapData tmpData = null;
         TextAsset textData = Resources.Load<TextAsset>($"MapDatasDefault/Map_{stage}");
         if (textData != null)
-            tmpData = JsonConvert.DeserializeObject<MapData>(textData.ToString());
+            tmpData = JsonUtility.FromJson<MapData>(textData.ToString()); //JsonConvert.DeserializeObject<MapData>(textData.ToString());
         else
             Debug.Log($"Failed to load map_Default");
 
@@ -96,7 +96,7 @@ public class MapDataManager
     {
         if (data == null) return;
         string jsonPath = $"{Application.persistentDataPath}/MapDatas/Map_{stage}.json";
-        string jsonData = JsonConvert.SerializeObject(data, Formatting.Indented);
+        string jsonData = JsonUtility.ToJson(data); //JsonConvert.SerializeObject(data, Formatting.Indented);
         System.IO.File.WriteAllText(jsonPath, jsonData);
         Debug.Log($"Map data of stage {stage} is saved");
     }

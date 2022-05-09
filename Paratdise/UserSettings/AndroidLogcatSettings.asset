@@ -3,39 +3,39 @@
     "m_SelectedPackage": {
         "deviceId": "R5CT32GH35P",
         "name": "com.sixx.paratdise",
-        "processId": 28880,
+        "processId": 28590,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "R5CT32GH35P",
-            "name": "com.gameton_team6.paratdice",
-            "processId": 23506,
+            "name": "com.sixx.paratdise",
+            "processId": 28880,
             "exited": true
         },
         {
             "deviceId": "R5CT32GH35P",
             "name": "com.sixx.paratdise",
-            "processId": 8140,
+            "processId": 16658,
             "exited": true
         },
         {
             "deviceId": "R5CT32GH35P",
             "name": "com.sixx.paratdise",
-            "processId": 8739,
+            "processId": 28820,
             "exited": true
         },
         {
             "deviceId": "R5CT32GH35P",
             "name": "com.sixx.paratdise",
-            "processId": 11525,
+            "processId": 29706,
             "exited": true
         },
         {
             "deviceId": "R5CT32GH35P",
             "name": "com.sixx.paratdise",
-            "processId": 12781,
+            "processId": 17495,
             "exited": true
         },
         {
@@ -47,25 +47,19 @@
         {
             "deviceId": "R5CT32GH35P",
             "name": "com.sixx.paratdise",
-            "processId": 24289,
+            "processId": 22592,
             "exited": false
         },
         {
             "deviceId": "R5CT32GH35P",
             "name": "com.sixx.paratdise",
-            "processId": 25966,
+            "processId": 24301,
             "exited": false
         },
         {
             "deviceId": "R5CT32GH35P",
             "name": "com.sixx.paratdise",
-            "processId": 27128,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.sixx.paratdise",
-            "processId": 28880,
+            "processId": 28590,
             "exited": false
         }
     ],

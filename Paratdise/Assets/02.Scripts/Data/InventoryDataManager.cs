@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+//using Newtonsoft.Json;
 using System;
 
 /// <summary>
@@ -72,7 +72,7 @@ public class InventoryDataManager
             }
         }
 
-        string jsonData = JsonConvert.SerializeObject(tmpData, Formatting.Indented);
+        string jsonData = JsonUtility.ToJson(tmpData);// JsonConvert.SerializeObject(tmpData, Formatting.Indented);
         Debug.Log($"Inventory data of {characterType} {LoginManager.nickName} Created");
         instance.dataDictionary.Add(characterType, tmpData);
         System.IO.File.WriteAllText(jsonPath, jsonData);
@@ -83,7 +83,7 @@ public class InventoryDataManager
         InventoryData tmpData = null;
         TextAsset textData = Resources.Load<TextAsset>("InventoryDataDefault/Inventory_Default");
         if (textData != null)
-            tmpData = JsonConvert.DeserializeObject<InventoryData>(textData.ToString());
+            tmpData = JsonUtility.FromJson<InventoryData>(textData.ToString()); //JsonConvert.DeserializeObject<InventoryData>(textData.ToString());
         else
             Debug.Log($"Failed to load InventoryData_Default");
 
@@ -94,7 +94,7 @@ public class InventoryDataManager
     {
         string jsonPath = $"{Application.persistentDataPath}/InventoryDatas/Inventory_{GameManager.characterSelected}_{LoginManager.nickName}.json";
         //Debug.Log($"save items : {data.items.Count} , {jsonPath}");
-        string jsonData = JsonConvert.SerializeObject(data, Formatting.Indented);
+        string jsonData = JsonUtility.ToJson(data); //JsonConvert.SerializeObject(data, Formatting.Indented);
         //Debug.Log($"Inventory data Saved");
         System.IO.File.WriteAllText(jsonPath, jsonData);
     }
@@ -103,7 +103,7 @@ public class InventoryDataManager
     {
         string jsonPath = $"{Application.persistentDataPath}/InventoryDatas/Inventory_{GameManager.characterSelected}_{LoginManager.nickName}.json";
         //Debug.Log($"save items : {data.items.Count} , {jsonPath}");
-        string jsonData = JsonConvert.SerializeObject(data, Formatting.Indented);
+        string jsonData = JsonUtility.ToJson(data); //JsonConvert.SerializeObject(data, Formatting.Indented);
         //Debug.Log($"Inventory data Saved");
         System.IO.File.WriteAllText(jsonPath, jsonData);
     }
@@ -115,7 +115,7 @@ public class InventoryDataManager
         if (System.IO.File.Exists(jsonPath))
         {
             string jsonData = System.IO.File.ReadAllText(jsonPath);
-            tmpData = JsonConvert.DeserializeObject<InventoryData>(jsonData);
+            tmpData = JsonUtility.FromJson<InventoryData>(jsonData); //JsonConvert.DeserializeObject<InventoryData>(jsonData);
             if (instance.dataDictionary.ContainsKey(characterType))
                 instance.dataDictionary[characterType] = tmpData;
             else
@@ -139,9 +139,9 @@ public class InventoryDataManager
             {
                 string jsonData = System.IO.File.ReadAllText(jsonPath);
                 if (instance.dataDictionary.ContainsKey(sub.type))
-                    instance.dataDictionary[sub.type] = JsonConvert.DeserializeObject<InventoryData>(jsonData);
+                    instance.dataDictionary[sub.type] = JsonUtility.FromJson<InventoryData>(jsonData); //JsonConvert.DeserializeObject<InventoryData>(jsonData);
                 else
-                    instance.dataDictionary.Add(sub.type, JsonConvert.DeserializeObject<InventoryData>(jsonData));
+                    instance.dataDictionary.Add(sub.type, JsonUtility.FromJson<InventoryData>(jsonData));//JsonConvert.DeserializeObject<InventoryData>(jsonData)
                 //Debug.Log($"Inventory data of {nickName} Loaded");
             }
             else

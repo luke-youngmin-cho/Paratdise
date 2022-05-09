@@ -222,7 +222,8 @@ public class StoryPlayer : MonoBehaviour
     private IEnumerator E_ShowNextButtonLater()
     {
         nextButton.SetActive(false);
-        nextButton.GetComponent<Button>().interactable = false;
+        Button button = nextButton.GetComponent<Button>();
+        button.interactable = false;
         Image buttonImage = nextButton.GetComponent<Image>();
 
         float elapsedTime = 0;
@@ -241,13 +242,17 @@ public class StoryPlayer : MonoBehaviour
         elapsedTime = 0;
         while (elapsedTime < 1f)
         {
-            Debug.Log($"Showing next button... {c.a}");
+            //Debug.Log($"Showing next button... {c.a}");
             elapsedTime += 0.0167f * 2;
             c.a += elapsedTime;
             buttonImage.color = c;
+
+            if (elapsedTime < 1f)
+                button.interactable = true;
+
             yield return null;
         }
-        nextButton.GetComponent<Button>().interactable = true;
+        button.interactable = true;
         nextButtonCoroutine = null;
     }
 

@@ -50,6 +50,9 @@ public class StageManager : MonoBehaviour
     private float _timeLimit;
     private float _startTimeMark;
     private bool isFirstClear;
+    private bool wasCleared;
+    private bool wasFailed;
+    [HideInInspector] public bool dohalfPenalty;
     //===============================================================================================
     //********************************** Public Methods *********************************************
     //===============================================================================================
@@ -127,6 +130,7 @@ public class StageManager : MonoBehaviour
             instance.controllUI.SetActive(true);
             Player.instance.hp = Player.instance.hpMax;
             PlayerStateMachineManager.instance.ChangeState(PlayerState.Movement);
+            instance.wasFailed = false;
             state = StageState.OnStage;
         }   
     }
@@ -153,6 +157,17 @@ public class StageManager : MonoBehaviour
     public List<ItemData> GetEarnedItems()
     {
         return earnedItems;
+    }
+
+    public void GameOverPenalty()
+    {
+        if (wasFailed)
+        {
+            if (dohalfPenalty)
+                InventoryDataManager.data.HalfClearData();
+            else
+                InventoryDataManager.data.ClearData();
+        }   
     }
 
     //===============================================================================================
@@ -321,6 +336,7 @@ public class StageManager : MonoBehaviour
                 break;
             case StageState.Finish:
                 Debug.Log("Stage Finished!");
+                wasCleared = true;
                 PlayStateManager.instance.SetState(PlayState.Paused);
                 clearPopUp.SetActive(true);
                 SaveEarnedItems();
@@ -349,9 +365,11 @@ public class StageManager : MonoBehaviour
                 break;
             case StageState.GameOver:
                 Debug.Log("Game Over!");
+                wasFailed = true;
                 gameOverPopUp.SetActive(true);
                 controllUI.SetActive(false);
                 PlayStateManager.instance.SetState(PlayState.Paused);
+
                 state = StageState.WaitForUserSelection;
                 break;
 
@@ -375,7 +393,10 @@ public class StageManager : MonoBehaviour
                 }
                 break;
             case StageState.WaitForUserSelection:
-            // nothing to do
+                if (PlayStateManager.instance.CurrentPlayState == PlayState.Play)
+                    PlayStateManager.instance.SetState(PlayState.Paused);
+
+                break;
             default:
                 break;
         }

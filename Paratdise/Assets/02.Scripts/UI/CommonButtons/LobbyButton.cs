@@ -13,6 +13,11 @@ public class LobbyButton : MonoBehaviour
 {
     public void OnClick()
     {
+        if (GameManager.gameState == GameState.StageLoaded)
+        {
+            StageManager.instance.GameOverPenalty();
+        }
+
         GameManager.GoBackToLobby();
     }
 }

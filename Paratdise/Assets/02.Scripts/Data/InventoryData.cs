@@ -63,4 +63,23 @@ public class InventoryData
             InventoryDataManager.SaveData(this);
         }
     }
+
+    public void ClearData()
+    {
+        itemsData.Clear();
+        InventoryDataManager.SaveData(this);
+    }
+
+    public void HalfClearData()
+    {
+        for (int i = 0; i < itemsData.Count; i++)
+        {
+            itemsData[i] = new ItemData()
+            {
+                itemName = itemsData[i].itemName,
+                num = itemsData[i].num / 2
+            };
+        }
+        InventoryDataManager.SaveData(this);
+    }
 }

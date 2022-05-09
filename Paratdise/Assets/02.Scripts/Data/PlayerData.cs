@@ -18,8 +18,8 @@ using UnityEngine;
 public class PlayerData
 {
     public string nickName;
-    public bool[] endingCards;
-    public bool[] piecesOfStory;
+    public bool[] endingCards = new bool[100];
+    public bool[] piecesOfStory = new bool[100];
     public List<CharacterData> charactersData = new List<CharacterData>();
 
     public void AddPieceOfStory(int storyIndex)

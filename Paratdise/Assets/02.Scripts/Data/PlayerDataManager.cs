@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Newtonsoft.Json;
+//using Newtonsoft.Json;
 using System;
 
 /// <summary>
@@ -52,7 +52,10 @@ public class PlayerDataManager
         data = LoadDefaultData();
         data.nickName = nickName;
         if (!System.IO.Directory.Exists($"{Application.persistentDataPath}/PlayerDatas"))
+        {
+            Debug.Log($"New path created {Application.persistentDataPath}/PlayerDatas");
             System.IO.Directory.CreateDirectory($"{Application.persistentDataPath}/PlayerDatas");
+        }   
         SaveData(nickName);
 
         // 테스트용 계정
@@ -81,7 +84,7 @@ public class PlayerDataManager
         if (!System.IO.Directory.Exists($"{Application.persistentDataPath}/PlayerDataDefault"))
             System.IO.Directory.CreateDirectory($"{Application.persistentDataPath}/PlayerDataDefault");
         string jsonPath = $"{Application.persistentDataPath}/PlayerDataDefault/Player_Default.json";
-        string jsonData = JsonConvert.SerializeObject(playerData, Formatting.Indented);
+        string jsonData = JsonUtility.ToJson(playerData); //JsonConvert.SerializeObject(playerData, Formatting.Indented);
         System.IO.File.WriteAllText(jsonPath, jsonData);
         Debug.Log($"Player_Default  data is created");
     }
@@ -92,7 +95,7 @@ public class PlayerDataManager
         if (System.IO.File.Exists(jsonPath))
         {
             string jsonData = System.IO.File.ReadAllText(jsonPath);
-            return JsonConvert.DeserializeObject<PlayerData>(jsonData);
+            return JsonUtility.FromJson<PlayerData>(jsonData); //JsonConvert.DeserializeObject<PlayerData>(jsonData);
         }
         else
             throw new Exception("faied to load player data");
@@ -110,7 +113,7 @@ public class PlayerDataManager
             string jsonData = System.IO.File.ReadAllText(jsonPath);
             DisplayGameState.SetDiscription($"Read to load player data from {jsonPath}...");
             Debug.Log(jsonData);
-            playerData = JsonConvert.DeserializeObject<PlayerData>(jsonData);
+            playerData = JsonUtility.FromJson<PlayerData>(jsonData); //JsonConvert.DeserializeObject<PlayerData>(jsonData);
             data = playerData;
             Debug.Log($"Successfully loaded Player data of {nickName}");
             DisplayGameState.SetDiscription($"Suceeded to load player data from {jsonPath}");
@@ -135,7 +138,7 @@ public class PlayerDataManager
 
         TextAsset textData = Resources.Load<TextAsset>("PlayerDataDefault/Player_Default");
         if (textData != null)
-            tmpData = JsonConvert.DeserializeObject<PlayerData>(textData.ToString());
+            tmpData = JsonUtility.FromJson<PlayerData>(textData.ToString()); //JsonConvert.DeserializeObject<PlayerData>(textData.ToString());
         else
             Debug.Log($"Failed to load Player_Default");
 
@@ -156,7 +159,7 @@ public class PlayerDataManager
     {
         if (data == null) return;
         string jsonPath = $"{Application.persistentDataPath}/PlayerDatas/Player_{nickName}.json";
-        string jsonData = JsonConvert.SerializeObject(data, Formatting.Indented);
+        string jsonData = JsonUtility.ToJson(data); //JsonConvert.SerializeObject(data, Formatting.Indented);
         System.IO.File.WriteAllText(jsonPath, jsonData);
         Debug.Log($"Player_{nickName}  data is saved");
     }
@@ -171,7 +174,7 @@ public class PlayerDataManager
         }
 
         string jsonPath = $"{Application.persistentDataPath}/PlayerDatas/Player_{LoginManager.nickName}.json";
-        string jsonData = JsonConvert.SerializeObject(data, Formatting.Indented);
+        string jsonData = JsonUtility.ToJson(data); //JsonConvert.SerializeObject(data, Formatting.Indented);
         System.IO.File.WriteAllText(jsonPath, jsonData);
         Debug.Log($"Player_{LoginManager.nickName}  data is saved");
     }
@@ -180,7 +183,7 @@ public class PlayerDataManager
     {
         data = playerData;
         string jsonPath = $"{Application.persistentDataPath}/PlayerDatas/Player_{nickName}.json";
-        string jsonData = JsonConvert.SerializeObject(data, Formatting.Indented);
+        string jsonData = JsonUtility.ToJson(data); //JsonConvert.SerializeObject(data, Formatting.Indented);
         System.IO.File.WriteAllText(jsonPath, jsonData);
         Debug.Log($"Player_{nickName}  data is saved");
     }

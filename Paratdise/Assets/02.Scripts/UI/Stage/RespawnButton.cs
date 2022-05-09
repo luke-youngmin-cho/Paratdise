@@ -12,8 +12,20 @@ using UnityEngine;
 /// </summary>
 public class RespawnButton : MonoBehaviour
 {
+    private bool wasSpawned = false;
+
+    private void OnEnable()
+    {
+        MapInfo mapInfo = MapInfoAssets.instance.GetMapInfo(GameManager.currentStage);
+        if ((mapInfo != null && 
+             mapInfo.tracer != null) ||
+            wasSpawned)
+            gameObject.SetActive(false);
+    }
+
     public void OnClick()
     {
         StageManager.Respawn();
+        wasSpawned = true;
     }
 }
