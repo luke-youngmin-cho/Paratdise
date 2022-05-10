@@ -131,7 +131,7 @@ MonoBehaviour:
   left: {fileID: 0}
   right: {fileID: 0}
   col: {fileID: 0}
-  hpMax: 5
+  hpMax: 5.5
   hurtEffect: {fileID: 0}
   destroyEffect: {fileID: 0}
   dropItems:

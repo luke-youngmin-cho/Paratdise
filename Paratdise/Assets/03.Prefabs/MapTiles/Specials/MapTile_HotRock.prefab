@@ -222,5 +222,5 @@ MonoBehaviour:
     type: 1
     active: 1
   buffInfoWhenDestroy:
-    type: 0
-    active: 0
+    type: 1
+    active: 1

@@ -831,8 +831,8 @@ public class UpgradeInfoTable : MonoBehaviour
             };
             upgradeValueDictionaray = new Dictionary<UpgradeType, float>()
             {
-                [UpgradeType.DiggingForce] = 1.25f,
-                [UpgradeType.Attack] = 1.25f,
+                [UpgradeType.DiggingForce] = 1.5f,
+                [UpgradeType.Attack] = 10f,
                 [UpgradeType.Speed] = 0.05f,
                 [UpgradeType.Luck] = 2.5f
             };
