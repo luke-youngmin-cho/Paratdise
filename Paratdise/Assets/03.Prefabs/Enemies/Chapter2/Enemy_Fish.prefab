@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db7bd4119636e84aa97e8440f8b1b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpMax: 18
+  hpMax: 38
   damage: 7
   moveSpeed: 1
   knockBackForce: 2

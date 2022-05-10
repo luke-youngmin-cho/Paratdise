@@ -101,7 +101,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15, y: 15}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   left: {fileID: 0}
   right: {fileID: 0}
   col: {fileID: 0}
-  hpMax: 2.5
+  hpMax: 1
   hurtEffect: {fileID: 0}
   destroyEffect: {fileID: 0}
   dropItems:

@@ -13,4 +13,5 @@ public class LoginManager
 {
     public static bool loggedIn;
     public static string nickName;
+   
 }

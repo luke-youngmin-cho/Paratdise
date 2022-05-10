@@ -66,7 +66,7 @@ public class InventoryDataManager
                 ItemData itemData = new ItemData
                 {
                     itemName = item.name,
-                    num = 999
+                    num = 9999
                 };
                 tmpData.AddData(itemData);
             }
@@ -121,6 +121,7 @@ public class InventoryDataManager
             else
                 instance.dataDictionary.Add(characterType, tmpData);
             //Debug.Log($"Inventory data of {nickName} Loaded");
+
         }
         else
         {

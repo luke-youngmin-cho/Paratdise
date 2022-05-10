@@ -3,35 +3,11 @@
     "m_SelectedPackage": {
         "deviceId": "R5CT32GH35P",
         "name": "com.sixx.paratdise",
-        "processId": 28590,
+        "processId": 18412,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.sixx.paratdise",
-            "processId": 28880,
-            "exited": true
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.sixx.paratdise",
-            "processId": 16658,
-            "exited": true
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.sixx.paratdise",
-            "processId": 28820,
-            "exited": true
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.sixx.paratdise",
-            "processId": 29706,
-            "exited": true
-        },
         {
             "deviceId": "R5CT32GH35P",
             "name": "com.sixx.paratdise",
@@ -48,18 +24,54 @@
             "deviceId": "R5CT32GH35P",
             "name": "com.sixx.paratdise",
             "processId": 22592,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "R5CT32GH35P",
             "name": "com.sixx.paratdise",
             "processId": 24301,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "R5CT32GH35P",
             "name": "com.sixx.paratdise",
             "processId": 28590,
+            "exited": true
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.sixx.paratdise",
+            "processId": 7769,
+            "exited": true
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.sec.android.app.sbrowser",
+            "processId": 1647,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.sixx.paratdise",
+            "processId": 6135,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.sixx.paratdise",
+            "processId": 15566,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.sixx.paratdise",
+            "processId": 17638,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.sixx.paratdise",
+            "processId": 18412,
             "exited": false
         }
     ],

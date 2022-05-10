@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpMax: 1
-  damage: 5
+  damage: 10
   moveSpeed: 0.8
   knockBackForce: 0
   targetLayer:

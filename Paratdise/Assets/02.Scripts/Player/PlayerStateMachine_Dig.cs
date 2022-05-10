@@ -23,8 +23,8 @@ public class PlayerStateMachine_Dig : PlayerStateMachine
         CharacterData data = PlayerDataManager.data.GetCharacterData(GameManager.characterSelected);
         width = 0.5f;
         height = 0.5f;
-        strength = 1 + data.toolsLevel.diggingForceLevel; // todo -> 강화 레벨에 따른 실제 값 가져오기
-        
+        strength = 1 + UpgradeInfoTable.GetTotalAdditionalValue(UpgradeType.DiggingForce, data.toolsLevel.diggingForceLevel);
+
         targetLayer = LayerMask.NameToLayer("MapTileDestroyable");
     }
 

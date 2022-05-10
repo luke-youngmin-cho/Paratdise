@@ -22,6 +22,8 @@ public class PlayerStateMachine_Attack : PlayerStateMachine
         base.Awake();
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<CapsuleCollider2D>();
+        CharacterData data = PlayerDataManager.data.GetCharacterData(GameManager.characterSelected);
+        damage += UpgradeInfoTable.GetTotalAdditionalValue(UpgradeType.Attack, data.toolsLevel.AttackLevel);
     }
     public override PlayerState Workflow()
     {
