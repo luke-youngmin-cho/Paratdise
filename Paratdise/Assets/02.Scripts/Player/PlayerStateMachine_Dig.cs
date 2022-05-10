@@ -37,13 +37,16 @@ public class PlayerStateMachine_Dig : PlayerStateMachine
                 break;
             case State.Prepare:
                 dir = manager.direction;
-                Debug.Log(dir);
+                //Debug.Log(dir);
                 manager.move = manager.move / 2f;
                 modelManager.Play("Dig");
                 AudioManager.instance.PlaySFX(SFXAssets.GetSFX("Player_Dig"));
                 state++;
                 break;
             case State.Casting:
+                if (dir != manager.direction)
+                    manager.move = Vector2.zero;
+
                 // damage maptile
 
                 center = Vector2.zero;
@@ -93,6 +96,9 @@ public class PlayerStateMachine_Dig : PlayerStateMachine
 
                 break;
             case State.OnAction:
+                if (dir != manager.direction)
+                    manager.move = Vector2.zero;
+
                 if (animationTimer < 0)
                     state++;
                 else
