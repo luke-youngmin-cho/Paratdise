@@ -112,7 +112,7 @@ public class PlayerStateMachineManager : MonoBehaviour
             if (sub.playerState == newState &&
                 sub.IsExecuteOK())
             {
-                if (newState != PlayerState.Dig )
+                //if (newState != PlayerState.Dig )
                     move = Vector2.zero;
                 modelManager.SetFloat("h", move.x);
                 modelManager.SetFloat("v", move.y);

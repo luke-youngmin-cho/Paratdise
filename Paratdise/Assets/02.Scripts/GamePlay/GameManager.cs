@@ -118,12 +118,18 @@ public class GameManager : MonoBehaviour
             case GameState.WaitForAssetsLoaded:
                 if (AssetsLoader.isLoaded)
                 {
+                    Next();
+                }
+                break;
+            case GameState.WaitForInternetConnection:
+                if (InternetConnection.IsGoogleWebsiteReachable())
+                {
                     SceneMover.MoveTo("Login");
                     Next();
                 }
                 break;
             case GameState.WaitForLogin:
-                if (LoginManager.loggedIn)
+                if (LoginManager.instance.loggedIn)
                 {
                     SceneMover.MoveTo("Loading");
                     Next();
@@ -172,7 +178,7 @@ public class GameManager : MonoBehaviour
                 }   
                 break;
             case GameState.OnLobby:
-                if (PlayStateManager.instance.CurrentPlayState != PlayState.Play)
+                if (PlayStateManager.instance.currentPlayState != PlayState.Play)
                     PlayStateManager.instance.SetState(PlayState.Play);
                 break;
             case GameState.StartStage:
@@ -233,6 +239,7 @@ public enum GameState
 {
     Idle,
     WaitForAssetsLoaded,
+    WaitForInternetConnection,
     WaitForLogin,
     LoadPlayerData,
     GoLobby,
