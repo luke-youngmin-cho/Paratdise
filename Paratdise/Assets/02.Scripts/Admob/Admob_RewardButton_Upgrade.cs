@@ -15,7 +15,7 @@ public class Admob_RewardButton_Upgrade : Admob_RewardButton
     public UpgradeType upgradeType;
     public override void Awake()
     {
-        rewardID = AdsData.AD_reward_Android_ID_PlayPro;
+        rewardID = AdsData.AD_Reward_Upgrade;
     }
     public override void Start()
     {

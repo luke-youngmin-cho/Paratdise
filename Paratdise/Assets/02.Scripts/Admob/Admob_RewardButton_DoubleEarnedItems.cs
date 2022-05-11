@@ -14,7 +14,7 @@ public class Admob_RewardButton_DoubleEarnedItems : Admob_RewardButton
 {
     public override void Awake()
     {
-        rewardID = AdsData.AD_reward_Android_ID_PlayPro;
+        rewardID = AdsData.AD_Reward_DoubleEarnedItems;
     }
     public override void Start()
     {

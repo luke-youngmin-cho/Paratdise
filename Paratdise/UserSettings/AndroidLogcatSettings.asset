@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "R5CT32GH35P",
         "name": "com.sixx.paratdise",
-        "processId": 28732,
+        "processId": 22757,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -90,6 +90,24 @@
             "deviceId": "R5CT32GH35P",
             "name": "com.sixx.paratdise",
             "processId": 28732,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.sixx.paratdise",
+            "processId": 9867,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.sixx.paratdise",
+            "processId": 21248,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.sixx.paratdise",
+            "processId": 22757,
             "exited": false
         }
     ],

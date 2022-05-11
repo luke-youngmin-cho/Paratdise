@@ -14,7 +14,7 @@ public class Admob_RewardButton_LoseHalfOfItems : Admob_RewardButton
 {
     public override void Awake()
     {
-        rewardID = AdsData.AD_reward_Android_ID_PlayPro;
+        rewardID = AdsData.AD_Reward_HalfLosing;
     }
     public override void Start()
     {
