@@ -18,7 +18,7 @@ public class LoginButton : MonoBehaviour
         if (!string.IsNullOrEmpty(inputField.text))
         {
             LoginManager.nickName = inputField.text;
-            LoginManager.loggedIn = true;
+            LoginManager.instance.loggedIn = true;
         }
     }
 }

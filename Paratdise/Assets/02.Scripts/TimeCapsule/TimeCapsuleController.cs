@@ -27,7 +27,6 @@ public class TimeCapsuleController : MonoBehaviour
         if (isPickedUp) return;
         isPickedUp = true;
 
-        PlayerData data = PlayerDataManager.data;
         PieceOfStory pieceOfStory = PieceOfStoryAssets.GetRandomPieceOfStory();
         StageManager.EarnPieceOfStory(pieceOfStory.index);
 

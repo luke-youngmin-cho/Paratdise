@@ -128,12 +128,28 @@ public class StageManager : MonoBehaviour
         if (state == StageState.WaitForUserSelection)
         {
             instance.controllUI.SetActive(true);
-            Player.instance.hp = Player.instance.hpMax;
+            Player.instance.Respawn();
             PlayerStateMachineManager.instance.ChangeState(PlayerState.Movement);
             instance.wasFailed = false;
+            PlayStateManager.instance.SetState(PlayState.Play);
             state = StageState.OnStage;
         }   
     }
+
+    public static void DoubleEarnedItems()
+    {
+        for (int i = 0; i < instance.earnedItems.Count; i++)
+        {
+            instance.earnedItems[i] = new ItemData()
+            {
+                itemName = instance.earnedItems[i].itemName,
+                num = instance.earnedItems[i].num * 2,
+            };
+        }
+        instance.clearPopUp.GetComponent<StageClearPopUp>().Refresh();
+        instance.SaveEarnedItems();
+    }
+
 
     public void SetTimer(float timeLimit)
     {
@@ -331,6 +347,8 @@ public class StageManager : MonoBehaviour
                 break;
 
             case StageState.OnStage:
+                //Debug.Log($"현재 게임 상태 : {PlayStateManager.instance.currentPlayState}");
+
                 if (GetTimer() <= 0)
                     GameOver();
                 break;
@@ -393,7 +411,7 @@ public class StageManager : MonoBehaviour
                 }
                 break;
             case StageState.WaitForUserSelection:
-                if (PlayStateManager.instance.CurrentPlayState == PlayState.Play)
+                if (PlayStateManager.instance.currentPlayState == PlayState.Play)
                     PlayStateManager.instance.SetState(PlayState.Paused);
 
                 break;

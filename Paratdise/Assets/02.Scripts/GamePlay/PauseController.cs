@@ -40,7 +40,7 @@ public class PauseController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            PlayState currentGameState = PlayStateManager.instance.CurrentPlayState;
+            PlayState currentGameState = PlayStateManager.instance.currentPlayState;
             PlayState newGameState = currentGameState == PlayState.Play
                 ? PlayState.Paused
                 : PlayState.Play;

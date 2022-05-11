@@ -22,21 +22,25 @@ public class Player : MonoBehaviour
     {
         set 
         {
-            if (value > 0)
-            {
-                if (value < _hp)
-                    machineManager.ChangeState(PlayerState.Hurt);
-            }   
-            else
-            {
+            if (value <= 0) 
                 value = 0;
+            else if (value > hpMax)
+                value = hpMax;
+
+            if (_hp == value) 
+                return;
+
+            if (value < _hp)
+                machineManager.ChangeState(PlayerState.Hurt);
+
+            _hp = value;
+
+            if (_hp <= 0)
+            {
                 machineManager.ChangeState(PlayerState.Die);
                 Invoke("GameOver", 1f);
             }
-
-            if (value > hpMax)
-                value = hpMax;
-            _hp = value;
+                
             PlayerUI.SetHPBar(_hp/hpMax);
         }
 
@@ -63,6 +67,14 @@ public class Player : MonoBehaviour
             invincibleCoroutin = StartCoroutine(E_Invincible());
             DamagePopUp.Create(transform.position + new Vector3(0f, col.size.y / 2, 0f), damage, gameObject.layer);
         }   
+    }
+
+    public void Respawn()
+    {
+        if (invincibleCoroutin != null)
+            StopCoroutine(invincibleCoroutin);
+        invincibleCoroutin = StartCoroutine(E_Invincible());
+        hp = hpMax;
     }
 
     //============================================================================

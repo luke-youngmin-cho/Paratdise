@@ -38,7 +38,18 @@ public class PlayStateManager
             return _instance;
         }
     }
-    public PlayState CurrentPlayState { get; private set; }
+    private PlayState _currentPlayState;
+    public PlayState currentPlayState
+    {
+        get
+        {
+            return _currentPlayState;
+        }
+        set
+        {
+            _currentPlayState = value;
+        }
+    }
     public delegate void PlayStateChangeHandler(PlayState newPlayState);
     public event PlayStateChangeHandler OnPlayStateChanged;
 
@@ -49,12 +60,12 @@ public class PlayStateManager
 
     public void SetState(PlayState newPlayState)
     {
-        if (newPlayState == CurrentPlayState) return;
+        //if (newPlayState == currentPlayState) return;
 
-        CurrentPlayState = newPlayState;
+        currentPlayState = newPlayState;
         OnPlayStateChanged?.Invoke(newPlayState);
 
-        if (CurrentPlayState == PlayState.Paused)
+        if (currentPlayState == PlayState.Paused)
             Time.timeScale = 0.0f;
         else
             Time.timeScale = 1.0f;

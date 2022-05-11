@@ -26,7 +26,7 @@ public class BGMPlayer : MonoBehaviour
                                          BGMAssets.instance != null);
 
         if (playConditionState != GameState.Idle)
-            yield return new WaitUntil(() => GameManager.gameState == playConditionState);
+            yield return new WaitUntil(() => GameManager.gameState > playConditionState);
 
         Sound sound = null;
         if (SceneInformation.newSceneName == "Lobby")

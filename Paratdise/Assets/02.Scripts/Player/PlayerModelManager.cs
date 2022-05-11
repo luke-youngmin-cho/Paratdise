@@ -169,7 +169,7 @@ public class PlayerModelManager : MonoBehaviour
 
             blinkTimer -= Time.deltaTime;
 
-            Debug.Log(tmpColor);
+            //Debug.Log(tmpColor);
             if (!onlyOutline)
             {
                 foreach (var spriteRenderer in frontSpriteRenderers)
