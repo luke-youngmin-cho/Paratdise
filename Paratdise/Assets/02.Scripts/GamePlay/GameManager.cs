@@ -131,6 +131,7 @@ public class GameManager : MonoBehaviour
             case GameState.WaitForLogin:
                 if (LoginManager.instance.loggedIn)
                 {
+                    Settings.instance.NickName_LatestGuest = LoginManager.nickName;
                     SceneMover.MoveTo("Loading");
                     Next();
                 }

@@ -24,7 +24,7 @@ public class Settings : MonoBehaviour
     int tutorial_Stage13Playing;
     int tutorial_Diary;
     int tutorial_Upgrade;
-
+    string nickName_LatestGuest;
 
     [SerializeField] Slider sound_BGMVolume_Slider;
     [SerializeField] Slider sound_SFXVolume_Slider;
@@ -169,6 +169,20 @@ public class Settings : MonoBehaviour
             PlayerPrefs.SetInt("Tutorial_Diary", tutorial_Upgrade);
         }
     }
+
+    public string NickName_LatestGuest
+    {
+        get
+        {
+            return PlayerPrefs.GetString("NickName_LatestGuest", nickName_LatestGuest);
+        }
+        set
+        {
+            nickName_LatestGuest = value;
+            PlayerPrefs.SetString("NickName_LatestGuest", nickName_LatestGuest);
+        }
+    }
+
     public void LoadSavedData()
     {
         if (PlayerPrefsDataExist == 0) SetupAtVeryFirstTime();
@@ -183,6 +197,7 @@ public class Settings : MonoBehaviour
 
         tutorial_Diary = Tutorial_Diary;
         tutorial_Upgrade = Tutorial_Upgrade;
+        nickName_LatestGuest = NickName_LatestGuest;
     }
 
     public void OnValueChange_BGMSlider(float value) =>
@@ -197,6 +212,7 @@ public class Settings : MonoBehaviour
         Sound_BGMVolume = 0.3f;
         Sound_SFXVolume = 0.3f;        
         Touch_JoystickSensitivity = 0.15f;
+        NickName_LatestGuest = "";
     }
     public void SaveSettings()
     {

@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3d7527a28a8e4040b80e590efc5aa60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  internetConnectionWarningPopUp: {fileID: 0}
+  internetConnectionWarningPopUp: {fileID: 8321514437841019676, guid: 8ba55b936bdd7c34e8bb409435882a95, type: 3}
 --- !u!4 &139751660
 Transform:
   m_ObjectHideFlags: 0
@@ -1414,7 +1414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7785978056056445859, guid: c4901c28231cd3045919495f58db9e55, type: 3}
       propertyPath: m_SortingOrder
-      value: -10
+      value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4901c28231cd3045919495f58db9e55, type: 3}

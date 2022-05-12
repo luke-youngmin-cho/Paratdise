@@ -53,10 +53,11 @@ public class PlayerDataManager
         data.nickName = nickName;
         if (!System.IO.Directory.Exists($"{Application.persistentDataPath}/PlayerDatas"))
         {
-            Debug.Log($"New path created {Application.persistentDataPath}/PlayerDatas");
+            //Debug.Log($"New path created {Application.persistentDataPath}/PlayerDatas");
             System.IO.Directory.CreateDirectory($"{Application.persistentDataPath}/PlayerDatas");
         }   
         SaveData(nickName);
+        Settings.instance.NickName_LatestGuest = nickName;
 
         // 테스트용 계정
         if (nickName == "master")
@@ -75,7 +76,7 @@ public class PlayerDataManager
             tmpData.SetCharacterData(tmpCharacterData);
             data = tmpData;
             SaveData();
-            Debug.Log("마스터 계정이 생성되었습니다.");
+            //Debug.Log("마스터 계정이 생성되었습니다.");
         }
     }
 
@@ -86,7 +87,7 @@ public class PlayerDataManager
         string jsonPath = $"{Application.persistentDataPath}/PlayerDataDefault/Player_Default.json";
         string jsonData = JsonUtility.ToJson(playerData); //JsonConvert.SerializeObject(playerData, Formatting.Indented);
         System.IO.File.WriteAllText(jsonPath, jsonData);
-        Debug.Log($"Player_Default  data is created");
+        //Debug.Log($"Player_Default  data is created");
     }
 
     public static PlayerData LoadData()
@@ -112,10 +113,10 @@ public class PlayerDataManager
             DisplayGameState.SetDiscription($"Trinyg to load player data from {jsonPath}...");
             string jsonData = System.IO.File.ReadAllText(jsonPath);
             DisplayGameState.SetDiscription($"Read to load player data from {jsonPath}...");
-            Debug.Log(jsonData);
+            //Debug.Log(jsonData);
             playerData = JsonUtility.FromJson<PlayerData>(jsonData); //JsonConvert.DeserializeObject<PlayerData>(jsonData);
             data = playerData;
-            Debug.Log($"Successfully loaded Player data of {nickName}");
+            //Debug.Log($"Successfully loaded Player data of {nickName}");
             DisplayGameState.SetDiscription($"Suceeded to load player data from {jsonPath}");
         }
         else
@@ -161,7 +162,7 @@ public class PlayerDataManager
         string jsonPath = $"{Application.persistentDataPath}/PlayerDatas/Player_{nickName}.json";
         string jsonData = JsonUtility.ToJson(data); //JsonConvert.SerializeObject(data, Formatting.Indented);
         System.IO.File.WriteAllText(jsonPath, jsonData);
-        Debug.Log($"Player_{nickName}  data is saved");
+        //Debug.Log($"Player_{nickName}  data is saved");
     }
 
     public static void SaveData()
@@ -176,7 +177,7 @@ public class PlayerDataManager
         string jsonPath = $"{Application.persistentDataPath}/PlayerDatas/Player_{LoginManager.nickName}.json";
         string jsonData = JsonUtility.ToJson(data); //JsonConvert.SerializeObject(data, Formatting.Indented);
         System.IO.File.WriteAllText(jsonPath, jsonData);
-        Debug.Log($"Player_{LoginManager.nickName}  data is saved");
+        //Debug.Log($"Player_{LoginManager.nickName}  data is saved");
     }
 
     public static void SaveData(string nickName, PlayerData playerData)
@@ -185,7 +186,7 @@ public class PlayerDataManager
         string jsonPath = $"{Application.persistentDataPath}/PlayerDatas/Player_{nickName}.json";
         string jsonData = JsonUtility.ToJson(data); //JsonConvert.SerializeObject(data, Formatting.Indented);
         System.IO.File.WriteAllText(jsonPath, jsonData);
-        Debug.Log($"Player_{nickName}  data is saved");
+        //Debug.Log($"Player_{nickName}  data is saved");
     }
 
     public static void RemoveData(string nickName)
@@ -194,7 +195,7 @@ public class PlayerDataManager
         if (System.IO.File.Exists(jsonPath))
         {
             System.IO.File.Delete(jsonPath);
-            Debug.Log($"Player_ {nickName}   data is removed ");
+            //Debug.Log($"Player_ {nickName}   data is removed ");
         }
     }
 }

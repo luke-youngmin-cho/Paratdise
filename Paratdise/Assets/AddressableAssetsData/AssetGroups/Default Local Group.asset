@@ -16,11 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 09b7ba9e1cfd8c34eba28b445a8951a5
-  m_SerializeEntries:
-  - m_GUID: 5ba96c30208c73e44a6f92f218c61460
-    m_Address: Assets/Resources_moved/Assets/EndingCardAssets.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d7c617cc2d6f594439be6e616b62a9fc, type: 2}
   m_SchemaSet:

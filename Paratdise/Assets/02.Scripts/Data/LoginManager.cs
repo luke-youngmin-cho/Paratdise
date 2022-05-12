@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using GooglePlayGames;
 using GooglePlayGames.Android;
@@ -36,17 +37,71 @@ public class LoginManager
     {
         PlayGamesPlatform.Activate();
 
-        PlayGamesPlatform.Instance.Authenticate(delegate (SignInStatus status)
+        //UniTask.Void(async () =>
+        //{
+        //    float timeMark = Time.time;
+        //    float timer = 10f;
+        //
+        //    await UniTask.WaitUntil(() => Try() || (Time.time - timeMark > timer));
+        //});
+
+        Try();
+
+        if (loggedIn == false &&
+            Settings.instance.NickName_LatestGuest != "")
         {
-            Debug.Log($"로그인 상태 : {status} , 아이디 : {PlayGamesPlatform.Instance.localUser.id}");
+            nickName = Settings.instance.NickName_LatestGuest;
+            loggedIn = true;
+        }
+
         
-            if (status == SignInStatus.Success)
+
+        //UniTask.Void(async () =>
+        //{
+        //    float timeMark = Time.time;
+        //    float timer = 5f;
+        //    await UniTask.WaitUntil(() => Try() || (Time.time - timeMark > timer));
+        //
+        //    PlayGamesPlatform.Instance.Authenticate(delegate (SignInStatus status)
+        //    {
+        //        Debug.Log($"로그인 상태 : {status} , 아이디 : {PlayGamesPlatform.Instance.localUser.id}");
+        //
+        //        // 구글 로그인 성공
+        //        if (status == SignInStatus.Success)
+        //        {
+        //            nickName = PlayGamesPlatform.Instance.localUser.id.ToString();
+        //            Debug.Log($"Logged in with {nickName}");
+        //            loggedIn = true;
+        //        }
+        //        // 게스트 로그인 성공
+        //        else if (Settings.instance.NickName_LatestGuest != "")
+        //        {
+        //            nickName = Settings.instance.NickName_LatestGuest;
+        //            loggedIn = true;
+        //        }
+        //    });
+        //});
+    }
+
+    private bool Try()
+    {
+        bool success = false;
+
+        GPGSBinder.Inst.Login((success, localUser) =>
+        {
+            Debug.Log($"{success}, {localUser.userName}, {localUser.id}, {localUser.state}, {localUser.underage}");
+            if (success)
             {
-                nickName = PlayGamesPlatform.Instance.localUser.id.ToString();
-                Debug.Log($"Logged in with {nickName}");
-                loggedIn = true;
+                nickName = localUser.userName;
+                loggedIn = success;
             }
         });
-
+        //PlayGamesPlatform.Instance.Authenticate(delegate (SignInStatus status)
+        //{
+        //    if (status == SignInStatus.Success)
+        //        result = true;
+        //});
+        //Debug.Log("Trying login...");
+        return success;
     }
 }
