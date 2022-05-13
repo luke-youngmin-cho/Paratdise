@@ -64,7 +64,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 20
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -83,7 +83,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 20
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -102,7 +102,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 20
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -121,7 +121,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 30
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -140,7 +140,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 30
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -159,7 +159,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 30
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -178,7 +178,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 40
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -197,7 +197,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 40
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -216,7 +216,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 50
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -235,7 +235,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 50
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -259,7 +259,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 20
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -278,7 +278,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 20
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -297,7 +297,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 20
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -316,7 +316,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 30
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -335,7 +335,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 30
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -354,7 +354,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 30
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -373,7 +373,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 40
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -392,7 +392,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 40
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -411,7 +411,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 50
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -430,7 +430,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 50
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -453,7 +453,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 20
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -472,7 +472,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 20
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -491,7 +491,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 20
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -510,7 +510,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 30
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -529,7 +529,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 30
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -548,7 +548,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 30
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -567,7 +567,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 40
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -586,7 +586,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 40
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -605,7 +605,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 50
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -624,7 +624,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 50
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -647,7 +647,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 20
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -666,7 +666,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 20
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -685,7 +685,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 20
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -704,7 +704,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 30
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -723,7 +723,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 30
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -742,7 +742,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 30
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -761,7 +761,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 40
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -780,7 +780,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 40
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -799,7 +799,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 50
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
@@ -818,7 +818,7 @@ public class UpgradeInfoTable : MonoBehaviour
                                              new UpgradeResourceInfo()
                                              {
                                                  item = ItemAssets.instance.GetItemByName("ºÎ½Ëµ¹"),
-                                                 num = 50
+                                                 num = 15
                                              },
                                              new UpgradeResourceInfo()
                                              {
