@@ -116,7 +116,8 @@ public class GameManager : MonoBehaviour
             case GameState.Idle:
                 break;
             case GameState.WaitForAssetsLoaded:
-                if (AssetsLoader.isLoaded)
+                if (AssetsLoader.isLoaded && 
+                    AdmobManager.isReady)
                 {
                     Next();
                 }
@@ -141,7 +142,7 @@ public class GameManager : MonoBehaviour
                 if (PlayerDataManager.instance == null)
                     DisplayGameState.SetDiscription("player data manager instance is null");
 
-                if (!PlayerDataManager.TryLoadData(LoginManager.nickName, out PlayerData data))
+                if (PlayerDataManager.TryLoadData(LoginManager.nickName, out PlayerData data) == false)
                 {
                     stateDiscription = "Creating Data...";
                     PlayerDataManager.CreateData(LoginManager.nickName);

@@ -16,6 +16,15 @@ public class AdmobManager : MonoBehaviour
 {
     public static AdmobManager instance;
     public static CMDState CMDState = CMDState.BUSY;
+    
+
+    public static bool isReady
+    {
+        get
+        {
+            return CMDState == CMDState.IDLE ? true : false;
+        }
+    }
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -28,8 +37,10 @@ public class AdmobManager : MonoBehaviour
     {
         var requestConfiguration = new RequestConfiguration
             .Builder()
-            .SetTestDeviceIds(new List<string>() { "05157df51a731d3b" }) // test deevice list
+            .SetTagForChildDirectedTreatment(TagForChildDirectedTreatment.True)
+            .SetTestDeviceIds(new List<string>() { "9CAD3917C334B158" }) // test deevice list
             .build();
+
 
         MobileAds.SetRequestConfiguration(requestConfiguration);
         MobileAds.Initialize(initStatus => { CMDState = CMDState.IDLE; });

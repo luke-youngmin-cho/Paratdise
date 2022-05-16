@@ -273,7 +273,6 @@ GameObject:
   - component: {fileID: 478436097340327766}
   - component: {fileID: 7198508725695216846}
   - component: {fileID: 3689788173755258809}
-  - component: {fileID: 3352448628871016141}
   m_Layer: 5
   m_Name: RespawnButton
   m_TagString: Untagged
@@ -422,9 +421,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3352448628871016141}
-        m_TargetAssemblyTypeName: RespawnButton, Assembly-CSharp
-        m_MethodName: OnClick
+      - m_Target: {fileID: 3689788173755258809}
+        m_TargetAssemblyTypeName: Admob_RewardButton, Assembly-CSharp
+        m_MethodName: LoadAD_Reward
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -481,20 +480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28664b9c26a62ee40a6999115f4606f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewardID: 
   failedToLoadWarningPopUp: {fileID: 2241163087098731249}
---- !u!114 &3352448628871016141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907099710844213022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc46a4320203e5842a4da92703116a0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1075002632664568924
 GameObject:
   m_ObjectHideFlags: 0
@@ -2640,7 +2626,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a3e9d7f632fa9429ddb9f5f4d9d90f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewardID: 
   failedToLoadWarningPopUp: {fileID: 2241163087098731249}
 --- !u!1 &2442774934702248107
 GameObject:
@@ -3359,6 +3344,7 @@ GameObject:
   - component: {fileID: 1683090520671342990}
   - component: {fileID: 8415295900830078351}
   - component: {fileID: 7717134286657029491}
+  - component: {fileID: 7568077286563455476}
   m_Layer: 5
   m_Name: PausedPopUp
   m_TagString: Untagged
@@ -3430,6 +3416,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7568077286563455476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2968865970007677677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efdbfae702cad664b88e2db43447791f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3265663076057471341
 GameObject:
   m_ObjectHideFlags: 0
@@ -5523,7 +5521,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06071a21b09671541ab623fb327f7c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewardID: 
   failedToLoadWarningPopUp: {fileID: 2241163087098731249}
 --- !u!1 &5398001451298908852
 GameObject:

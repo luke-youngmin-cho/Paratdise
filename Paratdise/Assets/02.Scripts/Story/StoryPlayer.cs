@@ -236,22 +236,22 @@ public class StoryPlayer : MonoBehaviour
         }
 
         nextButton.SetActive(true);
-        Color c = buttonImage.color;
-        c.a = 0;
-        buttonImage.color = c;
-        elapsedTime = 0;
-        while (elapsedTime < 1f)
-        {
-            //Debug.Log($"Showing next button... {c.a}");
-            elapsedTime += 0.0167f * 2;
-            c.a += elapsedTime;
-            buttonImage.color = c;
-
-            if (elapsedTime < 1f)
-                button.interactable = true;
-
-            yield return null;
-        }
+        //Color c = buttonImage.color;
+        //c.a = 0;
+        //buttonImage.color = c;
+        //elapsedTime = 0;
+        //while (elapsedTime < 1f)
+        //{
+        //    //Debug.Log($"Showing next button... {c.a}");
+        //    elapsedTime += 0.0167f * 2;
+        //    c.a += elapsedTime;
+        //    buttonImage.color = c;
+        //
+        //    if (elapsedTime < 1f)
+        //        button.interactable = true;
+        //
+        //    yield return null;
+        //}
         button.interactable = true;
         nextButtonCoroutine = null;
     }

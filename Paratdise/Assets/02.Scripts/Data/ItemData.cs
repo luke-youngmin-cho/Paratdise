@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 /// 아이템 데이터 저장용 구조체
 /// </summary>
 
+[System.Serializable]
 public struct ItemData
 {
     public string itemName;

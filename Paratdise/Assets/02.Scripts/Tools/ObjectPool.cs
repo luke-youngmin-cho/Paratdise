@@ -124,6 +124,7 @@ public class ObjectPool : MonoBehaviour
                 Destroy(spawnedObjects[i]);
             }
             Destroy(_instance);
+            System.GC.Collect();
             _instance = instance;
         }   
     }

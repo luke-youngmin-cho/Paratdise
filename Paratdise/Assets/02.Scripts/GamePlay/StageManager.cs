@@ -48,7 +48,7 @@ public class StageManager : MonoBehaviour
     private List<int> earnedPiecesOfStory = new List<int>();
 
     private float _timeLimit;
-    private float _startTimeMark;
+    private float _timeLimitOrigin;
     private bool isFirstClear;
     private bool wasCleared;
     private bool wasFailed;
@@ -132,6 +132,7 @@ public class StageManager : MonoBehaviour
             PlayerStateMachineManager.instance.ChangeState(PlayerState.Movement);
             instance.wasFailed = false;
             PlayStateManager.instance.SetState(PlayState.Play);
+            instance.RaiseTimer(40f);
             state = StageState.OnStage;
         }   
     }
@@ -153,21 +154,24 @@ public class StageManager : MonoBehaviour
 
     public void SetTimer(float timeLimit)
     {
-        _timeLimit = timeLimit;
-        _startTimeMark = Time.time;
+        _timeLimitOrigin = _timeLimit = timeLimit;
     }
 
     public float GetTimer()
     {
-        float remain = _timeLimit - (Time.time - _startTimeMark);
+        float remain = _timeLimit;
         if (remain < 0)
             remain = 0;
         return remain;
     }
 
+    public void RaiseTimer(float value)
+    {
+        _timeLimit += value;
+    }
     public float GetElapsedTime()
     {
-        return _timeLimit - GetTimer();
+        return _timeLimitOrigin - GetTimer();
     }
 
     public List<ItemData> GetEarnedItems()
@@ -215,6 +219,7 @@ public class StageManager : MonoBehaviour
     private void Update()
     {
         Workflow();
+        CollectGarbagesPeriodically();
     }
 
     private void Workflow()
@@ -348,6 +353,8 @@ public class StageManager : MonoBehaviour
 
             case StageState.OnStage:
                 //Debug.Log($"현재 게임 상태 : {PlayStateManager.instance.currentPlayState}");
+                if (PlayStateManager.instance.currentPlayState == PlayState.Play)
+                    _timeLimit -= Time.deltaTime;
 
                 if (GetTimer() <= 0)
                     GameOver();
@@ -443,6 +450,7 @@ public class StageManager : MonoBehaviour
         foreach (var item in earnedPiecesOfStory)
             data.piecesOfStory[item] = true;
         PlayerDataManager.data = data;
+        PlayerDataManager.SaveData();
     }
 
     private IEnumerator E_DeactivateLoadingUI()
@@ -473,6 +481,17 @@ public class StageManager : MonoBehaviour
             MapCreater.instance.CreateMap(mapData, true);
         }
     }*/
+
+    /// <summary>
+    /// 주기적으로 가비지컬렉션 ( 최소 30프레임은 유지하기 위함 )
+    /// </summary>
+    private void CollectGarbagesPeriodically()
+    {
+        if (Time.frameCount % 30 == 0)
+        {
+            System.GC.Collect();
+        }
+    }
 } 
 //===============================================================================================
 //*************************************** types *************************************************

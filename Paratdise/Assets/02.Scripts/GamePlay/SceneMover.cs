@@ -25,13 +25,6 @@ public class SceneMover
         else
             SceneManager.LoadScene(sceneName);
 
-    }
-
-    public static void MoveTo(int sceneIndex)
-    {
-        if (SceneManager.GetActiveScene().buildIndex == sceneIndex)
-            SceneManager.LoadScene("Temp");
-        else
-            SceneManager.LoadScene(sceneIndex);
+        System.GC.Collect();
     }
 }

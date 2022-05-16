@@ -33,6 +33,8 @@ public class LoginManager
     public static string nickName;
     public bool loggedIn;
 
+    public bool triedGPGS = false;
+    
     private void Login()
     {
         PlayGamesPlatform.Activate();
@@ -47,12 +49,16 @@ public class LoginManager
 
         Try();
 
-        if (loggedIn == false &&
-            Settings.instance.NickName_LatestGuest != "")
+        UniTask.Void(async () =>
         {
-            nickName = Settings.instance.NickName_LatestGuest;
-            loggedIn = true;
-        }
+            await UniTask.WaitUntil(() => triedGPGS);
+            if (loggedIn == false &&
+            Settings.instance.NickName_LatestGuest != "")
+            {
+                nickName = Settings.instance.NickName_LatestGuest;
+                loggedIn = true;
+            }
+        });       
 
         
 
@@ -95,6 +101,7 @@ public class LoginManager
                 nickName = localUser.userName;
                 loggedIn = success;
             }
+            triedGPGS = true;
         });
         //PlayGamesPlatform.Instance.Authenticate(delegate (SignInStatus status)
         //{
