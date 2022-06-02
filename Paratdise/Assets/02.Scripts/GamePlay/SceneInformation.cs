@@ -11,7 +11,6 @@ using UnityEngine.SceneManagement;
 /// 
 /// 씬의 정보, 이전씬과 현재씬을 비교할수 있는 클래스
 /// </summary>
-
 public class SceneInformation : MonoBehaviour
 {
     static public SceneInformation instance;

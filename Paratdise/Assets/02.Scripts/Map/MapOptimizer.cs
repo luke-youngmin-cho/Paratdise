@@ -9,27 +9,33 @@ using System.Linq;
 /// 설명 : 
 /// 
 /// 맵 최적화
+/// 섹터단위로 나누고 최적화 할 대상을 각 섹터에 등록함.
+/// 플레이어 기준 반경 내의 섹터만 활성화 하고 그외 비활성화.
 /// </summary>
+
 public class MapOptimizer : MonoBehaviour
 {
     public static MapOptimizer instance;
-    [SerializeField] LayerMask targetsLayer;
-    private float activateRange = 10f;
-    private bool optimize;
-    //private List<GameObject> list = new List<GameObject>();
-
+    [SerializeField] private LayerMask targetsLayer;
+    private float _activateRange = 10f;
+    private bool _doOptimize;
     private Vector2 _mapCenter;
     private Vector2 _mapSize;
     private Vector2 _sectorSize;
-    Vector2 padding = new Vector2(0.01f, 0.01f);
-    private Dictionary<Vector2, List<GameObject>> _dic = new Dictionary<Vector2, List<GameObject>>();
+    private Vector2 _padding = new Vector2(0.01f, 0.01f);
+    public struct Sector
+    {
+        public int id;
+        public Vector3 center;
+    }
+    private Dictionary<Sector, List<GameObject>> _sectors = new Dictionary<Sector, List<GameObject>>();
 
     //===============================================================================================
     //********************************** Public Methods *********************************************
     //===============================================================================================
 
     /// <summary>
-    /// 전체 맵을 섹터 단위로 나누어서 Dictionary 에 등록하는 함수. 
+    /// 전체 맵을 섹터 단위로 나누고 등록하는 함수. 
     /// </summary>
     /// <param name="mapCenter"> 전체 맵의 중간</param>
     /// <param name="mapSize"> 전체 맵의 크기</param>
@@ -40,60 +46,54 @@ public class MapOptimizer : MonoBehaviour
         _mapSize = mapSize;
         _sectorSize = sectorSize;
 
-        int hNum = (int)(_mapSize.x / _sectorSize.x) + 1;
-        int vNum = (int)(_mapSize.y / _sectorSize.y) + 1;
-
-        Vector2 sectorCenter = Vector2.zero;
-
-        Debug.Log($"Start optimization setting ... {hNum},{vNum} - {_mapCenter}, {_mapSize} ");
-        
-        for (int i = 0; i < vNum; i++)
+        int horizontalNum = (int)(_mapSize.x / _sectorSize.x) + 1;
+        int verticalNum = (int)(_mapSize.y / _sectorSize.y) + 1;
+        int sectorID = 0;
+        for (int i = 0; i < verticalNum; i++)
         {
-            for (int j = 0; j < hNum; j++)
+            for (int j = 0; j < horizontalNum; j++)
             {
-                sectorCenter = _mapCenter + new Vector2(_sectorSize.x * ((-hNum) + 1 + 2 * j) / 2f,
-                                                        _sectorSize.y * ((-vNum) + 1 + 2 * i) / 2f);
-                Collider2D[] cols = Physics2D.OverlapBoxAll(sectorCenter, _sectorSize - padding, 0, targetsLayer);
-                List<GameObject> tmpList = new List<GameObject>();
+                Vector2 sectorCenter = _mapCenter + new Vector2(_sectorSize.x * ((-horizontalNum) + 1 + 2 * j) / 2f,
+                                                                _sectorSize.y * ((-verticalNum)   + 1 + 2 * i) / 2f);
+                Sector sector = new Sector()
+                {
+                    id = sectorID++,
+                    center = sectorCenter,
+                };
+                // 섹터 내 게임 오브젝트 찾기
+                Collider2D[] cols = Physics2D.OverlapBoxAll(sectorCenter, _sectorSize - _padding, 0, targetsLayer);
+                List<GameObject> sectorObjects = new List<GameObject>();
 
-                int tmpID = 0;
+                int objectID = 0;
                 MapOptimizableObject mapOptimizableObject = null;
                 foreach (var col in cols)
-                {   
-                    if (col.gameObject != null){
-                        mapOptimizableObject = col.gameObject.AddComponent<MapOptimizableObject>();
-                        mapOptimizableObject.id = tmpID++;
-                        mapOptimizableObject.sector = sectorCenter;
-                        tmpList.Add(col.gameObject);
-                    }
+                {
+                    // 최적화 가능 컴포넌트 추가
+                    mapOptimizableObject = col.gameObject.AddComponent<MapOptimizableObject>();
+                    mapOptimizableObject.id = objectID++;
+                    mapOptimizableObject.sector = sector;
+                    sectorObjects.Add(col.gameObject);
                 }
-                Debug.Log($"{sectorCenter} will be optimized");
-                _dic.Add(sectorCenter, tmpList);
+                _sectors.Add(sector, sectorObjects);
             }
-        }
-        
+        }        
     }
 
-    public void RemoveMapOptimizableObject(Vector2 sector, int id)
+    public void RemoveMapOptimizableObject(Sector sector, int id)
     {
-        GameObject tmp = _dic[sector].Find(x => x != null &&
+        GameObject tmp = _sectors[sector].Find(x => x != null &&
                                                 x.TryGetComponent(out MapOptimizableObject mapOptimizableObject) &&
                                                 mapOptimizableObject.id == id);
         if (tmp != null)
         {
-            _dic[sector].Remove(tmp);
+            _sectors[sector].Remove(tmp);
             Destroy(tmp.GetComponent<MapOptimizableObject>());
         }   
     }
 
-    //public void Add(GameObject go)
-    //{
-    //    list.Add(go);
-    //}
-
     public void DoOptimization()
     {
-        optimize = true;
+        _doOptimize = true;
     }
 
     //===============================================================================================
@@ -109,13 +109,16 @@ public class MapOptimizer : MonoBehaviour
 
     private void Update()
     {
-        if (optimize &&
+        if (_doOptimize &&
             Player.instance)
         {
             Vector2 playerPos = Player.instance.transform.position;
-            foreach (var pair in _dic)
+
+            // 모든 섹터 순회
+            foreach (var pair in _sectors)
             {
-                if (Vector2.Distance(pair.Key, playerPos) > activateRange)
+                // 반경 벗어난 최적화 오브젝트 비활성화
+                if (Vector2.Distance(pair.Key.center, playerPos) > _activateRange)
                 {
                     for (int i = 0; i < pair.Value.Count; i++)
                     {
@@ -123,6 +126,7 @@ public class MapOptimizer : MonoBehaviour
                             pair.Value[i].SetActive(false);
                     }
                 }
+                // 반경 내 최적화 오브젝트 활성화
                 else
                 {
                     for (int i = 0; i < pair.Value.Count; i++)
@@ -133,43 +137,21 @@ public class MapOptimizer : MonoBehaviour
                 }
             }
         }
-
-        /*if (optimize && Player.instance != null)
-        {
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (list[i] == null)
-                    list.Remove(list[i]);
-                else
-                {
-                    if (Vector2.Distance(Player.instance.transform.position, list[i].transform.position) > activateRange)
-                    {
-                        if (list[i].activeSelf)
-                            list[i].SetActive(false);
-                    }
-                    else
-                    {
-                        if (list[i].activeSelf == false)
-                            list[i].SetActive(true);
-                    }
-                }
-            }
-        }*/
     }
 
     private void OnDrawGizmosSelected()
     {
-        int hNum = (int)(_mapSize.x / _sectorSize.x) + 1;
-        int vNum = (int)(_mapSize.y / _sectorSize.y) + 1;
+        int horizontalNum = (int)(_mapSize.x / _sectorSize.x) + 1;
+        int verticalNum = (int)(_mapSize.y / _sectorSize.y) + 1;
 
         Vector2 sectorCenter = Vector2.zero;
 
-        for (int i = 0; i < vNum; i++)
+        for (int i = 0; i < verticalNum; i++)
         {
-            for (int j = 0; j < hNum; j++)
+            for (int j = 0; j < horizontalNum; j++)
             {
-                sectorCenter = _mapCenter + new Vector2(_sectorSize.x * ((-hNum) + 1 + 2 * j) / 2f,
-                                                        _sectorSize.y * ((-vNum) + 1 + 2 * i) / 2f);
+                sectorCenter = _mapCenter + new Vector2(_sectorSize.x * ((-horizontalNum) + 1 + 2 * j) / 2f,
+                                                        _sectorSize.y * ((-verticalNum) + 1 + 2 * i) / 2f);
 
                 Gizmos.color = Color.red;
                 Gizmos.DrawWireCube(sectorCenter, _sectorSize);

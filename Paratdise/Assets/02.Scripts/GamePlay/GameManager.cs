@@ -10,7 +10,6 @@ using UnityEngine;
 /// 
 /// 게임의 시작부터 끝까지 상태를 관리하는 클래스
 /// </summary>
-
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;

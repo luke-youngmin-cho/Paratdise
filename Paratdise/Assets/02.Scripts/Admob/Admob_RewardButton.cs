@@ -26,11 +26,11 @@ public class Admob_RewardButton : MonoBehaviour
     private Button button;
 
     public GameObject failedToLoadWarningPopUp;
-    public virtual void Awake()
+    protected virtual void Awake()
     {
         rewardID = AdsData.AD_reward_Android_ID;
     }
-    public virtual void Start()
+    protected virtual void Start()
     {
         // Call SetRewardEvent() at the top
         button = GetComponent<Button>();

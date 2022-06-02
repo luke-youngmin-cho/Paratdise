@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.ResourceManagement.ResourceLocations;
 using Cysharp.Threading.Tasks;
-using System.Threading.Tasks;
 
 /// <summary>
 /// 작성자 : 조영민
@@ -30,10 +27,9 @@ public class AssetsLoader : MonoBehaviour
 
     public AssetReference[] assetsToLoad;
     public AssetReference accessoryObjectToLoad;
-
-    private GameObject instantiatedObject;
+        
     [SerializeField] private List<GameObject> instantiatedAccessoryObjects = new List<GameObject>();
-
+    private GameObject instantiatedObject;
 
     //============================================================================
     //************************* Private Methods **********************************
@@ -49,6 +45,9 @@ public class AssetsLoader : MonoBehaviour
         LoadAllAssets();
     }
 
+    /// <summary>
+    /// 게임시작전 로드되어야 하는 에셋들 모두 로드
+    /// </summary>
     private void LoadAllAssets()
     {
         UniTask.Create(async () =>
@@ -62,6 +61,9 @@ public class AssetsLoader : MonoBehaviour
         });
     }
 
+    /// <summary>
+    /// Addressable 에셋 로드 완료되면 해당 에셋 생성
+    /// </summary>
     private void ObjectLoadDone(AsyncOperationHandle<GameObject> obj)
     {
         if (obj.Status == AsyncOperationStatus.Succeeded)

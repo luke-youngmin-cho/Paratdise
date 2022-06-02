@@ -23,15 +23,6 @@ public class GPGSBinder
 
 
 
-    void Init()
-    {
-        var config = new PlayGamesClientConfiguration.Builder().EnableSavedGames().Build();
-        PlayGamesPlatform.InitializeInstance(config);
-        PlayGamesPlatform.DebugLogEnabled = true;
-        PlayGamesPlatform.Activate();
-    }
-
-
     public void Login(Action<bool, UnityEngine.SocialPlatforms.ILocalUser> onLoginSuccess = null)
     {
         Init();
@@ -152,6 +143,14 @@ public class GPGSBinder
         {
             onEventsLoaded?.Invoke(status == ResponseStatus.Success, events);
         });
+    }
+
+    void Init()
+    {
+        var config = new PlayGamesClientConfiguration.Builder().EnableSavedGames().Build();
+        PlayGamesPlatform.InitializeInstance(config);
+        PlayGamesPlatform.DebugLogEnabled = true;
+        PlayGamesPlatform.Activate();
     }
 
 }

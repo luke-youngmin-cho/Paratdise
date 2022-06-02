@@ -17,109 +17,37 @@
         {
             "deviceId": "R5CT32GH35P",
             "name": "com.sixx.paratdise",
-            "processId": 3971,
-            "exited": true
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.evozi.deviceid",
-            "processId": 16116,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.sixx.paratdise",
-            "processId": 16389,
-            "exited": true
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.sixx.paratdise",
-            "processId": 17862,
-            "exited": true
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.sixx.paratdise",
-            "processId": 19714,
-            "exited": true
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.sixx.paratdise",
-            "processId": 21143,
-            "exited": true
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.sixx.paratdise",
-            "processId": 23333,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.sixx.paratdise",
-            "processId": 24747,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.sixx.paratdise",
-            "processId": 25301,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.sixx.paratdise",
-            "processId": 28468,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.sixx.paratdise",
-            "processId": 30392,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.sixx.paratdise",
-            "processId": 32192,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.sixx.paratdise",
-            "processId": 1729,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT32GH35P",
-            "name": "com.sixx.paratdise",
             "processId": 5311,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "R5CT32GH35P",
             "name": "com.sixx.paratdise",
             "processId": 9181,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "R5CT32GH35P",
             "name": "com.sixx.paratdise",
             "processId": 11241,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "R5CT32GH35P",
             "name": "com.sixx.paratdise",
             "processId": 13148,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "R5CT32GH35P",
             "name": "com.sixx.paratdise",
             "processId": 25867,
+            "exited": true
+        },
+        {
+            "deviceId": "R5CT32GH35P",
+            "name": "com.sixx.paratdise",
+            "processId": 26521,
             "exited": false
         }
     ],

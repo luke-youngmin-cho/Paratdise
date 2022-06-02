@@ -4,6 +4,14 @@ using UnityEngine;
 using System.Net;
 using System.IO;
 
+/// <summary>
+/// 작성자 : 조영민
+/// 최초작성일 : 2022/05/11
+/// 최종수정일 : 
+/// 설명 : 
+/// 
+/// 인터넷 연결 확인
+/// </summary>
 public static class InternetConnection
 {
     public static string googleURI = "http://google.com";
@@ -20,9 +28,6 @@ public static class InternetConnection
                 {
                     using (StreamReader reader = new StreamReader(resp.GetResponseStream()))
                     {
-                        //We are limiting the array to 80 so we don't have
-                        //to parse the entire html document feel free to 
-                        //adjust (probably stay under 300)
                         char[] cs = new char[80];
                         reader.Read(cs, 0, cs.Length);
                         foreach (char ch in cs)
@@ -46,7 +51,7 @@ public static class InternetConnection
         string HtmlText = GetHtmlFromUri(googleURI);
         if (HtmlText == "")
         {
-            //No connection
+            // 연결없음
         }
         else if (!HtmlText.Contains("schema.org/WebPage"))
         {
@@ -55,7 +60,7 @@ public static class InternetConnection
         }
         else
         {
-            //success
+            // 성공
             isReachable = true;
         }
         return isReachable;

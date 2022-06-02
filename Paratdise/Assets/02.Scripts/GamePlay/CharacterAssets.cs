@@ -10,7 +10,6 @@ using UnityEngine;
 /// 
 /// 캐릭터 타입에따라 캐릭터 에셋을 가져다 쓰기위한 클래스
 /// </summary>
-
 public class CharacterAssets : MonoBehaviour
 {
     public static CharacterAssets _instance;

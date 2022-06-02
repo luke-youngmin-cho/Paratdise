@@ -11,8 +11,6 @@ using UnityEngine;
 /// 
 /// FluidBundle 의 자식 GameObject 에게 컴포넌트로 추가해야함.
 /// </summary>
-
-
 public class Fluid : MonoBehaviour
 {
     FluidBundle motherBundle;

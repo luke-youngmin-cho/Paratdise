@@ -12,11 +12,11 @@ using GoogleMobileAds.Api;
 /// </summary>
 public class Admob_RewardButton_DrowOneMoreTimeCapsule : Admob_RewardButton
 {
-    public override void Awake()
+    protected override void Awake()
     {
         rewardID = AdsData.AD_Reward_DrowOneMoreTimeCapsule;
     }
-    public override void Start()
+    protected override void Start()
     {
         SetRewardEvent(RewardEventToUpgrade);
         base.Start();

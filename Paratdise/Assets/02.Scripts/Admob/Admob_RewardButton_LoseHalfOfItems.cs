@@ -12,11 +12,11 @@ using GoogleMobileAds.Api;
 /// </summary>
 public class Admob_RewardButton_LoseHalfOfItems : Admob_RewardButton
 {
-    public override void Awake()
+    protected override void Awake()
     {
         rewardID = AdsData.AD_Reward_HalfLosing;
     }
-    public override void Start()
+    protected override void Start()
     {
         SetRewardEvent(RewardEventToHalfLose);
         base.Start();

@@ -13,7 +13,6 @@ using Cysharp.Threading.Tasks;
 /// 
 /// 추후 로그인 시스템 개발을 위한 사전테스트 클래스
 /// </summary>
-
 public class LoginManager
 {
     private static LoginManager _instance;

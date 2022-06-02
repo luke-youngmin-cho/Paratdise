@@ -53,6 +53,7 @@ public class StageManager : MonoBehaviour
     private bool wasCleared;
     private bool wasFailed;
     [HideInInspector] public bool dohalfPenalty;
+
     //===============================================================================================
     //********************************** Public Methods *********************************************
     //===============================================================================================
@@ -205,6 +206,11 @@ public class StageManager : MonoBehaviour
     private void Start()
     {
         stageInfo = StageInfoAssets.GetStageInfo(GameManager.currentStage);
+    }
+
+    private void OnDestroy()
+    {
+        Resources.UnloadUnusedAssets();
     }
 
     private void OnApplicationPause(bool pause)

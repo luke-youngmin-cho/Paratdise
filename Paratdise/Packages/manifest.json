@@ -12,6 +12,7 @@
     "com.unity.ide.rider": "2.0.7",
     "com.unity.ide.visualstudio": "2.0.15",
     "com.unity.ide.vscode": "1.2.5",
+    "com.unity.memoryprofiler": "0.7.0-preview.2",
     "com.unity.mobile.android-logcat": "1.2.3",
     "com.unity.purchasing": "4.1.4",
     "com.unity.render-pipelines.universal": "10.8.1",
@@ -52,13 +53,5 @@
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
   },
-  "scopedRegistries": [
-    {
-      "name": "jilleJr",
-      "url": "https://npm.cloudsmith.io/jillejr/newtonsoft-json-for-unity",
-      "scopes": [
-        "jillejr.newtonsoft.json-for-unity"
-      ]
-    }
-  ]
+  "scopedRegistries": []
 }

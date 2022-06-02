@@ -15,15 +15,15 @@ public class Buff : MonoBehaviour
 {
     public BuffType type;
     public float duration;
-    virtual public void OnActive(Player player, BuffGenerator generator)
+    public virtual void OnActive(Player player, BuffGenerator generator)
     {
 
     }
-    virtual public void OnDeactive(Player player, BuffGenerator generator)
+    public virtual void OnDeactive(Player player, BuffGenerator generator)
     {
 
     }
-    virtual public void OnDuration(Player player, BuffGenerator generator)
+    public virtual void OnDuration(Player player, BuffGenerator generator)
     {
 
     }

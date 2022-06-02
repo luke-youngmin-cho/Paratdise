@@ -13,11 +13,11 @@ using GoogleMobileAds.Api;
 public class Admob_RewardButton_Upgrade : Admob_RewardButton
 {
     public UpgradeType upgradeType;
-    public override void Awake()
+    protected override void Awake()
     {
         rewardID = AdsData.AD_Reward_Upgrade;
     }
-    public override void Start()
+    protected override void Start()
     {
         SetRewardEvent(RewardEventToUpgrade);
         base.Start();

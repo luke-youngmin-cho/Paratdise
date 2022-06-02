@@ -10,7 +10,7 @@
 /// </summary>
 public class MapOptimizableObject : MonoBehaviour
 {
-    public Vector2 sector;
+    public MapOptimizer.Sector sector;
     public int id;
 
     private void OnDestroy()

@@ -20,6 +20,7 @@ public class ItemController : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private float pickUpTimer = 1f;
+
     //============================================================================
     //*************************** Public Methods *********************************
     //============================================================================

@@ -25,7 +25,6 @@ using UnityEngine;
 /// }
 ///
 /// </summary>
-
 public class PlayStateManager
 {
     private static PlayStateManager _instance;

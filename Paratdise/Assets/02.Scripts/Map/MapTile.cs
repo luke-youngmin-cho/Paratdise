@@ -48,6 +48,9 @@ public class MapTile : MonoBehaviour
         right = rightCol != null ? rightCol.GetComponent<MapTile>() : null;
     }
 
+    /// <summary>
+    /// 오브젝트 풀로 돌아감
+    /// </summary>
     public void ReturnToPool()
     {
         ObjectPool.ReturnToPool(gameObject);
